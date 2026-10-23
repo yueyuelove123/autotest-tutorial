@@ -1,0 +1,2159 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html">
+      
+      
+        <link rel="next" href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 2 章 认识练习网站与 HTTP 基础 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-2-章-认识练习网站与-http-基础" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 2 章 认识练习网站与 HTTP 基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-把练习网站放进工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 把练习网站放进工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-手工走一遍业务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 手工走一遍业务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-http-基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 HTTP 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 HTTP 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-一次请求长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 一次请求长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-一次响应长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 一次响应长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-业务码http-200-不等于成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 业务码：HTTP 200 不等于成功
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-用浏览器开发者工具看接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 用浏览器开发者工具看接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-登录态cookiesession-和-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 登录态：Cookie、Session 和 Token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-练习网站的接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 练习网站的接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-手工调接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 手工调接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-一个接口要测哪些方面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 一个接口要测哪些方面
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-把练习网站放进工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 把练习网站放进工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-手工走一遍业务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 手工走一遍业务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-http-基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 HTTP 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 HTTP 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-一次请求长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 一次请求长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-一次响应长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 一次响应长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-业务码http-200-不等于成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 业务码：HTTP 200 不等于成功
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-用浏览器开发者工具看接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 用浏览器开发者工具看接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-登录态cookiesession-和-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 登录态：Cookie、Session 和 Token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-练习网站的接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 练习网站的接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-手工调接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 手工调接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-一个接口要测哪些方面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 一个接口要测哪些方面
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-2-章-认识练习网站与-http-基础">第 2 章 认识练习网站与 HTTP 基础<a class="headerlink" href="#第-2-章-认识练习网站与-http-基础" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>在自己电脑上跑起练习网站，手工把业务走一遍；</li>
+<li>弄懂一次接口请求由哪几部分组成，能看懂状态码；</li>
+<li>会用浏览器开发者工具看页面发出的接口请求；</li>
+<li>会手工调接口，知道一个接口应该从哪几个方面去测。</li>
+</ul>
+<hr />
+<h2 id="21-把练习网站放进工程">2.1 把练习网站放进工程<a class="headerlink" href="#21-把练习网站放进工程" title="Permanent link">&para;</a></h2>
+<p>学自动化需要一个被测系统。随便找个公网网站来练有几个问题：网站随时会改版或下线，你没法控制里面的数据，更不能拿去做性能测试（那等于攻击别人的网站）。所以本教程准备了一个小商城，在你自己电脑上运行，接口、UI、性能三块都对着它练。</p>
+<p><strong>第一步：复制。</strong> 把参考代码里的 <code>autotest-demo/shop</code> 整个文件夹复制到你的工程根目录下（参考代码就是教程目录里的 <code>autotest-demo/</code>；看网站版的，在首页下载 <code>autotest-demo.zip</code>，解压后就是这个文件夹）：</p>
+<div class="highlight"><pre><span></span><code>autotest-demo/
+├─ .venv/
+├─ shop/               ← 复制过来的练习网站
+│  ├─ app.py
+│  └─ static/
+└─ requirements.txt
+</code></pre></div>
+<p>练习网站是用 FastAPI 写的，第 1 章装依赖时已经一起装好了。你不需要看懂它的代码。</p>
+<p><strong>第二步：启动。</strong> 在工程根目录、激活虚拟环境后执行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python -m uvicorn shop.app:app --port 8000
+INFO:     Started server process [9780]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+</code></pre></div>
+<p>看到最后一行就启动成功了。<strong>这个命令行窗口要一直开着</strong>，关掉窗口或按 <code>Ctrl+C</code> 网站就停了。后面跑测试时，再新开一个命令行窗口（记得进入工程目录、激活虚拟环境）。</p>
+<p><strong>第三步：打开。</strong> 浏览器访问 <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>，会自动跳到登录页。<code>127.0.0.1</code> 指你自己这台电脑，<code>8000</code> 是端口号，可以理解成这台电脑上的第 8000 号门。</p>
+<p>练习网站的账号：</p>
+<table>
+<thead>
+<tr>
+<th>账号</th>
+<th>密码</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alice</td>
+<td>alice123</td>
+<td>主账号，用例默认用它</td>
+</tr>
+<tr>
+<td>bob</td>
+<td>bob123</td>
+<td>登录类用例专用，会被反复登录</td>
+</tr>
+<tr>
+<td>user001～user100</td>
+<td>test123</td>
+<td>账号池，并行执行和性能测试用</td>
+</tr>
+</tbody>
+</table>
+<p>每个账号初始余额 100000 元。商品一共 25 件，其中「限量版手办」只有 3 个库存，其余都是 100000 个。<strong>数据都放在内存里，停掉网站再启动就恢复成初始状态</strong>，练习时把数据弄乱了，重启一下就好。</p>
+<h2 id="22-手工走一遍业务">2.2 手工走一遍业务<a class="headerlink" href="#22-手工走一遍业务" title="Permanent link">&para;</a></h2>
+<p>自动化测试是把手工测试的步骤交给程序去做，所以先自己手工走一遍：</p>
+<ol>
+<li>用 alice 登录，进入商品列表，右上角显示「欢迎，alice」和余额；</li>
+<li>搜索「耳机」，列表里剩下两款耳机；</li>
+<li>搜索「中性笔」，点「购买」，在弹窗里把数量改成 2，点「确认下单」，底部出现「下单成功，订单号：SO……」；</li>
+<li>点提示里的「去支付」进入我的订单，这一单状态是「待支付」，点「支付」，状态变成「已支付」，右上角余额减少 5 元；</li>
+<li>再买一单，在订单页点「取消」，浏览器弹出确认框，点「确定」后状态变成「已取消」；</li>
+<li>回到商品页看中性笔的库存：支付的那单扣掉了库存，取消的那单库存还回来了。</li>
+</ol>
+<p>后面几章就是把这些步骤和检查点写成自动运行的程序。</p>
+<h2 id="23-http-基础">2.3 HTTP 基础<a class="headerlink" href="#23-http-基础" title="Permanent link">&para;</a></h2>
+<p>你在页面上点「登录」时，页面会给服务器发一条<strong>请求</strong>，服务器处理完回一条<strong>响应</strong>，页面再根据响应决定显示什么。这一来一回用的规则叫 <strong>HTTP 协议</strong>。页面背后的这些请求就是<strong>接口</strong>，接口测试就是绕过页面，直接给服务器发请求、检查响应。</p>
+<h3 id="231-一次请求长什么样">2.3.1 一次请求长什么样<a class="headerlink" href="#231-一次请求长什么样" title="Permanent link">&para;</a></h3>
+<p>登录时浏览器发出的请求，原样写出来是这样的：</p>
+<div class="highlight"><pre><span></span><code>POST /api/login HTTP/1.1
+Host: 127.0.0.1:8000
+Content-Type: application/json
+
+{"username": "alice", "password": "alice123"}
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>这个例子里</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请求方法</td>
+<td><code>POST</code></td>
+<td>常用的有 GET（查询）、POST（提交、新建）、PUT（修改）、DELETE（删除）</td>
+</tr>
+<tr>
+<td>地址</td>
+<td><code>http://127.0.0.1:8000/api/login</code></td>
+<td>协议://主机:端口/路径，后面还可以跟 <code>?</code> 和查询参数</td>
+</tr>
+<tr>
+<td>请求头</td>
+<td><code>Content-Type: application/json</code></td>
+<td>一些附加信息，比如请求体是什么格式、登录凭证</td>
+</tr>
+<tr>
+<td>请求体</td>
+<td><code>{"username": ...}</code></td>
+<td>提交给服务器的数据，最常见的是 JSON 格式；GET 请求一般没有请求体</td>
+</tr>
+</tbody>
+</table>
+<p>地址里的查询参数长这样：<code>/api/products?keyword=耳机&amp;page=1&amp;size=10</code>，<code>?</code> 后面是参数，参数之间用 <code>&amp;</code> 隔开。中文放进地址时会被编码，<code>耳机</code> 实际发出去是 <code>%E8%80%B3%E6%9C%BA</code>，后面在压测报告里还会见到它。</p>
+<h3 id="232-一次响应长什么样">2.3.2 一次响应长什么样<a class="headerlink" href="#232-一次响应长什么样" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 200 OK
+content-type: application/json
+
+{"code":0,"msg":"ok","data":{"token":"fc87585c716e220c05ec7371815622fb","username":"alice"}}
+</code></pre></div>
+<p>第一行的 <code>200</code> 是<strong>状态码</strong>，告诉你这次请求处理得怎么样；后面是响应头和<strong>响应体</strong>。常见的状态码：</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+<th>常见场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>成功</td>
+<td>最常见</td>
+</tr>
+<tr>
+<td>201</td>
+<td>已创建</td>
+<td>有些系统新建数据成功时返回</td>
+</tr>
+<tr>
+<td>301、302、307</td>
+<td>跳转</td>
+<td>访问首页被带到登录页</td>
+</tr>
+<tr>
+<td>400</td>
+<td>请求有问题</td>
+<td>参数格式不对</td>
+</tr>
+<tr>
+<td>401</td>
+<td>没有登录</td>
+<td>没带登录凭证，或者凭证失效了</td>
+</tr>
+<tr>
+<td>403</td>
+<td>没有权限</td>
+<td>登录了，但不允许做这件事</td>
+</tr>
+<tr>
+<td>404</td>
+<td>找不到</td>
+<td>地址写错了，或者数据不存在</td>
+</tr>
+<tr>
+<td>422</td>
+<td>参数校验没过</td>
+<td>必填项没填、数字超出范围</td>
+</tr>
+<tr>
+<td>429</td>
+<td>请求太频繁</td>
+<td>被限流了</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器内部错误</td>
+<td>后端代码出了异常，基本可以判定是缺陷</td>
+</tr>
+<tr>
+<td>502、503、504</td>
+<td>网关错误、服务不可用、网关超时</td>
+<td>服务挂了、忙不过来或者处理太慢</td>
+</tr>
+</tbody>
+</table>
+<p>记个大概：2 开头是成功，3 开头是跳转，4 开头是请求方的问题，5 开头是服务器的问题。</p>
+<h3 id="233-业务码http-200-不等于成功">2.3.3 业务码：HTTP 200 不等于成功<a class="headerlink" href="#233-业务码http-200-不等于成功" title="Permanent link">&para;</a></h3>
+<p>很多系统不管业务成功与否都返回 HTTP 200，再在响应体里用一个<strong>业务码</strong>区分结果。比如练习网站密码输错时：</p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 200 OK
+
+{"code":1001,"msg":"用户名或密码错误","data":null}
+</code></pre></div>
+<p>HTTP 层面是成功的，业务层面是失败的。<strong>写接口用例时，状态码和业务码要一起检查</strong>，只看状态码会把大量失败当成成功。</p>
+<h2 id="24-用浏览器开发者工具看接口">2.4 用浏览器开发者工具看接口<a class="headerlink" href="#24-用浏览器开发者工具看接口" title="Permanent link">&para;</a></h2>
+<p>页面调了哪些接口、传了什么、回了什么，用浏览器自带的开发者工具就能看到：</p>
+<ol>
+<li>打开登录页，按 <code>F12</code>，切到 <strong>Network（网络）</strong> 面板；</li>
+<li>勾上 <strong>Preserve log（保留日志）</strong>，否则登录后页面一跳转，记录就被清掉了；</li>
+<li>点筛选栏的 <strong>Fetch/XHR</strong>，只看接口请求，过滤掉图片、样式这些；</li>
+<li>用 alice 登录，列表里会出现 <code>login</code>、<code>products</code>、<code>me</code> 几条请求。点 <code>login</code>：</li>
+<li><strong>Headers（标头）</strong>：请求地址、请求方法、状态码、请求头和响应头；</li>
+<li><strong>Payload（载荷）</strong>：请求体，能看到提交的用户名和密码；</li>
+<li><strong>Response（响应）</strong>：服务器返回的内容；</li>
+<li><strong>Timing（时间）</strong>：这次请求花了多少时间。</li>
+<li>点 <code>products</code> 那条，看请求头里有一个 <code>token</code>，值就是登录时拿到的那一串。</li>
+<li>切到 <strong>Application（应用）→ Cookies</strong>，能看到页面存下的 <code>token</code> 和 <code>username</code> 两个 cookie。</li>
+</ol>
+<p>在某条请求上点右键，选 <strong>Copy（复制）</strong>，可以把这条请求复制成命令，贴到命令行里就能重新发一遍，排查问题时很好用。Windows 上要选对格式：<strong>Copy as PowerShell</strong> 贴进 PowerShell，<strong>Copy as cURL (cmd)</strong> 贴进 cmd 窗口。（Windows 自带的 PowerShell 里，<code>curl</code> 是另一个命令 <code>Invoke-WebRequest</code> 的别名，把 cURL 格式贴进去会报参数错误。）</p>
+<p><strong>以后拿到一个新系统，第一件事就是打开开发者工具把业务点一遍，弄清楚每一步调了哪些接口。</strong> 接口文档不全、和实际对不上的时候，这里看到的才是真实情况。</p>
+<h2 id="25-登录态cookiesession-和-token">2.5 登录态：Cookie、Session 和 Token<a class="headerlink" href="#25-登录态cookiesession-和-token" title="Permanent link">&para;</a></h2>
+<p>HTTP 本身不记事，服务器收到每一条请求都不知道是谁发的。所以登录之后，每次请求都要带上一个「我是谁」的凭证。常见做法有三种：</p>
+<ul>
+<li><strong>Cookie</strong>：服务器让浏览器存一小段数据，之后浏览器访问同一个网站时自动带上。</li>
+<li><strong>Session</strong>：用户信息存在服务器上，浏览器的 cookie 里只存一个编号（Session ID），服务器按编号去查。</li>
+<li><strong>Token</strong>：登录成功后服务器发一个字符串，客户端之后每次请求都放在请求头里带上。常见的请求头写法是 <code>Authorization: Bearer xxx</code>，也有系统自己起名字，比如 <code>token: xxx</code>。</li>
+</ul>
+<p>练习网站用的是 token：</p>
+<div class="highlight"><pre><span></span><code>登录接口返回 token ──► 页面把 token 存进 cookie ──► 之后每次调接口，页面从 cookie 取出 token 放进请求头 token 里
+</code></pre></div>
+<p>这件事对自动化很重要：</p>
+<ul>
+<li>接口自动化里，登录后要自己把 token 放进请求头；</li>
+<li>UI 自动化里，可以先用接口登录拿到 token，再直接写进浏览器的 cookie，跳过登录页（第 11 章）；</li>
+<li>有的系统同一个账号只允许一处登录，新的登录会让旧 token 失效。练习网站用 <code>SHOP_SINGLE_SESSION=1</code> 启动就是这种模式，第 18 章会看到它对性能测试的影响。</li>
+</ul>
+<h2 id="26-练习网站的接口">2.6 练习网站的接口<a class="headerlink" href="#26-练习网站的接口" title="Permanent link">&para;</a></h2>
+<p>浏览器打开 <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> 可以看到自动生成的接口文档。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>文档页的样式和脚本要从国外的公共资源站加载，网络不通时会白屏。这时可以直接看下面的表，或者打开 <a href="http://127.0.0.1:8000/openapi.json">http://127.0.0.1:8000/openapi.json</a> 看原始的接口描述。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>地址</th>
+<th>说明</th>
+<th>要登录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/api/login</code></td>
+<td>登录，请求体 <code>{"username", "password"}</code>，返回 token 和用来续期的 refreshToken</td>
+<td>否</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/logout</code></td>
+<td>退出登录，当前 token 失效</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/me</code></td>
+<td>当前用户名、昵称、邮箱、余额</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/products</code></td>
+<td>搜索商品，参数 <code>keyword</code>、<code>page</code>（≥1）、<code>size</code>（1～50）</td>
+<td>否</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/products/{id}</code></td>
+<td>商品详情</td>
+<td>否</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/orders</code></td>
+<td>下单并占用库存，请求体 <code>{"items": [{"productId": 13, "quantity": 2}]}</code>，数量 1～999</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/orders</code></td>
+<td>我的订单（最近 50 条），可选参数 <code>status</code></td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/orders/{orderNo}</code></td>
+<td>订单详情</td>
+<td>是</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/orders/{orderNo}/pay</code></td>
+<td>支付订单，从余额扣款</td>
+<td>是</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/orders/{orderNo}/cancel</code></td>
+<td>取消待支付的订单，归还库存</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/health</code></td>
+<td>健康检查，网站活着就返回 <code>UP</code></td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<p>下面这些接口在第 5、6 章讲接口测试的常见场景时才用到，现在知道有它们就行：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>地址</th>
+<th>说明</th>
+<th>要登录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/api/token/refresh</code></td>
+<td>用 refreshToken 换一对新的 token</td>
+<td>否</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/users/me</code></td>
+<td>修改昵称（2～20 个字）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>POST / GET</td>
+<td><code>/api/users/avatar</code></td>
+<td>上传头像（jpg 或 png，不超过 200 KB）/ 查看头像</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/orders/export</code></td>
+<td>把我的订单导出成 CSV 文件</td>
+<td>是</td>
+</tr>
+<tr>
+<td>POST / GET / PUT / DELETE</td>
+<td><code>/api/addresses</code>、<code>/api/addresses/{id}</code></td>
+<td>收货地址的增、查、改、删</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/stats/orders</code></td>
+<td>订单统计，给合作方用的开放接口，要带签名</td>
+<td>否（要验签）</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/reports/stock</code></td>
+<td>提交生成库存报表的任务，要过几秒才生成好</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/tasks/{taskId}</code>、<code>/api/tasks/{taskId}/download</code></td>
+<td>查报表任务的状态 / 下载生成好的报表</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>所有接口都返回同样的结构：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>HTTP 状态码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>200</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>40101</td>
+<td>401</td>
+<td>没登录，或者 token 不对</td>
+</tr>
+<tr>
+<td>40102</td>
+<td>401</td>
+<td>登录过期了（第 6 章讲 token 续期时用到）</td>
+</tr>
+<tr>
+<td>422</td>
+<td>422</td>
+<td>参数校验没过，<code>data</code> 里写了哪个字段、什么原因</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>200</td>
+<td>用户名或密码错误</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>200</td>
+<td>用户名和密码不能为空</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>200</td>
+<td>商品不存在</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>200</td>
+<td>库存不足</td>
+</tr>
+<tr>
+<td>3001</td>
+<td>200</td>
+<td>订单不存在（看别人的订单也是这个结果）</td>
+</tr>
+<tr>
+<td>3002</td>
+<td>200</td>
+<td>余额不足</td>
+</tr>
+<tr>
+<td>3003</td>
+<td>200</td>
+<td>订单状态不允许这个操作（比如已支付的订单再支付）</td>
+</tr>
+</tbody>
+</table>
+<p>头像、地址、开放接口、报表任务各自还有几个错误码（4001～4003、5001～5002、4011～4014、6001～6002），用到时在第 6 章细讲。</p>
+<p>可以看到这个系统两种做法都有：没登录和参数错误用 HTTP 状态码表示，其余业务错误统一返回 200、靠 <code>code</code> 区分。你以后遇到的真实系统也可能是任意一种，<strong>先看清楚再写断言</strong>。</p>
+<h2 id="27-手工调接口">2.7 手工调接口<a class="headerlink" href="#27-手工调接口" title="Permanent link">&para;</a></h2>
+<p>写自动化之前，先手工调通接口，确认请求怎么发、响应长什么样。</p>
+<p><strong>用接口文档页调</strong>（最方便）：</p>
+<ol>
+<li>打开 <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a>，展开 <code>POST /api/login</code>，点 <strong>Try it out</strong>；</li>
+<li>把请求体改成 <code>{"username": "alice", "password": "alice123"}</code>，点 <strong>Execute</strong>；</li>
+<li>下面的 Response body 里能看到 token，把它复制下来；</li>
+<li>点页面右上角的 <strong>Authorize</strong>，把 token 贴进去，点 Authorize 再关掉弹窗；</li>
+<li>展开 <code>GET /api/me</code>，Try it out → Execute，就能看到 alice 的余额了。不填 token 直接调，会得到 401。</li>
+</ol>
+<p><strong>用接口调试工具调</strong>：Postman、Apifox 这类工具功能更全，能保存请求、管理环境、批量运行，工作中很常用。用法和上面类似：选方法、填地址、在 Body 里选 JSON 填请求体、在 Headers 里加 <code>token</code>。有兴趣可以装一个试试，本教程不依赖它们。</p>
+<h2 id="28-一个接口要测哪些方面">2.8 一个接口要测哪些方面<a class="headerlink" href="#28-一个接口要测哪些方面" title="Permanent link">&para;</a></h2>
+<p>手工调通只是第一步。设计接口用例时，可以按下面这张清单逐项过一遍：</p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>要测什么</th>
+<th>练习网站上的例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常功能</td>
+<td>参数正确时返回成功，返回的数据正确</td>
+<td>正确的账号密码能登录，返回的用户名对得上</td>
+</tr>
+<tr>
+<td>参数校验</td>
+<td>必填项缺失、类型错误、空值、超长、边界值</td>
+<td>不传密码、<code>size=0</code>、<code>size=50</code>、<code>size=51</code>、<code>page=abc</code></td>
+</tr>
+<tr>
+<td>登录与权限</td>
+<td>不带凭证、凭证错误或失效、访问别人的数据</td>
+<td>不带 token 查余额、退出后再用旧 token、查别人的订单</td>
+</tr>
+<tr>
+<td>业务规则</td>
+<td>系统规定不允许的情况都被拦住了</td>
+<td>库存不足、余额不足、已支付的订单再支付或取消</td>
+</tr>
+<tr>
+<td>数据正确性</td>
+<td>操作之后，相关的数据跟着正确变化</td>
+<td>下单扣库存、支付扣余额、取消还库存</td>
+</tr>
+<tr>
+<td>重复与并发</td>
+<td>同一个操作重复提交、多人同时操作</td>
+<td>同一订单连续支付两次、同时支付十次（第 18 章）</td>
+</tr>
+<tr>
+<td>返回结构</td>
+<td>字段齐全、类型正确，前端和其他系统依赖它</td>
+<td>商品详情必须有 id、sku、name、price、stock</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>响应时间、能承受多大访问量</td>
+<td>第 7、8 章</td>
+</tr>
+</tbody>
+</table>
+<p>设计参数校验用例时，有两个常用方法：</p>
+<ul>
+<li><strong>等价类</strong>：把输入分成几类，每类挑一个代表。比如每页条数分成「1～50 之间」「小于 1」「大于 50」「不是数字」四类，每类测一个就够了；</li>
+<li><strong>边界值</strong>：问题最容易出在边上。每页条数的边界是 1 和 50，就测 0、1、50、51 这几个值。</li>
+</ul>
+<p>拿登录接口举例，按这张清单能列出这些用例，下一章就把它们写成代码：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>用例</th>
+<th>预期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>正确的用户名和密码</td>
+<td>HTTP 200，code 为 0，返回 token 和用户名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>密码错误</td>
+<td>code 为 1001，提示用户名或密码错误</td>
+</tr>
+<tr>
+<td>3</td>
+<td>账号不存在</td>
+<td>code 为 1001，提示和密码错误一样（不暴露账号是否存在）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>用户名为空</td>
+<td>code 为 1002</td>
+</tr>
+<tr>
+<td>5</td>
+<td>密码为空</td>
+<td>code 为 1002</td>
+</tr>
+<tr>
+<td>6</td>
+<td>请求体里没有密码字段</td>
+<td>HTTP 422，指出缺少 password</td>
+</tr>
+<tr>
+<td>7</td>
+<td>不带 token 调需要登录的接口</td>
+<td>HTTP 401</td>
+</tr>
+<tr>
+<td>8</td>
+<td>退出登录后用旧 token 调接口</td>
+<td>HTTP 401</td>
+</tr>
+</tbody>
+</table>
+<h2 id="29-常见的坑">2.9 常见的坑<a class="headerlink" href="#29-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动时报 <code>[Errno 10048] error while attempting to bind on address ('127.0.0.1', 8000)</code></td>
+<td>8000 端口被占用了，多半是之前启动的网站还开着。关掉那个窗口，或者换个端口 <code>--port 8001</code></td>
+</tr>
+<tr>
+<td>测试报错 <code>Connection refused</code>、<code>Max retries exceeded</code></td>
+<td>练习网站没启动，或者启动它的窗口被关了</td>
+</tr>
+<tr>
+<td>改了练习网站的启动参数没生效</td>
+<td>要先 <code>Ctrl+C</code> 停掉再重新启动</td>
+</tr>
+<tr>
+<td>接口文档页白屏</td>
+<td>加载不了国外的资源，看 2.6 节的表格</td>
+</tr>
+<tr>
+<td><code>No module named 'shop'</code></td>
+<td>没在工程根目录执行启动命令，先 <code>cd</code> 到 <code>autotest-demo</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="210-练习">2.10 练习<a class="headerlink" href="#210-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>用开发者工具找到「下单」和「支付」两个请求，记下它们的方法、地址、请求体和响应体。</li>
+<li>在接口文档页用 <code>GET /api/products</code> 查第 3 页、每页 10 条，看返回了几条、<code>total</code> 是多少，想想为什么。</li>
+<li>试着调 <code>POST /api/orders</code>，买 4 个「限量版手办」，看返回什么。</li>
+<li>照着 2.8 节的清单，给「支付订单」接口列一张用例表，至少 6 条。</li>
+</ol>
+<h2 id="211-自检清单">2.11 自检清单<a class="headerlink" href="#211-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能启动练习网站，知道停掉它数据会恢复成初始状态；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出一次请求由哪几部分组成，GET 和 POST 有什么区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 401、404、422、500 分别是什么意思；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 明白为什么断言要同时检查 HTTP 状态码和业务码；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用开发者工具找到某个按钮背后调用的接口；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能按清单从多个方面给一个接口设计用例。</li>
+</ul>
+<p>下一章：<a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">第 3 章 接口自动化基础</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 1 章 准备环境与 Python 速成">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 1 章 准备环境与 Python 速成
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 3 章 接口自动化基础">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 3 章 接口自动化基础
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2137 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>常见问题与参考资料 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#附录-常见问题与参考资料" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              常见问题与参考资料
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-常见报错速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 常见报错速查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A. 常见报错速查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#环境与安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境与安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习网站
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口自动化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        接口自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-自动化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI 自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#性能测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        性能测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-术语表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 术语表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-官方文档" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. 官方文档
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-公开的练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 公开的练习网站
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-编写本教程时参考的资料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 编写本教程时参考的资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-常见报错速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 常见报错速查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A. 常见报错速查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#环境与安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境与安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习网站
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口自动化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        接口自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-自动化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI 自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#性能测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        性能测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-术语表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 术语表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-官方文档" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. 官方文档
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-公开的练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 公开的练习网站
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-编写本教程时参考的资料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 编写本教程时参考的资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="附录-常见问题与参考资料">附录 常见问题与参考资料<a class="headerlink" href="#附录-常见问题与参考资料" title="Permanent link">&para;</a></h1>
+<h2 id="a-常见报错速查">A. 常见报错速查<a class="headerlink" href="#a-常见报错速查" title="Permanent link">&para;</a></h2>
+<p>遇到报错，先读最后几行，再到这里按关键字查。</p>
+<h3 id="环境与安装">环境与安装<a class="headerlink" href="#环境与安装" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python</code> 不是内部或外部命令</td>
+<td>安装 Python 时没勾 <code>Add python.exe to PATH</code>，重新安装勾上</td>
+</tr>
+<tr>
+<td>装好了 Node.js 或 Git，VS Code 的终端里还是「不是内部或外部命令」</td>
+<td>VS Code 的终端用的是 VS Code 启动时的环境，要把 VS Code 整个关掉重开；单独的 PowerShell 窗口新开一个即可</td>
+</tr>
+<tr>
+<td>输入 <code>python</code> 打开了微软应用商店</td>
+<td>「设置 → 应用 → 高级应用设置 → 应用执行别名」里关掉 <code>python.exe</code> 和 <code>python3.exe</code></td>
+</tr>
+<tr>
+<td><code>无法加载文件 ...\Activate.ps1，因为在此系统上禁止运行脚本</code></td>
+<td>执行 <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></td>
+</tr>
+<tr>
+<td>pip 下载很慢、超时</td>
+<td>换镜像源：<code>pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</code>；公司网络要走代理的，加 <code>--proxy http://代理地址:端口</code></td>
+</tr>
+<tr>
+<td>装 locust 时报错，提到 gevent、编译、C++</td>
+<td>Python 版本太新，对应的安装包还没发布，换成 Python 3.13 或 3.14</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'xxx'</code></td>
+<td>虚拟环境没激活（命令行开头没有 <code>(.venv)</code>），或者包没装</td>
+</tr>
+<tr>
+<td>命令行里中文显示成乱码</td>
+<td>先执行 <code>$env:PYTHONUTF8 = "1"</code>，让 Python 统一用 UTF-8 输出；用 Windows 终端或 VS Code 自带的终端也能减少乱码</td>
+</tr>
+<tr>
+<td>读文件报 <code>UnicodeDecodeError</code></td>
+<td>打开文件时加 <code>encoding="utf-8"</code></td>
+</tr>
+<tr>
+<td><code>git status</code> 里中文文件名显示成 <code>\346\265\213</code> 这样</td>
+<td>执行 <code>git config --global core.quotepath false</code></td>
+</tr>
+<tr>
+<td><code>git commit</code> 报 <code>Author identity unknown</code></td>
+<td>没设置名字和邮箱，执行 <code>git config --global user.name "你的名字"</code> 和 <code>git config --global user.email "你的邮箱"</code></td>
+</tr>
+<tr>
+<td><code>git push</code> 报 <code>src refspec main does not match any</code></td>
+<td>本地分支叫 master，先执行 <code>git branch -M main</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="练习网站">练习网站<a class="headerlink" href="#练习网站" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[Errno 10048] error while attempting to bind on address ('127.0.0.1', 8000)</code></td>
+<td>8000 端口被占了，多半是已经开着一个练习网站。关掉那个窗口，或者用 <code>--port 8001</code></td>
+</tr>
+<tr>
+<td>用例报 <code>Connection refused</code>、<code>Max retries exceeded</code></td>
+<td>练习网站没启动，或者启动它的窗口被关了</td>
+</tr>
+<tr>
+<td><code>No module named 'shop'</code></td>
+<td>没在工程根目录执行启动命令</td>
+</tr>
+<tr>
+<td>接口文档页 <code>/docs</code> 白屏</td>
+<td>页面资源要从国外的公共资源站加载，网络不通。看第 2 章的接口表，或者打开 <code>/openapi.json</code></td>
+</tr>
+<tr>
+<td>数据被弄乱了</td>
+<td>重启练习网站，所有数据恢复初始状态</td>
+</tr>
+<tr>
+<td>设置了开关（环境变量）不生效</td>
+<td>环境变量只对设置它的那个命令行窗口有效，并且要重启练习网站</td>
+</tr>
+<tr>
+<td>做完开关实验（第 6 章的 token 过期、越权，性能章的连接池、单会话），用例莫名失败、数字和书上差很多</td>
+<td>开关还开着。环境变量一直有效到窗口关闭，用 <code>Get-ChildItem Env:SHOP*</code>、<code>Get-ChildItem Env:STEP*</code> 看看还剩哪些，用 <code>Remove-Item Env:名字</code> 去掉（或者关掉窗口重开），再重启练习网站</td>
+</tr>
+<tr>
+<td>跑用例时全都连到了一个不存在的地址</td>
+<td>当前窗口里还留着 <code>TEST_ENV</code>，执行 <code>Remove-Item Env:TEST_ENV</code></td>
+</tr>
+<tr>
+<td>用例成片报 401、业务码 40102「登录已过期」</td>
+<td>练习网站是带 <code>SHOP_TOKEN_TTL</code> 启动的，token 几秒就过期。去掉这个环境变量重启网站（第 6 章 6.4 节）</td>
+</tr>
+<tr>
+<td>上传头像的接口一调用网站就报错，或者网站起不来，提到 <code>python-multipart</code></td>
+<td>依赖没装全，执行 <code>pip install -r requirements.txt</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="接口自动化">接口自动化<a class="headerlink" href="#接口自动化" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collected 0 items</code></td>
+<td>文件名、函数名没以 <code>test_</code> 开头，或者不在 <code>testpaths</code> 指定的目录里</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'common'</code></td>
+<td><code>pytest.ini</code> 里没写 <code>pythonpath = .</code>，或者 <code>common</code> 里没有 <code>__init__.py</code></td>
+</tr>
+<tr>
+<td><code>fixture 'xxx' not found</code></td>
+<td>夹具名拼错，或者 <code>conftest.py</code> 不在用例所在目录或它的上级目录</td>
+</tr>
+<tr>
+<td><code>import file mismatch</code></td>
+<td>不同目录下有同名的用例文件，改个名字</td>
+</tr>
+<tr>
+<td>返回 422，参数看着没问题</td>
+<td>把 <code>json=</code> 写成了 <code>data=</code></td>
+</tr>
+<tr>
+<td>跑完某条用例后，后面全部 401</td>
+<td>那条用例让共享的 token 失效了（比如退出登录），改用专用账号</td>
+</tr>
+<tr>
+<td>单独跑能过，一起跑或并行跑就失败</td>
+<td>用例之间共用了数据：账号余额、商品库存。见第 4 章 4.8 节、第 19 章 19.3 节</td>
+</tr>
+<tr>
+<td>小数比较偶尔失败</td>
+<td>用 <code>pytest.approx</code></td>
+</tr>
+<tr>
+<td><code>-k 中文</code> 选不到用例</td>
+<td>用例编号里的中文被转义了，在 <code>pytest.ini</code> 里加 <code>disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ui-自动化">UI 自动化<a class="headerlink" href="#ui-自动化" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Executable doesn't exist ... Please run the following command to download new browsers</code></td>
+<td>加 <code>--browser-channel=chrome</code> 用本机的 Chrome，或者执行 <code>playwright install chromium</code></td>
+</tr>
+<tr>
+<td><code>strict mode violation: ... resolved to 10 elements</code></td>
+<td>定位到了多个元素，用 <code>filter(has_text=...)</code> 缩小范围</td>
+</tr>
+<tr>
+<td><code>Timeout 30000ms exceeded</code></td>
+<td>元素一直没出现。用 <code>--headed</code> 看着跑，或者打开 <code>trace.zip</code> 看当时的页面</td>
+</tr>
+<tr>
+<td>有时过有时不过</td>
+<td>用了 <code>sleep</code>、<code>count()</code>、<code>is_visible()</code> 做断言，换成 <code>expect</code>；或者数据被别的用例改了</td>
+</tr>
+<tr>
+<td>种了 cookie 还是被带回登录页</td>
+<td>页面还依赖别的 cookie 或本地存储，先手工登录一次，在开发者工具里看全</td>
+</tr>
+<tr>
+<td>点了按钮没反应、也不报错</td>
+<td>浏览器确认框被自动关掉了，提前用 <code>page.once("dialog", ...)</code> 处理</td>
+</tr>
+<tr>
+<td><code>test-results</code> 里的东西不见了</td>
+<td>每次运行开始会清空，要留存就跑完拷走或挂进报告</td>
+</tr>
+<tr>
+<td><code>fill</code> 之后页面上监听按键的提示没出现</td>
+<td><code>fill</code> 一次性写入，不触发逐个按键的事件，改用 <code>press_sequentially</code>（第 10 章 10.1 节）</td>
+</tr>
+<tr>
+<td>Selenium 报 <code>NoSuchDriverException: Unable to obtain driver for chrome</code></td>
+<td>Selenium 下载不了 chromedriver，按第 12 章 12.2.2 节手动下载，<code>Service()</code> 指定路径</td>
+</tr>
+<tr>
+<td>Selenium 报 <code>session not created</code>，提到 Chrome version</td>
+<td>Chrome 升级了，chromedriver 版本没跟上，下载同版本的覆盖</td>
+</tr>
+<tr>
+<td>Selenium 报 <code>StaleElementReferenceException</code></td>
+<td>拿到的元素在页面刷新后作废了，重新 <code>find_element</code>，别缓存元素对象</td>
+</tr>
+<tr>
+<td>Selenium 报 <code>UnexpectedAlertPresentException</code></td>
+<td>有个浏览器弹窗没处理，先 <code>ec.alert_is_present()</code> 等它出现再 accept 或 dismiss</td>
+</tr>
+<tr>
+<td>Selenium 用例并行跑时偶尔失败，单独跑却都过</td>
+<td>实测并行时会偶发输入、点击没生效，和其他用例分开、串行跑（第 19 章 19.3.2 节）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="性能测试">性能测试<a class="headerlink" href="#性能测试" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网页界面打不开，提示 8089 端口被占用</td>
+<td>已经开着一个 Locust，关掉它，或者加 <code>--web-port 8090</code></td>
+</tr>
+<tr>
+<td><code>--processes</code> 不能用</td>
+<td>这个参数不支持 Windows，改用 <code>--master</code> 加 <code>--worker</code>（第 8 章 8.6 节）</td>
+</tr>
+<tr>
+<td><code>CPU usage above 90%! This may constrain your throughput...</code></td>
+<td>压测机的 CPU 不够了，测出来的数字不准，用多个工作进程</td>
+</tr>
+<tr>
+<td>统计表里同一个接口有几十行</td>
+<td>动态地址没用 <code>name=</code> 分组</td>
+</tr>
+<tr>
+<td>大量 401</td>
+<td>所有虚拟用户共用一个账号被互相顶掉，用账号池</td>
+</tr>
+<tr>
+<td>结束时打印 <code>ValueError: I/O operation on closed file</code></td>
+<td>Locust 2.47 写 CSV 的后台任务没来得及停，不影响结果和退出码</td>
+</tr>
+<tr>
+<td>CSV 里的请求总数比控制台少一点</td>
+<td>CSV 每隔一两秒写一次，最后一两秒没写进去，最终数字以控制台和 HTML 报告为准</td>
+</tr>
+<tr>
+<td>压测结果每次差很多</td>
+<td>压测机和服务器在同一台电脑上抢资源、有别人同时在用环境、数据量不一样</td>
+</tr>
+<tr>
+<td>长时间压测后支付大量失败，报余额不足</td>
+<td>测试数据耗尽了。压测前按时长算够余额，练习网站用 <code>SHOP_INIT_BALANCE</code> 调大初始余额（第 8 章 8.7 节）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="报告">报告<a class="headerlink" href="#报告" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>现象或报错</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allure</code> 不是内部或外部命令</td>
+<td>没装 Node.js 或 Allure，或者装完没有新开命令行窗口</td>
+</tr>
+<tr>
+<td><code>allure generate</code> 执行完什么都没打印</td>
+<td>正常，它成功时不输出，去 <code>reports/allure-report</code> 找 <code>index.html</code></td>
+</tr>
+<tr>
+<td>双击报告是空白页</td>
+<td>多文件报告不能直接双击，用 <code>allure open reports/allure-report</code>，或者在 <code>allurerc.yaml</code> 里开 <code>singleFile: true</code></td>
+</tr>
+<tr>
+<td>报告里新旧结果混在一起</td>
+<td>跑用例时加 <code>--clean-alluredir</code></td>
+</tr>
+<tr>
+<td>网上教程让装 <code>allure-commandline</code></td>
+<td>那是需要 Java 的 Allure 2，本教程用的是 Allure 3，包名叫 <code>allure</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="b-术语表">B. 术语表<a class="headerlink" href="#b-术语表" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>一句话解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用例</td>
+<td>test case</td>
+<td>一个检查点：在什么条件下、做什么操作、期望什么结果</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>assertion</td>
+<td>检查实际结果是否等于期望结果的那句代码</td>
+</tr>
+<tr>
+<td>夹具</td>
+<td>fixture</td>
+<td>pytest 里负责准备数据、清理数据的函数</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>parametrize</td>
+<td>同一份用例代码，用多组数据各跑一遍</td>
+</tr>
+<tr>
+<td>数据驱动</td>
+<td>data-driven</td>
+<td>测试数据放进文件里，代码只负责读数据、执行、断言</td>
+</tr>
+<tr>
+<td>接口串联</td>
+<td>chaining / correlation</td>
+<td>前一个接口的返回值作为后一个接口的输入</td>
+</tr>
+<tr>
+<td>契约</td>
+<td>contract / schema</td>
+<td>接口返回结构的约定：有哪些字段、什么类型</td>
+</tr>
+<tr>
+<td>模拟服务</td>
+<td>mock</td>
+<td>代替真实依赖的假服务，按约定返回固定结果</td>
+</tr>
+<tr>
+<td>等价类</td>
+<td>equivalence class</td>
+<td>一组处理方式相同的输入，挑一个代表测就够了</td>
+</tr>
+<tr>
+<td>边界值</td>
+<td>boundary value</td>
+<td>规则的分界点和它两侧的值，缺陷最爱藏的地方</td>
+</tr>
+<tr>
+<td>判定表</td>
+<td>decision table</td>
+<td>把条件的所有组合列成表，每种组合对应一个期望结果</td>
+</tr>
+<tr>
+<td>状态迁移</td>
+<td>state transition</td>
+<td>按「什么状态下做什么操作、变成什么状态」设计用例</td>
+</tr>
+<tr>
+<td>签名</td>
+<td>signature</td>
+<td>用密钥对请求内容算出的校验串，防篡改、防重放</td>
+</tr>
+<tr>
+<td>刷新令牌</td>
+<td>refresh token</td>
+<td>专门用来换新 token 的长期凭证，一次性使用</td>
+</tr>
+<tr>
+<td>水平越权</td>
+<td>IDOR</td>
+<td>用自己的合法身份操作了别人的数据</td>
+</tr>
+<tr>
+<td>轮询</td>
+<td>polling</td>
+<td>每隔一段时间查一次结果，直到完成或超时</td>
+</tr>
+<tr>
+<td>工厂夹具</td>
+<td>factory fixture</td>
+<td>返回一个造数函数的夹具，一条用例里可以造多份数据</td>
+</tr>
+<tr>
+<td>页面对象</td>
+<td>page object</td>
+<td>把一个页面的元素和操作封装成一个类</td>
+</tr>
+<tr>
+<td>定位器</td>
+<td>locator</td>
+<td>描述「怎么在页面上找到某个元素」的对象</td>
+</tr>
+<tr>
+<td>无界面模式</td>
+<td>headless</td>
+<td>浏览器在后台运行，不显示窗口</td>
+</tr>
+<tr>
+<td>显式等待</td>
+<td>explicit wait</td>
+<td>Selenium 里指定条件的等待，条件满足就继续，超时报错</td>
+</tr>
+<tr>
+<td>浏览器驱动</td>
+<td>chromedriver</td>
+<td>Selenium 用来操纵 Chrome 的中间程序，版本要和浏览器一致</td>
+</tr>
+<tr>
+<td>操作录像</td>
+<td>trace</td>
+<td>Playwright 记录的每一步操作、页面快照和网络请求</td>
+</tr>
+<tr>
+<td>不稳定用例</td>
+<td>flaky test</td>
+<td>代码没变，有时通过有时失败的用例</td>
+</tr>
+<tr>
+<td>冒烟测试</td>
+<td>smoke test</td>
+<td>最核心的一小批用例，用来快速判断系统基本可用</td>
+</tr>
+<tr>
+<td>回归测试</td>
+<td>regression test</td>
+<td>改动之后把已有功能再测一遍，确认没被改坏</td>
+</tr>
+<tr>
+<td>虚拟用户</td>
+<td>virtual user（Vuser）</td>
+<td>压测工具模拟出来的一个用户</td>
+</tr>
+<tr>
+<td>思考时间</td>
+<td>think time</td>
+<td>用户两次操作之间停顿的时间</td>
+</tr>
+<tr>
+<td>每秒请求数</td>
+<td>RPS / QPS</td>
+<td>服务器每秒处理的请求数</td>
+</tr>
+<tr>
+<td>每秒事务数</td>
+<td>TPS</td>
+<td>每秒完成的业务操作数，一个事务可能包含多个请求</td>
+</tr>
+<tr>
+<td>分位数</td>
+<td>percentile</td>
+<td>P95 表示 95% 的请求比它快</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td>throughput</td>
+<td>单位时间内处理的工作量</td>
+</tr>
+<tr>
+<td>拐点</td>
+<td>knee point</td>
+<td>压力再加，吞吐量不再增长、响应时间陡增的那个点</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>transaction</td>
+<td>LoadRunner 里圈起来统计耗时的一段业务操作</td>
+</tr>
+<tr>
+<td>集合点</td>
+<td>rendezvous</td>
+<td>让一批虚拟用户在同一时刻一起执行下一步，用来造严格并发</td>
+</tr>
+<tr>
+<td>关联</td>
+<td>correlation</td>
+<td>把上一个响应里的动态值取出来，给后面的请求用</td>
+</tr>
+<tr>
+<td>负载生成器</td>
+<td>load generator</td>
+<td>真正发出压力的机器或进程</td>
+</tr>
+<tr>
+<td>服务水平协议</td>
+<td>SLA</td>
+<td>事先约定的性能指标，压测结果按它判定达标与否</td>
+</tr>
+<tr>
+<td>瓶颈</td>
+<td>bottleneck</td>
+<td>限制系统处理能力的那个资源</td>
+</tr>
+<tr>
+<td>性能门禁</td>
+<td>performance gate</td>
+<td>按事先定好的性能指标，自动判定达标与否</td>
+</tr>
+<tr>
+<td>竞态条件</td>
+<td>race condition</td>
+<td>多个操作同时进行时，结果取决于执行先后顺序的缺陷</td>
+</tr>
+<tr>
+<td>幂等</td>
+<td>idempotency</td>
+<td>同一个请求执行一次和执行多次，效果相同</td>
+</tr>
+<tr>
+<td>持续集成</td>
+<td>CI, continuous integration</td>
+<td>每次提交代码都自动构建、自动测试</td>
+</tr>
+<tr>
+<td>流水线</td>
+<td>pipeline</td>
+<td>一串自动执行的步骤</td>
+</tr>
+<tr>
+<td>退出码</td>
+<td>exit code</td>
+<td>程序结束时返回的数字，0 表示成功</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-官方文档">C. 官方文档<a class="headerlink" href="#c-官方文档" title="Permanent link">&para;</a></h2>
+<p>遇到教程没讲到的用法，以官方文档为准：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python（有中文版）</td>
+<td><a href="https://docs.python.org/zh-cn/3.13/">https://docs.python.org/zh-cn/3.13/</a></td>
+</tr>
+<tr>
+<td>requests</td>
+<td><a href="https://requests.readthedocs.io/">https://requests.readthedocs.io/</a></td>
+</tr>
+<tr>
+<td>pytest</td>
+<td><a href="https://docs.pytest.org/">https://docs.pytest.org/</a></td>
+</tr>
+<tr>
+<td>pytest-xdist</td>
+<td><a href="https://pytest-xdist.readthedocs.io/">https://pytest-xdist.readthedocs.io/</a></td>
+</tr>
+<tr>
+<td>Playwright for Python</td>
+<td><a href="https://playwright.dev/python/">https://playwright.dev/python/</a></td>
+</tr>
+<tr>
+<td>Playwright 的 pytest 插件</td>
+<td><a href="https://playwright.dev/python/docs/test-runners">https://playwright.dev/python/docs/test-runners</a></td>
+</tr>
+<tr>
+<td>Selenium</td>
+<td><a href="https://www.selenium.dev/documentation/">https://www.selenium.dev/documentation/</a></td>
+</tr>
+<tr>
+<td>chromedriver 下载清单（Chrome for Testing）</td>
+<td><a href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a></td>
+</tr>
+<tr>
+<td>LoadRunner（OpenText Professional Performance Engineering）帮助中心</td>
+<td><a href="https://admhelp.microfocus.com/lr/">https://admhelp.microfocus.com/lr/</a></td>
+</tr>
+<tr>
+<td>Locust</td>
+<td><a href="https://docs.locust.io/">https://docs.locust.io/</a></td>
+</tr>
+<tr>
+<td>Allure 3</td>
+<td><a href="https://allurereport.org/docs/v3/">https://allurereport.org/docs/v3/</a></td>
+</tr>
+<tr>
+<td>JSON Schema</td>
+<td><a href="https://json-schema.org/">https://json-schema.org/</a></td>
+</tr>
+<tr>
+<td>JMeter</td>
+<td><a href="https://jmeter.apache.org/">https://jmeter.apache.org/</a></td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td><a href="https://docs.github.com/actions">https://docs.github.com/actions</a></td>
+</tr>
+<tr>
+<td>FastAPI（练习网站用的框架）</td>
+<td><a href="https://fastapi.tiangolo.com/">https://fastapi.tiangolo.com/</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="d-公开的练习网站">D. 公开的练习网站<a class="headerlink" href="#d-公开的练习网站" title="Permanent link">&para;</a></h2>
+<p>练完本教程的练习网站，想换个网站练手，下面这些是专门给测试练习用的公开网站。<strong>它们只能用来练功能自动化，不要拿来做性能测试</strong>，那相当于攻击别人的网站。</p>
+<table>
+<thead>
+<tr>
+<th>网站</th>
+<th>适合练什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Internet（<a href="https://the-internet.herokuapp.com/">https://the-internet.herokuapp.com/</a>）</td>
+<td>四十多个小页面，每个页面一种难点：iframe、新窗口、上传、弹窗、拖拽、动态加载</td>
+</tr>
+<tr>
+<td>Sauce Demo（<a href="https://www.saucedemo.com/">https://www.saucedemo.com/</a>）</td>
+<td>完整的购物流程；有被故意弄坏的用户（登录被锁、图片错乱、响应很慢），适合练异常场景</td>
+</tr>
+<tr>
+<td>Restful Booker（<a href="https://restful-booker.herokuapp.com/">https://restful-booker.herokuapp.com/</a>）</td>
+<td>接口练习：增删改查、鉴权，里面埋了缺陷。数据每 10 分钟重置，用例要自己造数据</td>
+</tr>
+<tr>
+<td>DemoQA（<a href="https://demoqa.com/">https://demoqa.com/</a>）</td>
+<td>各种表单控件、弹窗、iframe、新窗口</td>
+</tr>
+<tr>
+<td>UI Testing Playground（<a href="http://uitestingplayground.com/">http://uitestingplayground.com/</a>）</td>
+<td>专门练等待和时机问题：延迟加载、动态 id、会移动的按钮</td>
+</tr>
+<tr>
+<td>Automation Exercise（<a href="https://automationexercise.com/">https://automationexercise.com/</a>）</td>
+<td>带现成测试用例清单的商城，界面和接口都能练</td>
+</tr>
+<tr>
+<td>Practice Software Testing（<a href="https://practicesoftwaretesting.com/">https://practicesoftwaretesting.com/</a>）</td>
+<td>完整的工具商城，有接口文档</td>
+</tr>
+</tbody>
+</table>
+<p>更多的网站可以看这两个合集：<a href="https://github.com/BMayhew/awesome-sites-to-test-on">https://github.com/BMayhew/awesome-sites-to-test-on</a>、<a href="https://gist.github.com/proffesor-for-testing/d0ac58084b8e37f921b8c04a20229d16">https://gist.github.com/proffesor-for-testing/d0ac58084b8e37f921b8c04a20229d16</a>。这些网站随时可能改版或下线，打不开就换一个。</p>
+<h2 id="e-编写本教程时参考的资料">E. 编写本教程时参考的资料<a class="headerlink" href="#e-编写本教程时参考的资料" title="Permanent link">&para;</a></h2>
+<p>学习路线：</p>
+<ul>
+<li>JavaGuide《测试开发学习路线（2026 最新版）》：<a href="https://javaguide.cn/roadmap/test-development-roadmap.html">https://javaguide.cn/roadmap/test-development-roadmap.html</a></li>
+<li>TesterHome《自动化测试成神之路》：<a href="https://testerhome.com/topics/24929">https://testerhome.com/topics/24929</a></li>
+<li>知乎《2026 年软件测试学习路线、面试全攻略》：<a href="https://zhuanlan.zhihu.com/p/2050156449800754287">https://zhuanlan.zhihu.com/p/2050156449800754287</a></li>
+</ul>
+<p>工具版本与用法：</p>
+<ul>
+<li>Playwright for Python 发布记录：<a href="https://github.com/microsoft/playwright-python/releases">https://github.com/microsoft/playwright-python/releases</a></li>
+<li>pytest-playwright 发布记录：<a href="https://github.com/microsoft/playwright-pytest/releases">https://github.com/microsoft/playwright-pytest/releases</a></li>
+<li>Locust 配置说明与更新记录：<a href="https://docs.locust.io/en/stable/configuration.html">https://docs.locust.io/en/stable/configuration.html</a>、<a href="https://docs.locust.io/en/stable/changelog.html">https://docs.locust.io/en/stable/changelog.html</a></li>
+<li>Allure 3 安装与生成报告：<a href="https://allurereport.org/docs/v3/install/">https://allurereport.org/docs/v3/install/</a>、<a href="https://allurereport.org/docs/v3/generate-report/">https://allurereport.org/docs/v3/generate-report/</a></li>
+<li>Python 3.15 发布说明：<a href="https://www.python.org/downloads/release/python-3150/">https://www.python.org/downloads/release/python-3150/</a></li>
+<li>gevent 更新记录：<a href="https://www.gevent.org/changelog.html">https://www.gevent.org/changelog.html</a></li>
+<li>JMeter 发布记录：<a href="https://github.com/apache/jmeter/releases">https://github.com/apache/jmeter/releases</a></li>
+<li>Playwright 与 Selenium 对比：<a href="https://www.bright.cn/blog/web-data/playwright-vs-selenium">https://www.bright.cn/blog/web-data/playwright-vs-selenium</a></li>
+<li>GitHub Actions 官方动作：<a href="https://github.com/actions/checkout/releases">https://github.com/actions/checkout/releases</a>、<a href="https://github.com/actions/setup-python/releases">https://github.com/actions/setup-python/releases</a>、<a href="https://github.com/actions/upload-artifact/releases">https://github.com/actions/upload-artifact/releases</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 19 章 工程化与持续集成">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 19 章 工程化与持续集成
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

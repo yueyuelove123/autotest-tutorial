@@ -1,0 +1,3273 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html">
+      
+      
+        <link rel="next" href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 6 章 常见接口场景 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-6-章-常见接口场景" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 6 章 常见接口场景
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-文件上传" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 文件上传
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 文件上传">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-表单里有文件时请求体长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1 表单里有文件时，请求体长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-造一张最小的测试图片" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2 造一张最小的测试图片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-上传的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3 上传的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-文件下载与导出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 文件下载与导出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 文件下载与导出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-二进制响应断什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1 二进制响应断什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-导出的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2 导出的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-查询参数-token给浏览器开的口子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3 查询参数 token：给浏览器开的口子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-开放接口与签名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 开放接口与签名
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 开放接口与签名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-为什么接口要签名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 为什么接口要签名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-三种代码写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 三种代码写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-验签用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 验签用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-token-过期与自动续期" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 token 过期与自动续期
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 token 过期与自动续期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-先看看过期长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 先看看过期长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-手动续期先把接口测扎实" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 手动续期：先把接口测扎实
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-把续期收进客户端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 把续期收进客户端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#644-并发时只续期一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.4 并发时只续期一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#645-用例怎么写怎么跑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.5 用例怎么写、怎么跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-异步任务提交轮询下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 异步任务：提交、轮询、下载
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 异步任务：提交、轮询、下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#651-为什么会有异步接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.1 为什么会有异步接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#652-轮询代码的正确写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.2 轮询代码的正确写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#653-用例主流程中间状态任务归属" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.3 用例：主流程、中间状态、任务归属
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#654-演示提速shop_task_latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.4 演示提速：SHOP_TASK_LATENCY
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-越权测试用-a-的身份动-b-的数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 越权测试：用 A 的身份动 B 的数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.6 越权测试：用 A 的身份动 B 的数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#661-概念与候选清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.1 概念与候选清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#662-用例化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.2 用例化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#663-抓一个真缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.3 抓一个真缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-新场景的通用套路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 新场景的通用套路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-文件上传" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 文件上传
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 文件上传">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-表单里有文件时请求体长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1 表单里有文件时，请求体长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-造一张最小的测试图片" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2 造一张最小的测试图片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-上传的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3 上传的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-文件下载与导出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 文件下载与导出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 文件下载与导出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-二进制响应断什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1 二进制响应断什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-导出的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2 导出的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-查询参数-token给浏览器开的口子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3 查询参数 token：给浏览器开的口子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-开放接口与签名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 开放接口与签名
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 开放接口与签名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-为什么接口要签名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 为什么接口要签名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-三种代码写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 三种代码写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-验签用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 验签用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-token-过期与自动续期" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 token 过期与自动续期
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 token 过期与自动续期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-先看看过期长什么样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 先看看过期长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-手动续期先把接口测扎实" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 手动续期：先把接口测扎实
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-把续期收进客户端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 把续期收进客户端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#644-并发时只续期一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.4 并发时只续期一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#645-用例怎么写怎么跑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.5 用例怎么写、怎么跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-异步任务提交轮询下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 异步任务：提交、轮询、下载
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 异步任务：提交、轮询、下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#651-为什么会有异步接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.1 为什么会有异步接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#652-轮询代码的正确写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.2 轮询代码的正确写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#653-用例主流程中间状态任务归属" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.3 用例：主流程、中间状态、任务归属
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#654-演示提速shop_task_latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5.4 演示提速：SHOP_TASK_LATENCY
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-越权测试用-a-的身份动-b-的数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 越权测试：用 A 的身份动 B 的数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.6 越权测试：用 A 的身份动 B 的数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#661-概念与候选清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.1 概念与候选清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#662-用例化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.2 用例化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#663-抓一个真缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6.3 抓一个真缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-新场景的通用套路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 新场景的通用套路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-6-章-常见接口场景">第 6 章 常见接口场景<a class="headerlink" href="#第-6-章-常见接口场景" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会测文件上传和文件下载：multipart 请求体怎么打包、二进制响应怎么断言、CSV 的编码怎么验证；</li>
+<li>会调带签名的开放接口，说得清签名和时间戳各自防什么、四种验签失败怎么逐个测；</li>
+<li>会处理 token 过期：说得清 40101、40102、40103 的区别，会手动刷新，会把自动续期收进客户端；</li>
+<li>会测异步任务：提交、轮询、下载三步，轮询代码带超时和状态断言；</li>
+<li>会测水平越权，掌握「把路径里的编号换成别人的」这套方法，并且真抓一次缺陷；</li>
+<li>把新接口从手工调试到封装、再到用例的完整流程走熟，以后面对任何新场景都有固定的入手动作。</li>
+</ul>
+<p>前四章搭好了接口自动化的架子：requests 发请求、pytest 组织用例、接口客户端收拢公共代码，第 5 章的设计方法回答「测什么」。这一章处理实战里最常见的五类场景：上传下载、签名、token 过期、异步任务、越权。它们的共同点是，接口文档往往只写「正常调用怎么发」，而坑全在文档没写的部分：请求体怎么打包、时间戳用秒还是毫秒、任务没跑完来下载怎么办、别人的编号能不能操作。</p>
+<p>每一类场景都按同一套流程走：先看文档或页面代码，写个小脚本手工调通，封装成客户端方法，最后用正反用例把实测到的行为钉住。做完这一章，你会发现这五类陌生的场景用的竟是同一套动作，6.7 节把它总结成清单。</p>
+<p>本章的演示会用到练习网站的三个环境变量开关：SHOP_TASK_LATENCY（6.5 节）、SHOP_TOKEN_TTL（6.4 节）、SHOP_IDOR_BUG（6.6 节）。<strong>每个开关用完都要去掉再重启网站</strong>，这是本章最重要的纪律，忘了做，后面的用例会成片失败，而且失败原因看起来莫名其妙。另外本章在 <code>pytest.ini</code> 的 <code>markers</code> 里登记了两个新标记：</p>
+<div class="highlight"><pre><span></span><code><span class="na">markers</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">smoke</span><span class="o">:</span><span class="w"> </span><span class="s">冒烟用例，每次改动后最先跑的那一小批</span>
+<span class="w">    </span><span class="na">concurrency</span><span class="o">:</span><span class="w"> </span><span class="s">并发类用例</span>
+<span class="w">    </span><span class="na">token_ttl</span><span class="o">:</span><span class="w"> </span><span class="s">要在 SHOP_TOKEN_TTL 开着的网站上跑的用例</span>
+<span class="w">    </span><span class="na">idor</span><span class="o">:</span><span class="w"> </span><span class="s">越权类用例，拿自己的 token 动别人的数据</span>
+</code></pre></div>
+<p>（前两行是原有的，后面两行是本章加的。）</p>
+<hr />
+<h2 id="61-文件上传">6.1 文件上传<a class="headerlink" href="#61-文件上传" title="Permanent link">&para;</a></h2>
+<h3 id="611-表单里有文件时请求体长什么样">6.1.1 表单里有文件时，请求体长什么样<a class="headerlink" href="#611-表单里有文件时请求体长什么样" title="Permanent link">&para;</a></h3>
+<p>前面章节的请求体都是 JSON：<code>json={...}</code> 一行搞定，<code>Content-Type</code> 是 <code>application/json</code>。上传文件是另一套格式，叫 <strong>multipart/form-data</strong>（多部分表单）。页面上的「上传头像」按钮用浏览器的 <code>FormData</code> 把文件装进请求体，交给浏览器打包；写自动化时，requests 的 <code>files=</code> 参数做的是同一件事。</p>
+<p>它到底把字节拼成了什么样？不真的发出去，用 <code>prepare()</code> 组装一下再看（存成 <code>scratch/multipart_peek.py</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""不真的发出去，只看看 requests 把文件打包成了什么样子。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+    <span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"http://127.0.0.1:8000/api/users/avatar"</span><span class="p">,</span>
+    <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"avatar.png"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"(PNG-BYTES)"</span><span class="p">,</span> <span class="s2">"image/png"</span><span class="p">)},</span>
+<span class="p">)</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>                      <span class="c1"># prepare() 只组装请求，不发送</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Content-Type:"</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"----- 请求体 -----"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\multipart_peek.py
+Content-Type: multipart/form-data; boundary=0f499c969ce90ada06549ddb01abbeaf
+----- 请求体 -----
+--0f499c969ce90ada06549ddb01abbeaf
+Content-Disposition: form-data; name="file"; filename="avatar.png"
+Content-Type: image/png
+
+(PNG-BYTES)
+--0f499c969ce90ada06549ddb01abbeaf--
+</code></pre></div>
+<p>三件事值得注意：</p>
+<ul>
+<li><strong>boundary（边界线）</strong>：一串随机字符，用来隔开请求体里的每个部分，开头、结尾各一条，也在 <code>Content-Type</code> 头里声明。它必须每次随机生成，你自己编一个固定的，理论上文件内容里可能恰好出现同样的字符串，边界就乱了；</li>
+<li><strong>文件类型由你声明</strong>：第三行 <code>Content-Type: image/png</code> 来自 <code>files=</code> 元组的第三项。requests 不打开文件看内容，也不根据扩展名猜类型，你写什么它发什么；</li>
+<li><strong>表单字段名是 file</strong>：第二行 <code>name="file"</code>，服务端按这个名字取文件。写错了服务端会说「缺 file 字段」，返回 422。</li>
+</ul>
+<p><code>files=</code> 支持几种写法，差别在类型怎么来：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>类型从哪来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{"file": 文件对象}</code> 或 <code>{"file": (文件名, 内容)}</code></td>
+<td>requests 按扩展名猜，猜不出来就写成 <code>application/octet-stream</code>（意思是不明的二进制）</td>
+</tr>
+<tr>
+<td><code>{"file": (文件名, 内容, 类型)}</code></td>
+<td>你声明，最稳</td>
+</tr>
+</tbody>
+</table>
+<p>练习网站只收 <code>image/jpeg</code> 和 <code>image/png</code>，前两种写法因为类型被猜成别的，全部被 4001 拒绝。<strong>养成三项写全的习惯</strong>，不赌服务端认不认猜测的类型。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>不要手工设置 Content-Type。</strong> 网上有人这样写：<code>headers={"Content-Type": "multipart/form-data"}</code>。这会把 requests 自动生成的、带 boundary 的头整个覆盖掉，服务端找不到边界线，直接报错。实测：</p>
+</div>
+<div class="highlight"><pre><span></span><code>400 {"detail":"Missing boundary in multipart."}
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>规矩只有一条：multipart 的 Content-Type 永远让 requests（或浏览器）自己生成，代码里不写。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：</strong> 上传功能还需要一个叫 python-multipart 的库，FastAPI 收 multipart 请求全靠它，第 1 章的 requirements.txt 里已经带了它。哪个环境是后来补建的、没装这个库，练习网站启动时会直接报错说明：<code>RuntimeError: Form data requires "python-multipart" to be installed.</code>，照提示 <code>pip install python-multipart</code> 就好。requests 这边不需要任何额外的库。</p>
+</div>
+<h3 id="612-造一张最小的测试图片">6.1.2 造一张最小的测试图片<a class="headerlink" href="#612-造一张最小的测试图片" title="Permanent link">&para;</a></h3>
+<p>上传要有图片文件。不用现找一张，PNG 格式允许小到几十字节：下面这个字节串是一张 1×1 像素的红色图片，一共 69 个字节，用 <code>bytes.fromhex</code> 从十六进制还原：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 一张 1×1 像素的红色 PNG 图片，一共 69 个字节。四行依次是：文件头、尺寸信息、像素数据、结束标记</span>
+<span class="n">PNG</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span>
+    <span class="s2">"89504e470d0a1a0a"</span>
+    <span class="s2">"0000000d4948445200000001000000010802000000907753de"</span>
+    <span class="s2">"0000000c49444154789c63f8cfc0000003010100c9fe92ef"</span>
+    <span class="s2">"0000000049454e44ae426082"</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>第一行 <code>89504e470d0a1a0a</code> 是所有 PNG 都相同的文件头，最后一块的名字是 IEND（结束）。别小看这 69 个字节：文件头对、各块的校验也对，浏览器能正常把它渲染出来（用 <code>img</code> 标签加载验证过，显示一个红点），测上传完全够用。把「现场构造」养成习惯，工程里就不用提交二进制图片文件，仓库里也不会多出一张说不清用途的图。</p>
+<p>手工走一遍上传，先看没上传时的样子，再传一个 txt、一张 png（<code>scratch/avatar_demo.py</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""手工试一下头像上传：先看没上传时的样子，再传一个 txt，最后传一张真正的 png。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+<span class="c1"># 一张 1×1 像素的红色 PNG 图片，一共 69 个字节。四行依次是：文件头、尺寸信息、像素数据、结束标记</span>
+<span class="n">PNG</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span>
+    <span class="s2">"89504e470d0a1a0a"</span>
+    <span class="s2">"0000000d4948445200000001000000010802000000907753de"</span>
+    <span class="s2">"0000000c49444154789c63f8cfc0000003010100c9fe92ef"</span>
+    <span class="s2">"0000000049454e44ae426082"</span>
+<span class="p">)</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"alice123"</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"没上传时看头像："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/users/avatar"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="c1"># files 的写法：{表单字段名: (文件名, 文件内容, 文件类型)}</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/users/avatar"</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">)},</span>
+                     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"传 txt："</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/users/avatar"</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"avatar.png"</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="s2">"image/png"</span><span class="p">)},</span>
+                     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"传 png："</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"上传后 hasAvatar："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/me"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"hasAvatar"</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\avatar_demo.py
+没上传时看头像： {'code': 4003, 'msg': '还没有上传过头像', 'data': None}
+传 txt： {'code': 4001, 'msg': '头像只支持 jpg 或 png 格式', 'data': None}
+传 png： {'code': 0, 'msg': 'ok', 'data': {'size': 69, 'type': 'image/png'}}
+上传后 hasAvatar： True
+</code></pre></div>
+<h3 id="613-上传的用例">6.1.3 上传的用例<a class="headerlink" href="#613-上传的用例" title="Permanent link">&para;</a></h3>
+<p>接口约定：jpg 或 png、不超过 200 KB。第 5 章的边界值方法直接套用：类型给一个错的；大小卡在 200 KB 正好和超过 1 字节；再加一条成功路径，上传后用 <code>/api/me</code> 的 <code>hasAvatar</code> 和下载接口回读确认，不只断「上传成功」，还要断数据真的存进去了。<code>tests/api/test_scene_upload.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""文件上传的用例：头像只收 jpg、png，不超过 200 KB。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+<span class="c1"># 一张 1×1 像素的红色 PNG 图片，一共 69 个字节。四行依次是：文件头、尺寸信息、像素数据、结束标记</span>
+<span class="n">PNG</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span>
+    <span class="s2">"89504e470d0a1a0a"</span>
+    <span class="s2">"0000000d4948445200000001000000010802000000907753de"</span>
+    <span class="s2">"0000000c49444154789c63f8cfc0000003010100c9fe92ef"</span>
+    <span class="s2">"0000000049454e44ae426082"</span>
+<span class="p">)</span>
+<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="mi">1024</span>       <span class="c1"># 上限 200 KB，也就是 204800 字节</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">png_of_size</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""造一个指定大小的「PNG」：开头 8 个字节是 PNG 的文件头，后面用 0 补齐。只在内存里，不落盘。"""</span>
+    <span class="k">return</span> <span class="n">PNG</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">"0"</span> <span class="o">*</span> <span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">8</span><span class="p">)</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"上传 png 头像成功，hasAvatar 变成 true，下载回来和上传的一样"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_upload_avatar</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">upload_avatar</span><span class="p">(</span><span class="n">PNG</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">data</span> <span class="o">==</span> <span class="p">{</span><span class="s2">"size"</span><span class="p">:</span> <span class="mi">69</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span><span class="p">}</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"hasAvatar"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_avatar</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"image/png"</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="n">PNG</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"上传 txt 文件被拒绝，提示只支持 jpg 或 png"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_upload_avatar_wrong_type</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">upload_avatar</span><span class="p">(</span><span class="sa">b</span><span class="s2">"hello"</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">"text/plain"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4001</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"头像只支持 jpg 或 png 格式"</span>
+
+
+<span class="n">SIZE_CASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"正好200KB"</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"超过1个字节"</span><span class="p">,</span> <span class="n">LIMIT</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4002</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"头像大小的边界：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, size, code"</span><span class="p">,</span> <span class="n">SIZE_CASES</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">SIZE_CASES</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_upload_avatar_size_limit</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">upload_avatar</span><span class="p">(</span><span class="n">png_of_size</span><span class="p">(</span><span class="n">size</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="n">code</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"没带文件时返回 422，指出缺的是 file 字段"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_upload_avatar_missing_file</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/users/avatar"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">==</span> <span class="p">[{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"file"</span><span class="p">,</span> <span class="s2">"reason"</span><span class="p">:</span> <span class="s2">"Field required"</span><span class="p">}]</span>
+</code></pre></div>
+<p>（<code>upload_avatar</code>、<code>get_avatar</code> 两个方法加在 <code>common/api_client.py</code> 的 <code>ShopApi</code> 里，一行一个请求，和 <code>pay_order</code> 他们排在一起。）</p>
+<p>两个造数据的细节：</p>
+<ul>
+<li><strong>超大文件在内存里拼，不落盘。</strong> <code>png_of_size(size)</code> 造出指定大小的字节串：开头 8 个字节是 PNG 文件头，后面补 0。测试只关心「多大」，不关心「是什么图案」，真去生成一张 200 KB 的图片又慢又没有意义；</li>
+<li><strong>内容是假的不影响。</strong> 服务端按声明的类型判断、不检查图片内容，所以补 0 的「PNG」照样能传成功。这不是漏洞，是很多系统的现实做法（逐字节验图要花计算），第 6.9 节的练习会让你把这条行为钉成用例。</li>
+</ul>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_upload.py -v
+collected 5 items
+
+tests/api/test_scene_upload.py::test_upload_avatar PASSED                          [ 20%]
+tests/api/test_scene_upload.py::test_upload_avatar_wrong_type PASSED               [ 40%]
+tests/api/test_scene_upload.py::test_upload_avatar_size_limit[正好200KB] PASSED    [ 60%]
+tests/api/test_scene_upload.py::test_upload_avatar_size_limit[超过1个字节] PASSED  [ 80%]
+tests/api/test_scene_upload.py::test_upload_avatar_missing_file PASSED             [100%]
+
+============================== 5 passed in 0.19s ==============================
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>大小的边界要两头都测，而且用字节算。</strong> 200 KB 在接口那里是 204800 字节，<code>LIMIT = 200 * 1024</code> 让两边的口径一致。只测「一个 10 MB 的大文件被拒」等于没测边界：199 KB 行不行？200 KB 加 1 字节呢？实测的答案是：正好 204800 字节成功，204801 字节返回 4002。</p>
+</div>
+<h2 id="62-文件下载与导出">6.2 文件下载与导出<a class="headerlink" href="#62-文件下载与导出" title="Permanent link">&para;</a></h2>
+<h3 id="621-二进制响应断什么">6.2.1 二进制响应断什么<a class="headerlink" href="#621-二进制响应断什么" title="Permanent link">&para;</a></h3>
+<p>下载和上传相反：响应体不再是 JSON，而是文件字节。断言的套路是四查：状态码、Content-Type、Content-Disposition、内容本身。练习网站的订单导出接口 <code>GET /api/orders/export</code> 把当前账号的订单导出成 CSV，先手工看一次（<code>scratch/export_demo.py</code>，脚本里先下一单再导出）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\export_demo.py
+刚下的订单： SO20261022000001
+状态码： 200
+Content-Type： text/csv; charset=utf-8
+Content-Disposition： attachment; filename=orders.csv
+开头 6 个字节： b'\xef\xbb\xbf\xe8\xae\xa2'
+----- 按 utf-8-sig 解码 -----
+订单号,商品,金额(元),状态,下单时间
+SO20261022000001,中性笔 ×2,5.0,待支付,2026-10-22 16:21:24
+</code></pre></div>
+<p>逐个说：</p>
+<ul>
+<li><strong>Content-Disposition: attachment</strong>：attachment 的意思是「让浏览器下载」，filename 是建议的文件名。浏览器看到这个头就自己弹出下载，页面代码一个字都不用管保存的事（<code>orders.html</code> 里就一行 <code>location.href = "/api/orders/export?token=" + getCookie("token")</code>）。断言它，等于断言「这是一个下载接口」；</li>
+<li><strong>开头 3 个字节 ef bb bf</strong>：UTF-8 的 BOM（字节顺序标记）。Excel 打开 CSV 时靠它认出文件是 UTF-8，没有它，中文列名在 Excel 里就是乱码。服务端特意用 utf-8-sig 编码（sig 就是带 BOM 的意思），测试要验证这一点——你测的不只是「程序能不能解析」，还有「用 Excel 的人能不能用这个文件」；</li>
+<li><strong>解码用 utf-8-sig</strong>：Python 里 <code>decode("utf-8-sig")</code> 会把开头的 BOM 去掉。用 <code>decode("utf-8")</code> 也能解，但第一列的列名会带着看不见的 BOM 字符，字符串比较永远不相等。实测对比（<code>scratch/bom_demo.py</code>）：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>utf-8     第一列的列名：'﻿订单号'，等于'订单号'吗：False
+utf-8-sig 第一列的列名：'订单号'，等于'订单号'吗：True
+</code></pre></div>
+<h3 id="622-导出的用例">6.2.2 导出的用例<a class="headerlink" href="#622-导出的用例" title="Permanent link">&para;</a></h3>
+<p>内容校验的思路：先下一单（<code>unpaid_order</code> 夹具），导出，用 <code>csv.DictReader</code> 按列名解析，断言刚下的订单号在文件里、各列的值都对。<code>tests/api/test_scene_download.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""文件下载的用例：订单导出成 CSV。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"导出订单：返回带 BOM 的 CSV 附件，里面有刚下的那一单"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_export_orders</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">export_orders</span><span class="p">()</span>
+    <span class="c1"># 1. 状态码和响应头：确认拿到的是一个要下载的 CSV 文件</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"text/csv"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"Content-Disposition"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"attachment; filename=orders.csv"</span>
+    <span class="c1"># 2. 开头 3 个字节是 BOM，Excel 靠它认出这是 UTF-8</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">"</span><span class="se">\xef\xbb\xbf</span><span class="s2">"</span><span class="p">)</span>
+    <span class="c1"># 3. 解析内容：刚下的订单在里面，各列的值都对</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8-sig"</span><span class="p">))))</span>
+    <span class="n">mine</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"订单号"</span><span class="p">]</span> <span class="o">==</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">mine</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"导出文件里应该正好有一行是订单 </span><span class="si">{</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s1">'orderNo'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">assert</span> <span class="n">mine</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"商品"</span><span class="p">]</span> <span class="o">==</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">product</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> ×1"</span>
+    <span class="k">assert</span> <span class="nb">float</span><span class="p">(</span><span class="n">mine</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"金额(元)"</span><span class="p">])</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">mine</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"状态"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"待支付"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_download.py -v
+collected 2 items
+
+tests/api/test_scene_download.py::test_export_orders PASSED                        [ 50%]
+tests/api/test_scene_download.py::test_export_with_token_in_query PASSED           [100%]
+
+============================== 2 passed in 0.31s ==============================
+</code></pre></div>
+<p>第二条用例测查询参数 token，往下看。</p>
+<h3 id="623-查询参数-token给浏览器开的口子">6.2.3 查询参数 token：给浏览器开的口子<a class="headerlink" href="#623-查询参数-token给浏览器开的口子" title="Permanent link">&para;</a></h3>
+<p><code>img</code> 标签和 <code>location.href</code> 跳转都带不上请求头（页面代码没有地方写 headers），浏览器地址栏直接打开下载链接更是如此。所以下载类的接口允许把 token 放在查询参数里。页面代码就是这么用的：</p>
+<div class="highlight"><pre><span></span><code>// orders.html：点导出按钮
+location.href = "/api/orders/export?token=" + getCookie("token");
+// profile.html：显示头像
+img.src = `/api/users/avatar?token=${getCookie("token")}&amp;t=${Date.now()}`;
+</code></pre></div>
+<p>用例用一个不带请求头的干净客户端（<code>guest</code> 夹具）模拟浏览器：带查询参数能下载，什么都不带返回 401。可以顺手验证这个口子只开给下载类接口——拿查询参数的 token 去调 <code>/api/me</code>，照样 401，普通接口不认这种传法。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>查询参数会原样落进服务器的访问日志。</strong> 练习网站的日志里就有这样一行：<code>GET /api/orders/export?token=89ecff98d4e36e6f9b05450cab1fa614</code>。token 是登录凭证，进了日志就等于多了一份要保管的敏感数据（日志会被运维翻、会被采集系统收走）。这是「为了浏览器兼容，在安全上让一步」的典型取舍。测试报告里如果发现某个系统的所有接口都接受查询参数 token，值得单独提一条建议。</p>
+</div>
+<h2 id="63-开放接口与签名">6.3 开放接口与签名<a class="headerlink" href="#63-开放接口与签名" title="Permanent link">&para;</a></h2>
+<h3 id="631-为什么接口要签名">6.3.1 为什么接口要签名<a class="headerlink" href="#631-为什么接口要签名" title="Permanent link">&para;</a></h3>
+<p>练习网站还有一个不用登录的接口：<code>GET /api/stats/orders</code>，订单统计，文档里写着「开放给合作方的接口」。这类接口叫<strong>开放接口</strong>（Open API）：公司把部分数据开放给外部合作方调用，合作方拿 appKey（应用标识）和 secret（密钥）来证明身份。没有登录态，就得有别的防伪手段，<strong>签名</strong>是常见的一种：</p>
+<ul>
+<li><strong>证明请求来自持有密钥的人。</strong> 把密钥和时间戳拼接后做 md5，得到签名。服务端存有同样的密钥，按同样的规则算一遍，对得上才放行。密钥本身不出现在请求里，看到请求内容的人也伪造不出来；</li>
+<li><strong>防止旧请求被重放。</strong> 时间戳超出允许范围（前后 300 秒）就拒绝。有人录下一条合法请求，过几分钟原样再发一遍也进不来。</li>
+</ul>
+<p>签名规则是接口文档必须写清楚的部分，本教程演示环境的规则是：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x_app_key</code></td>
+<td>shop-open</td>
+<td>合作方身份</td>
+</tr>
+<tr>
+<td><code>x_timestamp</code></td>
+<td>当前时间戳（秒）</td>
+<td>与服务器相差不超过 300 秒</td>
+</tr>
+<tr>
+<td><code>x_sign</code></td>
+<td>md5(密钥 + 时间戳)</td>
+<td>演示密钥是 shop-secret-2026</td>
+</tr>
+</tbody>
+</table>
+<p>四种失败各有一个业务码：4011 appKey 不对、4012 时间戳格式不对、4013 时间戳超出范围、4014 签名不正确，HTTP 状态码都是 401。</p>
+<h3 id="632-三种代码写法">6.3.2 三种代码写法<a class="headerlink" href="#632-三种代码写法" title="Permanent link">&para;</a></h3>
+<p><strong>第一种：脚本里一次性的写法。</strong> 先手工调通（<code>scratch/sign_demo.py</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""手工调一次开放接口：自己算签名。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+<span class="n">SECRET</span> <span class="o">=</span> <span class="s2">"shop-secret-2026"</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>                                            <span class="c1"># 当前时间，单位秒</span>
+<span class="n">sign</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">SECRET</span><span class="si">}{</span><span class="n">ts</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>  <span class="c1"># md5(密钥 + 时间戳)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"时间戳："</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"签名："</span><span class="p">,</span> <span class="n">sign</span><span class="p">)</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/stats/orders"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"x_app_key"</span><span class="p">:</span> <span class="s2">"shop-open"</span><span class="p">,</span> <span class="s2">"x_timestamp"</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span> <span class="s2">"x_sign"</span><span class="p">:</span> <span class="n">sign</span><span class="p">},</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\sign_demo.py
+时间戳： 1792657285
+签名： 3fcba9ffbfdae7e3ff3fdd0284d4ce92
+200 {'code': 0, 'msg': 'ok', 'data': {'totalOrders': 1, 'paidOrders': 0, 'totalAmount': 0.0, 'users': 102}}
+</code></pre></div>
+<p>（totalOrders 是全站订单数，你跑出来的数字多半不同。）</p>
+<p><strong>第二种：封装成函数。</strong> 签名规则只该写一遍，<code>common/open_api.py</code> 里放一个函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_sign</span><span class="p">(</span><span class="n">secret</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""按平台规则算签名：md5(密钥 + 时间戳)，结果是 32 位小写的十六进制字符串。"""</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">secret</span><span class="si">}{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>第三种：收进客户端类。</strong> 签名参数每个请求都要带，按第 4 章 4.3 节分层的思路放进 <code>OpenApi</code> 类，调用方连「签名」两个字都不用看见：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenApi</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""开放接口不用登录，靠签名证明两件事：请求方知道密钥，请求是刚刚发出的。"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">app_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">secret</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_key</span> <span class="o">=</span> <span class="n">app_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">secret</span> <span class="o">=</span> <span class="n">secret</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">signed_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>               <span class="c1"># 秒级时间戳，10 位数字</span>
+        <span class="n">signed</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="p">(</span><span class="n">params</span> <span class="ow">or</span> <span class="p">{}),</span> <span class="s2">"x_app_key"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_key</span><span class="p">,</span> <span class="s2">"x_timestamp"</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span> <span class="s2">"x_sign"</span><span class="p">:</span> <span class="n">make_sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">,</span> <span class="n">ts</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">signed</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">order_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">signed_get</span><span class="p">(</span><span class="s2">"/api/stats/orders"</span><span class="p">)</span>
+</code></pre></div>
+<p>appKey 和密钥从配置文件读（第 4 章 4.4 节的思路），<code>config/local.yaml</code> 里加一段：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">open_api</span><span class="p">:</span><span class="w">                </span><span class="c1"># 开放接口的身份和密钥（6.3 节）</span>
+<span class="w">  </span><span class="nt">app_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shop-open</span>
+<span class="w">  </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shop-secret-2026</span><span class="w">   </span><span class="c1"># 练习网站公开的演示密钥。真实项目的密钥和口令一样，从环境变量取（第 4 章 4.4 节）</span>
+</code></pre></div>
+<h3 id="633-验签用例">6.3.3 验签用例<a class="headerlink" href="#633-验签用例" title="Permanent link">&para;</a></h3>
+<p><code>tests/api/test_scene_sign.py</code>。造错误参数的技巧是<strong>先造一组全对的，再覆盖其中一项</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""开放接口（订单统计）的用例：签名正确能查到数据，四种验签失败各有各的业务码。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.open_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenApi</span><span class="p">,</span> <span class="n">make_sign</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">"/api/stats/orders"</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_api</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"open_api"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">OpenApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">"app_key"</span><span class="p">],</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">"secret"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">signed_params</span><span class="p">(</span><span class="n">open_api</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">wrong</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""一组正确的签名参数；wrong 里给的项会覆盖掉对应的正确值，用来造各种错误。"""</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="k">if</span> <span class="n">ts</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ts</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"x_app_key"</span><span class="p">:</span> <span class="n">open_api</span><span class="o">.</span><span class="n">app_key</span><span class="p">,</span> <span class="s2">"x_timestamp"</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span> <span class="s2">"x_sign"</span><span class="p">:</span> <span class="n">make_sign</span><span class="p">(</span><span class="n">open_api</span><span class="o">.</span><span class="n">secret</span><span class="p">,</span> <span class="n">ts</span><span class="p">)}</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">wrong</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">params</span>
+
+
+<span class="n">SIGN_ERRORS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"appKey不对"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"x_app_key"</span><span class="p">:</span> <span class="s2">"wrong-key"</span><span class="p">},</span> <span class="mi">4011</span><span class="p">,</span> <span class="s2">"appKey 不正确"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"时间戳不是数字"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"x_timestamp"</span><span class="p">:</span> <span class="s2">"abc"</span><span class="p">},</span> <span class="mi">4012</span><span class="p">,</span> <span class="s2">"时间戳格式不对"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"签名不对"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"x_sign"</span><span class="p">:</span> <span class="s2">"0"</span> <span class="o">*</span> <span class="mi">32</span><span class="p">},</span> <span class="mi">4014</span><span class="p">,</span> <span class="s2">"签名不正确"</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"开放接口"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"验签失败：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, wrong, code, msg"</span><span class="p">,</span> <span class="n">SIGN_ERRORS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">SIGN_ERRORS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_stats_sign_error</span><span class="p">(</span><span class="n">open_api</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">wrong</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">open_api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="n">URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">signed_params</span><span class="p">(</span><span class="n">open_api</span><span class="p">,</span> <span class="o">**</span><span class="n">wrong</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="n">code</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="n">msg</span>
+</code></pre></div>
+<p>这样每条失败用例和成功请求之间只差一个因素，失败原因一目了然。时间窗再用第 5 章的边界值方法补两组：窗外 310 秒该被 4013 拦下、窗内 290 秒该放行，正反各测。运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_sign.py -v
+collected 9 items
+
+tests/api/test_scene_sign.py::test_stats_ok PASSED                                 [ 11%]
+tests/api/test_scene_sign.py::test_stats_sign_error[appKey不对] PASSED             [ 22%]
+tests/api/test_scene_sign.py::test_stats_sign_error[时间戳不是数字] PASSED         [ 33%]
+tests/api/test_scene_sign.py::test_stats_sign_error[签名不对] PASSED               [ 44%]
+tests/api/test_scene_sign.py::test_stats_timestamp_out_of_window[慢了310秒] PASSED [ 55%]
+tests/api/test_scene_sign.py::test_stats_timestamp_out_of_window[快了310秒] PASSED [ 66%]
+tests/api/test_scene_sign.py::test_stats_timestamp_in_window[慢了290秒] PASSED     [ 77%]
+tests/api/test_scene_sign.py::test_stats_timestamp_in_window[快了290秒] PASSED     [ 88%]
+tests/api/test_scene_sign.py::test_stats_millisecond_timestamp PASSED              [100%]
+
+============================== 9 passed in 0.14s ==============================
+</code></pre></div>
+<p>时间窗的取值刻意避开 300 这个正边界：测试机器和服务器的时钟差一两秒很正常，取 290 和 310 就不会因为这点偏差时过时不过。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>时间戳用秒还是毫秒，先问清楚再写代码。</strong> Python 的 <code>time.time()</code> 返回秒（10 位数字），Java 和 JavaScript 的 <code>System.currentTimeMillis()</code>、<code>Date.now()</code> 返回毫秒（13 位）。练习网站要秒，把毫秒传过去，相当于说自己活在五万年后，直接 4013。这条已经写成用例（<code>test_stats_millisecond_timestamp</code>）钉住。接手任何带时间戳的签名接口，第一条探路请求就用真实代码发一次，让接口告诉你它要什么。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>md5 的大小写。</strong> <code>hexdigest()</code> 返回小写。练习网站把大小写都当有效（实测大写签名也能过，服务端自己转了小写再比），真实系统未必这么宽容，按文档给的大小写原样传，不要自己转。另一个常见手误是忘了调用 <code>hexdigest()</code>，把 md5 对象本身拼进了字符串，签名永远对不上。</p>
+</div>
+<h2 id="64-token-过期与自动续期">6.4 token 过期与自动续期<a class="headerlink" href="#64-token-过期与自动续期" title="Permanent link">&para;</a></h2>
+<p>前面所有用例都是「登录一次，token 一直用到底」。真实系统里 token 通常有有效期：短的十几分钟，长的几个小时。原因很简单，token 一旦被别人拿到，就能冒充你调接口，有效期越短，被偷后能造成的损失越小。</p>
+<p>可有效期太短，用户每隔一会儿就要重新输一次密码，体验很差。常见的折中做法是登录时发<strong>两个</strong>凭证：</p>
+<ul>
+<li><strong>token</strong>（也叫访问令牌）：调业务接口时带上，有效期短；</li>
+<li><strong>refreshToken</strong>（刷新令牌）：只用来换新的 token，有效期长，平时不往业务接口上带。</li>
+</ul>
+<p>token 过期后，客户端拿 refreshToken 去换一对新的，用户不用重新登录。练习网站的登录接口一直都返回了 <code>refreshToken</code>，只是前面的章节用不到。</p>
+<p>对测试来说，这一节要解决两件事：<strong>验证续期这套机制本身对不对</strong>，以及<strong>让长时间运行的自动化用例不会因为 token 过期而成片失败</strong>。</p>
+<h3 id="641-先看看过期长什么样">6.4.1 先看看过期长什么样<a class="headerlink" href="#641-先看看过期长什么样" title="Permanent link">&para;</a></h3>
+<p>练习网站默认 token 永不过期。要看到过期，用开关 <code>SHOP_TOKEN_TTL</code> 把有效期设成 2 秒。先在练习网站的窗口里按 <code>Ctrl+C</code> 停掉它，再带开关重新启动：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:SHOP_TOKEN_TTL = "2"
+(.venv) &gt; python -m uvicorn shop.app:app --port 8000
+</code></pre></div>
+<p>Mac / Linux 在 bash 里可以写成一行：</p>
+<div class="highlight"><pre><span></span><code>$ SHOP_TOKEN_TTL=2 python -m uvicorn shop.app:app --port 8000
+</code></pre></div>
+<p>新建 <code>scratch/token_expire_demo.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""看一眼 token 过期长什么样：登录，等 3 秒，用旧 token 访问，再用 refreshToken 换新的。</span>
+
+<span class="sd">先带 SHOP_TOKEN_TTL=2 启动练习网站（token 两秒就过期），再运行这个脚本。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">me</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/me"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">],</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"msg"</span><span class="p">]</span>
+
+
+<span class="n">login</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"alice123"</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"登录成功，拿到 token 和 refreshToken"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"马上访问："</span><span class="p">,</span> <span class="n">me</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]))</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"3 秒后再访问："</span><span class="p">,</span> <span class="n">me</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"用编出来的 token 访问："</span><span class="p">,</span> <span class="n">me</span><span class="p">(</span><span class="s2">"abc123"</span><span class="p">))</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/token/refresh"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"refreshToken"</span><span class="p">:</span> <span class="n">login</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"用 refreshToken 换新："</span><span class="p">,</span> <span class="n">resp</span><span class="p">[</span><span class="s2">"code"</span><span class="p">],</span> <span class="n">resp</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"用新 token 访问："</span><span class="p">,</span> <span class="n">me</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]))</span>
+
+<span class="n">again</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/token/refresh"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"refreshToken"</span><span class="p">:</span> <span class="n">login</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"同一个 refreshToken 再用一次："</span><span class="p">,</span> <span class="n">again</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">again</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">],</span> <span class="n">again</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"msg"</span><span class="p">])</span>
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\token_expire_demo.py
+登录成功，拿到 token 和 refreshToken
+马上访问： (200, 0, 'ok')
+3 秒后再访问： (401, 40102, '登录已过期')
+用编出来的 token 访问： (401, 40101, '未登录或 token 无效')
+用 refreshToken 换新： 0 ok
+用新 token 访问： (200, 0, 'ok')
+同一个 refreshToken 再用一次： 401 40103 刷新 token 无效
+</code></pre></div>
+<p>三个 401 的业务码各有含义，客户端要分开处理：</p>
+<table>
+<thead>
+<tr>
+<th>业务码</th>
+<th>含义</th>
+<th>客户端该怎么办</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40101</td>
+<td>token 根本不对（伪造的、退出登录后的）</td>
+<td>续期也没用，只能重新登录</td>
+</tr>
+<tr>
+<td>40102</td>
+<td>token 是对的，只是过期了</td>
+<td>拿 refreshToken 换一对新的，再重试刚才的请求</td>
+</tr>
+<tr>
+<td>40103</td>
+<td>refreshToken 不对（伪造的、已经用过的）</td>
+<td>只能重新登录</td>
+</tr>
+</tbody>
+</table>
+<p>最后一行说明了一个重要规则：<strong>refreshToken 是一次性的</strong>。用它换到新的一对之后，旧的 refreshToken 立刻作废，再用就是 40103。这样即使 refreshToken 被人截获，只要正主先用过一次，截获的那个就没用了。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>「过期」和「无效」用同一个业务码。</strong> 有的系统不管 token 是过期还是伪造，一律返回 401。客户端分不清该续期还是该重新登录，只能每次都先试着续期一次，多发一个请求。测这类系统时，可以把「过期和无效返回不同业务码」作为一条改进建议提给开发。</p>
+</div>
+<h3 id="642-手动续期先把接口测扎实">6.4.2 手动续期：先把接口测扎实<a class="headerlink" href="#642-手动续期先把接口测扎实" title="Permanent link">&para;</a></h3>
+<p>续期机制本身就是一组接口，先按第 5 章的方法把它测清楚：正常换新、新 token 能用、旧 refreshToken 用第二次失败、伪造的 refreshToken 失败。按 6.3 的套路，先给 <code>ShopApi</code> 加一个方法（<code>common/api_client.py</code>）：</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refresh_token</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""用 refreshToken 换一对新的 token。只负责换，换来的 token 要不要用由调用方决定。"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/token/refresh"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"refreshToken"</span><span class="p">:</span> <span class="n">refresh_token</span><span class="p">})</span>
+</code></pre></div>
+<p>注意它只管换，不把新 token 装进会话——装不装是调用方的事。用例在 <code>tests/api/test_scene_token.py</code>，这三条不需要开过期开关，刷新接口本身不要求 token 已过期：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""token 刷新的用例：换一对新的，旧的 refreshToken 只能用一次。这几条不需要等 token 过期就能测。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fresh_login</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""专用的登录：刷新会换掉 token，不碰共享的 api 夹具。"""</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"alice123"</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">client</span><span class="p">,</span> <span class="n">data</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"用 refreshToken 换到一对新的 token，新 token 能正常使用"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_refresh_gives_new_pair</span><span class="p">(</span><span class="n">fresh_login</span><span class="p">):</span>
+    <span class="n">client</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">fresh_login</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">new</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">!=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">new</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]</span> <span class="o">!=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"alice"</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"refreshToken 只能用一次，第二次返回 40103"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_refresh_token_is_one_time</span><span class="p">(</span><span class="n">fresh_login</span><span class="p">):</span>
+    <span class="n">client</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">fresh_login</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">]))</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"refreshToken"</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40103</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"编造的 refreshToken 返回 40103"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_refresh_token_invalid</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="s2">"0"</span> <span class="o">*</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="mi">40103</span><span class="p">,</span> <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"刷新 token 无效"</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>============================== 3 passed in 0.19s ==============================
+</code></pre></div>
+<p>用专用的 <code>fresh_login</code> 夹具、不碰共享的 <code>api</code>，和第 4 章 4.6.1 的退出登录用例同一个道理：刷新会换走登录态，会动登录态的用例自己准备数据。</p>
+<p>真正麻烦的是另一件事：<strong>业务用例跑到一半，token 过期了怎么办？</strong> 一轮用例要跑几十分钟的话，开头登录拿到的 token 跑到后面就过期了，后面的用例全部 401。在每条用例里判断过期、手动续期显然不现实，这件事应该交给接口客户端统一处理。</p>
+<h3 id="643-把续期收进客户端">6.4.3 把续期收进客户端<a class="headerlink" href="#643-把续期收进客户端" title="Permanent link">&para;</a></h3>
+<p>新建 <code>common/auto_refresh_client.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""带 token 自动续期的接口客户端。</span>
+
+<span class="sd">业务请求收到 401、业务码 40102（登录过期）时，自动用 refreshToken 换一对新 token，</span>
+<span class="sd">再把刚才那个请求重发一次，调用方不用关心续期这件事；refreshToken 也失效时抛出</span>
+<span class="sd">SessionExpired，让用例失败并提示需要重新登录。</span>
+
+<span class="sd">用法（和 ShopApi 一样）：</span>
+<span class="sd">    api = AutoRefreshApi(base_url)</span>
+<span class="sd">    api.login("alice", "alice123")</span>
+<span class="sd">    api.me()          # 就算 token 刚好过期，这里也会自动续期后正常返回</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SessionExpired</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""刷新 token 也失效了，只能重新用账号密码登录。"""</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AutoRefreshApi</span><span class="p">(</span><span class="n">ShopApi</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""在 ShopApi 的基础上，给每个请求加上「过期自动续期并重发」。</span>
+
+<span class="sd">    续期时要注意并发：refreshToken 是一次性的，两个请求同时发现过期、同时去刷新，</span>
+<span class="sd">    后到的那个会拿到 40103。这里用一把锁保证同一时刻只有一个线程在刷新，</span>
+<span class="sd">    其他线程等它刷完，直接用新 token 重发。</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refresh_token</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">refresh_token</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"refreshToken"</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_expired</span><span class="p">(</span><span class="n">resp</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">resp</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_lock</span><span class="p">:</span>
+            <span class="n">used</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">==</span> <span class="n">used</span><span class="p">:</span>            <span class="c1"># 别的线程还没刷新过，由这个线程来刷</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_refresh</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>   <span class="c1"># 用新 token 重发一次</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_is_expired</span><span class="p">(</span><span class="n">resp</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">401</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40102</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/api/token/refresh"</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"refreshToken"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">refresh_token</span><span class="p">},</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SessionExpired</span><span class="p">(</span><span class="sa">f</span><span class="s2">"续期失败（</span><span class="si">{</span><span class="n">body</span><span class="p">[</span><span class="s1">'code'</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">body</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="si">}</span><span class="s2">），请重新登录"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refresh_token</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"refreshToken"</span><span class="p">]</span>
+</code></pre></div>
+<p>逐段看：</p>
+<ul>
+<li><strong>继承 <code>ShopApi</code></strong>（第 4 章 4.3 节）：所有接口方法（<code>me()</code>、<code>create_order()</code> ……）原样可用，只改两处：<code>login()</code> 多记一个 refreshToken，<code>request()</code> 加上续期逻辑；</li>
+<li><strong><code>request()</code> 先正常发请求</strong>，只有 HTTP 401 并且业务码是 40102 才进入续期流程。别的错误原样返回，交给用例去断言；</li>
+<li><strong><code>_refresh()</code> 续期失败就抛 <code>SessionExpired</code></strong>。这时 refreshToken 也不能用了，继续重试没有意义，直接让用例失败，失败信息里写明原因，比一串 401 好排查得多；</li>
+<li>续期成功后<strong>只重发一次</strong>。重发还失败就原样返回，不会无限重试。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>把 40101 也当成过期去续期。</strong> 40101 说明 token 本身不对，拿 refreshToken 换一对新的，表面上又能用了，却掩盖了真正的问题，比如退出登录接口没让 token 失效。客户端只该为 40102 续期，40101 必须暴露出来。</p>
+</div>
+<h3 id="644-并发时只续期一次">6.4.4 并发时只续期一次<a class="headerlink" href="#644-并发时只续期一次" title="Permanent link">&para;</a></h3>
+<p><code>request()</code> 里那把锁是为并发准备的。设想 5 个线程共用一个客户端，同时发现 token 过期：</p>
+<table>
+<thead>
+<tr>
+<th>时刻</th>
+<th>不加锁</th>
+<th>加锁并比对 token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>5 个线程同时拿着同一个 refreshToken 去换</td>
+<td>线程 A 拿到锁，换到新 token；其他 4 个排队</td>
+</tr>
+<tr>
+<td>2</td>
+<td>只有第一个成功，其余 4 个拿到 40103，全部失败</td>
+<td>线程 B 拿到锁，发现客户端的 token 已经和自己发请求时带的不一样，说明有人换过了，直接用新 token 重发</td>
+</tr>
+<tr>
+<td>3</td>
+<td>—</td>
+<td>C、D、E 同 B，5 个请求全部成功</td>
+</tr>
+</tbody>
+</table>
+<p>判断「有没有人换过」靠的就是这两行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">used</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span>   <span class="c1"># 这个请求发出去时带的 token</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">==</span> <span class="n">used</span><span class="p">:</span>                     <span class="c1"># 客户端当前的 token 还是它，说明还没人换过</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_refresh</span><span class="p">()</span>
+</code></pre></div>
+<p><code>resp.request</code> 是 requests 留在响应对象上的「这个响应对应的请求」，从它的请求头里能取到发请求那一刻用的 token。</p>
+<p>不用客户端、直接用脚本也能验证服务端的一次性：三个线程同时拿同一个 refreshToken 去换（<code>scratch/race_demo.py</code>，网站开着 SHOP_TOKEN_TTL=2），结果只有一个成功：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\race_demo.py
+线程 0：code=0，成功
+线程 1：code=40103，刷新 token 无效
+线程 2：code=40103，刷新 token 无效
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>单线程跑用例时用不到这把锁。但压测脚本、并发测试都会让多个线程共用账号，到时候就用得上。</p>
+</div>
+<h3 id="645-用例怎么写怎么跑">6.4.5 用例怎么写、怎么跑<a class="headerlink" href="#645-用例怎么写怎么跑" title="Permanent link">&para;</a></h3>
+<p>新建 <code>tests/api/test_scene_token_refresh.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""token 自动续期的用例。</span>
+
+<span class="sd">这个文件要在 token 会过期的网站上跑：起练习网站前先设 SHOP_TOKEN_TTL=2（两秒过期）。</span>
+<span class="sd">网站没开这个开关时，下面的探测夹具会让整个文件跳过，并说明原因。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.auto_refresh_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoRefreshApi</span><span class="p">,</span> <span class="n">SessionExpired</span>
+
+<span class="n">pytestmark</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">token_ttl</span>      <span class="c1"># 平时跑全部用例时可以用 -m "not token_ttl" 跳过这个文件</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"module"</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">require_token_ttl</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""先探测网站开没开 SHOP_TOKEN_TTL：登录后等 2.5 秒，旧 token 还能用就说明没开。"""</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">]</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"alice123"</span><span class="p">},</span>
+                          <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">/api/me"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">code</span> <span class="o">!=</span> <span class="mi">40102</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">"练习网站没有开 SHOP_TOKEN_TTL=2，token 不会过期，续期用例没法验证"</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">AutoRefreshApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"alice123"</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">api</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_token_expires_and_refreshes</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="n">old_token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">token</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                                   <span class="c1"># 等 token 过期</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">())</span>                          <span class="c1"># 过期了也能正常拿到结果</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"alice"</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">token</span> <span class="o">!=</span> <span class="n">old_token</span>                <span class="c1"># 说明客户端确实换过一次 token</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_concurrent_requests_refresh_once</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>  <span class="c1"># 5 个请求同时撞上过期</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">(),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_refresh_token_invalid</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">refresh_token</span> <span class="o">=</span> <span class="s2">"not-a-real-refresh-token"</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="n">SessionExpired</span><span class="p">):</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">()</span>
+</code></pre></div>
+<p>三条用例分别验证：过期后能自动续期并且确实换了 token；5 个线程同时撞上过期都能成功；refreshToken 也失效时抛出 <code>SessionExpired</code>。</p>
+<p>这个文件有一个特殊之处：<strong>只能在开了 <code>SHOP_TOKEN_TTL</code> 的网站上跑</strong>。为了不让读的人猜，文件做了两件事：</p>
+<ul>
+<li><strong><code>pytestmark = pytest.mark.token_ttl</code></strong>：给整个文件的用例打上标记。标记要先在 <code>pytest.ini</code> 里登记（下一章 7.8 节细说），在 <code>markers</code> 下面加一行：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="na">token_ttl</span><span class="o">:</span><span class="w"> </span><span class="s">要在 SHOP_TOKEN_TTL 开着的网站上跑的用例</span>
+</code></pre></div>
+<ul>
+<li><strong>探测夹具 <code>require_token_ttl</code></strong>：<code>autouse=True</code> 让它自动生效，开头先登录、等 2.5 秒看 token 会不会过期，网站没开开关就跳过整个文件，并写明原因。</li>
+</ul>
+<p>在开着 <code>SHOP_TOKEN_TTL=2</code> 的网站上运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_token_refresh.py -v
+tests/api/test_scene_token_refresh.py::test_token_expires_and_refreshes PASSED [ 33%]
+tests/api/test_scene_token_refresh.py::test_concurrent_requests_refresh_once PASSED [ 66%]
+tests/api/test_scene_token_refresh.py::test_refresh_token_invalid PASSED [100%]
+
+============================= 3 passed in 11.90s ==============================
+</code></pre></div>
+<p>做完实验，回到练习网站的窗口，按 <code>Ctrl+C</code> 停掉，去掉开关再按默认方式启动：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; Remove-Item Env:SHOP_TOKEN_TTL
+(.venv) &gt; python -m uvicorn shop.app:app --port 8000
+</code></pre></div>
+<p>这时再跑一次这个文件，三条用例都会跳过，<code>-rs</code> 参数会把跳过的原因打印出来：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_token_refresh.py -v -rs
+tests/api/test_scene_token_refresh.py::test_token_expires_and_refreshes SKIPPED [ 33%]
+tests/api/test_scene_token_refresh.py::test_concurrent_requests_refresh_once SKIPPED [ 66%]
+tests/api/test_scene_token_refresh.py::test_refresh_token_invalid SKIPPED [100%]
+SKIPPED [1] tests\api\test_scene_token_refresh.py:37: 练习网站没有开 SHOP_TOKEN_TTL=2，token 不会过期，续期用例没法验证
+SKIPPED [1] tests\api\test_scene_token_refresh.py:45: 练习网站没有开 SHOP_TOKEN_TTL=2，token 不会过期，续期用例没法验证
+SKIPPED [1] tests\api\test_scene_token_refresh.py:52: 练习网站没有开 SHOP_TOKEN_TTL=2，token 不会过期，续期用例没法验证
+============================= 3 skipped in 2.65s ==============================
+</code></pre></div>
+<p>平时跑全部接口用例时，这个文件反正也会自己跳过；如果连探测的那 2.5 秒都不想等，用标记把它排除：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -m "not token_ttl" -q
+............................                                             [100%]
+28 passed, 3 deselected in 2.97s
+</code></pre></div>
+<p>这是只写了第 3、4 章用例时的数字。你跟着本章写了更多用例，通过的条数会更多，关键看最后的「3 deselected」：续期的 3 条用例被排除在外了。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>开过 <code>SHOP_TOKEN_TTL</code> 的窗口忘了去掉。</strong> 网站一直按 2 秒过期运行，共享登录态的用例跑过两秒就全部报「登录已过期」，看起来像系统坏了（实测开着它跑全量接口用例：12 条失败、2 条报错）。全教程的约定都一样：开关用完立刻 <code>Remove-Item Env:名字</code>，或者直接关掉那个命令行窗口。</p>
+</div>
+<h2 id="65-异步任务提交轮询下载">6.5 异步任务：提交、轮询、下载<a class="headerlink" href="#65-异步任务提交轮询下载" title="Permanent link">&para;</a></h2>
+<h3 id="651-为什么会有异步接口">6.5.1 为什么会有异步接口<a class="headerlink" href="#651-为什么会有异步接口" title="Permanent link">&para;</a></h3>
+<p>库存报表要扫全站 25 件商品再生成文件，真实系统里的统计、导出、批量处理动辄要跑几秒到几分钟，HTTP 请求等不了这么久（网关超时一般 30 秒，浏览器更短）。所以做成<strong>异步</strong>：提交接口马上返回一个任务编号，活由后台慢慢干，客户端拿着编号<strong>轮询</strong>（polling，隔一会儿查一次）状态，跑完了再下载结果。</p>
+<p>练习网站的库存报表三件套：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>接口</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提交</td>
+<td>POST <code>/api/reports/stock</code></td>
+<td><code>{"taskId": "TASK000001", "status": "processing"}</code></td>
+</tr>
+<tr>
+<td>查状态</td>
+<td>GET <code>/api/tasks/{taskId}</code></td>
+<td>status 是 processing（在跑）或 completed（跑完）</td>
+</tr>
+<tr>
+<td>下载</td>
+<td>GET <code>/api/tasks/{taskId}/download</code></td>
+<td>CSV 文件；没跑完返回 6002</td>
+</tr>
+</tbody>
+</table>
+<p>手工走一遍（<code>scratch/report_demo.py</code>，脚本里边轮询边打印时间）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\report_demo.py
+提交： {'taskId': 'TASK000001', 'status': 'processing'}
+马上下载： {'code': 6002, 'msg': '任务还没跑完，稍后再来下载', 'data': None}
+ 0.0 秒  processing
+ 0.5 秒  processing
+ 1.1 秒  processing
+ 1.6 秒  processing
+ 2.1 秒  processing
+ 2.6 秒  processing
+ 3.1 秒  completed
+下载： 200 attachment; filename=TASK000001.csv
+前三行： ['商品编号,商品名称,单价(元),库存(件)', 'SKU0001,蓝牙耳机,199.0,100000', 'SKU0002,头戴式耳机,399.0,100000']
+</code></pre></div>
+<p>两个马上能注意到的细节：提交完立刻下载，拿到 6002「任务还没跑完」，这就是用例要处理的中间状态；轮询半秒一次，3.1 秒拿到 completed。间隔太密浪费请求，太疏拖长等待，半秒到一秒是常见取值。</p>
+<h3 id="652-轮询代码的正确写法">6.5.2 轮询代码的正确写法<a class="headerlink" href="#652-轮询代码的正确写法" title="Permanent link">&para;</a></h3>
+<p>轮询最容易写出没有出口的循环：<code>while True</code> 里只查状态、看到 completed 才 break，任务万一永远不完成（后台线程异常退出、服务重启把任务丢了），脚本就卡在那里占一个进程。正确的写法有三个要素，收在 <code>common/api_client.py</code> 的 <code>wait_task</code> 方法里（配套还有 <code>create_stock_report</code>、<code>get_task</code>、<code>download_task</code> 三个一行方法）：</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">wait_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""每隔 interval 秒查一次任务，跑完就返回任务信息；超过 timeout 秒还没跑完就报错。"""</span>
+        <span class="n">deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
+        <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">deadline</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"completed"</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">task</span>
+            <span class="k">assert</span> <span class="n">task</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"processing"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"任务出现了意料之外的状态：</span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="s2">"</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"任务 </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> 等了 </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2"> 秒还没跑完"</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>在代码里</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>截止时间</td>
+<td><code>time.monotonic() + timeout</code></td>
+<td>循环条件用它卡住，超时抛 TimeoutError，报错信息带着任务号，一眼看出是等超了而不是接口坏了</td>
+</tr>
+<tr>
+<td>间隔</td>
+<td><code>time.sleep(interval)</code></td>
+<td>别查得太勤，0.5 秒一次对 3 秒的任务足够</td>
+</tr>
+<tr>
+<td>中间状态断言</td>
+<td><code>assert task["status"] == "processing"</code></td>
+<td>只认 processing 和 completed 两种状态；哪天服务端加了个 failed 状态，这条断言当场把它指出来，而不是无声地轮询到超时</td>
+</tr>
+</tbody>
+</table>
+<p><code>time.monotonic()</code> 和 <code>time.time()</code> 的区别：monotonic 是单调时钟，只前进、不受系统对时影响，算「过了多久」用它；算「现在几点」才用 <code>time()</code>。</p>
+<p>超时的报错长这样（故意把 timeout 设成 1 秒，任务要跑 3 秒）：</p>
+<div class="highlight"><pre><span></span><code>E       TimeoutError: 任务 TASK000002 等了 1 秒还没跑完
+</code></pre></div>
+<h3 id="653-用例主流程中间状态任务归属">6.5.3 用例：主流程、中间状态、任务归属<a class="headerlink" href="#653-用例主流程中间状态任务归属" title="Permanent link">&para;</a></h3>
+<p><code>tests/api/test_scene_async_task.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""异步任务的用例：库存报表要先提交、再轮询、最后下载。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"库存报表"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"库存报表：提交任务，等它跑完，下载到 25 件商品的库存"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_stock_report</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_stock_report</span><span class="p">())[</span><span class="s2">"taskId"</span><span class="p">]</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">wait_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">task</span><span class="p">[</span><span class="s2">"finishedAt"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">download_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"Content-Disposition"</span><span class="p">]</span> <span class="o">==</span> <span class="sa">f</span><span class="s2">"attachment; filename=</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">.csv"</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8-sig"</span><span class="p">))))</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">25</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"商品编号"</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"SKU"</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">)</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"库存报表"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"任务还没跑完就去下载，返回 6002"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_download_before_done</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_stock_report</span><span class="p">())[</span><span class="s2">"taskId"</span><span class="p">]</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">download_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6002</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"任务还没跑完，稍后再来下载"</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bob</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">client</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"库存报表"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"别人提交的任务查不到也下载不了，返回 6001"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_task_belongs_to_owner</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">bob</span><span class="p">):</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_stock_report</span><span class="p">())[</span><span class="s2">"taskId"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">resp</span> <span class="ow">in</span> <span class="p">(</span><span class="n">bob</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">),</span> <span class="n">bob</span><span class="o">.</span><span class="n">download_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">)):</span>
+        <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6001</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_async_task.py -v
+collected 3 items
+
+tests/api/test_scene_async_task.py::test_stock_report PASSED                       [ 33%]
+tests/api/test_scene_async_task.py::test_download_before_done PASSED               [ 66%]
+tests/api/test_scene_async_task.py::test_task_belongs_to_owner PASSED              [100%]
+
+============================== 3 passed in 3.73s ==============================
+</code></pre></div>
+<p>3.73 秒里大半是在等任务跑完，异步用例天然要等，这个时间花得值。三条用例各有分工：主流程一路断到文件内容（行数 25、商品编号都是 SKU 开头）；中间状态钉住 6002 和提示文案；任务归属和第 5 章 5.5.2 的数据隔离一脉相承，任务只属于提交它的人，bob 拿 alice 的任务号去查、去下载都是 6001「任务不存在」。</p>
+<h3 id="654-演示提速shop_task_latency">6.5.4 演示提速：SHOP_TASK_LATENCY<a class="headerlink" href="#654-演示提速shop_task_latency" title="Permanent link">&para;</a></h3>
+<p>任务耗时是服务端故意模拟出来的，练习网站留了开关。停掉网站，设 SHOP_TASK_LATENCY=0.5 再启动（写法同 6.4.1），再跑一遍手工脚本：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\report_demo.py
+提交： {'taskId': 'TASK000001', 'status': 'processing'}
+马上下载： {'code': 6002, 'msg': '任务还没跑完，稍后再来下载', 'data': None}
+ 0.0 秒  processing
+ 0.5 秒  processing
+ 1.0 秒  completed
+下载： 200 attachment; filename=TASK000001.csv
+前三行： ['商品编号,商品名称,单价(元),库存(件)', 'SKU0001,蓝牙耳机,199.0,100000', 'SKU0002,头戴式耳机,399.0,100000']
+</code></pre></div>
+<p>用例的等待时间也从 3.7 秒降到 1 秒出头。<strong>开关只用于演示和调试</strong>：它改了被测系统的行为，正式跑用例要用默认配置，该等多久就等多久。做完去掉环境变量、重启。</p>
+<h2 id="66-越权测试用-a-的身份动-b-的数据">6.6 越权测试：用 A 的身份动 B 的数据<a class="headerlink" href="#66-越权测试用-a-的身份动-b-的数据" title="Permanent link">&para;</a></h2>
+<h3 id="661-概念与候选清单">6.6.1 概念与候选清单<a class="headerlink" href="#661-概念与候选清单" title="Permanent link">&para;</a></h3>
+<p>第 5 章 5.5.2 测过数据隔离：bob 查 alice 的订单，返回 3001。那一节是订单域的一个点，这一节把这类测试正式化。<strong>水平越权</strong>指用户能访问到同等权限的其他用户的数据：A 用自己的合法 token，操作 B 的资源。安全行业给它起了个名字叫 IDOR（Insecure Direct Object Reference，不安全的直接对象引用）。和它相对的垂直越权是普通用户干管理员的事，本教程不展开。</p>
+<p>越权是资损和安全类缺陷的重灾区：改别人的收货地址、看他人的订单、把退款改到自己的账户，全落在「路径或参数里带编号」的接口上。测法就一句口诀：<strong>把路径里的编号换成别人的，用自己的 token，看系统拦不拦。</strong></p>
+<p>练习网站收货地址一族的接口：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>地址</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/api/addresses</code></td>
+<td>新增（请求里没有编号，天然没有越权问题）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/addresses</code></td>
+<td>我的地址列表（服务端只返回自己的）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/addresses/{id}</code></td>
+<td>地址详情</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/addresses/{id}</code></td>
+<td>修改</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/addresses/{id}</code></td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<p>带 <code>{id}</code> 的三个就是越权候选。先手工探一遍（<code>scratch/idor_demo.py</code>）：bob 建一个地址，alice 拿自己的 token 去查、改、删这个编号：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""越权探路：bob 建一个地址，alice 拿自己的 token 去查、改、删它。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="n">password</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">}</span>
+
+
+<span class="n">alice</span> <span class="o">=</span> <span class="n">login</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"alice123"</span><span class="p">)</span>
+<span class="n">bob</span> <span class="o">=</span> <span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">)</span>
+
+<span class="n">addr</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/addresses"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">bob</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                     <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"receiver"</span><span class="p">:</span> <span class="s2">"王小明"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"13800001111"</span><span class="p">,</span> <span class="s2">"detail"</span><span class="p">:</span> <span class="s2">"人民路 1 号院 2 栋"</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"bob 的地址："</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/addresses/</span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"alice 查："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">alice</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"alice 改："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">alice</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"receiver"</span><span class="p">:</span> <span class="s2">"李四"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"13900002222"</span><span class="p">,</span> <span class="s2">"detail"</span><span class="p">:</span> <span class="s2">"幸福路 8 号 3 单元"</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"alice 删："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">alice</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"bob 再看："</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">bob</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">bob</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># bob 收拾自己的数据</span>
+</code></pre></div>
+<p>正常的服务下，三个动作全部被拦：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\idor_demo.py
+bob 的地址： {'id': 1, 'receiver': '王小明', 'phone': '13800001111', 'detail': '人民路 1 号院 2 栋'}
+alice 查： {'code': 5001, 'msg': '地址不存在', 'data': None}
+alice 改： {'code': 5001, 'msg': '地址不存在', 'data': None}
+alice 删： {'code': 5001, 'msg': '地址不存在', 'data': None}
+bob 再看： {'code': 0, 'msg': 'ok', 'data': {'id': 1, 'receiver': '王小明', 'phone': '13800001111', 'detail': '人民路 1 号院 2 栋'}}
+</code></pre></div>
+<p>注意返回的是 5001「地址不存在」，和编号真不存在时一模一样。提示「无权限」等于承认这个编号存在，攻击者可以拿它遍历，这个设计点和第 5 章 5.5.2 里订单返回 3001 是同一个道理。</p>
+<h3 id="662-用例化">6.6.2 用例化<a class="headerlink" href="#662-用例化" title="Permanent link">&para;</a></h3>
+<p>把探路脚本固化成用例（<code>tests/api/test_scene_idor.py</code>）。文件头部一行 <code>pytestmark = pytest.mark.idor</code> 给整个文件打上 idor 标记（标记已经在本章开头的 <code>pytest.ini</code> 里登记），之后 <code>pytest -m idor</code> 就能单独跑这一组：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""越权测试（水平越权）：用自己的 token 去动别人的数据，系统必须拦住。</span>
+
+<span class="sd">练习网站用 SHOP_IDOR_BUG=1 启动时，查看和修改接口不校验归属，这里的用例会失败（6.6 节）。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+<span class="n">pytestmark</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">idor</span>     <span class="c1"># 整个文件的用例都打上 idor 标记，可以用 pytest -m idor 单独跑</span>
+
+<span class="n">NEW_ADDRESS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"receiver"</span><span class="p">:</span> <span class="s2">"李四"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"13900002222"</span><span class="p">,</span> <span class="s2">"detail"</span><span class="p">:</span> <span class="s2">"幸福路 8 号 3 单元"</span><span class="p">}</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bob</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">client</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bob_address</span><span class="p">(</span><span class="n">bob</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""bob 名下的一个收货地址，用例结束后 bob 自己删掉。"""</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">bob</span><span class="o">.</span><span class="n">create_address</span><span class="p">({</span><span class="s2">"receiver"</span><span class="p">:</span> <span class="s2">"王小明"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"13800001111"</span><span class="p">,</span> <span class="s2">"detail"</span><span class="p">:</span> <span class="s2">"人民路 1 号院 2 栋"</span><span class="p">}))</span>
+    <span class="k">yield</span> <span class="n">address</span>
+    <span class="n">bob</span><span class="o">.</span><span class="n">delete_address</span><span class="p">(</span><span class="n">address</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+
+
+<span class="c1"># 路径里带地址编号的接口一个不漏地列出来：编号换成 bob 的地址，用 alice 的 token 去调</span>
+<span class="n">ID_APIS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"查看"</span><span class="p">,</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/addresses/</span><span class="si">{id}</span><span class="s2">"</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"修改"</span><span class="p">,</span> <span class="s2">"PUT"</span><span class="p">,</span> <span class="s2">"/api/addresses/</span><span class="si">{id}</span><span class="s2">"</span><span class="p">,</span> <span class="n">NEW_ADDRESS</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"删除"</span><span class="p">,</span> <span class="s2">"DELETE"</span><span class="p">,</span> <span class="s2">"/api/addresses/</span><span class="si">{id}</span><span class="s2">"</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"收货地址"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"越权：用别人的地址编号</span><span class="si">{action}</span><span class="s2">，返回地址不存在"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"action, method, path, body"</span><span class="p">,</span> <span class="n">ID_APIS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ID_APIS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_cannot_touch_others_address</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">bob_address</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">bob_address</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]),</span> <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5001</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">别人的地址成功了，存在越权：</span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+    <span class="c1"># 只看返回码还不够，再回到 bob 那边确认地址原封不动</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">bob</span><span class="o">.</span><span class="n">get_address</span><span class="p">(</span><span class="n">bob_address</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))</span> <span class="o">==</span> <span class="n">bob_address</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"收货地址"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"别人的地址和不存在的地址，返回一模一样"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_others_address_looks_like_missing</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">bob_address</span><span class="p">):</span>
+    <span class="n">others</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_address</span><span class="p">(</span><span class="n">bob_address</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_address</span><span class="p">(</span><span class="mi">999999</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">others</span> <span class="o">==</span> <span class="n">missing</span>
+</code></pre></div>
+<p>用例的设计有三个要点：</p>
+<ul>
+<li><strong>路径里带编号的接口一个不漏。</strong> ID_APIS 把 GET、PUT、DELETE 全列进去，参数化成三条。以后地址族再加接口（比如「设为默认地址」），往列表里加一行就行；</li>
+<li><strong>断返回码，还要回查数据。</strong> 只断 5001 不够——万一服务端拦下了返回、却偷偷把数据改了呢。第二条断言用 bob 自己再查一次，比对整个地址原封不动；</li>
+<li><strong>对照用例。</strong> 最后一条断言「别人的地址」和「不存在的地址」返回一模一样，这正是 5001 设计意图的完整验证。</li>
+</ul>
+<p>正常服务下，四条全过：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -m idor -v
+collected 108 items / 104 deselected / 4 selected
+
+tests/api/test_scene_idor.py::test_cannot_touch_others_address[查看] PASSED [ 25%]
+tests/api/test_scene_idor.py::test_cannot_touch_others_address[修改] PASSED [ 50%]
+tests/api/test_scene_idor.py::test_cannot_touch_others_address[删除] PASSED [ 75%]
+tests/api/test_scene_idor.py::test_others_address_looks_like_missing PASSED [100%]
+
+====================== 4 passed, 104 deselected in 0.66s ======================
+</code></pre></div>
+<p><code>collected</code> 后面的总条数取决于你写了多少用例，和这里不一样很正常，看被选中的 4 条就行。</p>
+<h3 id="663-抓一个真缺陷">6.6.3 抓一个真缺陷<a class="headerlink" href="#663-抓一个真缺陷" title="Permanent link">&para;</a></h3>
+<p>全过不代表这组用例白写，它们是哨兵。现在把练习网站带上缺陷开关重启：停掉，设 SHOP_IDOR_BUG=1，启动（写法同 6.4.1）。这个开关模拟「开发在查看和修改接口上忘了校验归属」的真实缺陷，再跑一遍同样的用例：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -m idor
+collected 108 items / 104 deselected / 4 selected
+
+tests\api\test_scene_idor.py FF.F                                        [100%]
+
+================================== FAILURES ===================================
+____________________ test_cannot_touch_others_address[查看] _____________________
+...
+&gt;       assert resp.json()["code"] == 5001, f"{action}别人的地址成功了，存在越权：{resp.json()}"
+E       AssertionError: 查看别人的地址成功了，存在越权：{'code': 0, 'msg': 'ok', 'data': {'id': 1, 'receiver': '王小明', 'phone': '13800001111', 'detail': '人民路 1 号院 2 栋'}}
+E       assert 0 == 5001
+...
+=========================== short test summary info ===========================
+FAILED tests/api/test_scene_idor.py::test_cannot_touch_others_address[查看]
+FAILED tests/api/test_scene_idor.py::test_cannot_touch_others_address[修改]
+FAILED tests/api/test_scene_idor.py::test_others_address_looks_like_missing
+================= 3 failed, 1 passed, 104 deselected in 0.96s ==================
+</code></pre></div>
+<p>三红一绿，红得很有信息量：</p>
+<ul>
+<li><strong>查看和修改都中招。</strong> alice 的 token 成功读到了 bob 的地址内容，还把它改成了自己的数据。真实报告里这是一条严重级缺陷：个人信息泄露加数据篡改；</li>
+<li><strong>删除那条仍然通过。</strong> 服务端的删除接口单独做了校验。同一个功能族里，三个接口拦住了一个、漏了两个。校验经常是每个接口各写各的，修了一个忘了另一个，这种情况在真实项目里很常见。这正说明越权要逐接口过，测了一个接口不能代表一族都安全；</li>
+<li><strong>对照用例也红了。</strong> 别人的地址返回了完整数据，和「不存在」的返回不再一致，「这个编号存在」这件事被泄露了出去。</li>
+</ul>
+<p>手工跑一遍 <code>idor_demo</code> 能看到同样的三步：查到 code 0、改成 code 0、删除仍然是 5001。<strong>实验做完把开关去掉、重启</strong>（<code>Remove-Item Env:SHOP_IDOR_BUG</code>），不然下一轮全量用例会红三条，而且地址数据已经被改乱过。</p>
+<p>这组用例进报告是现成的：<code>-m idor</code> 的失败输出里带着完整的响应内容，再附上「开关去掉后 4 条全过」的运行结果，开发可以本地复现、修完立刻验证。</p>
+<h2 id="67-新场景的通用套路">6.7 新场景的通用套路<a class="headerlink" href="#67-新场景的通用套路" title="Permanent link">&para;</a></h2>
+<p>本章五个场景走的是同一条路：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>本章的例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 看文档或页面代码</td>
+<td>接口约定、参数、错误码；页面代码里有「浏览器真实怎么调」的答案</td>
+<td>multipart 的字段名、Content-Disposition、token 走查询参数，都是先在页面代码里看到的</td>
+</tr>
+<tr>
+<td>2. 手工调通</td>
+<td>scratch 里写十几行的脚本，把正常路径走一遍，看到真实返回</td>
+<td>avatar_demo、sign_demo、report_demo、idor_demo</td>
+</tr>
+<tr>
+<td>3. 封装成客户端方法</td>
+<td>每个请求都要的东西（类型声明、签名、轮询）收进 common</td>
+<td>upload_avatar、make_sign、wait_task</td>
+</tr>
+<tr>
+<td>4. 正反用例</td>
+<td>正常路径断业务结果，异常路径断具体业务码和文案，边界用第 5 章的方法取值</td>
+<td>每个场景一节用例</td>
+</tr>
+<tr>
+<td>5. 钉住实测发现</td>
+<td>文档没写的行为实测出来后写成用例固化，将来变更时最先知道</td>
+<td>毫秒时间戳返回 4013、200 KB 加 1 字节被拒、删除接口单独校验</td>
+</tr>
+</tbody>
+</table>
+<p>拿到任何没见过的接口，照这个顺序走一遍，就不会停在不知道从哪下手。本章结束后工程里多了这些文件：</p>
+<div class="highlight"><pre><span></span><code>common/
+├─ api_client.py            扩充：refresh、upload_avatar、导出、任务、地址一组方法，wait_task 轮询
+├─ open_api.py              新增：开放接口客户端（签名）
+└─ auto_refresh_client.py   新增：带自动续期的客户端（参考工程里提供，6.4.4 讲设计）
+scratch/
+├─ multipart_peek.py        看 multipart 请求体长什么样
+├─ avatar_demo.py 等        各场景的手工探路脚本
+tests/api/
+├─ test_scene_upload.py         上传（5 条）
+├─ test_scene_download.py       下载导出（2 条）
+├─ test_scene_sign.py           签名（9 条）
+├─ test_scene_token.py          刷新的基础用例（3 条）
+├─ test_scene_token_refresh.py  自动续期（3 条，要 SHOP_TOKEN_TTL=2 才真正跑）
+├─ test_scene_async_task.py     异步任务（3 条）
+└─ test_scene_idor.py           越权（4 条）
+</code></pre></div>
+<p>本章共 29 条新用例，六个文件一起跑（不含要开过期开关的那三条）26 passed in 4.67s；开着 SHOP_TOKEN_TTL=2 再补 <code>-m token_ttl</code>，3 passed。</p>
+<h2 id="68-常见的坑">6.8 常见的坑<a class="headerlink" href="#68-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上传报 400：Missing boundary in multipart</td>
+<td>手工设了 <code>Content-Type: multipart/form-data</code>，把 requests 自动生成的边界线覆盖掉了。删掉这个头，把文件交给 <code>files=</code></td>
+</tr>
+<tr>
+<td>上传报 4001，文件明明是 png</td>
+<td>类型是 <code>files=</code> 元组第三项声明的，requests 不看内容也不猜格式。三项写全：<code>(文件名, 内容, "image/png")</code></td>
+</tr>
+<tr>
+<td>签名死活对不上，代码看不出毛病</td>
+<td>三个常见错：时间戳用了毫秒（13 位）；忘了 <code>hexdigest()</code>，把 md5 对象拼进了字符串；大小写和文档不一致。<code>hexdigest()</code> 返回小写，按文档原样传</td>
+</tr>
+<tr>
+<td>轮询脚本卡住不动</td>
+<td><code>while True</code> 没写截止时间，任务永远不完成就永远等。按 6.5.2 的三要素改：截止时间、间隔、中间状态断言</td>
+</tr>
+<tr>
+<td>续期用例全部 SKIPPED</td>
+<td>练习网站没开 <code>SHOP_TOKEN_TTL=2</code>，探测夹具让整个文件跳过了。加 <code>-rs</code> 看原因，带开关重启网站再跑（6.4.5）</td>
+</tr>
+<tr>
+<td>多线程共用一个客户端，偶尔一批请求报 40103</td>
+<td>续期没加锁，几个线程拿同一个一次性 refreshToken 去换，只有第一个成功。参考 6.4.4 加锁并比对 token</td>
+</tr>
+<tr>
+<td>做完实验，后面的用例成片失败</td>
+<td>SHOP_TOKEN_TTL 或 SHOP_IDOR_BUG 的窗口忘了去掉：前者让共享登录态的用例全部报「登录已过期」（实测全量用例 12 条失败、2 条报错），后者让越权以外的地址用例也被改乱。<code>Remove-Item Env:变量名</code> 去掉，重启练习网站</td>
+</tr>
+<tr>
+<td>导出的 CSV 用 Excel 打开是乱码</td>
+<td>服务端没带 BOM。用例里断言 <code>resp.content</code> 前三个字节是 <code>\xef\xbb\xbf</code>（6.2.1），把这个约定钉进用例，让开发去修</td>
+</tr>
+<tr>
+<td>想测「上传超大文件」，真造了个 1 GB 的文件</td>
+<td>没必要：内存里拼字节串（<code>png_of_size</code>），大小精准可控，边界测到 200 KB 加 1 字节就够。真要验证服务端处理大文件的表现，再考虑真实文件</td>
+</tr>
+<tr>
+<td>refreshToken 随手写在代码或日志里</td>
+<td>它等于一份长期有效的登录凭证。真实项目从环境变量或配置中心取；日志和报告里要遮蔽——第 4 章的 <code>mask()</code> 在本章把 refreshToken 也列进了遮蔽名单，查询参数里带的 token（6.2 节的下载链接）也一并遮蔽，Allure 附件里看到的已经是 <code>***</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="69-练习">6.9 练习<a class="headerlink" href="#69-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>上传接口对类型的判断只看声明、不看内容：拿 6.1.2 的 PNG 字节串、类型声明成 <code>image/jpeg</code> 传上去，观察返回；再写一条用例把这个行为钉住。想想这条用例的价值：哪天开发改成逐字节验图，这条用例会第一个知道。</li>
+<li>6.4.2 的三条用例没有覆盖两个行为：刷新换到新 token 之后，旧 token 还能不能用？退出登录之后，refreshToken 还能不能用来换新？先实测确认练习网站的行为，再各补一条用例钉住；想想这些行为安全吗，要不要在报告里提一句。</li>
+<li>用 SHOP_TASK_LATENCY=0.5 启动网站，把 <code>wait_task</code> 的 interval 改成 2 秒，跑 <code>test_stock_report</code>，数一数它发了几次查询才等到 completed；再回答：如果任务要跑 30 秒、interval 2 秒，一共发多少次查询？timeout 该设多大？</li>
+<li>把签名的时间戳换成一小时前的值、签名按那个时间戳认真算，调 <code>/api/stats/orders</code>，观察返回的业务码；再故意只换时间戳、不换签名，看业务码变成什么。用两次结果解释「签名和时间戳必须一起换」。</li>
+<li>思考题：6.4.4 的竞态里，第二个用旧 refreshToken 的线程拿到 40103。如果那个线程是一个手机 App，它的用户会遇到什么？如果你是服务端开发，你会怎么让这种用户无感恢复？（提示：查一下「刷新令牌轮换」和宽限期这两个词。）</li>
+</ol>
+<h2 id="610-自检清单">6.10 自检清单<a class="headerlink" href="#610-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能画出 multipart 请求体的结构，说得出 boundary 是干什么的、为什么不能手工设 Content-Type；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 拿到一个二进制响应，知道查哪四样：状态码、Content-Type、Content-Disposition、内容（含编码）；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出签名防什么、时间戳防什么，知道秒和毫秒怎么区分、传错了会返回哪个业务码；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 40101、40102、40103 分别意味着什么、客户端各自该怎么处理，说清 refreshToken 为什么是一次性的；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释自动续期客户端里为什么要加锁、锁里为什么要比对 token；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会写带截止时间和状态断言的轮询，说得出 <code>time.monotonic()</code> 和 <code>time.time()</code> 的区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能列出一个功能族里的越权候选接口，会设计对照组用例，知道为什么「地址不存在」的提示是故意的；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 面对一个没见过的接口场景，能按 6.7 的五步走完从手工调试到用例落地的全过程。</li>
+</ul>
+<p>接口的常见场景到这里就讲完了。下一章回到 pytest 本身：这几章里用到的夹具、标记、跳过和参数化，背后都有一套可以系统掌握的规则，学完它再进入 UI 自动化。</p>
+<p>下一章：<a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html">第 7 章 pytest 进阶与框架设计</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 5 章 接口测试用例设计">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 5 章 接口测试用例设计
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 7 章 pytest 进阶与框架设计">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 7 章 pytest 进阶与框架设计
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

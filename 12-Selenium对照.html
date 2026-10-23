@@ -1,0 +1,2148 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html">
+      
+      
+        <link rel="next" href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 12 章 Selenium 对照 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-12-章-selenium-对照" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 12 章 Selenium 对照
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-为什么还要认识-selenium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 为什么还要认识 Selenium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-安装与第一次启动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 安装与第一次启动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.2 安装与第一次启动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1221-安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.1 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1222-chromedriver版本要配套" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.2 chromedriver：版本要配套
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1223-第一个脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.3 第一个脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-定位by-的八种方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 定位：By 的八种方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-等待重点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 等待（重点）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-常用操作对照" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 常用操作对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-写成-pytest-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 写成 pytest 用例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-selenium-与-playwright-怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.7 Selenium 与 Playwright 怎么选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#129-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-为什么还要认识-selenium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 为什么还要认识 Selenium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-安装与第一次启动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 安装与第一次启动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.2 安装与第一次启动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1221-安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.1 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1222-chromedriver版本要配套" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.2 chromedriver：版本要配套
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1223-第一个脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2.3 第一个脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-定位by-的八种方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 定位：By 的八种方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-等待重点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 等待（重点）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-常用操作对照" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 常用操作对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-写成-pytest-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 写成 pytest 用例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-selenium-与-playwright-怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.7 Selenium 与 Playwright 怎么选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#129-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-12-章-selenium-对照">第 12 章 Selenium 对照<a class="headerlink" href="#第-12-章-selenium-对照" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会安装并启动 Selenium，知道 chromedriver 和浏览器版本要配套；</li>
+<li>会用 Selenium 的八种定位方式和显式等待，写出能跑的用例；</li>
+<li>能把 Selenium 和 Playwright 的写法一一对上，看得懂公司里的存量 Selenium 代码；</li>
+<li>知道新项目该怎么在两个工具之间做选择。</li>
+</ul>
+<hr />
+<p>前面的章节都用 Playwright 写 UI 自动化。这一章换一个工具：Selenium，目的是让你<strong>看得懂、改得动</strong>公司里已经存在的自动化项目——国内存量的 UI 自动化代码，一大半是 Selenium 写的，招聘要求里它也是最常出现的名字。学完这一章你会发现：换的只是 API 的名字，第 8 章到第 11 章建立的所有概念（定位、等待、页面对象、接口造数）原封不动都能搬过去。</p>
+<h2 id="121-为什么还要认识-selenium">12.1 为什么还要认识 Selenium<a class="headerlink" href="#121-为什么还要认识-selenium" title="Permanent link">&para;</a></h2>
+<p>Selenium 从 2004 年做到现在，是 UI 自动化的老前辈。它和 Playwright 的底层原理不同：</p>
+<ul>
+<li><strong>Selenium</strong> 走的是 W3C 的 WebDriver 协议：脚本把「点这个按钮」发给一个叫 chromedriver 的中间程序，中间程序再去操纵浏览器。浏览器、中间程序、脚本三个进程分开，什么浏览器都能接；</li>
+<li><strong>Playwright</strong> 用的是浏览器自带的调试接口，直接和浏览器对话，不用中间程序。</li>
+</ul>
+<p>这个差别带来了两者最直观的两点不同：Selenium 需要额外准备一个和浏览器版本配套的 chromedriver（12.2 节专门讲），Playwright 不需要；Selenium 找不到元素不会自动等（12.4 节专门讲），Playwright 默认会等。</p>
+<p>两个工具各自适合什么场合，12.7 节有一张完整的对照表。先把环境跑起来。</p>
+<h2 id="122-安装与第一次启动">12.2 安装与第一次启动<a class="headerlink" href="#122-安装与第一次启动" title="Permanent link">&para;</a></h2>
+<h3 id="1221-安装">12.2.1 安装<a class="headerlink" href="#1221-安装" title="Permanent link">&para;</a></h3>
+<p>在工程虚拟环境里装（照旧用钉死的版本）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pip install selenium==4.36.0
+</code></pre></div>
+<p>同时把它写进 <code>requirements.txt</code>，和其它依赖放在一起：</p>
+<div class="highlight"><pre><span></span><code># UI 自动化（Selenium 对照章用）
+selenium==4.36.0
+</code></pre></div>
+<h3 id="1222-chromedriver版本要配套">12.2.2 chromedriver：版本要配套<a class="headerlink" href="#1222-chromedriver版本要配套" title="Permanent link">&para;</a></h3>
+<p>Selenium 操纵 Chrome 靠的是 chromedriver，它和 Chrome 一样有自己的版本号，<strong>两者的大版本必须一致</strong>：Chrome 155 就要配 155 的 chromedriver。版本不配套时，轻则报警告，重则直接起不来。</p>
+<p>Selenium 自带一个叫 <strong>Selenium Manager</strong> 的小工具，<code>webdriver.Chrome()</code> 不带参数时会自动去下载配套的 chromedriver。可以先试它：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>          <span class="c1"># 第一次运行会自动下载 chromedriver，要等一会儿</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://www.example.com"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+<p>下载源在国外，国内网络经常失败。失败时长这样：</p>
+<div class="highlight"><pre><span></span><code>selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</code></pre></div>
+<p>这时手动下载，两步：</p>
+<ol>
+<li><strong>查浏览器的版本号</strong>：Chrome 地址栏输入 <code>chrome://version</code>，第一行就是，比如 <code>155.0.8059.79</code>；</li>
+<li><strong>下载同版本的 chromedriver</strong>：官方清单在 <a href="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json">https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json</a>（浏览器打开搜索自己的版本号），国内镜像 <a href="https://registry.npmmirror.com/-/binary/chrome-for-testing/">https://registry.npmmirror.com/-/binary/chrome-for-testing/</a>（进 <code>对应版本/win64/</code> 下载 <code>chromedriver-win64.zip</code>）。解压出 <code>chromedriver.exe</code>，放到一个固定的地方，比如 <code>D:\tool\chromedriver\</code>。</li>
+</ol>
+<p>以后每个用到 Selenium 的脚本，开头都这样指定路径（原始字符串 <code>r"..."</code> 免去反斜杠转义的麻烦）：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.chrome.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">Service</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\tool\chromedriver\chromedriver.exe"</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>Chrome 自动升级后 Selenium 全挂。</strong> Chrome 默认自动更新，升完大版本，chromedriver 就对不上了，报 <code>session not created</code> 或 <code>Chrome version must be ...</code>。修法就是重新下载配套的 chromedriver 覆盖旧的。团队里建议把 Chrome 的自动更新关掉，或者把「升级浏览器要同步换 driver」写进维护文档。</p>
+</div>
+<h3 id="1223-第一个脚本">12.2.3 第一个脚本<a class="headerlink" href="#1223-第一个脚本" title="Permanent link">&para;</a></h3>
+<p>新建 <code>scratch/selenium_basics.py</code>（一次放全，下面 12.3 到 12.5 节逐段讲；练习网站照旧跑在 8000 端口）：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""用 Selenium 把练习网站走一遍：登录、搜索（显式等待）、下拉筛选、弹窗、iframe、新标签页。</span>
+
+<span class="sd">运行前：练习网站在 8000 端口运行着；chromedriver.exe 放在 D:/tool/chromedriver/ 下（12.2 节）。</span>
+<span class="sd">"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.chrome.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support</span><span class="w"> </span><span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">ec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Select</span><span class="p">,</span> <span class="n">WebDriverWait</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\tool\chromedriver\chromedriver.exe"</span><span class="p">))</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>            <span class="c1"># 显式等待：最多等 10 秒，条件满足立刻往下走</span>
+
+<span class="c1"># 1. 登录</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/login.html"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"username"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"alice123"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">url_contains</span><span class="p">(</span><span class="s2">"/products.html"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"1 登录后的页面："</span><span class="p">,</span> <span class="n">driver</span><span class="o">.</span><span class="n">current_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 2. 搜索：点完按钮立刻数行数，和等列表刷新后再数，结果不一样</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">)</span>
+<span class="n">box</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"耳机"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#search-form button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"2 点完搜索立刻数："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">)),</span> <span class="s2">"行"</span><span class="p">)</span>
+<span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"2 等列表刷新后再数："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">)),</span> <span class="s2">"行，第一行："</span><span class="p">,</span> <span class="n">first</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 3. 下拉框：Selenium 用 Select 类操作原生 select</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/lab.html"</span><span class="p">)</span>
+<span class="n">Select</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"city"</span><span class="p">))</span><span class="o">.</span><span class="n">select_by_visible_text</span><span class="p">(</span><span class="s2">"杭州"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"3 下拉框选中："</span><span class="p">,</span> <span class="n">Select</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"city"</span><span class="p">))</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># 4. 浏览器弹窗：先等弹窗出现，再切过去点取消</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"btn-confirm"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">alert</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">alert_is_present</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"4 弹窗文字："</span><span class="p">,</span> <span class="n">alert</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">alert</span><span class="o">.</span><span class="n">dismiss</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"4 点取消后："</span><span class="p">,</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"result"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># 5. iframe：先切进去才能找里面的元素，用完切回来</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="s2">"inner"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"5 iframe 里的文字："</span><span class="p">,</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"[data-testid=from]"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">default_content</span><span class="p">()</span>
+
+<span class="c1"># 6. 新标签页：记住原窗口，等第二个窗口出现后切过去</span>
+<span class="n">main</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">current_window_handle</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"[data-testid=open-tab]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">number_of_windows_to_be</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">window</span><span class="p">([</span><span class="n">h</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">window_handles</span> <span class="k">if</span> <span class="n">h</span> <span class="o">!=</span> <span class="n">main</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"6 新标签页里的文字："</span><span class="p">,</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"[data-testid=from]"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+<p>运行（本机实测，两轮输出一致）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\selenium_basics.py
+1 登录后的页面： products.html
+2 点完搜索立刻数： 0 行
+2 等列表刷新后再数： 2 行，第一行： SKU0001
+3 下拉框选中： 杭州
+4 弹窗文字： 确定清空吗？
+4 点取消后： 你点了取消
+5 iframe 里的文字： frame
+6 新标签页里的文字： link
+</code></pre></div>
+<p>六件事全在里面：登录、搜索等待、下拉框、弹窗、iframe、新标签页。下面逐个对照 Playwright 讲。</p>
+<h2 id="123-定位by-的八种方式">12.3 定位：By 的八种方式<a class="headerlink" href="#123-定位by-的八种方式" title="Permanent link">&para;</a></h2>
+<p>Selenium 找元素统一用 <code>driver.find_element(By.方式, "值")</code>，找多个用 <code>find_elements</code>（返回列表，找不到给空列表，不报错）。八种方式和 Playwright 的对照：</p>
+<table>
+<thead>
+<tr>
+<th>By</th>
+<th>什么时候用</th>
+<th>Playwright 里的等价写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>By.ID</code></td>
+<td>元素有唯一 id，最优先用</td>
+<td><code>page.locator("#keyword")</code></td>
+</tr>
+<tr>
+<td><code>By.NAME</code></td>
+<td>表单控件常有 name</td>
+<td><code>page.locator("[name=keyword]")</code></td>
+</tr>
+<tr>
+<td><code>By.CSS_SELECTOR</code></td>
+<td>复杂结构，和第 9 章的 CSS 语法完全一样</td>
+<td><code>page.locator("css=...")</code></td>
+</tr>
+<tr>
+<td><code>By.XPATH</code></td>
+<td>要按文本或轴找的时候（第 9 章 9.4 节的语法）</td>
+<td><code>page.locator("xpath=...")</code></td>
+</tr>
+<tr>
+<td><code>By.CLASS_NAME</code></td>
+<td>只有一个类名时；类名带空格不能用它的</td>
+<td><code>page.locator(".search")</code></td>
+</tr>
+<tr>
+<td><code>By.TAG_NAME</code></td>
+<td>按标签找，很少单独用</td>
+<td><code>page.locator("table")</code></td>
+</tr>
+<tr>
+<td><code>By.LINK_TEXT</code></td>
+<td>链接文字完全一致</td>
+<td><code>page.get_by_role("link", name="...", exact=True)</code></td>
+</tr>
+<tr>
+<td><code>By.PARTIAL_LINK_TEXT</code></td>
+<td>链接文字包含即中</td>
+<td><code>page.get_by_role("link", name="...")</code></td>
+</tr>
+</tbody>
+</table>
+<p>练习网站页面都写了 <code>data-testid</code> 属性，Selenium 没有 <code>get_by_test_id</code>，用属性选择器找：<code>By.CSS_SELECTOR, "[data-testid=welcome]"</code>。</p>
+<p>第 9 章讲的定位策略取舍在这里照样成立：<strong>语义定位优先，脆定位躲着走</strong>，只是可选的词变了。</p>
+<p>和 Playwright 有一个重要差别：<code>find_element</code> 找不到<strong>立刻抛 <code>NoSuchElementException</code></strong>；<code>find_elements</code> 找不到返回空列表。所以「这个提示可能不出现」这类断言，更干净的写法是用 <code>find_elements</code> 判列表长度，比 <code>find_element</code> 套 try/except 清楚。</p>
+<h2 id="124-等待重点">12.4 等待（重点）<a class="headerlink" href="#124-等待重点" title="Permanent link">&para;</a></h2>
+<p>Playwright 的自动等待帮你挡掉了 UI 自动化最常见的一类偶发失败；Selenium 默认<strong>什么都不等</strong>，元素没出现就立刻报错。先看两个必然踩到的报错，<code>scratch/selenium_traps.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""演示 Selenium 的两个经典报错：元素还没出现就去找；页面刷新后还拿着旧元素。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.common.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoSuchElementException</span><span class="p">,</span> <span class="n">StaleElementReferenceException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.chrome.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebDriverWait</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\tool\chromedriver\chromedriver.exe"</span><span class="p">))</span>
+
+<span class="c1"># 先登录</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/login.html"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"username"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"alice123"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># 报错 1：点完登录马上找商品页的元素，页面还没跳过去</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"运气好，页面已经跳过去了"</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">NoSuchElementException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"报错 1："</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">))</span>
+
+<span class="c1"># 报错 2：先拿到第一行，再搜索一次（列表重新渲染），旧的那一行元素已经不在页面上了</span>
+<span class="n">first_row</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"耳机"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#search-form button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">first_row</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">StaleElementReferenceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"报错 2："</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+<p>运行（本机实测三轮，输出稳定）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\selenium_traps.py
+报错 1： NoSuchElementException
+报错 2： StaleElementReferenceException
+</code></pre></div>
+<ul>
+<li><strong>报错 1</strong>：点完登录立刻找商品页的搜索框。点击返回时页面还没跳转，元素根本还不存在。Playwright 里不存在这个问题（<code>click</code> 自带跳转等待，定位器自动等元素出现）；</li>
+<li><strong>报错 2</strong>：先拿到表格第一行的元素，搜索后列表整块重新渲染，原来那个元素已经「作废」，再去 <code>.text</code> 就报 <code>StaleElementReferenceException</code>（元素引用过期）。Playwright 的定位器是「每次都重新找」的描述，没有这个问题。</li>
+</ul>
+<p>Selenium 的应对是<strong>显式等待</strong>：<code>WebDriverWait(driver, 秒数).until(条件)</code>，条件满足立刻继续，到点不满足抛 <code>TimeoutException</code>。常用条件都在 <code>expected_conditions</code> 里（习惯缩写成 <code>ec</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ec.url_contains("/products.html")</code></td>
+<td>等页面跳转</td>
+</tr>
+<tr>
+<td><code>ec.presence_of_element_located((By.ID, "status"))</code></td>
+<td>等元素出现在页面里</td>
+</tr>
+<tr>
+<td><code>ec.visibility_of_element_located((By.ID, "toast"))</code></td>
+<td>等元素出现且可见</td>
+</tr>
+<tr>
+<td><code>ec.element_to_be_clickable((By.ID, "buy-ok"))</code></td>
+<td>等元素可见且能点</td>
+</tr>
+<tr>
+<td><code>ec.alert_is_present()</code></td>
+<td>等浏览器弹窗出现</td>
+</tr>
+<tr>
+<td><code>ec.number_of_windows_to_be(2)</code></td>
+<td>等新标签页出现</td>
+</tr>
+<tr>
+<td><code>ec.text_to_be_present_in_element((By.ID, "result"), "成功")</code></td>
+<td>等元素里出现指定文字</td>
+</tr>
+</tbody>
+</table>
+<p>等不到现成条件时自己写 lambda，比如「等列表刷新成 2 行」（12.2.3 的脚本第 2 段）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>隐式等待。</strong> <code>driver.implicitly_wait(10)</code> 是另一个等待机制：每次找元素找不到时全局默等 10 秒。它和显式等待混用时，超时时间会互相叠加，出现「明明 10 秒该超时，等了 20 秒才报错」的怪现象。存量代码里见到它别模仿，统一用显式等待；本教程的夹具里明确设了 <code>implicitly_wait(0)</code> 把它关掉。</p>
+</div>
+<p>第 8 章 8.7 节的口诀在这里同样适用：<strong>等待的是「结果」，不是「时间」</strong>。<code>time.sleep(2)</code> 在两边都是要消灭的写法。</p>
+<h2 id="125-常用操作对照">12.5 常用操作对照<a class="headerlink" href="#125-常用操作对照" title="Permanent link">&para;</a></h2>
+<p>12.2.3 的脚本覆盖了大部分场景，这一节按「Playwright 写法 → Selenium 写法」列个清单，写存量代码时当字典查：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>Playwright</th>
+<th>Selenium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入（先清空）</td>
+<td><code>locator.fill("耳机")</code></td>
+<td><code>el.clear(); el.send_keys("耳机")</code></td>
+</tr>
+<tr>
+<td>逐字符输入</td>
+<td><code>locator.press_sequentially("耳机")</code></td>
+<td><code>el.send_keys("耳机")</code> 天生就是逐字符</td>
+</tr>
+<tr>
+<td>按键</td>
+<td><code>locator.press("Enter")</code></td>
+<td><code>el.send_keys(Keys.ENTER)</code>（<code>from selenium.webdriver.common.keys import Keys</code>）</td>
+</tr>
+<tr>
+<td>点击</td>
+<td><code>locator.click()</code></td>
+<td><code>el.click()</code>；右键、双击、拖拽这类组合动作在 ActionChains 里（见下）</td>
+</tr>
+<tr>
+<td>悬停</td>
+<td><code>locator.hover()</code></td>
+<td><code>ActionChains(driver).move_to_element(el).perform()</code></td>
+</tr>
+<tr>
+<td>右键 / 双击</td>
+<td><code>locator.click(button="right")</code> / <code>dblclick()</code></td>
+<td><code>ActionChains(driver).context_click(el)</code> / <code>double_click(el)</code>，最后 <code>.perform()</code> 执行</td>
+</tr>
+<tr>
+<td>拖拽</td>
+<td><code>mouse.down()/move()/up()</code></td>
+<td><code>ActionChains(driver).drag_and_drop_by_offset(el, 横向像素, 纵向像素).perform()</code></td>
+</tr>
+<tr>
+<td>下拉框</td>
+<td><code>locator.select_option("hz")</code></td>
+<td><code>Select(el).select_by_value("hz")</code>（还有 <code>select_by_visible_text</code>、<code>select_by_index</code>）</td>
+</tr>
+<tr>
+<td>勾选框</td>
+<td><code>locator.check()</code> / <code>is_checked()</code></td>
+<td><code>el.click()</code>；状态看 <code>el.is_selected()</code></td>
+</tr>
+<tr>
+<td>浏览器弹窗</td>
+<td><code>page.on("dialog", ...)</code> 提前注册</td>
+<td>弹窗出现后 <code>driver.switch_to.alert</code>，<code>.accept()</code> / <code>.dismiss()</code> / <code>.send_keys("文字")</code></td>
+</tr>
+<tr>
+<td>iframe</td>
+<td><code>page.frame_locator("#f")</code></td>
+<td><code>driver.switch_to.frame("f")</code>，用完 <code>switch_to.default_content()</code></td>
+</tr>
+<tr>
+<td>新标签页</td>
+<td><code>context.expect_page()</code></td>
+<td><code>driver.window_handles</code> 列表 + <code>switch_to.window(句柄)</code></td>
+</tr>
+<tr>
+<td>上传</td>
+<td><code>set_input_files(路径)</code></td>
+<td><code>el.send_keys(文件的绝对路径)</code>，不用点系统窗口</td>
+</tr>
+<tr>
+<td>下载</td>
+<td><code>expect_download()</code></td>
+<td>没有专门接口，点下载后自己等文件出现（或配浏览器选项改下载目录）</td>
+</tr>
+<tr>
+<td>截图</td>
+<td><code>page.screenshot(path=...)</code></td>
+<td><code>driver.save_screenshot("reports/shot.png")</code></td>
+</tr>
+</tbody>
+</table>
+<p>两个值得单独演示的：<strong>上传</strong>和<strong>截图</strong>。上传用的测试图片不能随手拼，PNG 有格式校验，用一个小脚本生成（顺便练一下二进制文件的写法）：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""生成一张 1×1 像素的 PNG 图片，给上传头像的用例当测试文件用。只用 Python 自带的库。</span>
+
+<span class="sd">运行：python tools/make_png.py data/avatar.png</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">chunk</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""PNG 文件由若干「块」组成：长度、类型、内容、校验码。"""</span>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&gt;I"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">))</span> <span class="o">+</span> <span class="n">kind</span> <span class="o">+</span> <span class="n">body</span> <span class="o">+</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&gt;I"</span><span class="p">,</span> <span class="n">zlib</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="n">kind</span> <span class="o">+</span> <span class="n">body</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_png</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&gt;IIBBBBB"</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1"># 8 位色深，RGBA</span>
+    <span class="n">pixels</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">b</span><span class="s2">"</span><span class="se">\x00</span><span class="s2">"</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\x5c\x6b\xc0\xff</span><span class="s2">"</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">))</span>   <span class="c1"># 每行前面一个 0 表示不压缩</span>
+    <span class="k">return</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\x89</span><span class="s2">PNG</span><span class="se">\r\n\x1a\n</span><span class="s2">"</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">(</span><span class="sa">b</span><span class="s2">"IHDR"</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">(</span><span class="sa">b</span><span class="s2">"IDAT"</span><span class="p">,</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">pixels</span><span class="p">))</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">(</span><span class="sa">b</span><span class="s2">"IEND"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">""</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">"data/avatar.png"</span><span class="p">)</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">make_png</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"已生成 </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">，</span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span><span class="si">}</span><span class="s2"> 字节"</span><span class="p">)</span>
+</code></pre></div>
+<p>运行 <code>python tools\make_png.py data\avatar.png</code> 生成 <code>data/avatar.png</code>（70 字节），然后在已登录的浏览器里：</p>
+<div class="highlight"><pre><span></span><code><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/profile.html"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"avatar-file"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"data/avatar.png"</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()))</span>   <span class="c1"># 绝对路径</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"avatar-upload"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">text_to_be_present_in_element</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"avatar-msg"</span><span class="p">),</span> <span class="s2">"上传成功"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"avatar-msg"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>        <span class="c1"># 上传成功（0.1 KB）</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"reports/profile.png"</span><span class="p">)</span>               <span class="c1"># 整页截图，报告里当证据</span>
+</code></pre></div>
+<p>本机实测输出：<code>上传成功（0.1 KB）</code>，截图 31742 字节。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>弹窗处理两边顺序相反。</strong> Playwright 要在点按钮<strong>之前</strong>注册 dialog 处理器；Selenium 是弹窗出现<strong>之后</strong>再 <code>switch_to.alert</code>。Selenium 还有第三种状态：弹窗没人管，你去操作页面上的其他元素，会抛 <code>UnexpectedAlertPresentException</code>，弹窗被自动当成「取消」处理掉（本机实测：结果区显示「你点了取消」）。看到这个报错，先想想是不是有个弹窗没处理。</p>
+</div>
+<h2 id="126-写成-pytest-用例">12.6 写成 pytest 用例<a class="headerlink" href="#126-写成-pytest-用例" title="Permanent link">&para;</a></h2>
+<p>Playwright 有官方的 pytest 插件（第 11 章 11.1 节），Selenium 没有现成的，<strong>浏览器的启动和关闭自己写成夹具</strong>。新建 <code>tests/selenium/conftest.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""Selenium 用例的夹具。Selenium 没有官方的 pytest 插件，浏览器的启动和关闭自己写。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.chrome.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebDriverWait</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">driver</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""每条用例一个新浏览器，用完关掉。</span>
+
+<span class="sd">    环境变量 CHROMEDRIVER 指向手动下载的 chromedriver.exe；没设就交给 Selenium 自己找（12.2 节）。</span>
+<span class="sd">    默认无头运行（不弹窗口），想看着它跑就设环境变量 HEADED=1。</span>
+<span class="sd">    """</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"CHROMEDRIVER"</span><span class="p">)</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"HEADED"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"1"</span><span class="p">:</span>
+        <span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--headless=new"</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="n">path</span> <span class="k">else</span> <span class="n">Service</span><span class="p">(),</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="n">d</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wait</span><span class="p">(</span><span class="n">driver</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""显式等待的工具：wait.until(条件)，最多等 10 秒。"""</span>
+    <span class="k">return</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">logged_in</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">base_url</span><span class="p">,</span> <span class="n">account</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""已登录、停在商品页的浏览器。"""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support</span><span class="w"> </span><span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">ec</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/login.html"</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"username"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">account</span><span class="p">[</span><span class="s2">"username"</span><span class="p">])</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">account</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">url_contains</span><span class="p">(</span><span class="s2">"/products.html"</span><span class="p">))</span>
+    <span class="c1"># 再等首屏的商品列表加载出来：页面准备好了再交给用例，免得用例在页面没就绪时就开始操作</span>
+    <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">driver</span>
+</code></pre></div>
+<p>三条用例，都和前面章节用 Playwright 写过的同类一一对应：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""用 Selenium 写的三条用例，和第 8、11 章 Playwright 写的同类用例对照着看。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support</span><span class="w"> </span><span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">ec</span>
+
+<span class="n">ROWS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#rows tr"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_shows_welcome</span><span class="p">(</span><span class="n">logged_in</span><span class="p">,</span> <span class="n">account</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">logged_in</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"welcome"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="sa">f</span><span class="s2">"欢迎，</span><span class="si">{</span><span class="n">account</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_search_headphones</span><span class="p">(</span><span class="n">logged_in</span><span class="p">,</span> <span class="n">wait</span><span class="p">):</span>
+    <span class="n">logged_in</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"耳机"</span><span class="p">)</span>
+    <span class="n">logged_in</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">"#search-form button[type=submit]"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">ROWS</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># 等列表刷新成 2 行</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="s2">"耳机"</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">logged_in</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">ROWS</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_confirm_dismiss</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/lab.html"</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"btn-confirm"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">alert_is_present</span><span class="p">())</span><span class="o">.</span><span class="n">dismiss</span><span class="p">()</span>
+    <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">ec</span><span class="o">.</span><span class="n">text_to_be_present_in_element</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">"result"</span><span class="p">),</span> <span class="s2">"你点了取消"</span><span class="p">))</span>
+</code></pre></div>
+<p>运行（本机实测三轮全过）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:CHROMEDRIVER = "D:\tool\chromedriver\chromedriver.exe"
+(.venv) &gt; pytest tests\selenium -v
+tests/selenium/test_shop_selenium.py::test_login_shows_welcome PASSED    [ 33%]
+tests/selenium/test_shop_selenium.py::test_search_headphones PASSED      [ 66%]
+tests/selenium/test_shop_selenium.py::test_confirm_dismiss PASSED        [100%]
+
+============================= 3 passed in 12.78s ==============================
+</code></pre></div>
+<p>做完记得把环境变量去掉：<code>Remove-Item Env:CHROMEDRIVER</code>（教程首页「约定」一节写过这个习惯）。</p>
+<p>几个细节值得注意：</p>
+<ul>
+<li><strong>默认无头运行</strong>：和第 11 章 Playwright 的用例一样，平时不弹浏览器窗口；想看着它跑，先设 <code>$env:HEADED = "1"</code> 再运行，用完 <code>Remove-Item Env:HEADED</code>；</li>
+<li>
+<p><strong><code>logged_in</code> 多等了一步</strong>：跳到商品页之后，再等首屏的商品列表出现才交给用例。Selenium 不会自动等页面准备好，夹具里把这一步做掉，每条用例就不用各写一遍；</p>
+</li>
+<li>
+<p><strong>每条用例都新开一个浏览器进程</strong>（夹具是 function 作用域），3 条用例 12.8 秒；对比第 11 章的 Playwright 用例，10 条只要 8.8 秒——Playwright 的插件每条用例新开的是轻量的标签页上下文，浏览器进程整轮只起一次。这是两边速度差距的主要来源；</p>
+</li>
+<li><code>base_url</code>、<code>account</code> 夹具都是现成的（<code>tests/conftest.py</code>），Selenium 的用例直接复用，配置、账号、接口造数那套完全不用改。<strong>工程化的部分是工具无关的</strong>，这正是分层带来的好处。</li>
+</ul>
+<p>页面对象模式在 Selenium 里同样适用：第 11 章 11.2 节的 <code>LoginPage</code> 把 <code>page.locator(...)</code> 换成 <code>driver.find_element(By.ID, ...)</code>，其余一行不用动。</p>
+<h2 id="127-selenium-与-playwright-怎么选">12.7 Selenium 与 Playwright 怎么选<a class="headerlink" href="#127-selenium-与-playwright-怎么选" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Playwright</th>
+<th>Selenium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>环境准备</td>
+<td><code>pip install</code> + 自带浏览器下载，开箱即用</td>
+<td>要维护 chromedriver 和浏览器版本的配套</td>
+</tr>
+<tr>
+<td>自动等待</td>
+<td>默认等待元素就绪，偶发失败少</td>
+<td>什么都不等，全靠显式等待，写不好就偶发失败</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>浏览器进程复用，明显更快</td>
+<td>每条用例一个浏览器进程，偏慢</td>
+</tr>
+<tr>
+<td>调试工具</td>
+<td>追踪回放、逐行暂停、录制生成代码</td>
+<td>只有简单的日志</td>
+</tr>
+<tr>
+<td>支持的浏览器</td>
+<td>Chromium 系、Firefox、WebKit</td>
+<td>几乎所有浏览器，包括一些老版本和 IE 模式</td>
+</tr>
+<tr>
+<td>多语言</td>
+<td>Python、Java、JavaScript、.NET</td>
+<td>语言更多，Java 生态尤其成熟</td>
+</tr>
+<tr>
+<td>生态与存量</td>
+<td>新项目的主流选择</td>
+<td>存量项目极多，国内招聘要求的常客</td>
+</tr>
+</tbody>
+</table>
+<p>给三个具体建议：</p>
+<ul>
+<li><strong>新项目</strong>：选 Playwright。自动等待和环境这两点就能省掉大量的维护成本；</li>
+<li><strong>存量 Selenium 项目</strong>：没必要为了换而换。按第 11 章的页面对象把代码理顺，性价比更高；</li>
+<li><strong>要同时维护两边</strong>：把公共的东西（配置、账号、接口造数、页面对象的接口）做成工具无关的，两边各自只保留薄薄一层「操作页面」的代码。本教程的工程结构天然支持这么做。</li>
+</ul>
+<h2 id="128-常见的坑">12.8 常见的坑<a class="headerlink" href="#128-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NoSuchDriverException: Unable to obtain driver for chrome</code></td>
+<td>Selenium Manager 下载不了 chromedriver（网络问题）。按 12.2.2 手动下载，<code>Service()</code> 指定路径</td>
+</tr>
+<tr>
+<td><code>session not created: Chrome version must be ...</code></td>
+<td>Chrome 升级了，chromedriver 版本没跟上。下载配套版本覆盖</td>
+</tr>
+<tr>
+<td>元素明明在页面上，<code>find_element</code> 却报 <code>NoSuchElementException</code></td>
+<td>元素在 iframe 里，先 <code>switch_to.frame()</code>；或者在 shadow DOM 里，要先取元素的 <code>shadow_root</code> 再在里面找</td>
+</tr>
+<tr>
+<td>时好时坏的 <code>NoSuchElementException</code></td>
+<td>没等页面刷新完。补显式等待，等的是条件不是时间</td>
+</tr>
+<tr>
+<td><code>StaleElementReferenceException</code></td>
+<td>拿到的元素在页面重新渲染后作废了。重新 <code>find_element</code>，别缓存元素对象</td>
+</tr>
+<tr>
+<td><code>UnexpectedAlertPresentException</code></td>
+<td>有个浏览器弹窗没人处理。用 <code>ec.alert_is_present()</code> 等它出现，accept 或 dismiss 之后继续</td>
+</tr>
+<tr>
+<td>切进 iframe 出不来</td>
+<td>后面的定位全找的是 iframe 里的东西。用完立刻 <code>switch_to.default_content()</code></td>
+</tr>
+<tr>
+<td>用例越来越慢</td>
+<td>每条用例起一个浏览器进程是主因；再检查有没有该用显式等待的地方写成了长 <code>time.sleep</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="129-练习">12.9 练习<a class="headerlink" href="#129-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>把 <code>scratch/selenium_traps.py</code> 的两个报错分别用显式等待修好，让脚本不再抛异常、能正常打印两行内容。</li>
+<li>用 Selenium 在练习场上（<code>/lab.html</code>）完成：选城市「杭州」、勾选协议、支付方式选微信、填日期、点提交，断言 <code>form-result</code> 里的内容。全部写完不许出现 <code>time.sleep</code>。</li>
+<li>给 <code>tests/selenium</code> 加一条用例：在个人中心把昵称改成「Selenium 改的」，再用接口断言改成功了，最后把昵称改回来。</li>
+<li>找一段公司里或开源项目的 Selenium 代码（Java 的也行），逐行说出每个 API 对应 Playwright 里的什么写法。</li>
+<li>把 12.6 的 <code>driver</code> 夹具加上「失败时自动截图存到 <code>test-results/</code>」的功能（提示：夹具里 <code>yield</code> 之后用 <code>request.node</code> 判断用例结果，或者装 <code>pytest-selenium</code> 这类插件看别人怎么做的）。</li>
+</ol>
+<h2 id="1210-自检清单">12.10 自检清单<a class="headerlink" href="#1210-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 Selenium 和 Playwright 在底层原理上的差别，以及它带来的两点不同；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会查浏览器版本并下载配套的 chromedriver，知道版本不配套时的典型报错；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 八种 <code>By</code> 定位至少能熟练使用四种，并说清楚优先用哪几种、为什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释 <code>NoSuchElementException</code> 和 <code>StaleElementReferenceException</code> 各自的原因和修法；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 <code>WebDriverWait</code> 加 <code>expected_conditions</code> 写显式等待，知道为什么不用隐式等待；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能把弹窗、iframe、新标签页、上传在两边工具的写法互相翻译；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 对「新项目选什么、存量项目怎么办」能给出有依据的建议。</li>
+</ul>
+<p>下一章：<a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html">第 13 章 性能测试基础</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 11 章 UI 自动化进阶">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 11 章 UI 自动化进阶
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 13 章 性能测试基础">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 13 章 性能测试基础
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

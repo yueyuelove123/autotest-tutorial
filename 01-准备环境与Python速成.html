@@ -1,0 +1,2356 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 1 章 准备环境与 Python 速成 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-1-章-准备环境与-python-速成" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 1 章 准备环境与 Python 速成
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-安装-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 安装 Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-安装-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 安装 VS Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-命令行入门" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 命令行入门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-建工程和虚拟环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 建工程和虚拟环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 建工程和虚拟环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-新建工程文件夹" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 新建工程文件夹
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-为什么要虚拟环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 为什么要虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-创建并激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.3 创建并激活
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-安装依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 安装依赖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 安装依赖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#浏览器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        浏览器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#现在的工程长这样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        现在的工程长这样
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-python-速成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Python 速成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Python 速成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-第一个程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.1 第一个程序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-变量和数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.2 变量和数据类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-字符串" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.3 字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-列表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.4 列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-字典最重要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.5 字典（最重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#166-条件和循环" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.6 条件和循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#167-函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.7 函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#168-模块和导入" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.8 模块和导入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#169-类和对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.9 类和对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1610-异常和断言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.10 异常和断言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1611-文件读写与-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.11 文件读写与 with
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1612-json-和字典互相转换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.12 JSON 和字典互相转换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1613-认识装饰器的写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.13 认识装饰器的写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-安装-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 安装 Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-安装-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 安装 VS Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-命令行入门" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 命令行入门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-建工程和虚拟环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 建工程和虚拟环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 建工程和虚拟环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-新建工程文件夹" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 新建工程文件夹
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-为什么要虚拟环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 为什么要虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-创建并激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.3 创建并激活
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-安装依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 安装依赖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 安装依赖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#浏览器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        浏览器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#现在的工程长这样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        现在的工程长这样
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-python-速成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Python 速成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Python 速成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-第一个程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.1 第一个程序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-变量和数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.2 变量和数据类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-字符串" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.3 字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-列表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.4 列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-字典最重要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.5 字典（最重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#166-条件和循环" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.6 条件和循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#167-函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.7 函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#168-模块和导入" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.8 模块和导入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#169-类和对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.9 类和对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1610-异常和断言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.10 异常和断言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1611-文件读写与-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.11 文件读写与 with
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1612-json-和字典互相转换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.12 JSON 和字典互相转换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1613-认识装饰器的写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.13 认识装饰器的写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-1-章-准备环境与-python-速成">第 1 章 准备环境与 Python 速成<a class="headerlink" href="#第-1-章-准备环境与-python-速成" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>装好 Python 和 VS Code，会在命令行里运行命令；</li>
+<li>建好工程文件夹和虚拟环境，装好整套教程要用的工具；</li>
+<li>掌握本教程用得到的 Python 语法。已经会 Python 的同学可以跳过 1.6 节。</li>
+</ul>
+<hr />
+<h2 id="11-安装-python">1.1 安装 Python<a class="headerlink" href="#11-安装-python" title="Permanent link">&para;</a></h2>
+<ol>
+<li>打开 <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a>，找到 <strong>Python 3.13</strong> 的最新小版本（比如 3.13.7），下载 <strong>Windows installer (64-bit)</strong>。</li>
+<li>双击安装，<strong>第一个界面最下方一定要勾选 <code>Add python.exe to PATH</code></strong>，然后点 <code>Install Now</code>。</li>
+</ol>
+<p>这个勾决定了你能不能在命令行里直接输入 <code>python</code>。忘了勾的话，重新运行安装程序选 <code>Modify</code> 补上，或者卸载重装。</p>
+<ol>
+<li>装好后按 <code>Win</code> 键，输入 <code>PowerShell</code> 打开它，输入下面两条命令检查：</li>
+</ol>
+<div class="highlight"><pre><span></span><code>&gt; python --version
+Python 3.13.7
+&gt; pip --version
+pip 25.2 from C:\Users\你的用户名\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip (python 3.13)
+</code></pre></div>
+<p>能看到版本号就装好了。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>为什么不装最新的 3.15？</strong> Python 3.15 在 2026 年 10 月 9 日刚发布。性能测试工具 Locust 依赖的 gevent、geventhttpclient 是用 C 语言写的，需要作者为每个 Python 版本单独打好安装包，新版本刚发布时这些安装包往往还没跟上，pip 就会尝试现场编译，没装编译器就会失败。学习阶段选 3.13 或 3.14 最省心。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>输入 <code>python</code> 弹出了微软应用商店。</strong> 这是 Windows 自带的「应用执行别名」在作怪。打开「设置 → 应用 → 高级应用设置 → 应用执行别名」，把 <code>python.exe</code> 和 <code>python3.exe</code> 两个开关关掉，再重新打开 PowerShell。</p>
+</div>
+<h2 id="12-安装-vs-code">1.2 安装 VS Code<a class="headerlink" href="#12-安装-vs-code" title="Permanent link">&para;</a></h2>
+<p>写代码需要一个顺手的编辑器，推荐免费的 VS Code：</p>
+<ol>
+<li>到 <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> 下载安装，安装时把「添加到 PATH」「通过 Code 打开」几个选项都勾上。</li>
+<li>打开 VS Code，点左侧的扩展图标（四个方块），搜索安装：</li>
+<li><strong>Python</strong>（微软出的，必装）；</li>
+<li><strong>Chinese (Simplified) Language Pack</strong>（中文界面，可选）。</li>
+<li>用「文件 → 打开文件夹」打开你的工程文件夹；用菜单「终端 → 新建终端」（快捷键 <code>Ctrl+`</code>）在 VS Code 下方打开命令行，后面的命令都可以在这里输入。</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>以后装了新工具要重开 VS Code。</strong> 后面还会装 Node.js、Git 这些工具，安装程序会把它们加进系统的 PATH（系统按它去找命令）。VS Code 里的终端用的是 VS Code 启动那一刻的 PATH，装完新工具只新开一个终端是不够的，要把 VS Code 整个关掉再打开，否则会提示「不是内部或外部命令」。单独打开的 PowerShell 窗口则是新开一个就行。</p>
+</div>
+<h2 id="13-命令行入门">1.3 命令行入门<a class="headerlink" href="#13-命令行入门" title="Permanent link">&para;</a></h2>
+<p>命令行（也叫终端）就是用打字代替鼠标来操作电脑的窗口。自动化测试的工具基本都在命令行里运行，下面几条命令够用了：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>显示当前在哪个文件夹</td>
+<td><code>pwd</code></td>
+</tr>
+<tr>
+<td><code>cd 路径</code></td>
+<td>进入某个文件夹</td>
+<td><code>cd D:\work</code>，<code>cd ..</code>（回到上一级）</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出当前文件夹里的内容</td>
+<td><code>ls</code></td>
+</tr>
+<tr>
+<td><code>mkdir 名字</code></td>
+<td>新建文件夹</td>
+<td><code>mkdir reports</code></td>
+</tr>
+<tr>
+<td><code>python 文件名</code></td>
+<td>运行一个 Python 文件</td>
+<td><code>python hello.py</code></td>
+</tr>
+<tr>
+<td><code>cls</code></td>
+<td>清屏</td>
+<td><code>cls</code></td>
+</tr>
+</tbody>
+</table>
+<p>几个必须记住的操作：</p>
+<ul>
+<li><strong><code>Ctrl + C</code></strong>：停止正在运行的程序（比如停掉练习网站、停掉压测）；</li>
+<li><strong><code>↑</code> 键</strong>：翻出上一条命令，不用重新打；</li>
+<li><strong><code>Tab</code> 键</strong>：自动补全文件名和文件夹名，打几个字按一下 Tab；</li>
+<li><strong>路径</strong>：<code>D:\work\autotest-demo</code> 这样从盘符写起的叫绝对路径；<code>tests\api</code> 这样从当前文件夹往下写的叫相对路径。命令里的相对路径都是相对于「当前所在的文件夹」，所以运行命令前先确认自己在工程根目录。</li>
+</ul>
+<h2 id="14-建工程和虚拟环境">1.4 建工程和虚拟环境<a class="headerlink" href="#14-建工程和虚拟环境" title="Permanent link">&para;</a></h2>
+<h3 id="141-新建工程文件夹">1.4.1 新建工程文件夹<a class="headerlink" href="#141-新建工程文件夹" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&gt; mkdir D:\work\autotest-demo
+&gt; cd D:\work\autotest-demo
+</code></pre></div>
+<p>电脑上没有 D 盘的，换成 <code>C:\work\autotest-demo</code>，后面所有出现 <code>D:\work</code> 的地方都照此替换。</p>
+<p>路径里尽量只用英文、数字和短横线，不要有中文和空格。大部分工具能处理中文路径，但个别工具会因为编码问题出错，从一开始就避开最省事。</p>
+<h3 id="142-为什么要虚拟环境">1.4.2 为什么要虚拟环境<a class="headerlink" href="#142-为什么要虚拟环境" title="Permanent link">&para;</a></h3>
+<p>pip 装的包默认装在 Python 自己的目录里，所有工程共用一份。工程一多就会打架：A 工程要 pytest 8，B 工程要 pytest 9，只能留一个。</p>
+<p><strong>虚拟环境</strong>就是给每个工程单独准备一份「Python + 包」，装什么、装哪个版本都只影响这个工程。它就是工程目录下的一个 <code>.venv</code> 文件夹，删掉重建也没关系。</p>
+<h3 id="143-创建并激活">1.4.3 创建并激活<a class="headerlink" href="#143-创建并激活" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&gt; python -m venv .venv
+&gt; .venv\Scripts\Activate.ps1
+(.venv) &gt;
+</code></pre></div>
+<p>命令行开头出现 <code>(.venv)</code>，说明虚拟环境已经激活，之后的 <code>python</code>、<code>pip</code> 用的都是这个工程自己的。<strong>每次新开命令行窗口都要重新激活一次。</strong></p>
+<ul>
+<li>Mac / Linux 的激活命令是 <code>source .venv/bin/activate</code>；</li>
+<li>退出虚拟环境输入 <code>deactivate</code>；</li>
+<li>VS Code 里按 <code>Ctrl+Shift+P</code>，输入 <code>Python: Select Interpreter</code>，选 <code>.venv</code> 里的那个 Python，以后新开的终端会自动激活。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>执行 <code>Activate.ps1</code> 报错「无法加载文件……因为在此系统上禁止运行脚本」。</strong> PowerShell 默认不允许运行脚本，执行一次下面的命令放开当前用户的限制（提示时输入 <code>Y</code>）：</p>
+<div class="highlight"><pre><span></span><code>&gt; Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+</code></pre></div>
+</div>
+<h2 id="15-安装依赖">1.5 安装依赖<a class="headerlink" href="#15-安装依赖" title="Permanent link">&para;</a></h2>
+<p>在工程根目录新建一个文本文件 <code>requirements.txt</code>，内容如下。它是这个工程的「依赖清单」，写清楚要哪些包、哪个版本，换台电脑一条命令就能装出一模一样的环境：</p>
+<div class="highlight"><pre><span></span><code># 练习网站（被测系统）
+fastapi==0.159.1
+uvicorn==0.54.0
+
+# 接口自动化
+requests==2.34.2
+pytest==9.1.1
+PyYAML==6.0.3
+jsonschema==4.26.0
+
+# UI 自动化
+playwright==1.64.0
+pytest-playwright==0.10.0
+
+# 报告与并行
+allure-pytest==2.16.2
+pytest-xdist==3.8.0
+
+# 性能测试
+locust==2.47.0
+</code></pre></div>
+<p>确认命令行开头有 <code>(.venv)</code>，然后安装：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pip install -r requirements.txt
+</code></pre></div>
+<p>下载慢或者超时，可以换成国内的镜像源：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre></div>
+<p>想以后一直用镜像，执行一次 <code>pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> 即可。</p>
+<p>装完检查一下：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest --version
+pytest 9.1.1
+(.venv) &gt; locust --version
+locust 2.47.0 from D:\work\autotest-demo\.venv\Lib\site-packages\locust (Python 3.13.7)
+(.venv) &gt; playwright --version
+Version 1.64.0
+</code></pre></div>
+<h3 id="浏览器">浏览器<a class="headerlink" href="#浏览器" title="Permanent link">&para;</a></h3>
+<p>UI 自动化需要一个浏览器。本教程直接用你电脑上装好的 <strong>Google Chrome</strong>，不用另外下载。如果没装 Chrome，二选一：</p>
+<ul>
+<li>用 Windows 自带的 Edge：后面所有指定 <code>chrome</code> 的地方换成 <code>msedge</code>；</li>
+<li>让 Playwright 下载它自带的浏览器：<code>playwright install chromium</code>（约 150 MB，公司网络可能下载不了），然后把后面指定 <code>chrome</code> 的地方都去掉。</li>
+</ul>
+<p>后面指定 <code>chrome</code> 的地方有三处：脚本里的 <code>channel="chrome"</code>（第 8 章）、录制命令里的 <code>--channel chrome</code>（第 8 章）、<code>pytest.ini</code> 里的 <code>--browser-channel=chrome</code>（第 8、11 章）。另外，第 11 章提到的 Firefox、WebKit 两种内核，要先执行 <code>playwright install firefox webkit</code> 下载才能用。</p>
+<h3 id="现在的工程长这样">现在的工程长这样<a class="headerlink" href="#现在的工程长这样" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>autotest-demo/
+├─ .venv/              虚拟环境（自动生成，不用管）
+└─ requirements.txt    依赖清单
+</code></pre></div>
+<h2 id="16-python-速成">1.6 Python 速成<a class="headerlink" href="#16-python-速成" title="Permanent link">&para;</a></h2>
+<p>这一节只讲本教程用得到的语法。建议在工程里新建一个 <code>scratch</code> 文件夹专门放练习代码，每个例子存成一个 <code>.py</code> 文件，用 <code>python scratch\文件名.py</code> 运行，看输出和教程里是否一致。</p>
+<h3 id="161-第一个程序">1.6.1 第一个程序<a class="headerlink" href="#161-第一个程序" title="Permanent link">&para;</a></h3>
+<p>新建 <code>scratch/hello.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"你好，自动化测试"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&gt; python scratch\hello.py
+你好，自动化测试
+3
+</code></pre></div>
+<p><code>print</code> 把内容打印到屏幕上，是最常用的调试手段：不知道某个值是什么，就把它打印出来看看。<code>#</code> 后面是注释，程序运行时会忽略，用来写给人看的说明。</p>
+<h3 id="162-变量和数据类型">1.6.2 变量和数据类型<a class="headerlink" href="#162-变量和数据类型" title="Permanent link">&para;</a></h3>
+<p>变量就是给一个值起名字，后面用名字来指代它：</p>
+<div class="highlight"><pre><span></span><code><span class="n">username</span> <span class="o">=</span> <span class="s2">"alice"</span>      <span class="c1"># 字符串 str：用引号包起来的文字</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>                <span class="c1"># 整数 int</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mf">2.5</span>             <span class="c1"># 小数 float</span>
+<span class="n">is_vip</span> <span class="o">=</span> <span class="kc">True</span>           <span class="c1"># 布尔值 bool：只有 True 和 False 两个值</span>
+<span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>            <span class="c1"># None 表示「没有值」</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">username</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">is_vip</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>&lt;class 'str'&gt; &lt;class 'int'&gt; &lt;class 'float'&gt; &lt;class 'bool'&gt; &lt;class 'NoneType'&gt;
+7.5
+</code></pre></div>
+<h3 id="163-字符串">1.6.3 字符串<a class="headerlink" href="#163-字符串" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">"中性笔"</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> 买了 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 件"</span>        <span class="c1"># f-string：在花括号里直接放变量</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>                        <span class="c1"># 长度</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"笔"</span> <span class="ow">in</span> <span class="n">name</span><span class="p">)</span>                     <span class="c1"># 是否包含</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  alice  "</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>              <span class="c1"># 去掉两头的空格</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a,b,c"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>               <span class="c1"># 按逗号切开</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"金额：</span><span class="si">{</span><span class="mf">2.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 元"</span><span class="p">)</span>         <span class="c1"># :.2f 表示保留两位小数</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>中性笔 买了 3 件
+10
+True
+alice
+['a', 'b', 'c']
+金额：7.50 元
+</code></pre></div>
+<h3 id="164-列表">1.6.4 列表<a class="headerlink" href="#164-列表" title="Permanent link">&para;</a></h3>
+<p>列表用方括号，按顺序存放一组值：</p>
+<div class="highlight"><pre><span></span><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"蓝牙耳机"</span><span class="p">,</span> <span class="s2">"机械键盘"</span><span class="p">,</span> <span class="s2">"无线鼠标"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>          <span class="c1"># 第一个，下标从 0 开始</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>         <span class="c1"># 最后一个</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>        <span class="c1"># 切片：第 0 个到第 2 个之前</span>
+<span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"台灯"</span><span class="p">)</span>      <span class="c1"># 在末尾添加</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>          <span class="c1"># 逐个取出来</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"商品："</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>   <span class="c1"># 列表推导：把每个元素加工一下，生成新列表</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>蓝牙耳机
+无线鼠标
+['蓝牙耳机', '机械键盘']
+4 ['蓝牙耳机', '机械键盘', '无线鼠标', '台灯']
+商品： 蓝牙耳机
+商品： 机械键盘
+商品： 无线鼠标
+商品： 台灯
+[4, 4, 4, 2]
+</code></pre></div>
+<p>注意 <code>for</code> 下面的那行前面有 4 个空格。<strong>Python 用缩进表示代码的层级</strong>，缩进不对程序就会报错或者逻辑出错。VS Code 里按 <code>Tab</code> 会自动输入 4 个空格。</p>
+<h3 id="165-字典最重要">1.6.5 字典（最重要）<a class="headerlink" href="#165-字典最重要" title="Permanent link">&para;</a></h3>
+<p>字典用花括号，存放「键: 值」对。<strong>接口返回的 JSON 数据转成 Python 之后就是字典和列表的组合</strong>，所以这一节一定要掌握：</p>
+<div class="highlight"><pre><span></span><code><span class="n">resp</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"ok"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"total"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"蓝牙耳机"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span> <span class="mf">199.0</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"头戴式耳机"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span> <span class="mf">399.0</span><span class="p">},</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s2">"code"</span><span class="p">])</span>                         <span class="c1"># 按键取值</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"name"</span><span class="p">])</span>     <span class="c1"># 一层层往下取</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trace_id"</span><span class="p">))</span>                 <span class="c1"># 键不存在时 get 返回 None，[] 会报错</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trace_id"</span><span class="p">,</span> <span class="s2">"没有"</span><span class="p">))</span>          <span class="c1"># 也可以指定默认值</span>
+
+<span class="n">resp</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"成功"</span>                         <span class="c1"># 修改</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">resp</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>   <span class="c1"># 遍历</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">resp</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"items"</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"总价："</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>0
+蓝牙耳机
+None
+没有
+id = 2
+name = 头戴式耳机
+price = 399.0
+总价： 598.0
+</code></pre></div>
+<h3 id="166-条件和循环">1.6.6 条件和循环<a class="headerlink" href="#166-条件和循环" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">balance</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mf">120.0</span>
+
+<span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"金额不对"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">amount</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"可以支付"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"余额不足，还差 </span><span class="si">{</span><span class="n">amount</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">balance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 元"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>          <span class="c1"># range(3) 依次给出 0、1、2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第"</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"次"</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>                <span class="c1"># 条件成立就一直循环</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>                  <span class="c1"># 等同于 n = n + 1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">continue</span>            <span class="c1"># 跳过本次，进入下一次</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">break</span>               <span class="c1"># 直接结束循环</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"n ="</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>余额不足，还差 20.00 元
+第 1 次
+第 2 次
+第 3 次
+n = 1
+n = 3
+</code></pre></div>
+<p>比较用 <code>==</code>（等于）、<code>!=</code>（不等于）、<code>&gt;</code>、<code>&gt;=</code>、<code>&lt;</code>、<code>&lt;=</code>；组合条件用 <code>and</code>、<code>or</code>、<code>not</code>。注意 <code>=</code> 是赋值，<code>==</code> 才是比较。</p>
+<h3 id="167-函数">1.6.7 函数<a class="headerlink" href="#167-函数" title="Permanent link">&para;</a></h3>
+<p>把一段经常要用的代码包起来、起个名字，就是函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calc_amount</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""计算订单金额：单价 × 数量 - 优惠。三个引号里的文字是函数说明。"""</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span> <span class="o">-</span> <span class="n">discount</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calc_amount</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>                       <span class="c1"># 只传 price，其余用默认值</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc_amount</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>                    <span class="c1"># 按顺序传</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc_amount</span><span class="p">(</span><span class="mi">199</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>   <span class="c1"># 按名字传，更清楚</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>2.5
+7.5
+378
+</code></pre></div>
+<p><code>return</code> 把结果交还给调用的地方。函数可以有参数，也可以给参数设默认值。</p>
+<h3 id="168-模块和导入">1.6.8 模块和导入<a class="headerlink" href="#168-模块和导入" title="Permanent link">&para;</a></h3>
+<p>一个 <code>.py</code> 文件就是一个模块，别的文件可以 <code>import</code> 它来用里面的东西。新建 <code>scratch/money.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">yuan</span><span class="p">(</span><span class="n">cents</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">cents</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>再新建 <code>scratch/use_money.py</code>，和前面一样在工程根目录用 <code>python scratch\use_money.py</code> 运行：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>                      <span class="c1"># Python 自带的模块</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">money</span><span class="w"> </span><span class="kn">import</span> <span class="n">yuan</span>           <span class="c1"># 自己写的模块：从 money.py 里导入 yuan 函数</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">yuan</span><span class="p">(</span><span class="mi">250</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"中性笔"</span><span class="p">},</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>2.5
+{"name": "中性笔"}
+</code></pre></div>
+<p>运行一个脚本时，Python 会自动到<strong>这个脚本所在的文件夹</strong>里找要导入的模块，所以 <code>money.py</code> 和 <code>use_money.py</code> 放在同一个文件夹里就能导入。pip 装的包也是这样用的，比如 <code>import requests</code>、<code>from playwright.sync_api import expect</code>。导入报 <code>ModuleNotFoundError</code>：导入的是 pip 装的包，八成是虚拟环境没激活或者包没装；导入的是自己写的模块，检查它和运行的脚本是不是在同一个文件夹里、名字有没有拼错。</p>
+<h3 id="169-类和对象">1.6.9 类和对象<a class="headerlink" href="#169-类和对象" title="Permanent link">&para;</a></h3>
+<p>类是「一类东西」的模板，对象是按模板造出来的具体一个。后面的接口客户端、页面对象都是类，先看个例子：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>   <span class="c1"># 创建对象时自动执行，self 指这个对象自己</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>             <span class="c1"># 属性：对象身上的数据</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>                   <span class="c1"># 方法：对象能做的事</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="n">alice</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alice</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="n">alice</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alice</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">alice</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">VipAccount</span><span class="p">(</span><span class="n">Account</span><span class="p">):</span>                   <span class="c1"># 继承：VipAccount 自动拥有 Account 的一切</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>                   <span class="c1"># 再改写其中一个方法：会员打九折</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="n">amount</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+
+
+<span class="n">bob</span> <span class="o">=</span> <span class="n">VipAccount</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bob</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">bob</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>True 70
+False 70
+True 10.0
+</code></pre></div>
+<h3 id="1610-异常和断言">1.6.10 异常和断言<a class="headerlink" href="#1610-异常和断言" title="Permanent link">&para;</a></h3>
+<p>程序出错时会抛出异常，不处理就会中断。<code>try/except</code> 可以把异常「捕获」下来：</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"token"</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"没有这个键："</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不管有没有出错，finally 都会执行，常用来做清理"</span><span class="p">)</span>
+
+<span class="n">balance</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="k">assert</span> <span class="n">balance</span> <span class="o">==</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">"余额应该是 70"</span>     <span class="c1"># 条件成立，什么都不发生</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">balance</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"余额应该是 100，实际是 </span><span class="si">{</span><span class="n">balance</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"断言失败："</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>没有这个键： 'token'
+不管有没有出错，finally 都会执行，常用来做清理
+断言失败： 余额应该是 100，实际是 70
+</code></pre></div>
+<p><strong><code>assert</code> 是自动化测试的核心</strong>：<code>assert 条件, 失败时的说明</code>，条件成立就继续，不成立就抛出 <code>AssertionError</code>，测试框架看到它就把这条用例记为失败。</p>
+<h3 id="1611-文件读写与-with">1.6.11 文件读写与 with<a class="headerlink" href="#1611-文件读写与-with" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>     <span class="c1"># w：写入（会覆盖原内容）</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"第一行</span><span class="se">\n</span><span class="s2">第二行</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>          <span class="c1"># 默认是读</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>第一行
+第二行
+</code></pre></div>
+<p><code>with</code> 保证用完之后自动关闭文件。<strong>读写文件永远带上 <code>encoding="utf-8"</code></strong>，否则 Windows 上默认按 GBK 编码处理，遇到中文就会乱码或报错。</p>
+<h3 id="1612-json-和字典互相转换">1.6.12 JSON 和字典互相转换<a class="headerlink" href="#1612-json-和字典互相转换" title="Permanent link">&para;</a></h3>
+<p>接口传输的数据格式大多是 JSON。它长得和 Python 字典几乎一样，但它是一段文字：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">'{"username": "alice", "vip": true, "coupon": null}'</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>                  <span class="c1"># JSON 文字 → 字典</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="n">back</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 字典 → JSON 文字</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">back</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>{'username': 'alice', 'vip': True, 'coupon': None} &lt;class 'dict'&gt;
+{
+  "username": "alice",
+  "vip": true,
+  "coupon": null
+}
+</code></pre></div>
+<p>注意 JSON 里的 <code>true</code>、<code>false</code>、<code>null</code> 对应 Python 的 <code>True</code>、<code>False</code>、<code>None</code>。<code>ensure_ascii=False</code> 让中文原样输出，<code>indent=2</code> 让结果分行缩进、便于阅读。</p>
+<h3 id="1613-认识装饰器的写法">1.6.13 认识装饰器的写法<a class="headerlink" href="#1613-认识装饰器的写法" title="Permanent link">&para;</a></h3>
+<p>后面会大量见到写在函数上面、以 <code>@</code> 开头的一行，比如：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">token</span><span class="p">():</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>这叫装饰器，作用是给函数「加点功能」或者「贴个标签」。现阶段不用会写，知道 <code>@pytest.fixture</code> 的意思是「把下面这个函数登记成 pytest 的夹具」就够了，后面用到时再细讲。</p>
+<h2 id="17-常见的坑">1.7 常见的坑<a class="headerlink" href="#17-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python</code> 不是内部或外部命令</td>
+<td>安装时没勾 <code>Add python.exe to PATH</code>，重新安装勾上</td>
+</tr>
+<tr>
+<td>输入 <code>python</code> 打开了应用商店</td>
+<td>关掉「应用执行别名」里的 python.exe，见 1.1</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'xxx'</code></td>
+<td>虚拟环境没激活，或者包没装进这个虚拟环境</td>
+</tr>
+<tr>
+<td><code>IndentationError</code></td>
+<td>缩进不对，检查是不是空格和 Tab 混用了</td>
+</tr>
+<tr>
+<td><code>KeyError: 'xxx'</code></td>
+<td>字典里没有这个键，先 <code>print</code> 出来看看实际的结构</td>
+</tr>
+<tr>
+<td>读文件中文乱码、<code>UnicodeDecodeError</code></td>
+<td>打开文件时没写 <code>encoding="utf-8"</code></td>
+</tr>
+<tr>
+<td><code>SyntaxError</code></td>
+<td>语法错误，常见的是括号、引号没配对，或者用了中文标点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="18-练习">1.8 练习<a class="headerlink" href="#18-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>写一个函数 <code>can_pay(balance, items)</code>，<code>items</code> 是 <code>[{"price": 2.5, "quantity": 3}, ...]</code> 这样的列表，余额够付全部商品返回 <code>True</code>，否则返回 <code>False</code>。</li>
+<li>把 1.6.5 里的 <code>resp</code> 存成一个 <code>resp.json</code> 文件，再读回来，打印出所有价格大于 200 的商品名称。</li>
+<li>给 1.6.9 的 <code>Account</code> 类加一个 <code>recharge(amount)</code> 方法（充值），金额小于等于 0 时抛出异常：<code>raise ValueError("充值金额必须大于 0")</code>。</li>
+</ol>
+<h2 id="19-自检清单">1.9 自检清单<a class="headerlink" href="#19-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能在 PowerShell 里进入工程目录、激活虚拟环境，命令行开头出现 <code>(.venv)</code>；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>pytest --version</code>、<code>locust --version</code>、<code>playwright --version</code> 都能输出版本号；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说清楚字典的 <code>d["k"]</code> 和 <code>d.get("k")</code> 有什么区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 <code>assert</code> 条件不成立时会发生什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道读写文件为什么要写 <code>encoding="utf-8"</code>。</li>
+</ul>
+<p>下一章：<a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html">第 2 章 认识练习网站与 HTTP 基础</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                首页
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 2 章 认识练习网站与 HTTP 基础">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 2 章 认识练习网站与 HTTP 基础
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2884 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html">
+      
+      
+        <link rel="next" href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 7 章 pytest 进阶与框架设计 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-7-章-pytest-进阶与框架设计" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 7 章 pytest 进阶与框架设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-conftestpy-的层级规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 conftest.py 的层级规则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 conftest.py 的层级规则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#同名夹具就近覆盖一个-5-行的实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同名夹具就近覆盖：一个 5 行的实验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-夹具的作用域怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 夹具的作用域怎么选
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 夹具的作用域怎么选">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#实验两种作用域各被创建几次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验：两种作用域各被创建几次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#作用域选大了的风险一次退出登录全场连坐" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作用域选大了的风险：一次退出登录，全场连坐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-工厂夹具用例里要造多份数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 工厂夹具：用例里要造多份数据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-autouse-夹具自动给每条用例做的事" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 autouse 夹具：自动给每条用例做的事
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-参数化夹具同一个夹具跑多份参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 参数化夹具：同一个夹具跑多份参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-skip-与-xfail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 skip 与 xfail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 skip 与 xfail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip环境不满足就跳过" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        skip：环境不满足就跳过
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xfail已知缺陷先做标记" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xfail：已知缺陷先做标记
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-monkeypatch用例里临时改环境变量和函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 monkeypatch：用例里临时改环境变量和函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 monkeypatch：用例里临时改环境变量和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#临时改环境变量setenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时改环境变量：setenv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#临时换函数setattr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时换函数：setattr
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-自定义-marker登记筛选与防手误" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 自定义 marker：登记、筛选与防手误
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-用例的发现规则与组织" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 用例的发现规则与组织
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.9 用例的发现规则与组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#目录怎么分组" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录怎么分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#测试类什么时候用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试类什么时候用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-插件机制初识" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 插件机制初识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#711-失败排查工具箱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 失败排查工具箱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#712-框架设计小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.12 框架设计小结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.12 框架设计小结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么时候才值得抽象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么时候才值得抽象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#713-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.13 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#714-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.14 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#715-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.15 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-conftestpy-的层级规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 conftest.py 的层级规则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 conftest.py 的层级规则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#同名夹具就近覆盖一个-5-行的实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同名夹具就近覆盖：一个 5 行的实验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-夹具的作用域怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 夹具的作用域怎么选
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 夹具的作用域怎么选">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#实验两种作用域各被创建几次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验：两种作用域各被创建几次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#作用域选大了的风险一次退出登录全场连坐" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作用域选大了的风险：一次退出登录，全场连坐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-工厂夹具用例里要造多份数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 工厂夹具：用例里要造多份数据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-autouse-夹具自动给每条用例做的事" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 autouse 夹具：自动给每条用例做的事
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-参数化夹具同一个夹具跑多份参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 参数化夹具：同一个夹具跑多份参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-skip-与-xfail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 skip 与 xfail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 skip 与 xfail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip环境不满足就跳过" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        skip：环境不满足就跳过
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xfail已知缺陷先做标记" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xfail：已知缺陷先做标记
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-monkeypatch用例里临时改环境变量和函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 monkeypatch：用例里临时改环境变量和函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 monkeypatch：用例里临时改环境变量和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#临时改环境变量setenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时改环境变量：setenv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#临时换函数setattr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时换函数：setattr
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-自定义-marker登记筛选与防手误" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 自定义 marker：登记、筛选与防手误
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-用例的发现规则与组织" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 用例的发现规则与组织
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.9 用例的发现规则与组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#目录怎么分组" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录怎么分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#测试类什么时候用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试类什么时候用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-插件机制初识" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 插件机制初识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#711-失败排查工具箱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 失败排查工具箱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#712-框架设计小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.12 框架设计小结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.12 框架设计小结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么时候才值得抽象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么时候才值得抽象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#713-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.13 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#714-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.14 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#715-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.15 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-7-章-pytest-进阶与框架设计">第 7 章 pytest 进阶与框架设计<a class="headerlink" href="#第-7-章-pytest-进阶与框架设计" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>搞清楚 conftest.py 的层级规则，会把夹具放到对的目录；</li>
+<li>会给夹具选作用域，知道作用域选大了有什么风险；</li>
+<li>会写工厂夹具、autouse 夹具、参数化夹具这三种进阶夹具；</li>
+<li>会用 skip、xfail 和自定义标记管理用例的运行条件；</li>
+<li>会用 monkeypatch 在用例里临时改环境变量、临时换函数；</li>
+<li>熟悉失败排查的常用参数，认识 pytest 的插件机制；</li>
+<li>能说清一套小测试框架分几层，以及什么时候才值得继续抽象。</li>
+</ul>
+<p>第 3 章 3.2 节用 pytest 把请求变成了用例，3.4 节用夹具管住了前置准备和清理；第 4 章 4.5 节把夹具重写成配置、账号、客户端、造数几个层次。本章不再重复这些入门内容，往下讲 pytest 本身：conftest.py 在目录之间的生效规则、夹具的作用域怎么选、三种进阶夹具的写法、跳过与预期失败、monkeypatch、自定义标记、用例的发现规则和插件机制，最后给一套失败排查工具箱，并把整个框架的分层收个尾。</p>
+<p>本章的演示代码放在工程新目录 <code>tests/adv/</code> 里（adv 是 advanced 的缩写），连同它自己的 <code>conftest.py</code> 一起保留在参考代码里，随时可以对照着看。练手前照旧把练习网站跑起来（第 2 章 2.1 节）。</p>
+<hr />
+<h2 id="71-conftestpy-的层级规则">7.1 conftest.py 的层级规则<a class="headerlink" href="#71-conftestpy-的层级规则" title="Permanent link">&para;</a></h2>
+<p>第 3 章说过：conftest.py 是文件名固定的特殊文件，pytest 会自动加载它，里面的夹具不需要 import 就能用。当时只建了一个，放在 <code>tests/</code> 根目录。完整的规则是：</p>
+<p><strong>conftest.py 放在哪个目录，就对哪个目录（含子目录）里的用例生效；用例用到同名夹具时，离得最近的那层优先。</strong></p>
+<p>学完本章，工程里会有两处 conftest.py，后面的 UI 章节还会再加一处，正好是三层分工：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>管什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/conftest.py</code></td>
+<td>全局夹具，所有用例都能用（第 4 章建的）</td>
+<td><code>api</code>、<code>guest</code>、<code>product</code>、<code>unpaid_order</code></td>
+</tr>
+<tr>
+<td><code>tests/adv/conftest.py</code></td>
+<td>本章演示用的夹具（本章新建）</td>
+<td><code>watch_api</code>、参数化的 <code>guest</code></td>
+</tr>
+<tr>
+<td><code>tests/ui/conftest.py</code></td>
+<td>只有 UI 用例用（第 11 章会建）</td>
+<td><code>logged_in_page</code>（种 cookie 进浏览器）、失败截图的钩子</td>
+</tr>
+</tbody>
+</table>
+<p>动手加夹具时照这个思路放：所有用例都要用的放 <code>tests/conftest.py</code>，只有接口用例用的放 <code>tests/api/conftest.py</code>，只有某个子目录用的放那个子目录里。放得越准，能用它的人越清楚，误用越少。</p>
+<h3 id="同名夹具就近覆盖一个-5-行的实验">同名夹具就近覆盖：一个 5 行的实验<a class="headerlink" href="#同名夹具就近覆盖一个-5-行的实验" title="Permanent link">&para;</a></h3>
+<p>规则第二条「离得最近优先」光背没用，跑个实验。本章的 <code>tests/adv/conftest.py</code> 里定义了一个夹具 <code>who</code>，它的子目录 <code>tests/adv/deep/</code> 又有一个自己的 conftest.py，同样定义了 <code>who</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/conftest.py（节选）</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">who</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"tests/adv 的 conftest.py"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/deep/conftest.py（整个文件就这么多）</span>
+<span class="sd">"""更深一层目录的 conftest.py：它定义的夹具只对 tests/adv/deep 里的用例生效。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">who</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"tests/adv/deep 的 conftest.py"</span>
+</code></pre></div>
+<p>两个目录里各放一条用例，都断言自己拿到的 <code>who</code> 是哪一层的版本：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_who.py</span>
+<span class="sd">"""同名的夹具，用例用到的到底是哪一层定义的？跑一跑就知道。"""</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_who</span><span class="p">(</span><span class="n">who</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">who</span> <span class="o">==</span> <span class="s2">"tests/adv 的 conftest.py"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/deep/test_deep_who.py</span>
+<span class="sd">"""同名的夹具，深层目录里的用例用到的是更深那一层的版本。"""</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_who</span><span class="p">(</span><span class="n">who</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">who</span> <span class="o">==</span> <span class="s2">"tests/adv/deep 的 conftest.py"</span>
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_who.py tests\adv\deep\test_deep_who.py -v
+tests/adv/test_adv_who.py::test_who PASSED                               [ 50%]
+tests/adv/deep/test_deep_who.py::test_who PASSED                         [100%]
+
+============================== 2 passed in 0.08s ==============================
+</code></pre></div>
+<p>两条都通过：外层目录的用例拿到 <code>tests/adv</code> 那份，深层目录的用例拿到 <code>tests/adv/deep</code> 那份。子目录的定义把父目录的同名夹具盖住了，而且只对子目录里的用例生效。</p>
+<p>想确认某个夹具到底来自哪一层，不用猜，pytest 有现成的参数：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_who.py tests\adv\deep\test_deep_who.py --fixtures-per-test
+-------------------------- fixtures used by test_who --------------------------
+------------------------ (tests\adv\test_adv_who.py:5) ------------------------
+...
+who -- tests\adv\conftest.py:11
+-------------------------- fixtures used by test_who --------------------------
+--------------------- (tests\adv\deep\test_deep_who.py:5) ---------------------
+...
+who -- tests\adv\deep\conftest.py:6
+</code></pre></div>
+<p>输出里每个夹具后面跟着定义它的文件和行号，一目了然。排查「这个夹具到底是哪个版本」的疑问，第一反应就应该是这条命令。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 写了夹具却报 <code>fixture 'xxx' not found</code>，先查两件事：文件名是不是严格叫 conftest.py（少一个字母都不行）；文件放的位置是不是用例所在目录或它的上级目录。夹具放在平级的兄弟目录里，用例是看不见的。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 同名覆盖是双刃剑。7.5 节会利用这个规则在 <code>tests/adv</code> 里放一个参数化版的 <code>guest</code>，只影响本章的用例；但如果你在不知情的目录里也定义了同名夹具，用例实际用的版本可能和你以为的不一样。拿不准就跑一次 <code>--fixtures-per-test</code>。</p>
+</div>
+<h2 id="72-夹具的作用域怎么选">7.2 夹具的作用域怎么选<a class="headerlink" href="#72-夹具的作用域怎么选" title="Permanent link">&para;</a></h2>
+<p>第 3 章 3.4 节列过 scope 的三种取值：<code>function</code>（默认，每条用例一次）、<code>module</code>（每个文件一次）、<code>session</code>（整轮一次）。这一节讲怎么选，以及选大了会出什么事。</p>
+<p>先看现在 <code>tests/conftest.py</code> 里的分工，每个作用域都有明确的理由：</p>
+<table>
+<thead>
+<tr>
+<th>夹具</th>
+<th>作用域</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code>、<code>base_url</code>、<code>account</code></td>
+<td>session</td>
+<td>读文件、定账号，整轮的结果都一样，做一次就够</td>
+</tr>
+<tr>
+<td><code>api</code></td>
+<td>session</td>
+<td>登录一次拿 token，整轮共用，省掉几百次登录请求</td>
+</tr>
+<tr>
+<td><code>guest</code></td>
+<td>function</td>
+<td>每条用例一个干净的客户端，互不干扰</td>
+</tr>
+<tr>
+<td><code>product</code>、<code>unpaid_order</code></td>
+<td>function</td>
+<td>造出来的数据每条用例独立，谁也不踩谁的数据</td>
+</tr>
+</tbody>
+</table>
+<p>一句话概括：<strong>只读的、放之四海皆准的用 session；要造数据、会被改动的用 function。</strong> <code>guest</code> 不升级成 session 就是因为它是「可变的」：某条用例往它的请求头里塞个假 token，下一条用例就跟着遭殃。</p>
+<h3 id="实验两种作用域各被创建几次">实验：两种作用域各被创建几次<a class="headerlink" href="#实验两种作用域各被创建几次" title="Permanent link">&para;</a></h3>
+<p><code>tests/adv/test_adv_scope.py</code> 里有两个夹具，一个 session、一个 function，三个参数化的用例都用到它们，夹具被创建时打印一行字：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""作用域实验：加 -s 运行，看两个夹具各被创建了几次。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">session_box</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">创建 session_box"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{}</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">function_box</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">创建 function_box"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{}</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"n"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_scope</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">session_box</span><span class="p">,</span> <span class="n">function_box</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">session_box</span> <span class="o">==</span> <span class="p">{}</span> <span class="ow">and</span> <span class="n">function_box</span> <span class="o">==</span> <span class="p">{}</span>
+</code></pre></div>
+<p>加 <code>-s</code> 运行（不加深究的话记住：<code>-s</code> 能看到用例和夹具里 print 的内容）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_scope.py -s -q
+
+创建 session_box
+
+创建 function_box
+.
+创建 function_box
+.
+创建 function_box
+.
+3 passed in 0.10s
+</code></pre></div>
+<p><code>session_box</code> 整轮只创建了 1 次，<code>function_box</code> 三条用例各创建一次，这就是两种作用域的实际行为。想看更正式的版本，用第 3 章用过的 <code>--setup-show</code>（输出做了省略）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_scope.py --setup-show
+SETUP    S session_box
+        SETUP    F function_box
+        tests/adv/test_adv_scope.py::test_scope[1] ... .
+        TEARDOWN F function_box
+        SETUP    F function_box
+        tests/adv/test_adv_scope.py::test_scope[2] ... .
+        TEARDOWN F function_box
+        SETUP    F function_box
+        tests/adv/test_adv_scope.py::test_scope[3] ... .
+        TEARDOWN F function_box
+TEARDOWN S session_box
+============================== 3 passed in 0.09s ==============================
+</code></pre></div>
+<p><code>S</code> 是 session，<code>F</code> 是 function：<code>session_box</code> 在最开始建、最后拆；<code>function_box</code> 在每条用例前后各建拆一次。</p>
+<h3 id="作用域选大了的风险一次退出登录全场连坐">作用域选大了的风险：一次退出登录，全场连坐<a class="headerlink" href="#作用域选大了的风险一次退出登录全场连坐" title="Permanent link">&para;</a></h3>
+<p>session 夹具整轮只有一份，意味着<strong>任何一条用例把它改坏，后面所有用例跟着遭殃</strong>。拿最典型的登录态做个真实的事故演示。新建一个临时文件（看完就删）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_tmp_logout.py —— 演示完就删</span>
+<span class="sd">"""临时文件：演示 session 夹具被一条用例改坏，后面的用例全部受连累。看完就删。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_logout_with_shared_client</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">logout</span><span class="p">())</span>                 <span class="c1"># 错误示范：拿整轮共用的客户端去退出登录</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_my_orders</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">list_orders</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_my_balance</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</code></pre></div>
+<p>第一条用例把共享客户端的 token 注销了，看结果：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_logout.py
+tests\adv\test_adv_tmp_logout.py .FF                                     [100%]
+================================== FAILURES ===================================
+...
+E       AssertionError: HTTP 状态码是 401，响应：{"code":40101,"msg":"未登录或 token 无效","data":null}
+...
+=========================== short test summary info ===========================
+FAILED tests/adv/test_adv_tmp_logout.py::test_my_orders - AssertionError: HTT...
+FAILED tests/adv/test_adv_tmp_logout.py::test_my_balance - AssertionError: HT...
+========================= 2 failed, 1 passed in 0.40s =========================
+</code></pre></div>
+<p>闯祸的那条自己是绿的，被连累的两条全红了，而且报错指向的接口和真正的病灶隔着一个文件——这种「失败原因不在失败用例里」的问题，在实际项目里能耗掉一下午。演示完把这个文件删掉。</p>
+<p>正确的写法第 4 章已经做过：<code>tests/api/test_login.py</code> 里那条「退出登录后原来的 token 失效」的用例，自己新建了一个客户端去登录、退出，不碰共享的 <code>api</code>（第 4 章 4.6 节）。会破坏共享状态的操作，永远用专用数据。</p>
+<p>作用域选型的三条建议收个尾：</p>
+<ol>
+<li>默认 function，有明确的复用理由再升级；</li>
+<li>session 夹具里的对象当成「只读的」来对待，用例不要改它；</li>
+<li>拿不准时想想：两条用例同时用它，会不会互相影响？会就别共享。</li>
+</ol>
+<p><code>module</code> 作用域（每个文件执行一次）介于两者之间，实际项目里出场率很低：一个文件里的用例共享一份数据，多数情况 function 已经够用。真想用 module 时先停一下，问自己这些用例为什么留在一个文件里——如果是同一组输入的重复，参数化是更好的答案。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 作用域大的夹具不能依赖作用域小的：session 夹具里不能去要一个 function 夹具，pytest 会在用例启动前直接报错（<code>ScopeMismatch</code>，7.7 节有真实报错）。道理也简单：session 的东西整轮一份，function 的东西每条用例一份，前者没法等后者。</p>
+</div>
+<h2 id="73-工厂夹具用例里要造多份数据">7.3 工厂夹具：用例里要造多份数据<a class="headerlink" href="#73-工厂夹具用例里要造多份数据" title="Permanent link">&para;</a></h2>
+<p><code>unpaid_order</code> 夹具很好用，但它一次只能给一条用例造一张订单。遇到「下三张单、支付其中一张、断言另外两张还能取消」这样的场景，要么在用例里连写三次下单，要么把夹具改成<strong>工厂夹具</strong>：夹具不再返回数据本身，返回一个造数函数，用例要几张调几次。</p>
+<p><code>tests/adv/test_adv_factory.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""工厂夹具：夹具返回一个造数函数，用例要几张造几张。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_order</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""造单工厂：调用一次造一张待支付订单。造出来的单在清理阶段统一处理。"""</span>
+    <span class="n">made</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}]))</span>
+        <span class="n">made</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">order</span>
+
+    <span class="k">yield</span> <span class="n">_make</span>
+    <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">made</span><span class="p">:</span>   <span class="c1"># 清理：只有还没支付的才需要取消，把库存还回去</span>
+        <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span><span class="p">:</span>
+            <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_one_leave_others_cancellable</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">make_order</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""一次造 3 张单：支付其中 1 张，另外 2 张还能取消。"""</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="p">[</span><span class="n">make_order</span><span class="p">(),</span> <span class="n">make_order</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">make_order</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">({</span><span class="n">o</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">})</span> <span class="o">==</span> <span class="mi">3</span>       <span class="c1"># 数量不同，金额也各不相同</span>
+
+    <span class="n">paid</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">orders</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">paid</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+
+    <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"CANCELLED"</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">orders</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3003</span>                          <span class="c1"># 已取消的订单不能再支付</span>
+</code></pre></div>
+<p>对照普通夹具看三个变化：</p>
+<ul>
+<li><code>_make</code> 是定义在夹具里面的函数，可以带参数（<code>quantity</code>），用例调用时才真正下单；</li>
+<li>每造一张单就记进 <code>made</code> 列表，清理阶段统一过一遍：还没支付的取消，把库存还回去，已经支付的和已取消的不动；</li>
+<li><code>yield _make</code> 交出去的是函数本身，不是调用结果。</li>
+</ul>
+<p>运行，并顺手加上 <code>-o log_cli=true</code> 把每个请求的日志实时打出来，看这场用例实际发了哪些请求：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_factory.py -o log_cli=true -q
+
+tests/adv/test_adv_factory.py::test_pay_one_leave_others_cancellable
+------------------------------- live log setup --------------------------------
+16:20:52 INFO POST /api/login -&gt; HTTP 200，耗时 74 毫秒
+16:20:52 INFO GET /api/products -&gt; HTTP 200，耗时 57 毫秒
+-------------------------------- live log call --------------------------------
+16:20:52 INFO POST /api/orders -&gt; HTTP 200，耗时 52 毫秒
+16:20:52 INFO POST /api/orders -&gt; HTTP 200，耗时 34 毫秒
+16:20:52 INFO POST /api/orders -&gt; HTTP 200，耗时 34 毫秒
+16:20:52 INFO POST /api/orders/SO20261022000008/pay -&gt; HTTP 200，耗时 72 毫秒
+16:20:52 INFO POST /api/orders/SO20261022000009/cancel -&gt; HTTP 200，耗时 72 毫秒
+16:20:52 INFO POST /api/orders/SO20261022000010/cancel -&gt; HTTP 200，耗时 68 毫秒
+16:20:52 INFO POST /api/orders/SO20261022000009/pay -&gt; HTTP 200，耗时 2 毫秒
+PASSED                                                                   [100%]
+------------------------------ live log teardown ------------------------------
+16:20:52 INFO GET /api/orders/SO20261022000008 -&gt; HTTP 200，耗时 69 毫秒
+16:20:52 INFO GET /api/orders/SO20261022000009 -&gt; HTTP 200，耗时 40 毫秒
+16:20:52 INFO GET /api/orders/SO20261022000010 -&gt; HTTP 200，耗时 64 毫秒
+
+============================== 1 passed in 0.66s ==============================
+</code></pre></div>
+<p>日志和代码完全对得上：准备阶段登录、搜商品；用例里连下三单、支付第一张、取消后两张、再验一次不能支付；清理阶段逐张查状态，三张都不是待支付，一次多余的取消都没有。</p>
+<p>什么时候值得写工厂夹具：一条用例需要<strong>数量不定、参数各异</strong>的多份数据时。只要一份的，普通夹具更直白。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 工厂夹具有两种典型手误：一是 <code>yield</code> 后面忘了写 <code>return _make</code>——直接 <code>yield</code> 什么都不交，用例拿到 <code>None</code>，一调用就报 <code>TypeError: 'NoneType' object is not callable</code>；二是多打一对括号，写成 <code>yield _make()</code>，交出去的是当场造好的那一条数据，第二次调用就报 <code>TypeError: 'dict' object is not callable</code>。看到 <code>object is not callable</code> 先检查夹具交出去的是函数还是结果。</p>
+</div>
+<h2 id="74-autouse-夹具自动给每条用例做的事">7.4 autouse 夹具：自动给每条用例做的事<a class="headerlink" href="#74-autouse-夹具自动给每条用例做的事" title="Permanent link">&para;</a></h2>
+<p>到目前为止，用例都是把夹具名写进参数才能用它。autouse 夹具反过来：<strong>声明了 <code>autouse=True</code>，作用范围内每条用例都自动执行它，用例一个字都不用写。</strong> 适合做「每条用例都该有、但谁也不想每条都写」的事，比如记日志、记耗时、清理临时目录。</p>
+<p>本章在 <code>tests/adv/conftest.py</code> 里写了一个实用的例子：自动记下每条用例发过的每个接口请求，用例失败时把最慢的几个打印出来，省得你去猜失败是不是接口慢造成的。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/conftest.py（节选）</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">hookimpl</span><span class="p">(</span><span class="n">hookwrapper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pytest_runtest_makereport</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">call</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""把每条用例各阶段的结果记到用例对象上，夹具在清理阶段才能知道用例有没有失败。"""</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="k">yield</span>
+    <span class="n">rep</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"rep_</span><span class="si">{</span><span class="n">rep</span><span class="o">.</span><span class="n">when</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">rep</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">watch_api</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">api</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""自动对每条用例生效：记下它发过的每个接口请求，失败时把最慢的几个打印出来。"""</span>
+    <span class="n">calls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">original</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">timed_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">original</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">calls</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="n">api</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">timed_request</span>
+    <span class="k">yield</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">original</span>
+    <span class="n">rep</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="s2">"rep_call"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rep</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="n">calls</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">这条用例发过的接口请求，按耗时排最慢的 3 个："</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ms</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">calls</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">ms</span><span class="si">:</span><span class="s2">6.0f</span><span class="si">}</span><span class="s2"> 毫秒  </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>几个要点：</p>
+<ul>
+<li><code>api.request</code> 是客户端发所有请求的必经之路（第 4 章 4.3 节），把它临时换成一个会记耗时的版本，用例毫无感知；<code>yield</code> 之后再换回去；</li>
+<li>开头那个钩子把每条用例的结果记下来，夹具在清理阶段才能知道用例失败没有——<code>yield</code> 之后用例已经跑完，但结果不查是拿不到的。第 11 章做 UI 失败截图时还会用到同一个套路；</li>
+<li>只有失败时才打印，通过时一行输出都不添。</li>
+</ul>
+<p>先验证 autouse 真的对每条用例生效。<code>tests/adv/test_adv_autouse.py</code> 里的用例没有写 <code>watch_api</code> 参数：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""autouse 夹具的效果：这条用例没有写 watch_api 参数，它也会自动生效。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_me_still_works</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="n">api</span><span class="o">.</span><span class="n">username</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_autouse.py --setup-show
+        SETUP    F watch_api (fixtures used: api)
+        tests/adv/test_adv_autouse.py::test_me_still_works ... .
+        TEARDOWN F watch_api
+============================== 1 passed in 0.13s ==============================
+</code></pre></div>
+<p><code>SETUP F watch_api</code> 出现在用例之前——用例没请它，它自己来了。</p>
+<p>再看失败时的效果。新建临时文件，故意断言错一个数：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_tmp_fail.py —— 演示完就删</span>
+<span class="sd">"""临时文件：故意失败，看 autouse 夹具和失败排查参数的效果。看完就删。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_search_headphones</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">准备搜索耳机"</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">"耳机"</span><span class="p">))</span>
+    <span class="n">detail</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第一个商品是："</span><span class="p">,</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>        <span class="c1"># 实际是 2，故意写错</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_me</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"alice"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_fail.py
+collected 2 items
+
+tests\adv\test_adv_tmp_fail.py F.                                        [100%]
+
+================================== FAILURES ===================================
+___________________________ test_search_headphones ____________________________
+
+    def test_search_headphones(api):
+        print("\n准备搜索耳机")
+        data = ok(api.search_products(keyword="耳机"))
+        detail = ok(api.get_product(data["items"][0]["id"]))
+        print("第一个商品是：", detail["name"])
+&gt;       assert data["total"] == 3        # 实际是 2，故意写错
+E       assert 2 == 3
+
+tests\adv\test_adv_tmp_fail.py:10: AssertionError
+----------------------------- Captured log setup ------------------------------
+16:21:23 INFO POST /api/login -&gt; HTTP 200，耗时 58 毫秒
+---------------------------- Captured stdout call ----------------------------
+
+准备搜索耳机
+第一个商品是： 蓝牙耳机
+------------------------------ Captured log call ------------------------------
+16:21:23 INFO GET /api/products -&gt; HTTP 200，耗时 62 毫秒
+16:21:23 INFO GET /api/products/1 -&gt; HTTP 200，耗时 71 毫秒
+-------------------------- Captured stdout teardown ---------------------------
+
+这条用例发过的接口请求，按耗时排最慢的 3 个：
+      72 毫秒  GET /api/products/1
+      62 毫秒  GET /api/products
+=========================== short test summary info ===========================
+FAILED tests/adv/test_adv_tmp_fail.py::test_search_headphones - assert 2 == 3
+========================= 1 failed, 1 passed in 0.53s =========================
+</code></pre></div>
+<p>一段输出里信息全齐了：断言差在哪（期望 3、实际 2）、夹具阶段的日志（<code>Captured log setup</code>）、用例里 print 的内容（<code>Captured stdout call</code>）、用例阶段的日志（<code>Captured log call</code>，第 4 章 4.10 节配的日志在失败时自动带出来），最后是 <code>watch_api</code> 在清理阶段打印的最慢请求。这个文件看完就删，7.11 节还会借它演示排查参数。</p>
+<p>autouse 的反面和正面一样清楚：<strong>用例读起来看不出自己被它影响。</strong> 读 <code>test_me_still_works</code> 的人，从参数列表里完全看不到 <code>watch_api</code> 的存在。所以 autouse 只用来做「对每条用例都成立、又不需要用例关心」的事（记耗时、清理目录），不要把业务前置塞进去——比如「给订单打折扣」这种只有部分用例需要的逻辑，老老实实写成普通夹具，让用例写出来。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** autouse 夹具的代价按「用例总数 × 1」计算。在里面写一次网络请求、一次 sleep，整套用例每条都要付一遍。判断标准：这件事对作用范围里的每一条用例都必要吗？有一条不必要，就别用 autouse。</p>
+</div>
+<h2 id="75-参数化夹具同一个夹具跑多份参数">7.5 参数化夹具：同一个夹具跑多份参数<a class="headerlink" href="#75-参数化夹具同一个夹具跑多份参数" title="Permanent link">&para;</a></h2>
+<p>第 3 章 3.5 节的 <code>parametrize</code> 解决的是「同一份逻辑换数据」：登录失败的数据换四组，用例就跑四遍。参数化夹具解决的是另一件事：<strong>同一组用例，换的是准备出来的环境。</strong></p>
+<p>最典型的场景是登录态。查「我的信息」这个接口，合法 token 应该查得到，假 token 和不带 token 都该被挡在门外——这三种情况下用例步骤完全一样，差的只是客户端处在什么状态。把 <code>guest</code> 参数化成三种客户端，一条用例就覆盖了三种登录态。</p>
+<p><code>tests/adv/conftest.py</code> 里的这段定义，覆盖了外层的同名 <code>guest</code>（7.1 节刚讲过就近覆盖的规则，这就是一个实用场景）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/conftest.py（节选）</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[(</span><span class="s2">"合法token"</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="s2">"假token"</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s2">"不带token"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)],</span>
+                <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">"合法token"</span><span class="p">,</span> <span class="s2">"假token"</span><span class="p">,</span> <span class="s2">"不带token"</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">guest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">api</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""本目录专用的客户端：同一个夹具名，按参数造出三种登录态的客户端。"""</span>
+    <span class="n">kind</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">"合法token"</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">token</span>    <span class="c1"># 借用 api 夹具的登录态</span>
+    <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">"假token"</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"deadbeef"</span> <span class="o">*</span> <span class="mi">4</span>
+    <span class="k">return</span> <span class="n">client</span>
+</code></pre></div>
+<p>夹具通过 <code>request.param</code> 拿到当前这组参数，<code>ids</code> 给每组起名字。用例本身一行参数都不用加，写法和普通夹具一样：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_param_client.py</span>
+<span class="sd">"""参数化夹具：一条用例跑三种登录态。guest 在本目录被参数化成三种客户端。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_access_me</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""合法 token 能查到自己的信息；假 token、不带 token 都要被挡在门外。"""</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">me</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="n">api</span><span class="o">.</span><span class="n">username</span>   <span class="c1"># 合法 token 借用的是 api 夹具的登录态</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+        <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40101</span>    <span class="c1"># 40101 是没登录或 token 无效</span>
+</code></pre></div>
+<p>（这条用例里 <code>api</code> 是 pytest 从夹具依赖里自动带进来的，<code>guest</code> 的「合法 token」参数借用了它的登录态，所以断言的用户名跟着 <code>api</code> 走。）</p>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_param_client.py -v
+
+tests/adv/test_adv_param_client.py::test_access_me[合法token] PASSED     [ 33%]
+tests/adv/test_adv_param_client.py::test_access_me[假token] PASSED       [ 66%]
+tests/adv/test_adv_param_client.py::test_access_me[不带token] PASSED     [100%]
+
+============================== 3 passed in 0.17s ==============================
+</code></pre></div>
+<p>一条用例变成了三条，名字里带着各自的参数。用 <code>--setup-show</code> 能看到夹具确实为每个参数各起了一份：</p>
+<div class="highlight"><pre><span></span><code>SETUP    F guest (fixtures used: api, config)['合法token']
+tests/adv/test_adv_param_client.py::test_access_me[合法token] ... .
+TEARDOWN F guest['合法token']
+SETUP    F guest (fixtures used: api, config)['假token']
+tests/adv/test_adv_param_client.py::test_access_me[假token] ... .
+TEARDOWN F guest['假token']
+SETUP    F guest (fixtures used: api, config)['不带token']
+tests/adv/test_adv_param_client.py::test_access_me[不带token] ... .
+TEARDOWN F guest['不带token']
+</code></pre></div>
+<p>这个行为要记住，7.13 节还会提：<strong>参数化夹具的每一份参数都是独立的实例</strong>，三条用例拿到的是三个不同的客户端。在夹具里做昂贵的事（登录、造大批数据），代价也要乘以参数个数。</p>
+<p>和 <code>parametrize</code> 怎么分工？经验是：换的是「输入和期望值」，用 <code>parametrize</code>；换的是「环境或前置状态」，用参数化夹具。一个方便记忆的对照：<code>parametrize</code> 的参数最后变成用例名字里方括号里的那份数据；参数化夹具的参数藏在夹具里，用例名字不变（或只带 <code>ids</code> 起的名字），变化体现在每条用例拿到的环境不同。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 参数化夹具只对定义它的目录生效。上面参数化版的 <code>guest</code> 只活在 <code>tests/adv</code> 里，<code>tests/api</code> 的用例（以及后面 UI 章节的用例）用的还是全局那份普通 <code>guest</code>。要是你在别的目录也定义了 <code>guest</code>，两份定义互不影响——是不是你想要的效果，最好跑一次 <code>--fixtures-per-test</code> 确认。</p>
+</div>
+<h2 id="76-skip-与-xfail">7.6 skip 与 xfail<a class="headerlink" href="#76-skip-与-xfail" title="Permanent link">&para;</a></h2>
+<p>不是每条用例在任何时候都该跑：有的依赖特定环境，有的对应一个还没修的已知缺陷。前者用 skip，后者用 xfail。</p>
+<h3 id="skip环境不满足就跳过">skip：环境不满足就跳过<a class="headerlink" href="#skip环境不满足就跳过" title="Permanent link">&para;</a></h3>
+<p><code>tests/adv/test_adv_skip_xfail.py</code> 里有一条并发支付的用例，它只有在练习网站带着缺陷开关启动时才有意义（<code>SHOP_PAY_RACE_BUG=1</code>，第 18 章的实验会用它）。开关没开就运行，它只会白白失败，所以用 <code>skipif</code> 把它挡起来：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_skip_xfail.py（节选）</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skipif</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"SHOP_PAY_RACE_BUG"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"1"</span><span class="p">,</span>
+                    <span class="n">reason</span><span class="o">=</span><span class="s2">"要观察这个缺陷，得用 SHOP_PAY_RACE_BUG=1 重启练习网站"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_race_duplicated_deduction</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""在带缺陷的网站上，并发支付会成功多次、余额被多扣。"""</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>平时的运行结果：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_skip_xfail.py -v
+
+tests/adv/test_adv_skip_xfail.py::test_pay_race_duplicated_deduction SKIPPED [ 50%]
+tests/adv/test_adv_skip_xfail.py::test_apply_discount_keeps_cents XFAIL  [100%]
+
+=========================== short test summary info ===========================
+SKIPPED [1] tests\adv\test_adv_skip_xfail.py:11: 要观察这个缺陷，得用 SHOP_PAY_RACE_BUG=1 重启练习网站
+XFAIL tests/adv/test_adv_skip_xfail.py::test_apply_discount_keeps_cents - 缺陷 #1024：折扣金额被截断丢了小数，开发修复后这条会变成 XPASS
+======================== 1 skipped, 1 xfailed in 0.43s ========================
+</code></pre></div>
+<p>（第二条 XFAIL 是下一小节的主角，先不管。）结尾汇总把跳过原因原样带了出来，谁看到都知道这条用例为什么没跑、要怎么让它跑。把练习网站换成带开关的版本再跑一次，它就真的执行了：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_skip_xfail.py -v
+tests/adv/test_adv_skip_xfail.py::test_pay_race_duplicated_deduction PASSED [ 50%]
+...
+======================== 1 passed, 1 xfailed in 0.67s ========================
+</code></pre></div>
+<p>验证完记得去掉开关、按默认方式重启练习网站。</p>
+<p><code>skipif</code> 是在收集阶段就判断；还有一批情况要跑到一半才知道该不该继续，这时在用例里直接调 <code>pytest.skip("原因")</code>。参考代码里第 4 章 4.7 节那条「余额不足」的用例就是这么做的：余额大到单笔订单凑不出超过它的金额时，就地跳过。</p>
+<h3 id="xfail已知缺陷先做标记">xfail：已知缺陷先做标记<a class="headerlink" href="#xfail已知缺陷先做标记" title="Permanent link">&para;</a></h3>
+<p>测试过程中经常碰到开发暂时不修的缺陷。相关的用例删掉可惜（修复后还得靠它验证），留着又天天红。xfail 的语义是：<strong>这条用例会跑，但预计失败；失败了记 XFAIL，算正常；要是它通过了，记 XPASS，反而是个信号。</strong></p>
+<p>演示用的例子是测试工程自己的一个小工具（真实项目里对应的是被测系统的缺陷）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_skip_xfail.py（节选）</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_discount</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">percent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""打折工具：percent 是减掉的百分比，比如 20 表示打八折。</span>
+
+<span class="sd">    已知缺陷：计算结果用 int() 截断，丢了小数部分（缺陷单 #1024，开发还没修）。</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">amount</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">percent</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s2">"缺陷 #1024：折扣金额被截断丢了小数，开发修复后这条会变成 XPASS"</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_apply_discount_keeps_cents</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">apply_discount</span><span class="p">(</span><span class="mf">199.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="mf">159.2</span><span class="p">)</span>
+</code></pre></div>
+<p><code>int()</code> 把 159.2 截成了 159，断言失败，正好落进 xfail 的预期里，上一小节的输出里已经见过：<code>XFAIL</code>，汇总会带出 reason。</p>
+<p>关键是 <code>strict=True</code>。它的意思是：这条用例<strong>不允许</strong>悄悄变绿。哪天开发把 <code>int()</code> 改对了，用例通过，XPASS 会直接升级成 FAILED，逼着你来处理——多半是把标记删掉，让这条用例恢复成普通用例。演示一下缺陷修好后的样子（临时文件，看完就删）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_tmp_xpass.py —— 演示完就删</span>
+<span class="sd">"""临时文件：缺陷修好之后，带 xfail 标记的用例会怎样。看完就删。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_discount</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">percent</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">amount</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">percent</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># 开发已经修好：保留两位小数</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s2">"缺陷 #1024"</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_discount_strict</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">apply_discount</span><span class="p">(</span><span class="mf">199.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="mf">159.2</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s2">"缺陷 #1024"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_discount_not_strict</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">apply_discount</span><span class="p">(</span><span class="mf">199.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="mf">159.2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_xpass.py -v
+tests/adv/test_adv_tmp_xpass.py::test_discount_strict FAILED             [ 50%]
+tests/adv/test_adv_tmp_xpass.py::test_discount_not_strict XPASS (缺...)  [100%]
+...
+=========================== short test summary info ===========================
+XPASS tests/adv/test_adv_tmp_xpass.py::test_discount_not_strict - 缺陷 #1024
+FAILED tests/adv/test_adv_tmp_xpass.py::test_discount_strict - [XPASS(strict)...
+======================== 1 failed, 1 xpassed in 0.11s =========================
+</code></pre></div>
+<p>不带 strict 的那条只是安静地显示 XPASS，很容易被当成通过看漏掉；带 strict 的直接红给你看。想让整个工程所有 xfail 都按严格模式处理，在 <code>pytest.ini</code> 里加一行 <code>xfail_strict = true</code>，标记上就不用逐个写 <code>strict=True</code> 了（加完记得跑一遍，把已经修好却还挂着标记的用例清出来）。</p>
+<p>两者的分工用一句话记住：<strong>skip 是「现在不该跑」，跑了也没意义；xfail 是「要跑，预计失败，失败了才算对」。</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** xfail 用例里的断言不要再承担别的验证任务。它失败时整套用例照样全绿，你要是用它验证一个必须成立的功能点，缺陷就藏在你眼皮底下过了。xfail 只包「缺陷修没修」这一件事。</p>
+</div>
+<h2 id="77-monkeypatch用例里临时改环境变量和函数">7.7 monkeypatch：用例里临时改环境变量和函数<a class="headerlink" href="#77-monkeypatch用例里临时改环境变量和函数" title="Permanent link">&para;</a></h2>
+<p>有时候要在用例运行期间临时改点东西：换个环境变量试试配置读取的逻辑，把某个接口的方法换成假返回试试业务函数。要求只有一条：<strong>用例结束后必须还原，不能影响后面的用例。</strong> 这件事 pytest 内置的 <code>monkeypatch</code> 夹具替你做好了，用例结束（包括失败的情况）自动还原。</p>
+<h3 id="临时改环境变量setenv">临时改环境变量：setenv<a class="headerlink" href="#临时改环境变量setenv" title="Permanent link">&para;</a></h3>
+<p>第 4 章 4.4 节的配置读取按 <code>TEST_ENV</code> 环境变量找 <code>config/&lt;环境名&gt;.yaml</code>。写条用例验证「环境名指向不存在的文件时，报错要说清楚是哪个文件」：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_monkeypatch.py（节选）</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_config_reads_chosen_env</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""临时把环境名换成 staging：配置文件不存在时，报错要说清楚是哪个文件没找到。"""</span>
+    <span class="n">load_config</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>                     <span class="c1"># 配置读一次就会缓存，先清掉再实验</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setenv</span><span class="p">(</span><span class="s2">"TEST_ENV"</span><span class="p">,</span> <span class="s2">"staging"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc_info</span><span class="p">:</span>
+        <span class="n">load_config</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="s2">"staging.yaml"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc_info</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p><code>monkeypatch.setenv(名字, 值)</code> 临时设置环境变量，用例结束自动还原成原来的值。<code>load_config.cache_clear()</code> 是因为配置模块用了 <code>@cache</code> 缓存，不清掉的话读到的是上一轮的缓存结果。</p>
+<h3 id="临时换函数setattr">临时换函数：setattr<a class="headerlink" href="#临时换函数setattr" title="Permanent link">&para;</a></h3>
+<p>更常用的场景是把依赖换成假的。<code>order_summary</code> 这个业务函数依赖 <code>api.list_orders()</code> 的返回，要测它不必真下一堆单，把方法临时换掉就行：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_monkeypatch.py（节选）</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FakeResponse</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""假的接口返回：只实现业务函数用到的部分。"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"ok"</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">order_summary</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""业务函数：把订单列表整理成一句话。它只依赖 api.list_orders() 的返回。"""</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">list_orders</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s2">"items"</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="s2">"还没有订单"</span>
+    <span class="n">latest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"共 </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'total'</span><span class="p">]</span><span class="si">}</span><span class="s2"> 张订单，最新一张是 </span><span class="si">{</span><span class="n">latest</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order_summary_with_fake_return</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">monkeypatch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""把 list_orders 换成假返回：不用真的下单，也能测业务函数。"""</span>
+    <span class="n">fake</span> <span class="o">=</span> <span class="n">FakeResponse</span><span class="p">({</span><span class="s2">"total"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"items"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"orderNo"</span><span class="p">:</span> <span class="s2">"ORD0001"</span><span class="p">},</span> <span class="p">{</span><span class="s2">"orderNo"</span><span class="p">:</span> <span class="s2">"ORD0002"</span><span class="p">}]})</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="s2">"list_orders"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">:</span> <span class="n">fake</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">order_summary</span><span class="p">(</span><span class="n">api</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"共 2 张订单，最新一张是 ORD0001"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order_summary_back_to_real</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""上一条用例结束后 list_orders 已经自动还原：能查到夹具刚造的那张单。"""</span>
+    <span class="k">assert</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">order_summary</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+</code></pre></div>
+<p>第二条用例是给「自动还原」做的证明：它跑在假返回那条之后，<code>list_orders</code> 已经是真方法，能查到夹具刚造的那张订单。整个文件运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_monkeypatch.py -v
+
+tests/adv/test_adv_monkeypatch.py::test_config_reads_chosen_env PASSED   [ 33%]
+tests/adv/test_adv_monkeypatch.py::test_order_summary_with_fake_return PASSED [ 66%]
+tests/adv/test_adv_monkeypatch.py::test_order_summary_back_to_real PASSED [100%]
+
+============================== 3 passed in 0.34s ==============================
+</code></pre></div>
+<p>它和第 4 章 4.12 节讲的 Mock 怎么分工：monkeypatch 管的是<strong>用例内部、Python 对象级别</strong>的临时替换，改完马上还原；要长期顶替一个外部系统（银行、物流），还是得搭专门的 Mock 服务。</p>
+<p>monkeypatch 有两个容易踩的坑，都实测过。第一个：<strong>它本身是 function 作用域的夹具，不能在 session 夹具里用。</strong> 真实报错（临时文件验证过，看完已删）：</p>
+<div class="highlight"><pre><span></span><code>ERROR at setup of test_env
+ScopeMismatch: You tried to access the function scoped fixture monkeypatch with a
+session scoped request object. Requesting fixture stack:
+tests\adv\test_adv_tmp_mp_scope.py:5:  def staging_env(monkeypatch)
+</code></pre></div>
+<p>session 级的清理类需求，直接在夹具的 <code>yield</code> 后面写还原代码，别指望 monkeypatch。</p>
+<p>第二个：图省事直接赋值、不走 monkeypatch，还原就没人管了。把共享客户端的方法直接换掉：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_fake_directly</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">list_orders</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">:</span> <span class="kc">None</span>      <span class="c1"># 直接赋值，没人负责改回去</span>
+</code></pre></div>
+<p>这条用例自己能过，下一条老实用 <code>list_orders</code> 的用例立刻炸出莫名其妙的错误：</p>
+<div class="highlight"><pre><span></span><code>E   AttributeError: 'NoneType' object has no attribute 'status_code'
+</code></pre></div>
+<p>session 夹具整轮一份，改了就是改了。要临时替换，一律走 monkeypatch。</p>
+<h2 id="78-自定义-marker登记筛选与防手误">7.8 自定义 marker：登记、筛选与防手误<a class="headerlink" href="#78-自定义-marker登记筛选与防手误" title="Permanent link">&para;</a></h2>
+<p>第 4 章配 <code>pytest.ini</code> 时登记过两个标记（当时说第 19 章展开，这里提前把它讲透）：</p>
+<div class="highlight"><pre><span></span><code><span class="na">markers</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">smoke</span><span class="o">:</span><span class="w"> </span><span class="s">冒烟用例，每次改动后最先跑的那一小批</span>
+<span class="w">    </span><span class="na">concurrency</span><span class="o">:</span><span class="w"> </span><span class="s">并发类用例</span>
+</code></pre></div>
+<p>用 <code>pytest --markers</code> 能列出所有已登记的标记和说明（后面几条是插件自带的）：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest --markers
+@pytest.mark.smoke: 冒烟用例，每次改动后最先跑的那一小批
+
+@pytest.mark.concurrency: 并发类用例
+
+@pytest.mark.skip_browser(name): mark test to be skipped a specific browser
+
+@pytest.mark.only_browser(name): mark test to run only on a specific browser
+...
+</code></pre></div>
+<p>给用例打上标记，就能按标记筛选运行。第 4 章已经给三条最关键的接口用例打了 <code>@pytest.mark.smoke</code>：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -m smoke -v
+collecting ... collected 28 items / 25 deselected / 3 selected
+
+tests/api/test_login.py::test_login_success PASSED                       [ 33%]
+tests/api/test_order_flow.py::test_purchase_flow PASSED                  [ 66%]
+tests/api/test_products.py::test_search_by_keyword PASSED                [100%]
+
+====================== 3 passed, 25 deselected in 0.65s =======================
+</code></pre></div>
+<p>只选中了带 smoke 标记的 3 条，其余的被排除（deselected）。第一行的总数取决于你的 <code>tests/api</code> 里现在有多少条用例，前几章写得越多这个数越大，选中的始终是那 3 条。<code>concurrency</code> 标记现在还没有用例在用，第 18 章写并发支付的用例时会用上它。</p>
+<p><code>-m</code> 后面可以写表达式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选中谁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pytest -m smoke</code></td>
+<td>所有冒烟用例</td>
+</tr>
+<tr>
+<td><code>pytest -m "not concurrency"</code></td>
+<td>除了并发用例的全部</td>
+</tr>
+<tr>
+<td><code>pytest -m "smoke and not concurrency"</code></td>
+<td>冒烟用例里去掉并发的</td>
+</tr>
+</tbody>
+</table>
+<p>标记要先登记在 <code>pytest.ini</code> 里再用。没登记会怎样？做个对照实验。新建临时文件，把 <code>smoke</code> 手误打成 <code>smoek</code>（看完就删）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/adv/test_adv_tmp_marker.py —— 演示完就删</span>
+<span class="sd">"""临时文件：标记名写错了会怎样。看完就删。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoek</span>            <span class="c1"># 想写 smoke，手误打成了 smoek</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_typo</span><span class="p">():</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<p>按第 4 章的 <code>pytest.ini</code>（<code>addopts = -ra</code>）运行，只有一条警告，用例照跑：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_marker.py -q
+.                                                                        [100%]
+============================== warnings summary ===============================
+tests\adv\test_adv_tmp_marker.py:5
+  ...\tests\adv\test_adv_tmp_marker.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.smoek - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoek            # 想写 smoke，手误打成了 smoek
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 1 warning in 0.07s
+</code></pre></div>
+<p>危险就藏在这里：那条手误的用例不在任何标记组里，<code>-m smoke</code> 永远选不中它，它就静悄悄地不被执行——你以为冒烟全过了，其实少跑了一条。警告混在一大段输出里，没人会每次都细看。</p>
+<p>把警告升级成报错：在 <code>pytest.ini</code> 的 <code>addopts</code> 里加上 <code>--strict-markers</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># -ra：结尾汇总所有没通过的用例；--strict-markers：用了没登记的标记直接报错，防止手误</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-ra --strict-markers</span>
+</code></pre></div>
+<p>再跑一次，收集阶段直接报错，一条用例都不跑：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_marker.py
+collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+______________ ERROR collecting tests/adv/test_adv_tmp_marker.py ______________
+'smoek' not found in `markers` configuration option
+=========================== short test summary info ===========================
+ERROR tests/adv/test_adv_tmp_marker.py - Failed: 'smoek' not found in `marker...
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.40s ===============================
+</code></pre></div>
+<p>工程里常跑几百条用例，这类手误早晚出现，<code>--strict-markers</code> 把它变成一秒就能修的启动报错，值得常开。演示完把临时文件删掉，<code>--strict-markers</code> 留在 <code>pytest.ini</code> 里；后面 UI 章节还会往这一行追加几个参数。</p>
+<h2 id="79-用例的发现规则与组织">7.9 用例的发现规则与组织<a class="headerlink" href="#79-用例的发现规则与组织" title="Permanent link">&para;</a></h2>
+<p>pytest 怎么找出哪些是用例？三条规矩：</p>
+<ul>
+<li>文件名以 <code>test_</code> 开头（或者以 <code>_test</code> 结尾）；</li>
+<li>用例是 <code>test_</code> 开头的函数；</li>
+<li><code>Test</code> 开头的类也算一组候选，但类里不能写 <code>__init__</code> 方法。</li>
+</ul>
+<p>第三条的限制最容易被忽略：类里写了 <code>__init__</code>，整个类会被跳过，只留一条警告：</p>
+<div class="highlight"><pre><span></span><code>PytestCollectionWarning: cannot collect test class 'TestWithInit' because it has a __init__ constructor
+</code></pre></div>
+<p>所以收用例时如果发现某几条怎么都不被执行，先看看它们是不是在带 <code>__init__</code> 的类里。</p>
+<h3 id="目录怎么分组">目录怎么分组<a class="headerlink" href="#目录怎么分组" title="Permanent link">&para;</a></h3>
+<p><code>pytest.ini</code> 里的 <code>testpaths = tests</code> 限定了只在 <code>tests</code> 里找。到本章为止，工程的分组是这样：</p>
+<div class="highlight"><pre><span></span><code>tests/
+├─ conftest.py        全局夹具
+├─ api/               接口用例
+└─ adv/               本章演示（带自己的 conftest.py 和 deep 子目录）
+</code></pre></div>
+<p>后面 UI 章节（第 8～11 章）会加一个 <code>ui/</code> 目录放 UI 用例。分组按「怎么跑、要什么环境」来切，和被测系统的模块划分不是一回事：接口用例一秒几百条、不需要浏览器；UI 用例要开浏览器、慢；各自的专用夹具放在各自的 conftest.py 里。想让 pytest 自己交代一下找到了什么，用收集模式：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv --collect-only
+collected 15 items
+
+&lt;Dir ch7&gt;
+  &lt;Dir tests&gt;
+    &lt;Dir adv&gt;
+      &lt;Dir deep&gt;
+        &lt;Module test_deep_who.py&gt;
+          &lt;Function test_who&gt;
+      &lt;Module test_adv_autouse.py&gt;
+        &lt;Function test_me_still_works&gt;
+      &lt;Module test_adv_factory.py&gt;
+        &lt;Function test_pay_one_leave_others_cancellable&gt;
+      ...
+</code></pre></div>
+<p>本章在 <code>tests/adv</code> 里放了几条演示用例，你自己的接口用例有多少条，把目录换成 <code>tests\api</code> 一跑便知。加 <code>-q</code> 后统计更快：<code>pytest --collect-only -q</code> 的最后一行就是总数。</p>
+<p>顺带说一类既不是用例也不是夹具的代码：造测试手机号的函数、拼签名的工具、计算折扣的方法。这类普通函数放 <code>common/</code> 里，用例用 import 明明白白地引进来。conftest.py 只放夹具和钩子——它靠约定自动加载，塞太多普通函数进去，读用例的人就找不到函数是哪来的了。</p>
+<h3 id="测试类什么时候用">测试类什么时候用<a class="headerlink" href="#测试类什么时候用" title="Permanent link">&para;</a></h3>
+<p>类可以把一组用例归在一起，最常见的用途是<strong>给整组打同一个标记</strong>——标记写在类上，类里每条用例都带上：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在 tests/api 下临时新建验证（看完就删）</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>                       <span class="c1"># 标记写在类上，类里每条用例都带上</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestProductDetail</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guest</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"蓝牙耳机"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_price</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guest</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="s2">"price"</span><span class="p">]</span> <span class="o">==</span> <span class="mf">199.0</span>
+</code></pre></div>
+<p><code>pytest -m smoke --collect-only -q</code> 里能看到两条都被选中了。除此之外不必刻意用类：目录和文件已经承担了分组职责，函数式用例读起来更短；类唯一的额外能力（<code>classmethod</code>、共享 <code>self</code> 属性）在测试里很少用得上，还容易诱导人写出用例之间的依赖。</p>
+<h2 id="710-插件机制初识">7.10 插件机制初识<a class="headerlink" href="#710-插件机制初识" title="Permanent link">&para;</a></h2>
+<p>从第 3 章 3.2 节第一次运行 pytest 起，输出里就一直带着这行：</p>
+<div class="highlight"><pre><span></span><code>plugins: allure-pytest-2.16.2, anyio-4.15.1, locust-2.47.0, playwright-0.10.0, xdist-3.8.0
+</code></pre></div>
+<p>这就是 pytest 的插件机制在工作。规律很整齐：</p>
+<ul>
+<li><strong>名字</strong>：插件包都叫 <code>pytest-xxx</code>（pytest-xdist、pytest-timeout、pytest-html），装进虚拟环境就自动生效，不需要在配置里注册；</li>
+<li><strong>入口</strong>：插件的命令行参数和普通参数混在一起，<code>pytest --help</code> 里按来源分组。找某个功能是哪个插件提供的，看分组标题就行：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>reporting:
+  --alluredir=DIR       Generate Allure report in the specified directory (may not exist)
+  --clean-alluredir     Clean alluredir folder if it exists
+...
+Playwright:
+  --browser={chromium,firefox,webkit}
+  --browser-channel=BROWSER_CHANNEL
+  --tracing={on,off,retain-on-failure}
+...
+distributed and subprocess testing:
+  -n, --numprocesses numprocesses
+</code></pre></div>
+<p>输出里那几个插件各管一摊：<code>allure-pytest</code> 第 4 章已经在用，其余几个后面才登场：</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>入口</th>
+<th>用在哪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allure-pytest</td>
+<td><code>--alluredir</code>、<code>allure.step</code>、附件</td>
+<td>第 4 章 4.11 节的报告</td>
+</tr>
+<tr>
+<td>pytest-xdist</td>
+<td><code>pytest -n 4</code>、<code>worker_id</code> 夹具</td>
+<td>并行执行（第 19 章 19.3 节）</td>
+</tr>
+<tr>
+<td>pytest-playwright</td>
+<td><code>--browser-channel</code>、<code>page</code> 夹具、trace</td>
+<td>UI 用例（第 11 章 11.1 节）</td>
+</tr>
+<tr>
+<td>locust</td>
+<td>压测工具安装时顺带注册的插件，用例里用不到</td>
+<td>性能测试部分（第 13 章起）</td>
+</tr>
+</tbody>
+</table>
+<p>想加新插件时，先过三个问题：</p>
+<ol>
+<li><strong>内置参数真的不够用吗？</strong> 比如「防止用例卡死」的诉求，<code>requests</code> 层的 <code>timeout</code> 加上 UI 层的等待策略已经盖住大半，剩下的才轮到 pytest-timeout；</li>
+<li><strong>收益能说清楚吗？</strong> 像 pytest-randomly 那样「随机打乱用例顺序、专治用例间隐含依赖」，收益明确，值得；只是「听说大家都在用」的，缓一缓；</li>
+<li><strong>代价接受吗？</strong> 每个插件多一份依赖，多一份和 pytest 版本、其他插件冲突的可能，流水线上多一个会坏的环节。</li>
+</ol>
+<p>插件装了就要写进 <code>requirements.txt</code>，别人（包括三个月后的你和流水线）才能复现同一套环境。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 本机手动 <code>pip install</code> 了新插件、没写进 requirements.txt，本机越跑越顺，换台机器或流水线一跑就报 <code>unrecognized arguments</code>。装完插件立刻补依赖清单，把它当成收尾步骤。</p>
+</div>
+<h2 id="711-失败排查工具箱">7.11 失败排查工具箱<a class="headerlink" href="#711-失败排查工具箱" title="Permanent link">&para;</a></h2>
+<p>用例红了之后的几分钟最考验效率。把常用的排查参数列成一张表，然后逐个实测：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-x</code></td>
+<td>第一条失败就停，尽快止损</td>
+</tr>
+<tr>
+<td><code>--maxfail=3</code></td>
+<td>攒够 3 条失败再停</td>
+</tr>
+<tr>
+<td><code>--lf</code></td>
+<td>只重跑上一次失败的用例</td>
+</tr>
+<tr>
+<td><code>--tb=short</code></td>
+<td>失败详情压缩成关键几行</td>
+</tr>
+<tr>
+<td><code>--tb=line</code></td>
+<td>每条失败只给一行</td>
+</tr>
+<tr>
+<td><code>--tb=no</code></td>
+<td>不打印失败详情，只看汇总</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>显示用例里 print 的内容</td>
+</tr>
+<tr>
+<td><code>--durations=5</code></td>
+<td>列出最慢的 5 步</td>
+</tr>
+<tr>
+<td><code>-o log_cli=true</code></td>
+<td>实时显示日志（平时失败才带出来）</td>
+</tr>
+</tbody>
+</table>
+<p>还是用 7.4 节那个临时失败文件（<code>test_adv_tmp_fail.py</code>，这里重现一遍、看完就删）。先看两种失败详情的浓度差别：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_fail.py --tb=short
+================================== FAILURES ===================================
+___________________________ test_search_headphones ____________________________
+tests\adv\test_adv_tmp_fail.py:10: in test_search_headphones
+    assert data["total"] == 3        # 实际是 2，故意写错
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert 2 == 3
+...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_fail.py --tb=line
+================================== FAILURES ===================================
+E   assert 2 == 3
+...
+C:\...\tests\adv\test_adv_tmp_fail.py:10: assert 2 == 3
+=========================== short test summary info ===========================
+FAILED tests/adv/test_adv_tmp_fail.py::test_search_headphones - assert 2 == 3
+========================= 1 failed, 1 passed in 0.23s =========================
+</code></pre></div>
+<p>几十条用例一起红的时候，先 <code>--tb=line</code> 扫一遍文件行号定位范围，再对目标用例用默认的完整详情，比一上来硬读几百行 traceback 快得多。</p>
+<p><code>-x</code> 适合「改了个公共逻辑，先确认别连坐」的场景，配上 <code>--tb=no</code> 连详情都不看，只求快点停：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_fail.py -x --tb=no
+tests\adv\test_adv_tmp_fail.py F
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============================== 1 failed in 0.21s ==============================
+</code></pre></div>
+<p><code>-s</code> 让 print 直接吐在命令行上，配合用例里临时加的调试输出：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv\test_adv_tmp_fail.py -s --tb=no
+准备搜索耳机
+第一个商品是： 蓝牙耳机
+F
+这条用例发过的接口请求，按耗时排最慢的 3 个：
+      37 毫秒  GET /api/products
+      35 毫秒  GET /api/products/1
+.
+1 failed, 1 passed in 0.16s
+</code></pre></div>
+<p>定位到问题、改完断言之后，不用跑全套，<code>--lf</code> 只重跑刚失败的：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest --lf
+run-last-failure: rerun previous 1 failure (skipped 15 files)
+tests\adv\test_adv_tmp_fail.py .                                         [100%]
+
+============================== 1 passed in 0.23s ==============================
+</code></pre></div>
+<p>它记住了上次哪条失败，这次只跑那一条。修好之后记得再跑一次全套确认没有牵连——<code>--lf</code> 是调试工具，不能替代回归。</p>
+<p>「慢」也是要排查的失败。跑一批用例后用 <code>--durations</code> 看时间去哪了：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\adv --durations=5 -q
+............sx.                                                          [100%]
+============================= slowest 5 durations =============================
+0.31s call     tests/adv/test_adv_factory.py::test_pay_one_leave_others_cancellable
+0.16s teardown tests/adv/test_adv_factory.py::test_pay_one_leave_others_cancellable
+0.09s teardown tests/adv/test_adv_monkeypatch.py::test_order_summary_back_to_real
+0.08s setup    tests/adv/test_adv_monkeypatch.py::test_order_summary_back_to_real
+0.07s call     tests/adv/test_adv_monkeypatch.py::test_order_summary_back_to_real
+</code></pre></div>
+<p>setup、call、teardown 三个阶段分开计时，夹具慢还是用例慢，一眼分开。</p>
+<p>失败输出的阅读顺序也值得固定下来：先看结尾的 short test summary info，知道这次一共哪几条挂了；挑一条回到中间的 FAILURES 段，从 <code>&gt;</code> 指住的那一行往下读 <code>E</code> 开头的原因；还看不出所以然，再往上翻 Captured log 段，对照失败那一刻接口的真实返回。从头到尾顺读一遍输出，多数问题当场现形，省掉的是到处乱改、反复重跑的时间。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** <code>--lf</code> 的记录存在工程目录的 <code>.pytest_cache</code> 里。删掉了失败用例之后再跑 <code>--lf</code>，会看到 <code>run-last-failure: N known failures not in selected tests</code>，然后整批照跑——这不是故障，是缓存里留着旧记录。这个目录已经进了 <code>.gitignore</code>，别把它提交到代码仓库，别人的「上次失败」不该影响你的运行。</p>
+</div>
+<h2 id="712-框架设计小结">7.12 框架设计小结<a class="headerlink" href="#712-框架设计小结" title="Permanent link">&para;</a></h2>
+<p>学到这里，回看整个工程，它已经是一个分层清楚的小框架了（<code>tests/ui/</code> 和 <code>pages/</code> 是第 8～11 章要加的，图里先占好位置）：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│ 用例层   tests/api/  tests/adv/  （UI 章节加 tests/ui/）      │
+│          一条用例一个验证点：业务步骤 + 断言，读起来像测试用例 │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ 用例只出现在参数里的夹具和业务方法
+┌──────────────────────────▼──────────────────────────────────┐
+│ 夹具层   tests/conftest.py + 各目录 conftest.py             │
+│          配置、账号、客户端、造数、清理；作用域控制复用粒度    │
+├─────────────────────────────────────────────────────────────┤
+│ 业务封装层   common/api_client.py（ShopApi）   pages/（页面对象）│
+│              一个方法对应一个接口 / 一个页面，改名只改这一层    │
+├─────────────────────────────────────────────────────────────┤
+│ 驱动层   requests（接口）   Playwright（浏览器）              │
+├─────────────────────────────────────────────────────────────┤
+│ 配置与数据   config/*.yaml   data/*.yaml   pytest.ini       │
+├─────────────────────────────────────────────────────────────┤
+│ 运行与报告   pytest 命令行 → Allure 报告 → 群通知             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>这一层结构值不值得维护，有个便宜的试金石：<strong>本章往工程里加了 15 条演示用例，公共代码一行没改。</strong> 新用例只消费已有的夹具和业务方法，说明下面几层的抽象站住了。反过来，如果每写几条用例就要回头改公共层，要么是夹具缺了能力，要么是当初抽象得不对。</p>
+<h3 id="什么时候才值得抽象">什么时候才值得抽象<a class="headerlink" href="#什么时候才值得抽象" title="Permanent link">&para;</a></h3>
+<p>新手最容易犯的错是反向的：还没写几条用例，先花一周搭「大框架」——配置中心、关键字驱动、全量数据外部化。经验法则是：</p>
+<ol>
+<li><strong>重复三次再抽。</strong> 第一次直接写，第二次容忍重复，第三次出现时你已经知道三种用法哪里一样哪里不一样，抽出来的接口才对；</li>
+<li><strong>抽象要还债。</strong> 每一层封装都让排查多跳一跳：用例红了，要先穿过夹具层、业务层才能看到请求。没有复用收益的抽象是纯负债；</li>
+<li><strong>先让用例好读。</strong> 新同事打开一条用例，不问代码就能说出它在测什么，这一条比任何设计模式都优先。</li>
+</ol>
+<p>判断「该不该再抽一层」，问三个问题：这段逻辑有几个用例在用？它变了要改几处？新人不看注释看得懂吗？三个答案分别是「多」「一处」「看得懂」，抽象才算赚钱。</p>
+<p>拿这套工程验一遍：接口地址变了，改 <code>ShopApi</code> 的一个方法，一处；换测试环境，改一份配置文件，一处；来了新业务场景，加一条用例，公共层零改动。每一层只对一种变化负责，变化来了就只有一个去处——这就是分层分对了的样子。</p>
+<h2 id="713-常见的坑">7.13 常见的坑<a class="headerlink" href="#713-常见的坑" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** session 夹具里的可变状态，并行执行时每个进程各有一份，指望它做全工程共享的计数或汇总必出错。实测：8 条用例往 session 夹具的字典里累加，单进程总数是 8；用 <code>pytest -n 4</code> 并行跑，断言 <code>count == 8</code> 的那条每次都挂，报错是 <code>这个进程只看到了 2 次累加</code>——每个进程各建了一份夹具，各数各的。并行时的几个进程各有各的内存，彼此看不到对方的数据（并行执行的细节在第 19 章 19.3 节）。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** autouse 夹具滥用。第一宗罪是让用例「看不出」自己依赖了什么：读用例的人从参数列表里完全看不到它。第二宗罪是代价放大：作用范围里每条用例都执行一遍，里面一次网络请求、一次 sleep，全套用例每条都要付。autouse 只留给「对每条用例都必要且用例无需关心」的事，比如记耗时、清理临时目录。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 工厂夹具忘了把函数交出去。<code>yield</code> 后面什么都不写，用例拿到 <code>None</code>，一调用就报 <code>TypeError: 'NoneType' object is not callable</code>；多写一对括号变成 <code>yield _make()</code>，交出去的是当场造好的那一条数据，第二次调用报 <code>TypeError: 'dict' object is not callable</code>。记住口诀：yield 的是函数本身，不是函数的返回值。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** monkeypatch 出了用例就失效，这是特性不是缺陷。反过来，绕开 monkeypatch 直接赋值（<code>api.list_orders = ...</code>），出了用例没人还原，共享的 session 客户端从此带着假方法跑完全场，后面的用例报出与自身无关的错误。临时替换一律走 monkeypatch；另外它是 function 作用域，session 夹具里用不了，硬用会在用例启动前报 <code>ScopeMismatch</code>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 参数化的夹具，每个参数各起一份实例。把 <code>guest</code> 参数化成三种登录态，三条用例拿到的是三个不同的客户端，<code>--setup-show</code> 里能看到三次 <code>SETUP F guest[...]</code>。在参数化夹具里做昂贵的事（登录、造大批数据），开销按「用例数 × 参数数」计算，先算这笔账再决定参数化什么。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 同名夹具就近覆盖，你以为用的是这一层，实际用的是更近的那一层。<code>tests/adv</code> 里参数化的 <code>guest</code> 只对本目录生效，但如果你忘了它的存在，看着全局的 <code>guest</code> 定义去理解本目录的用例，会对不上。排查方法固定：<code>pytest --fixtures-per-test</code>，每个夹具来自哪个文件哪一行，直接写在输出里。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** 作用域大的夹具依赖作用域小的夹具，pytest 直接拒绝启动：在 session 夹具的参数里写上 function 作用域的夹具（monkeypatch 就是一个），报 <code>ScopeMismatch: You tried to access the function scoped fixture ... with a session scoped request object</code>。session 的东西整轮一份，等不起每条用例变一次的东西。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p>**** <code>--lf</code> 依据的是 <code>.pytest_cache</code> 里的上次失败记录，删除或改名用例后记录不会跟着清。再跑时看到 <code>run-last-failure: N known failures not in selected tests</code> 属正常；反过来，交接工程前清一下 <code>.pytest_cache</code>（已在 <code>.gitignore</code>），别让你的失败清单影响下一个人第一次运行的结果。</p>
+</div>
+<h2 id="714-练习">7.14 练习<a class="headerlink" href="#714-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>把 <code>make_order</code> 工厂改成支持指定商品：加一个 <code>product_id</code> 参数，不传时用默认商品。写一条用例，用中性笔和马克杯各下一单，断言两张订单的金额各是单价乘数量，再确认清理阶段两张单都处理了（用 <code>-o log_cli=true</code> 看日志）。</li>
+<li>写一个 autouse 夹具：给每条用例计时，超过 1 秒的打印一条警告（用例名加耗时），放进 <code>tests/adv/conftest.py</code>，用 <code>-s</code> 验证它对每条用例都生效。</li>
+<li>把 <code>apply_discount</code> 里的 <code>int()</code> 改成保留两位小数的写法，跑 <code>pytest tests\adv\test_adv_skip_xfail.py</code>，看 XPASS(strict) 怎么变成 FAILED；把 <code>xfail</code> 标记删掉再跑一次，确认这条用例转绿。</li>
+<li>在 <code>test_adv_monkeypatch.py</code> 里加一条用例：用 <code>monkeypatch.setenv("TEST_ENV", "local")</code> 加 <code>load_config.cache_clear()</code>，断言读出来的 <code>base_url</code> 是本机练习网站的地址，跑完确认环境变量已还原。</li>
+<li>组合筛选：依次运行 <code>pytest -m "not concurrency" -q</code>、<code>pytest tests\adv -k "discount or race" -v</code>、<code>pytest --collect-only -q</code>，分别说清每条命令选中了哪些用例、为什么。</li>
+</ol>
+<h2 id="715-自检清单">7.15 自检清单<a class="headerlink" href="#715-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说清 conftest.py 的层级规则，会用 <code>--fixtures-per-test</code> 查一个夹具到底来自哪一层；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能给 <code>config</code>、<code>api</code>、<code>guest</code>、<code>unpaid_order</code> 说出各自的作用域和理由，知道 session 夹具被一条用例改坏会发生什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会写工厂夹具，知道清理代码放在哪、什么时机执行；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 autouse 夹具适合做什么、什么时候不该用；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用参数化夹具让一组用例跑多种环境，分得清它和 <code>parametrize</code> 的分工；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 分得清 skip 和 xfail 各自的语义，知道 <code>strict=True</code> 防的是什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 monkeypatch 临时改环境变量和函数，知道它和直接赋值的区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 记得住 <code>-x</code>、<code>--lf</code>、<code>--tb=short</code>、<code>-s</code>、<code>--durations</code> 各自解决什么问题。</li>
+</ul>
+<p>到这里，接口自动化的小框架就定型了：用例层只写业务，夹具层管前置和清理，业务封装层对齐接口，配置和数据各自独立，pytest 的进阶能力把运行条件、排查效率都接管起来。下一章我们打开浏览器，开始 UI 自动化——这一章搭好的夹具和分层会原样复用，UI 用例只写页面上的事。</p>
+<p>下一章：<a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">第 8 章 UI 自动化基础</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 6 章 常见接口场景">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 6 章 常见接口场景
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 8 章 UI 自动化基础">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 8 章 UI 自动化基础
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

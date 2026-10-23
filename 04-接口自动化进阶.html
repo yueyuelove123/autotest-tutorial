@@ -1,0 +1,2700 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">
+      
+      
+        <link rel="next" href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 4 章 接口自动化进阶 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-4-章-接口自动化进阶" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 4 章 接口自动化进阶
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-第-3-章的代码有什么问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 第 3 章的代码有什么问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-分层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-接口客户端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接口客户端
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-配置文件与多环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 配置文件与多环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 配置文件与多环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-配置文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 配置文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-读配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 读配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-切换环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 切换环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-重写夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 重写夹具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-重写用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 重写用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 重写用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-登录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.1 登录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-商品" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.2 商品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-接口串联完整的购买流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 接口串联：完整的购买流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-测试数据管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 测试数据管理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-结构校验json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 结构校验：JSON Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 日志
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-allure-测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Allure 测试报告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.11 Allure 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4111-安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.1 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4112-报告配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.2 报告配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4113-生成报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.3 生成报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4114-报告里有什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.4 报告里有什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4115-常用的-allure-写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.5 常用的 Allure 写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-mock依赖的系统还没好怎么办" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 Mock：依赖的系统还没好怎么办
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413-数据库断言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.13 数据库断言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414-现在的工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.14 现在的工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.15 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#416-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.16 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#417-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.17 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-第-3-章的代码有什么问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 第 3 章的代码有什么问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-分层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-接口客户端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接口客户端
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-配置文件与多环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 配置文件与多环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 配置文件与多环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-配置文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 配置文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-读配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 读配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-切换环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 切换环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-重写夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 重写夹具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-重写用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 重写用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 重写用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-登录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.1 登录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-商品" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.2 商品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-接口串联完整的购买流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 接口串联：完整的购买流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-测试数据管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 测试数据管理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-结构校验json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 结构校验：JSON Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 日志
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-allure-测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Allure 测试报告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.11 Allure 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4111-安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.1 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4112-报告配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.2 报告配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4113-生成报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.3 生成报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4114-报告里有什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.4 报告里有什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4115-常用的-allure-写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11.5 常用的 Allure 写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-mock依赖的系统还没好怎么办" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 Mock：依赖的系统还没好怎么办
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413-数据库断言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.13 数据库断言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414-现在的工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.14 现在的工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.15 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#416-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.16 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#417-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.17 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-4-章-接口自动化进阶">第 4 章 接口自动化进阶<a class="headerlink" href="#第-4-章-接口自动化进阶" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>把重复的代码收进接口客户端，用例里只写业务；</li>
+<li>用配置文件管理地址和账号，同一套用例能跑多个环境；</li>
+<li>写出覆盖完整业务流程的用例，学会管理测试数据；</li>
+<li>用 JSON Schema 校验返回结构；</li>
+<li>加上日志，生成 Allure 图文报告；</li>
+<li>了解 Mock 和数据库断言。</li>
+</ul>
+<p>这一章结束时，你的接口自动化就是一个像样的小框架了。</p>
+<hr />
+<h2 id="41-第-3-章的代码有什么问题">4.1 第 3 章的代码有什么问题<a class="headerlink" href="#41-第-3-章的代码有什么问题" title="Permanent link">&para;</a></h2>
+<p>回头看第 3 章写的用例，能挑出不少毛病：</p>
+<ul>
+<li><code>BASE = "http://127.0.0.1:8000"</code> 在好几个文件里各写了一遍，换个环境要改好几处；</li>
+<li>每个请求都要写 <code>headers={"token": token}</code>、<code>timeout=10</code>；</li>
+<li>接口地址散落在各条用例里，开发改一个地址，你要满工程找；</li>
+<li>账号密码写死在代码里；</li>
+<li>请求发了什么、回了什么，失败时只能靠猜。</li>
+</ul>
+<p>这些问题用例少的时候不明显，几百条用例时就是灾难。解决办法是<strong>分层</strong>。</p>
+<h2 id="42-分层">4.2 分层<a class="headerlink" href="#42-分层" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>用例层   tests/                    只写业务步骤和断言：登录、下单、支付，检查结果
+  │
+业务层   ShopApi                   一个方法对应一个接口：api.login()、api.pay_order()
+  │
+基础层   ApiClient                 发请求的公共逻辑：拼地址、带 token、超时、日志、报告附件
+  │
+配置层   config/*.yaml + config.py 地址、账号、超时，按环境切换
+</code></pre></div>
+<p>每一层只管自己的事：</p>
+<ul>
+<li>接口地址变了，只改业务层的一个方法；</li>
+<li>想给所有请求加日志，只改基础层；</li>
+<li>换测试环境，只换配置文件；</li>
+<li>用例层读起来像测试步骤，不懂代码的人也能看懂在测什么。</li>
+</ul>
+<h2 id="43-接口客户端">4.3 接口客户端<a class="headerlink" href="#43-接口客户端" title="Permanent link">&para;</a></h2>
+<p>新建 <code>common</code> 文件夹，在里面新建一个空文件 <code>__init__.py</code>（有了它，Python 才把这个文件夹当成可以导入的包），再新建 <code>common/api_client.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""接口客户端。</span>
+
+<span class="sd">每个请求都要做的事收在这里：拼完整地址、带上登录 token、设置超时、记日志、</span>
+<span class="sd">把请求和响应挂进 Allure 报告。用例里只写业务，比如 api.login(...)、api.create_order(...)。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># 没装 allure-pytest 也能用，只是报告里没有附件</span>
+    <span class="n">allure</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"api"</span><span class="p">)</span>
+<span class="n">SECRET_KEYS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"password"</span><span class="p">,</span> <span class="s2">"token"</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""把口令、token 换成 ***，日志和报告里就不会泄露。"""</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">"***"</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">SECRET_KEYS</span> <span class="k">else</span> <span class="n">mask</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mask</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ApiClient</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""通用的 HTTP 客户端，和具体业务无关，换个项目也能直接用。"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>  <span class="c1"># 复用连接，也方便统一设置请求头</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"timeout"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">path</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">cost_ms</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> -&gt; HTTP </span><span class="si">%s</span><span class="s2">，耗时 </span><span class="si">%.0f</span><span class="s2"> 毫秒"</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">cost_ms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attach</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="n">cost_ms</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_attach</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="n">cost_ms</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">allure</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">mask</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span>
+        <span class="n">detail</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"请求"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"方法"</span><span class="p">:</span> <span class="n">method</span><span class="p">,</span> <span class="s2">"地址"</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">"查询参数"</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"params"</span><span class="p">),</span> <span class="s2">"请求体"</span><span class="p">:</span> <span class="n">mask</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"json"</span><span class="p">))},</span>
+            <span class="s2">"响应"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"状态码"</span><span class="p">:</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="s2">"耗时毫秒"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">cost_ms</span><span class="p">),</span> <span class="s2">"响应体"</span><span class="p">:</span> <span class="n">body</span><span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">allure</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">detail</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="n">attachment_type</span><span class="o">=</span><span class="n">allure</span><span class="o">.</span><span class="n">attachment_type</span><span class="o">.</span><span class="n">JSON</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ShopApi</span><span class="p">(</span><span class="n">ApiClient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""迷你商城的接口，一个方法对应一个接口。"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="n">password</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]</span>  <span class="c1"># 之后的请求自动带上</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/logout"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">me</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/me"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_products</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/products"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"keyword"</span><span class="p">:</span> <span class="n">keyword</span><span class="p">,</span> <span class="s2">"page"</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">:</span> <span class="n">size</span><span class="p">})</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"/api/products/</span><span class="si">{</span><span class="n">product_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/orders"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"items"</span><span class="p">:</span> <span class="n">items</span><span class="p">})</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/orders"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="n">status</span><span class="p">}</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"/api/orders/</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"/api/orders/</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">/pay"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"/api/orders/</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">/cancel"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ok</span><span class="p">(</span><span class="n">resp</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""断言接口调用成功（HTTP 200 且业务码为 0），返回 data 部分。"""</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"HTTP 状态码是 </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">，响应：</span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"业务失败：code=</span><span class="si">{</span><span class="n">body</span><span class="p">[</span><span class="s1">'code'</span><span class="p">]</span><span class="si">}</span><span class="s2">，msg=</span><span class="si">{</span><span class="n">body</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span>
+</code></pre></div>
+<p>几个设计要点：</p>
+<table>
+<thead>
+<tr>
+<th>要点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requests.Session()</code></td>
+<td>会话对象会复用网络连接，比每次 <code>requests.get</code> 快；登录后把 token 放进 <code>session.headers</code>，之后所有请求自动带上</td>
+</tr>
+<tr>
+<td><code>ApiClient</code> 和 <code>ShopApi</code> 分开</td>
+<td><code>ApiClient</code> 和业务无关，换个项目直接拿走；<code>ShopApi</code> 继承它，只写这个系统的接口</td>
+</tr>
+<tr>
+<td>方法返回原始的 <code>Response</code></td>
+<td>用例想断什么都可以：正常用例用 <code>ok()</code> 取数据，异常用例自己断状态码和业务码</td>
+</tr>
+<tr>
+<td><code>ok()</code> 帮手函数</td>
+<td>「HTTP 200 且业务码为 0」这个判断几乎每条用例都要，收成一个函数，失败时还会说清楚是哪一层失败</td>
+</tr>
+<tr>
+<td>留着 <code>request()</code> 可以直接调</td>
+<td>「请求体缺字段」「参数类型不对」这种异常用例，业务方法发不出来，用 <code>api.request(...)</code> 直接发原始请求</td>
+</tr>
+<tr>
+<td><code>mask()</code> 遮掉敏感信息</td>
+<td>日志和报告会被很多人看到，口令和 token 不能明文出现</td>
+</tr>
+</tbody>
+</table>
+<p>改造前后对比一下同一条用例：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 改造前（第 3 章）</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_order</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">}</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/api/me"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/api/orders/</span><span class="si">{</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s1">'orderNo'</span><span class="p">]</span><span class="si">}</span><span class="s2">/pay"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">after</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/api/me"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">after</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">before</span> <span class="o">-</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+
+
+<span class="c1"># 改造后</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_order</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">balance_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">balance_before</span> <span class="o">-</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="44-配置文件与多环境">4.4 配置文件与多环境<a class="headerlink" href="#44-配置文件与多环境" title="Permanent link">&para;</a></h2>
+<p>真实工作中至少有两三套环境：开发环境、测试环境、预发布环境。同一套用例要能在不同环境跑，<strong>地址和账号就不能写在代码里</strong>。</p>
+<h3 id="441-配置文件">4.4.1 配置文件<a class="headerlink" href="#441-配置文件" title="Permanent link">&para;</a></h3>
+<p>新建 <code>config/local.yaml</code>，放本机练习网站的配置：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 本机练习网站（迷你商城）的配置</span>
+<span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://127.0.0.1:8000</span>
+<span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">              </span><span class="c1"># 接口超时时间，单位秒</span>
+
+<span class="nt">accounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">{</span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="nv">alice</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="nv">alice123</span><span class="p p-Indicator">}</span><span class="w">   </span><span class="c1"># 用例默认用的账号</span>
+<span class="w">  </span><span class="nt">login</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="nv">bob</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="nv">bob123</span><span class="p p-Indicator">}</span><span class="w">       </span><span class="c1"># 登录类用例专用，会被反复登录</span>
+<span class="w">  </span><span class="nt">pool</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">{</span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="nv">user</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="nv">test123</span><span class="p p-Indicator">}</span><span class="w">       </span><span class="c1"># 账号池 user001～user100，并行执行和压测用</span>
+</code></pre></div>
+<p><code>{username: alice, password: alice123}</code> 是 YAML 里字典的单行写法，和分行写是一样的。</p>
+<h3 id="442-读配置">4.4.2 读配置<a class="headerlink" href="#442-读配置" title="Permanent link">&para;</a></h3>
+<p>新建 <code>common/config.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""读取测试配置。</span>
+
+<span class="sd">配置文件放在 config/&lt;环境名&gt;.yaml，环境名取环境变量 TEST_ENV，没设置就用 local。</span>
+<span class="sd">文件里可以写 ${变量名}，读取时换成同名环境变量的值，口令这类敏感信息就不用写进文件。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+
+<span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">_VAR</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\$\{(\w+)\}"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_fill_env</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"配置里用到了环境变量 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">，但它没有设置"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">_VAR</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+
+<span class="nd">@cache</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">env</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"TEST_ENV"</span><span class="p">,</span> <span class="s2">"local"</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"config"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">.yaml"</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"找不到配置文件 </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">，检查 TEST_ENV=</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2"> 写对没有"</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">_fill_env</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)))</span>
+    <span class="n">cfg</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+</code></pre></div>
+<p><code>@cache</code> 让同样的参数只真正读一次文件，之后直接返回上次的结果。</p>
+<h3 id="443-切换环境">4.4.3 切换环境<a class="headerlink" href="#443-切换环境" title="Permanent link">&para;</a></h3>
+<p>假设还有一套测试环境，新建 <code>config/staging.yaml</code>，口令写成 <code>${变量名}</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://shop-staging.example.com</span>
+<span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+
+<span class="nt">accounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">{</span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="nv">autotest01</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="s">"${MAIN_PASSWORD}"</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">login</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="nv">autotest02</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="s">"${LOGIN_PASSWORD}"</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">pool</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">{</span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="nv">autotest-pool-</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="s">"${POOL_PASSWORD}"</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>运行前用环境变量选环境、给口令（PowerShell 的写法，只对当前窗口有效）。文件里用到了三个口令变量，三个都要设：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:TEST_ENV = "staging"
+(.venv) &gt; $env:MAIN_PASSWORD = "真实口令1"
+(.venv) &gt; $env:LOGIN_PASSWORD = "真实口令2"
+(.venv) &gt; $env:POOL_PASSWORD = "真实口令3"
+(.venv) &gt; pytest
+</code></pre></div>
+<p>Mac / Linux 写成 <code>export TEST_ENV=staging</code>。只设了 <code>TEST_ENV</code>、一个口令都没设时，会直接报出第一个缺的变量，不会带着错误的口令去跑：</p>
+<div class="highlight"><pre><span></span><code>RuntimeError: 配置里用到了环境变量 MAIN_PASSWORD，但它没有设置
+</code></pre></div>
+<p>环境名写错也会说清楚：</p>
+<div class="highlight"><pre><span></span><code>FileNotFoundError: 找不到配置文件 D:\work\autotest-demo\config\prod.yaml，检查 TEST_ENV=prod 写对没有
+</code></pre></div>
+<p>练习网站没有 staging 环境，这一节看懂就行。<strong>如果你在命令行里试过上面的命令，一定要把这些变量去掉</strong>，否则之后在这个窗口里跑的用例都会去连那个不存在的地址：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; Remove-Item Env:TEST_ENV, Env:MAIN_PASSWORD, Env:LOGIN_PASSWORD, Env:POOL_PASSWORD
+</code></pre></div>
+<p>也可以直接关掉这个窗口重开一个。</p>
+<p><strong>口令永远不要写进代码和配置文件。</strong> 代码会上传到代码仓库，所有能看到仓库的人都能看到口令。第 19 章讲 Git 时会把 <code>config/staging.yaml</code> 加进忽略清单，参考代码里只放一份不带真实信息的样板 <code>config/staging.yaml.example</code>。</p>
+<h2 id="45-重写夹具">4.5 重写夹具<a class="headerlink" href="#45-重写夹具" title="Permanent link">&para;</a></h2>
+<p>把 <code>tests/conftest.py</code> 整个换成下面的内容：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""全局夹具（fixture）：配置、账号、接口客户端、测试数据。tests 下所有用例都能直接用。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">config</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">load_config</span><span class="p">()</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">base_url</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""被测网站的地址。pytest-playwright 也读这个夹具，所以 page.goto 里只写路径就行。"""</span>
+    <span class="k">return</span> <span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">account</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""本轮测试用的账号。（第 19 章并行执行时会改这里）"""</span>
+    <span class="k">return</span> <span class="n">config</span><span class="p">[</span><span class="s2">"accounts"</span><span class="p">][</span><span class="s2">"main"</span><span class="p">]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">api</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">account</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""已登录的接口客户端。整轮测试只登录一次，所有用例共用。"""</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">account</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">account</span><span class="p">[</span><span class="s2">"password"</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">client</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">guest</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""没登录的接口客户端，每条用例一个新的。"""</span>
+    <span class="k">return</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"timeout"</span><span class="p">])</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">product</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""一个便宜、库存充足的商品，下单类用例都用它。"""</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">"中性笔"</span><span class="p">))[</span><span class="s2">"items"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">items</span><span class="p">,</span> <span class="s2">"练习网站里应该有「中性笔」这个商品"</span>
+    <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unpaid_order</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""准备一张待支付订单；用例结束后它要是还没支付，就取消掉，把库存还回去。"""</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]))</span>
+    <span class="k">yield</span> <span class="n">order</span>
+    <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+</code></pre></div>
+<p>和第 3 章比，有三处改进：</p>
+<ul>
+<li><code>product</code> 按名称搜出商品，不再写死 13 号。换个环境商品编号不同，用例照样能跑；</li>
+<li><code>unpaid_order</code> 的清理会先看订单状态，只有还没支付才取消，并且用 <code>ok()</code> 检查取消成功了；</li>
+<li>账号从配置里取，换环境不用改代码。</li>
+</ul>
+<p>然后在 <code>pytest.ini</code> 里加一行 <code>pythonpath</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pytest]</span>
+<span class="na">testpaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tests</span>
+<span class="c1"># 把工程根目录加进导入路径，用例里才能 from common.xxx import ...</span>
+<span class="na">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-ra</span>
+<span class="c1"># 用例标记要先在这里登记，用法第 7 章讲</span>
+<span class="na">markers</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">smoke</span><span class="o">:</span><span class="w"> </span><span class="s">冒烟用例，每次改动后最先跑的那一小批</span>
+<span class="w">    </span><span class="na">concurrency</span><span class="o">:</span><span class="w"> </span><span class="s">并发类用例</span>
+<span class="na">disable_test_id_escaping_and_forfeit_all_rights_to_community_support</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+</code></pre></div>
+<p>不加这一行，运行 <code>pytest</code> 会报：</p>
+<div class="highlight"><pre><span></span><code>ImportError while loading conftest 'D:\work\autotest-demo\tests\conftest.py'.
+E   ModuleNotFoundError: No module named 'common'
+</code></pre></div>
+<p>原因是 pytest 默认只把用例所在的文件夹加进导入路径，找不到工程根目录下的 <code>common</code>。（用 <code>python -m pytest</code> 运行不报错，因为这种方式会把当前文件夹也加进去，但别依赖这个区别。）</p>
+<p><strong>第 3 章写的 <code>tests/api/test_login_fail.py</code> 和 <code>tests/api/test_order.py</code> 要删掉</strong>：新的 <code>conftest.py</code> 里已经没有 <code>token</code> 夹具了，留着 <code>test_order.py</code> 会报 <code>fixture 'token' not found</code>；<code>test_login_fail.py</code> 的内容下面会用新写法并进 <code>test_login.py</code>，留着就重复了。订单相关的用例会重写到新文件 <code>test_order_flow.py</code> 里。</p>
+<h2 id="46-重写用例">4.6 重写用例<a class="headerlink" href="#46-重写用例" title="Permanent link">&para;</a></h2>
+<h3 id="461-登录">4.6.1 登录<a class="headerlink" href="#461-登录" title="Permanent link">&para;</a></h3>
+<p><code>tests/api/test_login.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""登录接口的用例。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+<span class="n">CASES</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">((</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="s2">"data"</span> <span class="o">/</span> <span class="s2">"login_cases.yaml"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"正确的用户名和密码可以登录"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_success</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"accounts"</span><span class="p">][</span><span class="s2">"login"</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">acc</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">acc</span><span class="p">[</span><span class="s2">"password"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="n">acc</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"token"</span><span class="p">])</span> <span class="o">==</span> <span class="mi">32</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"case"</span><span class="p">,</span> <span class="n">CASES</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CASES</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_fail</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">case</span><span class="p">):</span>
+    <span class="n">allure</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"登录失败：</span><span class="si">{</span><span class="n">case</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">case</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">case</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="n">case</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="n">case</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"请求体缺少密码字段时返回参数错误"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_missing_field</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"bob"</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">==</span> <span class="p">[{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"password"</span><span class="p">,</span> <span class="s2">"reason"</span><span class="p">:</span> <span class="s2">"Field required"</span><span class="p">}]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"不带 token 访问需要登录的接口返回 401"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_requires_token</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">me</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40101</span>    <span class="c1"># 业务码区分：40101 是没登录，40102 是登录过期</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"账号"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"退出登录后原来的 token 失效"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_logout_invalidates_token</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"accounts"</span><span class="p">][</span><span class="s2">"login"</span><span class="p">]</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">acc</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">acc</span><span class="p">[</span><span class="s2">"password"</span><span class="p">]))</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">logout</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">()</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+</code></pre></div>
+<p><code>@allure</code> 开头的几行是给测试报告用的，4.11 节讲；<code>@pytest.mark.smoke</code> 是给用例打标记，第 7 章讲。先照抄。</p>
+<p>注意 <code>test_logout_invalidates_token</code> 没用共享的 <code>api</code> 夹具，而是自己新建了一个客户端：它会让 token 失效，要是用了共享的那个，后面所有用例都会变成「未登录」。<strong>会破坏共享状态的用例，自己准备一份专用的数据。</strong></p>
+<h3 id="462-商品">4.6.2 商品<a class="headerlink" href="#462-商品" title="Permanent link">&para;</a></h3>
+<p><code>tests/api/test_products.py</code> 的写法类似，这里只列和前面不同的地方，完整代码见参考代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">INVALID_PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"页码为0"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"page"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="s2">"page"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"每页0条"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"size"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="s2">"size"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"每页超过50条"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"size"</span><span class="p">:</span> <span class="mi">51</span><span class="p">},</span> <span class="s2">"size"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"页码不是数字"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"page"</span><span class="p">:</span> <span class="s2">"abc"</span><span class="p">},</span> <span class="s2">"page"</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"商品"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"搜索参数非法时返回 422：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, params, field"</span><span class="p">,</span> <span class="n">INVALID_PARAMS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">INVALID_PARAMS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_search_invalid_params</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/products"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"field"</span><span class="p">]</span> <span class="o">==</span> <span class="n">field</span>
+</code></pre></div>
+<p>每组数据的第一项是场景名，既拿来当用例编号（<code>ids</code>），又填进报告标题里的 <code>{title}</code>。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>参考代码里的 <code>test_products.py</code> 开头会读取 <code>data/product_schema.json</code>（商品结构的约定，4.9 节讲）。如果你直接复制参考代码，<strong>先照 4.9 节把这个文件建好再运行</strong>，否则 pytest 在收集用例时就会报 <code>FileNotFoundError</code>，一条用例都不跑。</p>
+</div>
+<h2 id="47-接口串联完整的购买流程">4.7 接口串联：完整的购买流程<a class="headerlink" href="#47-接口串联完整的购买流程" title="Permanent link">&para;</a></h2>
+<p>单个接口测完了，还要测业务流程：前一个接口的输出是后一个接口的输入，这叫<strong>接口串联</strong>（也叫接口关联）。<code>tests/api/test_order_flow.py</code> 里的第一条用例：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"完整购买流程：下单、支付，余额和库存都对得上"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_purchase_flow</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">allure</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">"记下余额和库存"</span><span class="p">):</span>
+        <span class="n">balance_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+        <span class="n">stock_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">allure</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">"下单 3 件"</span><span class="p">):</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">3</span><span class="p">}]))</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">==</span> <span class="n">stock_before</span> <span class="o">-</span> <span class="mi">3</span>
+    <span class="k">with</span> <span class="n">allure</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">"支付"</span><span class="p">):</span>
+        <span class="n">paid</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+        <span class="k">assert</span> <span class="n">paid</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+    <span class="k">with</span> <span class="n">allure</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">"核对订单状态和余额"</span><span class="p">):</span>
+        <span class="n">detail</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+        <span class="k">assert</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+        <span class="k">assert</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"paidAt"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">balance_before</span> <span class="o">-</span> <span class="n">order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+</code></pre></div>
+<p>要点：</p>
+<ul>
+<li><strong>从响应里取值往下传</strong>：<code>product</code> 夹具搜出来的商品编号传给下单，下单返回的订单号、金额传给支付和后面的核对；</li>
+<li><strong>每一步都断言</strong>，出了问题能马上知道断在哪一步，而不是最后才发现余额不对；</li>
+<li><strong>检查业务结果</strong>：除了每个接口返回成功，还要核对「库存少了 3」「余额少了订单金额」这些业务上必须成立的规则；</li>
+<li><code>with allure.step("...")</code> 把用例分成几个步骤，报告里会一步步展开显示。</li>
+</ul>
+<p>同一个文件里的其他用例覆盖了各种异常情况，这里列出标题，完整代码见参考代码：</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下单数量超过库存时返回库存不足，库存不变</td>
+<td>「限量版手办」只有 3 个，买库存加 1 个，返回 2002，库存没被扣</td>
+</tr>
+<tr>
+<td>下单参数非法时返回 422</td>
+<td>商品列表为空、数量为 0、数量超过 999</td>
+</tr>
+<tr>
+<td>支付成功后订单变为已支付，余额扣减订单金额</td>
+<td>正常支付</td>
+</tr>
+<tr>
+<td>同一订单重复支付会被拒绝，只扣一次钱</td>
+<td>第二次支付返回 3003，余额只少了一次</td>
+</tr>
+<tr>
+<td>余额不足时支付失败，订单还是待支付</td>
+<td>买够超过余额的显示器，支付返回 3002，余额没变</td>
+</tr>
+<tr>
+<td>取消订单后库存归还，订单不能再支付</td>
+<td>取消后库存恢复，再支付返回 3003</td>
+</tr>
+<tr>
+<td>看不到别人的订单</td>
+<td>用 bob 查 alice 的订单，返回 3001</td>
+</tr>
+</tbody>
+</table>
+<h2 id="48-测试数据管理">4.8 测试数据管理<a class="headerlink" href="#48-测试数据管理" title="Permanent link">&para;</a></h2>
+<p>接口自动化做不好，一大半原因出在测试数据上：今天能跑明天不能跑，单独跑能过一起跑就挂，换个环境全红。几条原则：</p>
+<ol>
+<li><strong>自己造，自己清。</strong> 用例需要的数据用夹具现造，用完清理（<code>yield</code> 后面的代码，或者 <code>try/finally</code>）。比如「余额不足」那条用例下了一个金额很大的订单，不管断言过没过，<code>finally</code> 里都会把它取消，把占用的库存还回去：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}]))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3002</span>
+    <span class="o">...</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>   <span class="c1"># 不管断言过没过，都把占用的库存还回去</span>
+</code></pre></div>
+<ol>
+<li><strong>断言变化量，不断言绝对值。</strong> 余额会被别的用例改动，所以不要断言「余额等于 99997.5」，要断言「余额比支付前少了订单金额」。</li>
+<li><strong>不依赖执行顺序。</strong> 任何一条用例都能单独运行，也能和别的用例以任意顺序一起运行。</li>
+<li><strong>按特征找数据，别写死编号。</strong> 用名称搜出商品，比写死 13 号商品更能适应不同环境。</li>
+<li><strong>稀缺的数据别消耗掉。</strong> 「限量版手办」只有 3 个库存，测库存不足时下单数量是「当前库存加 1」，下单必然失败，库存不会被消耗，跑多少次都行。</li>
+<li><strong>会破坏共享状态的操作，用专用数据。</strong> 退出登录会让 token 失效，那条用例就自己登录一个专用账号。</li>
+<li><strong>共享环境里不要清库、不要改别人的数据。</strong> 测试环境往往是多人共用的，用专门的测试账号，只动自己造的数据。</li>
+</ol>
+<h2 id="49-结构校验json-schema">4.9 结构校验：JSON Schema<a class="headerlink" href="#49-结构校验json-schema" title="Permanent link">&para;</a></h2>
+<p>前端和其他系统依赖接口返回的结构：字段名、字段类型、哪些必有。开发改接口时不小心把 <code>price</code> 从数字改成了字符串，功能用例未必能发现，页面却可能显示出错。<strong>JSON Schema</strong> 是一种描述 JSON 结构的标准写法，可以一次把结构检查到位。</p>
+<p>新建 <code>data/product_schema.json</code>，描述商品详情的结构：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sku"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"price"</span><span class="p">,</span><span class="w"> </span><span class="s2">"stock"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^SKU\\d{4}$"</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w"> </span><span class="nt">"exclusiveMinimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"stock"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>意思是：这是一个对象，五个字段都必须有，不允许出现别的字段；<code>id</code> 是大于等于 1 的整数，<code>sku</code> 是 SKU 加 4 位数字，<code>price</code> 是大于 0 的数字，依此类推。</p>
+<p>在 <code>tests/api/test_products.py</code> 里读入这个文件，用例里一行就能校验：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">jsonschema</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+<span class="n">PRODUCT_SCHEMA</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="s2">"data"</span> <span class="o">/</span> <span class="s2">"product_schema.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_product_detail_schema</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">validate</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">PRODUCT_SCHEMA</span><span class="p">)</span>  <span class="c1"># 字段缺了、多了、类型不对都会报错</span>
+</code></pre></div>
+<p>结构不对时的报错很直观：</p>
+<div class="highlight"><pre><span></span><code>'199.00' is not of type 'number'                                  # price 变成了字符串
+'stock' is a required property                                    # 少了 stock 字段
+Additional properties are not allowed ('color' was unexpected)    # 多了一个没约定的字段
+</code></pre></div>
+<p>是否允许多出字段（<code>additionalProperties</code>）看团队约定：设成 <code>false</code> 很严格，接口加字段也会让用例失败，好处是任何结构变化都逃不过；很多团队只要求必有字段齐全、类型正确，不限制新增字段。</p>
+<h2 id="410-日志">4.10 日志<a class="headerlink" href="#410-日志" title="Permanent link">&para;</a></h2>
+<p><code>ApiClient.request</code> 里每发一个请求都会记一行日志。在 <code>pytest.ini</code> 里加上日志的配置：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 日志：平时不显示，用例失败时一起打印出来</span>
+<span class="na">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">INFO</span>
+<span class="na">log_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%(asctime)s %(levelname)s %(message)s</span>
+<span class="na">log_date_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%H:%M:%S</span>
+</code></pre></div>
+<p>用例通过时什么都不显示；失败时，pytest 会把这条用例执行过程中的日志一起打印出来。新建一个临时用例 <code>tests/api/test_tmp_log.py</code> 故意让它失败，看看效果：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_tmp_log</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">"耳机"</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>      <span class="c1"># 实际是 2，故意写错</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_tmp_log.py
+...
+&gt;       assert data["total"] == 3
+E       assert 2 == 3
+
+tests\api\test_tmp_log.py:6: AssertionError
+----------------------------- Captured log setup ------------------------------
+12:16:43 INFO POST /api/login -&gt; HTTP 200，耗时 82 毫秒
+------------------------------ Captured log call ------------------------------
+12:16:43 INFO GET /api/products -&gt; HTTP 200，耗时 57 毫秒
+</code></pre></div>
+<p><code>Captured log setup</code> 是夹具准备阶段的日志，<code>Captured log call</code> 是用例本身的。看完把 <code>test_tmp_log.py</code> 删掉。想在运行时实时看到所有日志，加参数 <code>-o log_cli=true</code>。</p>
+<p>日志里<strong>不要打印口令和 token</strong>，<code>mask()</code> 就是干这个的。</p>
+<h2 id="411-allure-测试报告">4.11 Allure 测试报告<a class="headerlink" href="#411-allure-测试报告" title="Permanent link">&para;</a></h2>
+<p>命令行里的输出适合自己看，给别人看需要一份图文报告。Allure 是用得最多的测试报告工具，能展示每条用例的步骤、请求和响应、截图、耗时、通过率。</p>
+<h3 id="4111-安装">4.11.1 安装<a class="headerlink" href="#4111-安装" title="Permanent link">&para;</a></h3>
+<p>Allure 分两部分：</p>
+<ul>
+<li><strong>allure-pytest</strong>：pytest 插件，运行用例时把结果记成一堆数据文件。第 1 章已经装好了；</li>
+<li>
+<p><strong>Allure 命令行</strong>：把这些数据文件生成网页报告。Allure 3 是用 Node.js 写的，需要先装 Node.js。</p>
+</li>
+<li>
+<p>到 <a href="https://nodejs.org/">https://nodejs.org/</a> 下载 <strong>LTS（长期支持）</strong> 版本安装，装完新开一个命令行窗口检查（在 VS Code 里用终端的，要把 VS Code 整个关掉重开，见第 1 章 1.2 节）：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; node --version
+v24.15.0
+</code></pre></div>
+<ol>
+<li>安装 Allure 命令行：</li>
+</ol>
+<div class="highlight"><pre><span></span><code>&gt; npm install -g allure
+&gt; allure --version
+3.21.0
+</code></pre></div>
+<p>下载慢可以先执行 <code>npm config set registry https://registry.npmmirror.com</code> 换成国内镜像。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>网上很多旧教程让你装 <code>allure-commandline</code>，那是需要 Java 的 Allure 2，命令和这里不一样。本教程用的是 Allure 3，包名就叫 <code>allure</code>。</p>
+</div>
+<h3 id="4112-报告配置">4.11.2 报告配置<a class="headerlink" href="#4112-报告配置" title="Permanent link">&para;</a></h3>
+<p>在工程根目录新建 <code>allurerc.yaml</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allure 3 报告配置（allure generate 会自动读取工程根目录下的这个文件）</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">迷你商城自动化测试报告</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reports/allure-report</span>
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">awesome</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">options</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">reportLanguage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zh</span><span class="w">   </span><span class="c1"># 报告界面用中文</span>
+<span class="w">      </span><span class="nt">singleFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">     </span><span class="c1"># 生成单个 HTML 文件，双击就能打开，方便发给别人</span>
+<span class="w">      </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">split</span><span class="w">        </span><span class="c1"># 左边用例树、右边详情的分栏布局</span>
+</code></pre></div>
+<h3 id="4113-生成报告">4.11.3 生成报告<a class="headerlink" href="#4113-生成报告" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest --alluredir=reports/allure-results --clean-alluredir
+(.venv) &gt; allure generate reports/allure-results
+</code></pre></div>
+<ul>
+<li><code>--alluredir</code> 指定结果数据存哪；<code>--clean-alluredir</code> 先清掉上一次的数据，否则新旧结果会混在一起；</li>
+<li><code>allure generate</code> 读取 <code>allurerc.yaml</code>，在 <code>reports/allure-report/</code> 下生成 <code>index.html</code>。<strong>它成功时什么都不打印</strong>，没报错就是成功了，去目录里找文件就行；</li>
+<li>双击 <code>index.html</code> 就能打开。不想生成单文件的话，把配置里的 <code>singleFile</code> 改成 <code>false</code>，再用 <code>allure open reports/allure-report</code> 打开（多文件的报告直接双击打不开）。</li>
+</ul>
+<h3 id="4114-报告里有什么">4.11.4 报告里有什么<a class="headerlink" href="#4114-报告里有什么" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>首页</strong>：总用例数、通过和失败的数量、通过率圆环；</li>
+<li><strong>用例树</strong>：按目录和文件分组。点开一条用例，能看到标题、耗时、失败原因、每个 <code>allure.step</code> 步骤；</li>
+<li><strong>附件</strong>：<code>ApiClient</code> 给每个请求都挂了一个附件，点开能看到这次请求的地址、参数、请求体和响应体（token 和口令已经遮掉了）。用例失败时，不用重跑就能看到当时接口返回了什么；</li>
+<li><strong>筛选</strong>：可以按状态、标签（比如 <code>feature</code>）筛选用例。</li>
+</ul>
+<h3 id="4115-常用的-allure-写法">4.11.5 常用的 Allure 写法<a class="headerlink" href="#4115-常用的-allure-写法" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@allure.feature("订单")</code></td>
+<td>功能模块，报告里可以按它筛选</td>
+</tr>
+<tr>
+<td><code>@allure.story("支付")</code></td>
+<td>模块下的子功能</td>
+</tr>
+<tr>
+<td><code>@allure.title("同一订单重复支付会被拒绝")</code></td>
+<td>用例在报告里显示的标题，不写就显示函数名</td>
+</tr>
+<tr>
+<td><code>@allure.title("……：{title}")</code></td>
+<td>标题里引用用例的参数，参数化用例常用</td>
+</tr>
+<tr>
+<td><code>allure.dynamic.title(...)</code></td>
+<td>在用例运行时再决定标题</td>
+</tr>
+<tr>
+<td><code>with allure.step("下单"):</code></td>
+<td>把用例分成步骤</td>
+</tr>
+<tr>
+<td><code>allure.attach(内容, name=..., attachment_type=...)</code></td>
+<td>挂附件：文字、JSON、截图都行</td>
+</tr>
+<tr>
+<td><code>@allure.severity(allure.severity_level.CRITICAL)</code></td>
+<td>用例的重要程度</td>
+</tr>
+</tbody>
+</table>
+<h2 id="412-mock依赖的系统还没好怎么办">4.12 Mock：依赖的系统还没好怎么办<a class="headerlink" href="#412-mock依赖的系统还没好怎么办" title="Permanent link">&para;</a></h2>
+<p>真实系统往往要调用别的系统：支付要调银行，下单要调物流，注册要发短信。这些外部系统可能还没开发完、测试环境里不稳定，或者调一次要花真钱。这时会用 <strong>Mock</strong>（模拟服务）：搭一个假的服务，按你的规定返回固定的结果，被测系统调它就像调真的一样。</p>
+<ul>
+<li>想测「银行返回扣款失败时订单怎么处理」，让 Mock 返回失败就行，不用真的去造一个余额不足的银行卡；</li>
+<li>常用工具有 WireMock、Apifox 和 Postman 自带的 Mock 服务，Python 里还有 <code>responses</code> 这类在代码里拦截请求的库；</li>
+<li>UI 自动化里也有类似的手段：拦截页面发出的请求、返回假数据，第 11 章会用到。</li>
+</ul>
+<p>练习网站没有外部依赖，这里只要知道这个概念。</p>
+<h2 id="413-数据库断言">4.13 数据库断言<a class="headerlink" href="#413-数据库断言" title="Permanent link">&para;</a></h2>
+<p>有些结果在接口返回里看不到，比如「支付后是否写了一条支付流水」，这时要直接查数据库核对。思路是：用例做完操作后，连上数据库查对应的记录并断言。以 MySQL 为例（需要 <code>pip install pymysql</code>，<strong>练习网站没有数据库，这段代码只演示写法</strong>）：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">query_one</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">"数据库地址"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">3306</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">"只读账号"</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">"口令从环境变量读"</span><span class="p">,</span>
+                           <span class="n">database</span><span class="o">=</span><span class="s2">"shop"</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s2">"utf8mb4"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="n">pymysql</span><span class="o">.</span><span class="n">cursors</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">)</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>          <span class="c1"># 参数用 %s 占位，不要自己拼字符串，防止 SQL 注入</span>
+            <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_writes_flow</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">query_one</span><span class="p">(</span><span class="s2">"SELECT amount, status FROM pay_flow WHERE order_no = </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">],))</span>
+    <span class="k">assert</span> <span class="n">flow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"支付后应该有一条支付流水"</span>
+    <span class="k">assert</span> <span class="nb">float</span><span class="p">(</span><span class="n">flow</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+</code></pre></div>
+<p>注意：</p>
+<ul>
+<li><strong>用只读账号</strong>，自动化脚本没有必要拥有改库的权限；</li>
+<li>数据写库可能有延迟（异步处理、消息队列），查不到时要稍等重试，别马上判失败；</li>
+<li>数据库的表结构属于实现细节，变得比接口快。能用接口核对的优先用接口，数据库断言留给接口确实看不到的地方。</li>
+</ul>
+<h2 id="414-现在的工程">4.14 现在的工程<a class="headerlink" href="#414-现在的工程" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>autotest-demo/
+├─ common/
+│  ├─ __init__.py
+│  ├─ api_client.py        接口客户端
+│  └─ config.py            读配置
+├─ config/
+│  └─ local.yaml           本机练习网站的配置
+├─ data/
+│  ├─ login_cases.yaml     登录失败的数据
+│  └─ product_schema.json  商品结构约定
+├─ shop/                   练习网站
+├─ tests/
+│  ├─ conftest.py
+│  └─ api/
+│     ├─ test_login.py
+│     ├─ test_products.py
+│     └─ test_order_flow.py
+├─ allurerc.yaml           报告配置
+├─ pytest.ini
+└─ requirements.txt
+</code></pre></div>
+<p>跑一遍接口用例：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -q
+...........................                                              [100%]
+27 passed in 3.06s
+</code></pre></div>
+<p>（参考代码里还有一条并发支付的用例，第 18 章再加，加上后是 28 条。）</p>
+<h2 id="415-常见的坑">4.15 常见的坑<a class="headerlink" href="#415-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'common'</code></td>
+<td><code>pytest.ini</code> 里没写 <code>pythonpath = .</code>，或者 <code>common</code> 文件夹里没有 <code>__init__.py</code></td>
+</tr>
+<tr>
+<td>跑完一条用例，后面的用例全部 401</td>
+<td>某条用例让共享的 token 失效了（比如退出登录），改成用专用账号</td>
+</tr>
+<tr>
+<td>用例单独跑能过，一起跑就挂</td>
+<td>数据互相影响：断言了绝对值，或者用了别的用例留下的数据</td>
+</tr>
+<tr>
+<td>报告里新旧结果混在一起</td>
+<td>生成结果时没加 <code>--clean-alluredir</code></td>
+</tr>
+<tr>
+<td><code>allure</code> 不是内部或外部命令</td>
+<td>Node.js 或 Allure 没装好，或者装完没有新开命令行窗口</td>
+</tr>
+<tr>
+<td>双击报告是空白页</td>
+<td>生成的是多文件报告，用 <code>allure open</code> 打开，或者在配置里开启 <code>singleFile</code></td>
+</tr>
+<tr>
+<td>日志和报告里出现了明文口令</td>
+<td>打印前没遮蔽，所有输出都要过一遍 <code>mask()</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="416-练习">4.16 练习<a class="headerlink" href="#416-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>给 <code>ShopApi</code> 加一个方法 <code>buy(product_id, quantity)</code>：下单并支付，返回支付后的订单详情。用它简化 <code>test_purchase_flow</code>。</li>
+<li>写一个 <code>data/order_schema.json</code>，校验订单详情接口的返回结构，并写一条用例。</li>
+<li>写一条用例：查订单列表时传 <code>status=PAID</code>，返回的订单状态全部是 <code>PAID</code>。</li>
+<li>故意让一条用例失败，生成 Allure 报告，在报告里找到失败原因和那次请求的响应体。</li>
+</ol>
+<h2 id="417-自检清单">4.17 自检清单<a class="headerlink" href="#417-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说清楚用例层、业务层、基础层、配置层各管什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 <code>requests.Session</code> 比每次 <code>requests.get</code> 好在哪；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用环境变量切换环境，知道口令为什么不能写进配置文件；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能写出一条完整业务流程的串联用例，并检查业务结果；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出测试数据管理的至少四条原则；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会写 JSON Schema 并用它校验接口返回；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能生成并打开 Allure 报告，在里面找到某次请求的响应。</li>
+</ul>
+<p>下一章：<a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html">第 5 章 接口测试用例设计</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 3 章 接口自动化基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 3 章 接口自动化基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 5 章 接口测试用例设计">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 5 章 接口测试用例设计
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

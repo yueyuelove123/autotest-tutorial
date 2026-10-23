@@ -1,0 +1,2905 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html">
+      
+      
+        <link rel="next" href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 5 章 接口测试用例设计 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-5-章-接口测试用例设计" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 5 章 接口测试用例设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-设计解决测什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 设计解决测什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-等价类与边界值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 等价类与边界值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 等价类与边界值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-两个方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 两个方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-给购买数量列表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 给购买数量列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-翻译成参数化用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 翻译成参数化用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#524-等价类的划分依据会被实测修正" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 等价类的划分依据会被实测修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#525-每页条数和翻页" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.5 每页条数和翻页
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#526-昵称长度和两个空格的发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.6 昵称长度和两个空格的发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#527-一次下单的行数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.7 一次下单的行数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-判定表登录的六种组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 判定表：登录的六种组合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 判定表：登录的六种组合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-先把组合全试出来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1 先把组合全试出来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-翻译成用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2 翻译成用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-状态迁移订单的一生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 状态迁移：订单的一生
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 状态迁移：订单的一生">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-画出状态图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.1 画出状态图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.2 用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-负面与异常场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 负面与异常场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 负面与异常场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-token-的三种坏法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 token 的三种坏法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-数据隔离别人的订单就是订单不存在" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 数据隔离：别人的订单就是订单不存在
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-组合与串联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 组合与串联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 组合与串联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-同一商品写成两行合并还是分扣" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.1 同一商品写成两行：合并还是分扣
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-时序下单之后库存被别人买光" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.2 时序：下单之后库存被别人买光
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-余额的边界刚好付得起" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.3 余额的边界：刚好付得起
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-组合爆炸怎么砍" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.4 组合爆炸怎么砍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-用例优先级与粒度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 用例优先级与粒度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 用例优先级与粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571-四档优先级" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.1 四档优先级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572-一条用例验证一个点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.2 一条用例验证一个点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-把设计落进-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 把设计落进 pytest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#511-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-设计解决测什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 设计解决测什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-等价类与边界值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 等价类与边界值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 等价类与边界值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-两个方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 两个方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-给购买数量列表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 给购买数量列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-翻译成参数化用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 翻译成参数化用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#524-等价类的划分依据会被实测修正" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 等价类的划分依据会被实测修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#525-每页条数和翻页" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.5 每页条数和翻页
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#526-昵称长度和两个空格的发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.6 昵称长度和两个空格的发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#527-一次下单的行数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.7 一次下单的行数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-判定表登录的六种组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 判定表：登录的六种组合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 判定表：登录的六种组合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-先把组合全试出来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1 先把组合全试出来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-翻译成用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2 翻译成用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-状态迁移订单的一生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 状态迁移：订单的一生
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 状态迁移：订单的一生">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-画出状态图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.1 画出状态图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.2 用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-负面与异常场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 负面与异常场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 负面与异常场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-token-的三种坏法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 token 的三种坏法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-数据隔离别人的订单就是订单不存在" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 数据隔离：别人的订单就是订单不存在
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-组合与串联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 组合与串联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 组合与串联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-同一商品写成两行合并还是分扣" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.1 同一商品写成两行：合并还是分扣
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-时序下单之后库存被别人买光" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.2 时序：下单之后库存被别人买光
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-余额的边界刚好付得起" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.3 余额的边界：刚好付得起
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-组合爆炸怎么砍" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.4 组合爆炸怎么砍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-用例优先级与粒度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 用例优先级与粒度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 用例优先级与粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571-四档优先级" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.1 四档优先级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572-一条用例验证一个点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.2 一条用例验证一个点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-把设计落进-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 把设计落进 pytest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#511-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-5-章-接口测试用例设计">第 5 章 接口测试用例设计<a class="headerlink" href="#第-5-章-接口测试用例设计" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会用等价类和边界值给参数设计取值，不再凭感觉填数字；</li>
+<li>会列判定表，把组合型的业务规则测全；</li>
+<li>会画状态图，把合法和非法的状态迁移都测到；</li>
+<li>会设计负面和异常场景：坏凭证、碰别人的数据；</li>
+<li>会把多个接口组合成场景，抓住时序、余额这类藏在流程里的边界；</li>
+<li>会给用例排优先级，知道哪些先跑、哪些可以砍掉；</li>
+<li>把设计落进 pytest：参数化表格、中文用例编号、smoke 标记。</li>
+</ul>
+<p>前两章解决的是「怎么跑」：requests 发请求，pytest 组织用例，夹具准备数据，接口客户端把重复代码收拢。这一章解决「测什么」。工具再顺手，取值是随手填的、场景是想到哪写到哪的，用例跑得再快也只是在顺手的地方找问题。接口自动化跑一轮才几秒钟，真正贵的是漏测——线上出了问题，你没写到的那个取值没人替你补上。</p>
+<p>本章的全部方法都用练习网站的真实接口演示，每个方法配一组用例，写进工程、跑给你看。读完这一章，工程里的接口用例会从 28 条增加到 79 条，每一条都来自一个明确的设计方法，而不是灵感。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>回答的问题</th>
+<th>在哪一节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等价类与边界值</td>
+<td>这个参数该填哪些值？</td>
+<td>5.2</td>
+</tr>
+<tr>
+<td>判定表</td>
+<td>几个条件组合起来会怎样？</td>
+<td>5.3</td>
+</tr>
+<tr>
+<td>状态迁移</td>
+<td>一个东西的每种状态都能进、能出吗？</td>
+<td>5.4</td>
+</tr>
+<tr>
+<td>负面与异常</td>
+<td>故意使坏，系统还守规矩吗？</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>组合与串联</td>
+<td>几个接口按业务顺序走，中间状态对吗？</td>
+<td>5.6</td>
+</tr>
+<tr>
+<td>优先级与粒度</td>
+<td>这么多用例，先跑哪些、哪些可以不要？</td>
+<td>5.7</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="51-设计解决测什么">5.1 设计解决测什么<a class="headerlink" href="#51-设计解决测什么" title="Permanent link">&para;</a></h2>
+<p>先看一个反例。测下单接口，随手写三条：买 1 件、买 10 件、买负数件。前两条几乎一样（都成功了），第三条碰巧撞上一个异常。看上去测了，实际上有效输入只盖住一个点，无效输入只靠运气碰到一个。</p>
+<p>有设计的样子是这样的：动手之前先问三个问题——</p>
+<ol>
+<li><strong>文档怎么说？</strong> 数量的约定是 1～999，这就是要验证的承诺：1 行不行，999 行不行，0 和 1000 被不被拦住；</li>
+<li><strong>业务上什么最要紧？</strong> 下单会占库存、支付会扣钱，这些数字的增减比「返回成功」要紧得多；</li>
+<li><strong>怎么使坏？</strong> 数量填字符串、token 伪造一个、去碰别人的订单、下单之后库存被别人买光再支付。</li>
+</ol>
+<p>第 2 章 2.8 节给过一张「一个接口要测哪些方面」的清单，那是从面上看；本章的方法是从点上凿：每个方法负责把清单里的某几行变成具体取值和具体断言。两章合起来，拿到一个新接口就不会发呆，而是有一套固定的动作可做。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：</strong> 本章的方法不依赖练习网站，换任何系统都一样用。变的只有取值和业务码，动作是同一套。</p>
+</div>
+<p>设计不用写成八股文。一张取值表、一张判定表、一张状态图，加三五句业务规则，就是设计的全部产出物。它们有两个用处：写用例之前，评审表格比评审代码便宜得多，同事一眼能看出「少测了 0」；写完用例之后，表格是用例的说明书，半年后接手的人对着表格能看懂每条用例为什么存在。本章接下来就把这三样东西一样一样做出来。</p>
+<h2 id="52-等价类与边界值">5.2 等价类与边界值<a class="headerlink" href="#52-等价类与边界值" title="Permanent link">&para;</a></h2>
+<h3 id="521-两个方法">5.2.1 两个方法<a class="headerlink" href="#521-两个方法" title="Permanent link">&para;</a></h3>
+<p><strong>等价类划分</strong>：把输入分成几类，认为同一类里的值服务器会同样对待，每类挑一个代表去测。购买数量可以分成：1～999 之间的整数（有效类）、小于 1（无效类）、大于 999（无效类）、不是整数（无效类）、不是数字（无效类）。全部测完要无穷多条，每类测一个代表，五类五条就够了。</p>
+<p><strong>边界值</strong>：问题最爱长在边上。写范围判断时 <code>&gt;=</code> 和 <code>&gt;</code> 一字之差，1 和 999 就会出问题。所以每个边界都取「点上」和「点旁边」的值：下边界测 0 和 1，上边界测 999 和 1000。</p>
+<p>两个方法配合着用：等价类负责「分几类、选代表」，边界值负责「代表优先选边界上的」。</p>
+<p>等价类也完全适用于数字之外的参数。常见的几种参数类型，套这两步就能列出取值：</p>
+<table>
+<thead>
+<tr>
+<th>参数类型</th>
+<th>有效类</th>
+<th>无效类</th>
+<th>边界值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整数区间（1～999）</td>
+<td>区间内的整数</td>
+<td>小于下限、大于上限、非整数、非数字</td>
+<td>0、1、999、1000</td>
+</tr>
+<tr>
+<td>字符串长度（2～20 个字）</td>
+<td>长度合适的字符串</td>
+<td>太短、太长、非字符串、空串</td>
+<td>1、2、20、21 个字</td>
+</tr>
+<tr>
+<td>枚举（如订单状态三种取值）</td>
+<td>每个合法枚举值各一类</td>
+<td>未知枚举值、空值</td>
+<td>每个合法值各测一条</td>
+</tr>
+<tr>
+<td>文本关键词（模糊搜索）</td>
+<td>能命中的词、确定命不中的词</td>
+<td>超长字符串、特殊字符</td>
+<td>空串、最长合法长度</td>
+</tr>
+</tbody>
+</table>
+<p>后面几节反复用到这张表，可以先混个眼熟。</p>
+<h3 id="522-给购买数量列表">5.2.2 给购买数量列表<a class="headerlink" href="#522-给购买数量列表" title="Permanent link">&para;</a></h3>
+<p>下单接口的 <code>quantity</code>，文档约定 1～999。把 5.2.1 的思路落成一张表，每个取值写清属于哪类、预期是什么、为什么选它：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>属于哪类</th>
+<th>预期</th>
+<th>为什么选它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>有效类，下边界</td>
+<td>下单成功</td>
+<td>最小合法值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>有效类</td>
+<td>下单成功</td>
+<td>下边界内侧再补一个正常值</td>
+</tr>
+<tr>
+<td>998</td>
+<td>有效类</td>
+<td>下单成功</td>
+<td>上边界内侧再补一个正常值</td>
+</tr>
+<tr>
+<td>999</td>
+<td>有效类，上边界</td>
+<td>下单成功</td>
+<td>最大合法值</td>
+</tr>
+<tr>
+<td>0</td>
+<td>无效类：小于 1</td>
+<td>HTTP 422</td>
+<td>恰好在下边界外</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>无效类：小于 1</td>
+<td>HTTP 422</td>
+<td>负数代表</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>无效类：大于 999</td>
+<td>HTTP 422</td>
+<td>恰好在上边界外</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>无效类：非整数</td>
+<td>HTTP 422</td>
+<td>类型不对</td>
+</tr>
+<tr>
+<td>"abc"</td>
+<td>无效类：非数字</td>
+<td>HTTP 422</td>
+<td>类型不对</td>
+</tr>
+<tr>
+<td>不传（None）</td>
+<td>无效类：缺值</td>
+<td>HTTP 422</td>
+<td>缺值代表</td>
+</tr>
+</tbody>
+</table>
+<p>0 和 1、999 和 1000 卡住两个边界的里外两侧；2 和 998 是有效区间中部的普通代表——正常值也得有，不然整组用例全是边界，看不出边界值和普通值的行为差别。这张表就是用例清单，接下来只是把它翻译成代码。</p>
+<h3 id="523-翻译成参数化用例">5.2.3 翻译成参数化用例<a class="headerlink" href="#523-翻译成参数化用例" title="Permanent link">&para;</a></h3>
+<p>新建 <code>tests/api/test_design_boundary.py</code>。有效取值和无效取值的断言不同，分成两个参数化函数，各管各的：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 购买数量的文档约定是 1～999：有效边界 1、2、998、999 都该成功，</span>
+<span class="c1"># 无效等价类 0、负数、1000、小数、非数字、空值都该被 422 拦下</span>
+<span class="n">QUANTITY_VALID</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">998</span><span class="p">,</span> <span class="mi">999</span><span class="p">]</span>
+<span class="n">QUANTITY_INVALID</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"数量为0"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"数量为负数"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"数量为1000"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"数量是小数"</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"数量不是数字"</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"数量为空"</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"购买数量取有效边界值 </span><span class="si">{quantity}</span><span class="s2"> 件时下单成功，库存随之减少"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">,</span> <span class="n">QUANTITY_VALID</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"买</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">件"</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">QUANTITY_VALID</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_quantity_valid_boundary</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+    <span class="n">stock_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}]))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">==</span> <span class="n">stock_before</span> <span class="o">-</span> <span class="n">quantity</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>   <span class="c1"># 归还库存，下次运行还是同样的初始状态</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"购买数量取无效值时返回 422：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, quantity"</span><span class="p">,</span> <span class="n">QUANTITY_INVALID</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">QUANTITY_INVALID</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_quantity_invalid</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}])</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">422</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"field"</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">)</span>
+</code></pre></div>
+<p>三个写法上的要点：</p>
+<ul>
+<li><strong><code>ids</code> 写中文场景名。</strong> 报告里显示「买998件」「数量为负数」，一眼看懂每条用例在测什么，用 <code>-k</code> 挑选时也好认（第 3 章 3.5 节加过让中文原样显示的配置）；</li>
+<li><strong>有效用例断业务数据。</strong> 只断「返回成功」不够：买 999 件成功了、库存却没扣，照样是缺陷。所以库存的前后变化、金额的计算都断上；</li>
+<li><strong>有效用例当场取消订单。</strong> 999 件的下单会占库存，<code>finally</code> 里取消掉，跑多少轮数据都不变（第 4 章 4.8 节的第 1 条原则）。</li>
+</ul>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_design_boundary.py -v
+collected 25 items
+
+tests/api/test_design_boundary.py::test_quantity_valid_boundary[买1件] PASSED [  4%]
+tests/api/test_design_boundary.py::test_quantity_valid_boundary[买2件] PASSED [  8%]
+tests/api/test_design_boundary.py::test_quantity_valid_boundary[买998件] PASSED [ 12%]
+tests/api/test_design_boundary.py::test_quantity_valid_boundary[买999件] PASSED [ 16%]
+tests/api/test_design_boundary.py::test_quantity_invalid[数量为0] PASSED [ 20%]
+tests/api/test_design_boundary.py::test_quantity_invalid[数量为负数] PASSED [ 24%]
+...
+tests/api/test_design_boundary.py::test_quantity_invalid[数量为空] PASSED [ 40%]
+tests/api/test_design_boundary.py::test_quantity_type_lenient PASSED     [ 44%]
+...
+tests/api/test_design_boundary.py::test_items_count_boundary[21行] PASSED [100%]
+
+============================= 25 passed in 2.72s ==============================
+</code></pre></div>
+<p>（这个文件里还有翻页、昵称、行数的用例，马上讲到。）</p>
+<h3 id="524-等价类的划分依据会被实测修正">5.2.4 等价类的划分依据会被实测修正<a class="headerlink" href="#524-等价类的划分依据会被实测修正" title="Permanent link">&para;</a></h3>
+<p>表里的十个取值全过了。但等价类的划分依据是「我以为服务器怎么想」，实测偶尔会告诉你它另有想法。比如「数量传字符串」这一类，按文档推断该被 422 拦住，实际呢：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"数量传字符串数字也能下单：接口的校验比界面宽"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_quantity_type_lenient</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""等价类不能只按文档划：实际系统可能接受文档没提的写法，这类偏差也要有用例盯着。"""</span>
+    <span class="n">stock_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="s2">"3"</span><span class="p">}]))</span>   <span class="c1"># 字符串数字</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">==</span> <span class="n">stock_before</span>
+</code></pre></div>
+<p><code>quantity</code> 传字符串 <code>"3"</code>，下单成功了，金额、库存都对。练习网站的参数校验对「长得像数字的字符串」是宽容的：数字字符串、整数值的小数（<code>1.0</code>）都能过，带小数点的 <code>1.5</code>、字母才被拦。这件事值得专门写一条用例钉住：接口的校验比页面上的输入框宽，页面上你根本输不进字符串，绕过页面直接调接口的人却可以。把它记成预期行为，哪天有人收紧了校验，用例会提醒大家这是有意变更。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>边界值照着文档抄一遍就完事，等于没测。</strong> 文档是开发想做什么，测试要验证实际做成了什么。本章后面「两个空格绕过昵称长度校验」的发现，文档里一个字都没提，全部来自实测。</p>
+</div>
+<h3 id="525-每页条数和翻页">5.2.5 每页条数和翻页<a class="headerlink" href="#525-每页条数和翻页" title="Permanent link">&para;</a></h3>
+<p>搜索接口的 <code>size</code> 约定 1～50，<code>page</code> 从 1 开始。同一个套路，取值表和代码：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>预期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>成功，返回 1 条</td>
+</tr>
+<tr>
+<td>50</td>
+<td>成功，返回 25 条（全部商品）</td>
+</tr>
+<tr>
+<td>0</td>
+<td>HTTP 422</td>
+</tr>
+<tr>
+<td>51</td>
+<td>HTTP 422</td>
+</tr>
+</tbody>
+</table>
+<p>翻页还有一个不在文档里的边界：<strong>最后一页之外</strong>。25 件商品、每页 10 条，第 3 页只剩 5 条，第 4 页应该是空列表，但 <code>total</code> 还是 25：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 25 件商品、每页 10 件：第 3 页是最后一页，只剩 5 件；第 4 页已经翻过头。</span>
+<span class="c1"># 参数名用 page_no 不用 page：page 是 pytest-playwright 的夹具名，重名会被它接管</span>
+<span class="n">PAGE_CASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"最后一页"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"最后一页之后"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"翻页的边界：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, page_no, expect_count"</span><span class="p">,</span> <span class="n">PAGE_CASES</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">PAGE_CASES</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_page_boundary</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">page_no</span><span class="p">,</span> <span class="n">expect_count</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="n">page_no</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">25</span>                     <span class="c1"># 翻到哪一页，总数都不变</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"items"</span><span class="p">])</span> <span class="o">==</span> <span class="n">expect_count</span>
+</code></pre></div>
+<p><code>size</code> 取 1 和 50 的两条成功用例也在文件里（<code>test_size_boundary</code>），取值和预期就是上面那张表。第一次设计时，容易把第 3 页当成「超出去、该是空的」——这正是要实测的原因：页是算出来的，25 除以 10 余 5，余数占着一页。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>参数名别和夹具重名。</strong> 给参数化起名 <code>page</code>，pytest-playwright 的 <code>page</code> 夹具（浏览器页面）会把它接管，用例拿到的是浏览器对象而不是你给的数字，用例编号还莫名其妙多了个「chromium-」前缀。改成 <code>page_no</code> 一切正常。</p>
+</div>
+<h3 id="526-昵称长度和两个空格的发现">5.2.6 昵称长度和两个空格的发现<a class="headerlink" href="#526-昵称长度和两个空格的发现" title="Permanent link">&para;</a></h3>
+<p>改昵称接口的 <code>nickname</code> 约定 2～20 个字。边界取值：1 个字、2 个、20 个、21 个、非字符串，有效无效各一组参数化：</p>
+<div class="highlight"><pre><span></span><code><span class="n">NICKNAME_INVALID</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"昵称只有1个字"</span><span class="p">,</span> <span class="s2">"超"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"昵称超过20个字"</span><span class="p">,</span> <span class="s2">"超"</span> <span class="o">*</span> <span class="mi">21</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"昵称不是字符串"</span><span class="p">,</span> <span class="mi">123</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">NICKNAME_VALID</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"昵称2个字"</span><span class="p">,</span> <span class="s2">"阿宝"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"昵称20个字"</span><span class="p">,</span> <span class="s2">"超"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>按这张表测完，边界全部符合预期。还剩最后一个疑问：<strong>校验算的是哪个值？</strong> 传两个空格试试：</p>
+<div class="highlight"><pre><span></span><code>PUT /api/users/me，请求体 {"nickname": "  "}
+
+HTTP/1.1 200 OK
+
+{"code":0,"msg":"ok","data":{"username":"bob","nickname":""}}
+</code></pre></div>
+<p>两个空格长度正好是 2，通过了长度校验；服务器存昵称之前会去掉首尾空格，最后存进去一个空字符串。再查用户信息，昵称真的变成了空。这条用例（<code>test_nickname_whitespace_quirk</code>）把两步都断上，然后恢复昵称。它算不算缺陷、要不要修，由团队定；测试的职责是发现并钉住它——先校验、后处理，顺序一换行为就变，这类问题只有边界值加实测能挖到。</p>
+<h3 id="527-一次下单的行数">5.2.7 一次下单的行数<a class="headerlink" href="#527-一次下单的行数" title="Permanent link">&para;</a></h3>
+<p><code>items</code> 列表还有一个上限：最多 20 行。20 行成功、21 行返回 422，一有效一无效，两条参数化用例各测一头：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 一次下单最多 20 行：20 行是有效边界，21 行是无效边界</span>
+<span class="n">ITEMS_COUNT_CASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"20行"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"21行"</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">422</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"一次下单的行数取边界值：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, lines, status"</span><span class="p">,</span> <span class="n">ITEMS_COUNT_CASES</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ITEMS_COUNT_CASES</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_items_count_boundary</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lines</span><span class="p">)])</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">status</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]))</span>   <span class="c1"># 下单成功的当场取消，归还库存</span>
+</code></pre></div>
+<p>列表长度的边界最容易漏：字段边界（数量、页数）看得见，容器本身的大小没人想起来问。以后拿到接口文档，列表类型的参数都多问一句「最多几行」。</p>
+<h2 id="53-判定表登录的六种组合">5.3 判定表：登录的六种组合<a class="headerlink" href="#53-判定表登录的六种组合" title="Permanent link">&para;</a></h2>
+<h3 id="531-先把组合全试出来">5.3.1 先把组合全试出来<a class="headerlink" href="#531-先把组合全试出来" title="Permanent link">&para;</a></h3>
+<p>等价类一次只看一个参数。如果结果由<strong>几个条件共同决定</strong>，单看每个条件就不够了：登录的结果由「用户名对不对」和「密码对不对」共同决定。先写个十几行的脚本，把两个条件各取「空、对、错」三种值的九种组合挨个试一遍（存成 <code>scratch/login_grid.py</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 把登录的两个条件各取「空、对、错」三种值，九种组合挨个试一遍，看服务器返回什么业务码</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+<span class="n">USERNAMES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"空"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"对"</span><span class="p">:</span> <span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"错"</span><span class="p">:</span> <span class="s2">"nobody"</span><span class="p">}</span>
+<span class="n">PASSWORDS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"空"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"对"</span><span class="p">:</span> <span class="s2">"bob123"</span><span class="p">,</span> <span class="s2">"错"</span><span class="p">:</span> <span class="s2">"wrong-password"</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">u_name</span><span class="p">,</span> <span class="n">username</span> <span class="ow">in</span> <span class="n">USERNAMES</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">password</span> <span class="ow">in</span> <span class="n">PASSWORDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="n">password</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"密码</span><span class="si">{</span><span class="n">p_name</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">body</span><span class="p">[</span><span class="s1">'code'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"用户名</span><span class="si">{</span><span class="n">u_name</span><span class="si">}</span><span class="s2">："</span><span class="p">,</span> <span class="s2">"  "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+</code></pre></div>
+<p>真实运行结果是一张现成的九宫格，业务码只有三种：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\login_grid.py
+用户名空： 密码空→1002  密码对→1002  密码错→1002
+用户名对： 密码空→1002  密码对→0    密码错→1001
+用户名错： 密码空→1002  密码对→1001  密码错→1001
+</code></pre></div>
+<p>从格子里能读出三条结论，每条都是一句业务规则：</p>
+<ul>
+<li><strong>只要有一边为空，统一 1002</strong>——「先填全再谈对错」；</li>
+<li><strong>全对才 0</strong>，登录成功；</li>
+<li><strong>只要有一边错（且都不为空），统一 1001</strong>——「账号不存在」和「密码错」在服务器看来是同一种失败，提示不区分，防止有人拿接口试出哪些账号存在（第 2 章 2.8 节的用例表里也注明了这一点）。</li>
+</ul>
+<p>九种组合收敛成<strong>六行判定表</strong>，这就是要写的用例：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>用户名</th>
+<th>密码</th>
+<th>预期</th>
+<th>业务码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>空</td>
+<td>空</td>
+<td>提示不能为空</td>
+<td>1002</td>
+</tr>
+<tr>
+<td>2</td>
+<td>空</td>
+<td>对</td>
+<td>提示不能为空</td>
+<td>1002</td>
+</tr>
+<tr>
+<td>3</td>
+<td>对</td>
+<td>空</td>
+<td>提示不能为空</td>
+<td>1002</td>
+</tr>
+<tr>
+<td>4</td>
+<td>对</td>
+<td>对</td>
+<td>登录成功，返回 token</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>错</td>
+<td>对</td>
+<td>用户名或密码错误</td>
+<td>1001</td>
+</tr>
+<tr>
+<td>6</td>
+<td>对</td>
+<td>错</td>
+<td>用户名或密码错误</td>
+<td>1001</td>
+</tr>
+</tbody>
+</table>
+<h3 id="532-翻译成用例">5.3.2 翻译成用例<a class="headerlink" href="#532-翻译成用例" title="Permanent link">&para;</a></h3>
+<p>六个组合，五条失败的一组参数化，成功的一条单独写（它要断 token，断言不同）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># (场景名, 用户名, 密码, 预期业务码, 预期提示)。</span>
+<span class="c1"># 「账号不存在」和「密码错误」服务器都回同一种失败（防止被人试出账号），</span>
+<span class="c1"># 所以判定表里合成「用户名错误」一行；想分开测，预期也是一样的</span>
+<span class="n">LOGIN_DECISION_TABLE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"用户名密码都为空"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="s2">"用户名和密码不能为空"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"只有用户名为空"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="s2">"用户名和密码不能为空"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"只有密码为空"</span><span class="p">,</span> <span class="s2">"bob"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="s2">"用户名和密码不能为空"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"用户名错误"</span><span class="p">,</span> <span class="s2">"nobody"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s2">"用户名或密码错误"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"密码错误"</span><span class="p">,</span> <span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"wrong-password"</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s2">"用户名或密码错误"</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"登录判定表：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s2">"title, username, password, code, msg"</span><span class="p">,</span>
+    <span class="n">LOGIN_DECISION_TABLE</span><span class="p">,</span>
+    <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">LOGIN_DECISION_TABLE</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_decision_table</span><span class="p">(</span><span class="n">guest</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">guest</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="n">code</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="n">msg</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"登录判定表：用户名密码都对，登录成功返回 token"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_all_correct</span><span class="p">(</span><span class="n">guest</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">guest</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"username"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"bob"</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"token"</span><span class="p">])</span> <span class="o">==</span> <span class="mi">32</span>
+</code></pre></div>
+<p>存成 <code>tests/api/test_design_decision_table.py</code>，运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_design_decision_table.py -v
+collected 6 items
+
+tests/api/test_design_decision_table.py::test_login_decision_table[用户名密码都为空] PASSED [ 16%]
+tests/api/test_design_decision_table.py::test_login_decision_table[只有用户名为空] PASSED [ 33%]
+tests/api/test_design_decision_table.py::test_login_decision_table[只有密码为空] PASSED [ 50%]
+tests/api/test_design_decision_table.py::test_login_decision_table[用户名错误] PASSED [ 66%]
+tests/api/test_design_decision_table.py::test_login_decision_table[密码错误] PASSED [ 83%]
+tests/api/test_design_decision_table.py::test_login_all_correct PASSED   [100%]
+============================== 6 passed in 0.27s ==============================
+</code></pre></div>
+<p>对比第 3 章 3.5 节的第一版参数化：那里只有四条失败用例，没有「都为空」（只有单边为空），也没有「全对」。这就是判定表的价值——<strong>逼着把组合列全</strong>，单凭感觉列，漏的往往是「都空」这种不起眼的组合。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：</strong> 条件超过三个、每个条件不止真假两种时，组合数会膨胀。先合并等价条件（像第 5 行和「账号不存在」那样），再删业务上不成立的组合，判定表控制在十行以内最好维护。</p>
+</div>
+<h2 id="54-状态迁移订单的一生">5.4 状态迁移：订单的一生<a class="headerlink" href="#54-状态迁移订单的一生" title="Permanent link">&para;</a></h2>
+<h3 id="541-画出状态图">5.4.1 画出状态图<a class="headerlink" href="#541-画出状态图" title="Permanent link">&para;</a></h3>
+<p>订单有三种状态：待支付（UNPAID）、已支付（PAID）、已取消（CANCELLED）。把它的一生画出来：</p>
+<div class="highlight"><pre><span></span><code>            ┌─────────┐  支付   ┌─────────┐
+  下单 ────►│ UNPAID  │───────► │  PAID   │ 终态
+            │ 待支付  │         │ 已支付  │
+            └────┬────┘         └─────────┘
+                 │ 取消
+                 ▼
+            ┌───────────┐
+            │ CANCELLED │ 终态
+            │  已取消   │
+            └───────────┘
+</code></pre></div>
+<p>从图上读出两类用例：</p>
+<ul>
+<li><strong>合法迁移</strong>：UNPAID → PAID（支付）、UNPAID → CANCELLED（取消）。每条都要走到，并核对状态之外的数据（余额、库存）跟着变；</li>
+<li><strong>非法迁移</strong>：四个角上的组合——已支付再支付、已支付再取消、已取消再支付、已取消再取消，全部该被业务码 3003 拒绝。图上没有的入口也测一个：拿着不存在的订单号做查询、支付、取消，该是 3001。</li>
+</ul>
+<p>状态图一眼就能看出 PAID 和 CANCELLED <strong>没有出去的路</strong>，是终态——非法迁移清单就是从这张图上抄下来的。没有图的时候，这些拒绝逻辑藏在接口文档的字缝里，最容易漏。</p>
+<p>拿到一个陌生的系统，状态从哪里找？三个来源：接口文档里的状态字段（订单的 <code>status</code>、任务的 <code>state</code>，字段注释里往往就列着全部取值）；业务码表里的拒绝类提示（「已支付，不能取消」一句话就同时泄露了一个状态和一条非法迁移）；名词表（订单、支付单、退款单，每个业务名词背后通常藏着一个状态机）。把状态罗列出来，把迁移一条条画上去，图自然就有了。</p>
+<h3 id="542-用例">5.4.2 用例<a class="headerlink" href="#542-用例" title="Permanent link">&para;</a></h3>
+<p>新建 <code>tests/api/test_design_status.py</code>。每条用例<strong>自己下一单</strong>：要已支付就自己支付，要已取消就自己取消，绝不依赖上一条用例留下的状态（原因见 5.9 的坑表）。合法迁移两条、非法迁移四条、不存在的订单三条，共九条用例：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"合法迁移：待支付订单支付后变为已支付，余额扣减"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unpaid_to_paid</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">balance_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">balance_before</span> <span class="o">-</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+    <span class="n">detail</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>
+    <span class="k">assert</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"paidAt"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"合法迁移：待支付订单取消后变为已取消，库存归还"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unpaid_to_cancelled</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+    <span class="n">stock_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]))</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"CANCELLED"</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">==</span> <span class="n">stock_before</span>
+
+
+<span class="c1"># 非法迁移表：(场景名, 先做什么把订单推到终态, 再做什么, 预期提示)</span>
+<span class="n">ILLEGAL_TRANSITIONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"已支付再支付"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"订单已支付，不能支付"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"已支付再取消"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">,</span> <span class="s2">"订单已支付，不能取消"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"已取消再支付"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"订单已取消，不能支付"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"已取消再取消"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">,</span> <span class="s2">"订单已取消，不能取消"</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"非法迁移被拒绝：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, first, then, msg"</span><span class="p">,</span> <span class="n">ILLEGAL_TRANSITIONS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ILLEGAL_TRANSITIONS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_illegal_transition</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"支付"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">}</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="n">first</span><span class="p">](</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>           <span class="c1"># 先把订单推到终态</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">then</span><span class="p">](</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># 再做一次不允许的操作</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3003</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="n">msg</span>
+
+
+<span class="n">NO_SUCH_ORDER</span> <span class="o">=</span> <span class="s2">"SO20991231000001"</span>   <span class="c1"># 一张永远不会存在的订单号</span>
+<span class="n">NOT_FOUND_ACTIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"查询"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"不存在的订单号：</span><span class="si">{action}</span><span class="s2">返回 3001"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"action"</span><span class="p">,</span> <span class="n">NOT_FOUND_ACTIONS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">不存在的订单"</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">NOT_FOUND_ACTIONS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order_not_found</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"查询"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">](</span><span class="n">NO_SUCH_ORDER</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3001</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"msg"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"订单不存在"</span>
+</code></pre></div>
+<p>非法迁移的四条用的是同一副骨架：数据表里两个动作名换成对应的方法，<code>unpaid_order</code> 夹具（第 4 章 4.5 节）给每条用例发一张新的待支付订单。运行：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_design_status.py -v
+collected 9 items
+
+tests/api/test_design_status.py::test_unpaid_to_paid PASSED              [ 11%]
+tests/api/test_design_status.py::test_unpaid_to_cancelled PASSED         [ 22%]
+tests/api/test_design_status.py::test_illegal_transition[已支付再支付] PASSED [ 33%]
+tests/api/test_design_status.py::test_illegal_transition[已支付再取消] PASSED [ 44%]
+tests/api/test_design_status.py::test_illegal_transition[已取消再支付] PASSED [ 55%]
+tests/api/test_design_status.py::test_illegal_transition[已取消再取消] PASSED [ 66%]
+tests/api/test_design_status.py::test_order_not_found[查询不存在的订单] PASSED [ 77%]
+tests/api/test_design_status.py::test_order_not_found[支付不存在的订单] PASSED [ 88%]
+tests/api/test_design_status.py::test_order_not_found[取消不存在的订单] PASSED [100%]
+============================== 9 passed in 1.54s ==============================
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：</strong> 非法迁移断言到了具体的提示文案（「订单已支付，不能支付」）。状态类拒绝的文案经常被产品拿去直接展示给用户，文案错了也算缺陷；只想断业务码的话，至少要断到 3003，写成「返回了错误」是不够的（5.9 的坑表有这条）。</p>
+</div>
+<p>状态迁移还有一类用例叫全路径：把合法迁移一路走到终态，比如「下单→取消，结束」。本节的两条合法迁移就是最短全路径；订单只有三种状态，更长的路径不存在。以后遇到状态多的系统（比如退货有申请、审核、寄回、验收四步），要把每条走得通的全路径都走到；非法迁移不必穷举，每种「卡在半路」的典型情况测到即可。</p>
+<h2 id="55-负面与异常场景">5.5 负面与异常场景<a class="headerlink" href="#55-负面与异常场景" title="Permanent link">&para;</a></h2>
+<h3 id="551-token-的三种坏法">5.5.1 token 的三种坏法<a class="headerlink" href="#551-token-的三种坏法" title="Permanent link">&para;</a></h3>
+<p>需要登录的接口，token 是唯一凭证。设计负面用例时问一句：<strong>token 能坏出几种花样？</strong> 至少三种：请求头里压根不带、带一个伪造的、带一个格式完全正确但服务器从没发出过的。三种的预期一样：HTTP 401，业务码 40101。</p>
+<div class="highlight"><pre><span></span><code><span class="n">UNKNOWN_TOKEN</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>   <span class="c1"># 每轮运行都不同，但永远不会是服务器发过的</span>
+
+<span class="c1"># 三种坏 token，预期都一样：HTTP 401，业务码 40101</span>
+<span class="n">BAD_TOKENS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"不带token"</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"伪造的token"</span><span class="p">,</span> <span class="s2">"totally-fake-token"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"格式对但不存在的token"</span><span class="p">,</span> <span class="n">UNKNOWN_TOKEN</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"token 三种坏法都被拦下：</span><span class="si">{title}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"title, token"</span><span class="p">,</span> <span class="n">BAD_TOKENS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">BAD_TOKENS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bad_token</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">me</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40101</span>
+</code></pre></div>
+<p>三种的实测响应一字不差：</p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 401 Unauthorized
+
+{"code":40101,"msg":"未登录或 token 无效","data":null}
+</code></pre></div>
+<p>为什么伪造的也要单独测？因为「格式正确的假 token」是最常见的一种试探：拿到别人的 token 改一位、自己编一个 32 位十六进制。服务器必须对三种坏法给出同样的回答，任何一种返回了别的东西（比如 500），都是不该出现的行为。另外注意 <code>UNKNOWN_TOKEN</code> 用 <code>secrets.token_hex(16)</code> 现生成，格式和真 token 一模一样——这正是「格式对但不存在」的构造方法。</p>
+<p>注意这条用例用的是自己新建的客户端（<code>ShopApi(...)</code>），没碰共享的 <code>api</code> 夹具。它专门在凭证上使坏，弄脏了共享登录态，后面的用例就全成 401 了。</p>
+<p>token 其实还有一种状态不是用户弄坏的：<strong>过期</strong>。练习网站默认 token 永不过期，用环境变量把有效期调短再启动，就能构造出「登录过」和「登录过期」（业务码 40102）两种情况的差异，第 6 章 6.4 节的 token 过期与自动续期会用到它。把「没登录、登录过期、伪造、格式对但不存在」四种情况分开编码，前端才能分别处理：跳登录页、静默续期、直接拒绝。设计凭证类用例时，这四种都要过一遍。</p>
+<h3 id="552-数据隔离别人的订单就是订单不存在">5.5.2 数据隔离：别人的订单就是订单不存在<a class="headerlink" href="#552-数据隔离别人的订单就是订单不存在" title="Permanent link">&para;</a></h3>
+<p>登录解决「你是谁」，还要测「你能碰谁的东西」。alice 下一张待支付订单，换 bob 的身份去查、去付、去取消。同样用一个参数化函数把三个动作测全：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bob</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""另一个用户 bob 的客户端，专门拿来碰 alice（主账号）的数据。"""</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"accounts"</span><span class="p">][</span><span class="s2">"login"</span><span class="p">]</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">acc</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">acc</span><span class="p">[</span><span class="s2">"password"</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">client</span>
+
+
+<span class="n">ISOLATION_ACTIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"查询"</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">]</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"数据隔离：bob </span><span class="si">{action}</span><span class="s2"> alice 的订单，得到订单不存在"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"action"</span><span class="p">,</span> <span class="n">ISOLATION_ACTIONS</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">别人的订单"</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ISOLATION_ACTIONS</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_isolation_between_users</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="c1"># 对照组：先用 alice 自己查一次，确认这张订单真的存在，排除「订单号写错了」的假通过</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span>
+
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"查询"</span><span class="p">:</span> <span class="n">bob</span><span class="o">.</span><span class="n">get_order</span><span class="p">,</span> <span class="s2">"支付"</span><span class="p">:</span> <span class="n">bob</span><span class="o">.</span><span class="n">pay_order</span><span class="p">,</span> <span class="s2">"取消"</span><span class="p">:</span> <span class="n">bob</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">](</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3001</span>                    <span class="c1"># 按「订单不存在」处理，不提示无权限</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span>   <span class="c1"># 订单原封不动</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"数据隔离：别人的订单不会出现在 bob 的订单列表里"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_isolation_order_list</span><span class="p">(</span><span class="n">bob</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">order_nos</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ok</span><span class="p">(</span><span class="n">bob</span><span class="o">.</span><span class="n">list_orders</span><span class="p">())[</span><span class="s2">"items"</span><span class="p">]]</span>
+    <span class="k">assert</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">order_nos</span>
+</code></pre></div>
+<p>bob 查到的是：</p>
+<div class="highlight"><pre><span></span><code>{"code":3001,"msg":"订单不存在","data":null}
+</code></pre></div>
+<p>四个细节值得说：</p>
+<ul>
+<li><strong>先设对照组。</strong> 如果订单号本身就写错了，bob 查到 3001 也是「通过」，但什么都没证明。用例开头先用 alice 自己查一次，确认订单存在，bob 的 3001 才有分量；结尾再查一次，确认订单没被 bob 的动作影响；</li>
+<li><strong>3001 而不是「无权限」，是有意的设计。</strong> 提示「无权限」等于承认这张订单存在，别人就能拿它去遍历订单号。练习网站把别人的订单、不存在的订单统一报 3001（5.4 的 <code>test_order_not_found</code> 验证了不存在的也是 3001），两组用例合起来才构成完整证据；</li>
+<li><strong>写用例时别把「提示不友好」当缺陷报。</strong> 有同学会提意见：bob 应该看到「这是别人的订单」。这恰恰是安全上不想要的行为；</li>
+<li><strong>用专门的 <code>bob</code> 夹具。</strong> 会在别人的数据上碰壁的用例，用的是登录专用账号，不消耗主账号的任何东西。</li>
+</ul>
+<p>token 和数据隔离之外，常见的异常场景还有三类，先记下场景，等工具到位再补用例：<strong>重复提交</strong>（同一请求连发两次，比如双击下单按钮，接口要能挡住，不能生成两笔订单，性能测试的章节会专门回到这类问题）；<strong>请求异常</strong>（超时后客户端重试，重复的请求不该造成重复的副作用）；<strong>依赖异常</strong>（下单时调的支付通道挂了，订单该停在什么状态、能不能重新支付）。练习网站没有外部依赖，后两类的构造手段在第 4 章的 Mock 和后面的章节里。</p>
+<h2 id="56-组合与串联">5.6 组合与串联<a class="headerlink" href="#56-组合与串联" title="Permanent link">&para;</a></h2>
+<h3 id="561-同一商品写成两行合并还是分扣">5.6.1 同一商品写成两行：合并还是分扣<a class="headerlink" href="#561-同一商品写成两行合并还是分扣" title="Permanent link">&para;</a></h3>
+<p>先手工探一遍路。写个小脚本，同一件商品传两行、各买 1 件，看服务器怎么处理（存成 <code>scratch/merge_demo.py</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 同一商品写成两行，看服务器怎么处理：合并成一行，还是扣两次库存</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8000"</span>
+<span class="n">login</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"alice123"</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">login</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"token"</span><span class="p">]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">stock</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""中性笔（13 号商品）当前的库存。"""</span>
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/products/13"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"stock"</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"下单前库存："</span><span class="p">,</span> <span class="n">stock</span><span class="p">())</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/orders"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"items"</span><span class="p">:</span> <span class="n">items</span><span class="p">},</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">order_no</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]</span>
+<span class="n">detail</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/orders/</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"订单号："</span><span class="p">,</span> <span class="n">order_no</span><span class="p">,</span> <span class="s2">"金额："</span><span class="p">,</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"订单明细："</span><span class="p">,</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"items"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"下单后库存："</span><span class="p">,</span> <span class="n">stock</span><span class="p">())</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE</span><span class="si">}</span><span class="s2">/api/orders/</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">/cancel"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"取消后库存："</span><span class="p">,</span> <span class="n">stock</span><span class="p">())</span>
+</code></pre></div>
+<p>真实运行结果：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python scratch\merge_demo.py
+下单前库存： 100000
+订单号： SO20261022000001 金额： 5.0
+订单明细： [{'productId': 13, 'name': '中性笔', 'price': 2.5, 'quantity': 2}]
+下单后库存： 99998
+取消后库存： 100000
+</code></pre></div>
+<p>服务器把两行合并成了一行 <code>quantity=2</code>，库存一次扣掉 2，金额 5.0 元。<strong>这就是接口文档没写、必须实测才知道的规则。</strong> 把它钉成用例（<code>test_same_product_lines_merge</code>）：明细只有一行、数量是 2、库存恰好少 2。哪天有人改了合并逻辑，这条用例最先知道。</p>
+<p>组合类场景的套路是固定的：<strong>手工探出真实行为 → 查文档和代码确认是不是有意的 → 写成用例钉住。</strong> 跳过中间那步直接写用例，会把缺陷固化成预期。</p>
+<h3 id="562-时序下单之后库存被别人买光">5.6.2 时序：下单之后库存被别人买光<a class="headerlink" href="#562-时序下单之后库存被别人买光" title="Permanent link">&para;</a></h3>
+<p>两个用户操作同一件商品，顺序不同结果不同。设计之前先问一个业务问题：<strong>库存是什么时候扣的？</strong> 练习网站在下单那一刻就扣（下单接口的说明写着「同时占用库存」）。由此推论：我下了单、别人把剩下的买光，我的支付照样该成功，因为库存已经在下单时归我，支付只检查余额。</p>
+<p>构造这个时序：「限量版手办」一共 3 件。user002 下单买 1 件（剩 2），bob 把剩下 2 件全买走（剩 0），user002 再支付自己的订单：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"下单时库存已锁定：剩下的被别人买光，也不影响我支付"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_stock_locked_at_order_time</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""这条用例每跑一次消耗 1 个手办（别人那单会退回）。库存不足 3 件时跳过，</span>
+<span class="sd">    重启练习网站把数据恢复成初始状态后再跑。"""</span>
+    <span class="n">shop</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">shop</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">"限量版手办"</span><span class="p">))[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">stock_before</span> <span class="o">=</span> <span class="n">figure</span><span class="p">[</span><span class="s2">"stock"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">stock_before</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">"手办库存不足 3 件，重启练习网站恢复数据后再跑"</span><span class="p">)</span>
+
+    <span class="n">mine</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>            <span class="c1"># user002 先下单，锁住 1 件</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">mine</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"user002"</span><span class="p">,</span> <span class="s2">"test123"</span><span class="p">))</span>
+    <span class="n">my_order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">mine</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">figure</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]))</span>
+
+    <span class="n">other</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>           <span class="c1"># bob 把剩下的全部买走</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"bob123"</span><span class="p">))</span>
+    <span class="n">other_order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">figure</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">stock_before</span> <span class="o">-</span> <span class="mi">1</span><span class="p">}]))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">shop</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="n">figure</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>    <span class="c1"># 前提：剩下的确实被买光了</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">mine</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">my_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"库存在下单时已经锁定，支付不该失败：</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">other_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>             <span class="c1"># bob 那单退掉，只消耗我买的 1 件</span>
+        <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">mine</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">my_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span><span class="p">:</span>
+            <span class="n">ok</span><span class="p">(</span><span class="n">mine</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">my_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>             <span class="c1"># 我没付成，也退掉</span>
+</code></pre></div>
+<p>实测通过。注意这条用例悄悄做了四件数据管理的事：用账号池里的 user002，不动主账号；先断言库存真的到了 0，排除「bob 没买光」的假验证；<code>finally</code> 里把 bob 的订单退掉，就算支付断言失败了数据也回到只消耗 1 件的状态；库存不足 3 件时跳过并写明原因，第二天接着跑不会红一片。<strong>消耗型的数据要么当场归还，要么明说消耗多少、怎么恢复，这是时序类用例能不能反复跑的关键。</strong></p>
+<p>同一件事换一种库存策略，结论就反过来：如果系统改成支付时才扣库存，同样的时序里 user002 的支付会失败。这条用例测的其实是「库存锁定时机」这个业务规则本身——规则变了，用例就该变。</p>
+<p>在真实项目里，这种时序往往没法一步到位地构造：另一个用户的操作可能被定时任务抢跑，可能被缓存延迟。常用的办法是把每一步的触发写进脚本，用例里做的是精确编排（就像本条用例那样）；更复杂时，借助环境开关把中间步骤暂停住，再执行下一步。实在构造不出来就退一步：用日志或数据库确认两个操作的真实先后顺序，别按想象中的顺序写断言。</p>
+<h3 id="563-余额的边界刚好付得起">5.6.3 余额的边界：刚好付得起<a class="headerlink" href="#563-余额的边界刚好付得起" title="Permanent link">&para;</a></h3>
+<p>金额的边界藏在流程里：支付成功的条件是「余额大于等于订单金额」。第 4 章已经测过边界的外侧（买超过余额的显示器，支付返回 3002），这一条测内侧：<strong>把余额买到「付得起的最大台数」，支付必须成功</strong>。显示器 1299 元一台，步长清晰：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"用例设计"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"余额边界：买到刚好付得起的最大台数，支付成功"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_max_affordable</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""余额边界的里侧。外侧（多买一台就付不起）是第 4 章的 test_pay_balance_not_enough。</span>
+
+<span class="sd">    用账号池里的 user001，别把主账号的余额花光。每跑一次把 user001 的余额花到</span>
+<span class="sd">    不足一台显示器，重启练习网站恢复数据后可以再跑。"""</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"user001"</span><span class="p">,</span> <span class="s2">"test123"</span><span class="p">))</span>
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">monitor</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">search_products</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">"显示器"</span><span class="p">))[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># 1299 元一台</span>
+    <span class="n">quantity</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">balance</span> <span class="o">//</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">"price"</span><span class="p">])</span>    <span class="c1"># 付得起的最大台数（// 是整除）</span>
+    <span class="k">if</span> <span class="n">quantity</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">"user001 余额不足一台显示器，重启练习网站恢复数据后再跑"</span><span class="p">)</span>
+
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}]))</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>    <span class="c1"># 没付出去就还掉库存，再报失败</span>
+    <span class="k">assert</span> <span class="n">body</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"余额 </span><span class="si">{</span><span class="n">balance</span><span class="si">}</span><span class="s2"> 元买 </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2"> 台应该付得起：</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>数量取值来自当前余额，不是写死的台数，别的环境、别的初始余额照样能跑。两条用例一内一外，把这个边界合围了。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong><code>//</code> 是整除。</strong> <code>balance // price</code> 得到「买得起的最大台数」，写成 <code>/</code> 会得到小数，下单直接 422。Python 的整除符号在这一行是边界计算的基石。</p>
+</div>
+<h3 id="564-组合爆炸怎么砍">5.6.4 组合爆炸怎么砍<a class="headerlink" href="#564-组合爆炸怎么砍" title="Permanent link">&para;</a></h3>
+<p>5.2 到 5.6 的参数都有自己的取值集合，你可能会想：数量 10 个取值 × 行数 2 个取值 × 支付状态 3 个取值……乘起来几十条，要不要全测？<strong>不要。</strong> 绝大多数参数互不影响，全乘一遍是浪费。砍法只有一条原则：<strong>每次只让一个因素取边界值，其余因素取正常值。</strong> 比如测数量 999 时，行数用 1 行、商品用普通商品；测 20 行上限时，每行数量用 1。只有当你有理由相信两个因素互相影响时（比如「行数多」和「每行数量大」可能一起触发金额上限），才把它们组合成一条专项用例。本章 51 条新用例里，组合类只有 4 条，就是这个原则的结果。</p>
+<h2 id="57-用例优先级与粒度">5.7 用例优先级与粒度<a class="headerlink" href="#57-用例优先级与粒度" title="Permanent link">&para;</a></h2>
+<h3 id="571-四档优先级">5.7.1 四档优先级<a class="headerlink" href="#571-四档优先级" title="Permanent link">&para;</a></h3>
+<p>用例多起来之后，得回答「先跑哪些、哪些能砍」。给每条用例标档：</p>
+<table>
+<thead>
+<tr>
+<th>档</th>
+<th>含义</th>
+<th>本章的例子</th>
+<th>条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 冒烟</td>
+<td>系统还活着、主链路通不通</td>
+<td>支付把待支付变成已支付；两行合并扣一次库存</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P1 主流程</td>
+<td>正常业务的关键分支</td>
+<td>取消归还库存；两种商品一单；库存时序；余额边界；判定表全对；数据隔离三连</td>
+<td>8</td>
+</tr>
+<tr>
+<td>P2 边界</td>
+<td>参数取值的边界与类型</td>
+<td>数量、翻页、每页条数、昵称长度、下单行数</td>
+<td>24</td>
+</tr>
+<tr>
+<td>P3 异常提示</td>
+<td>纯拒绝、纯提示类</td>
+<td>token 三种坏法、非法迁移四条、不存在的订单、判定表的失败行、空格昵称</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<p>分档的用处是实打实的：回归时间紧，先跑 P0，两分钟知道系统还能不能用；P3 可以放到夜间跑。<strong>P2 边界用例是砍不得的</strong>——历史上最多的线上问题出在边界上——时间实在不够时才轮到 P3 让路。</p>
+<p>优先级也不是定一次就完事：新上的功能先用 P0 盯着，稳定后补 P1、P2；反复通过的 P3 可以降频。用 Allure 报告时还能按 <code>@allure.severity</code> 再叠一层重要程度（第 4 章 4.11.5 节的表格）。</p>
+<p>冒烟集要定期修剪。新增主流程用例时补进 smoke；发现某条 P1 用例经常第一个发现问题，把它提拔进冒烟集；反过来，冒烟集里连续几十轮只报环境问题的用例，要及时请出去。冒烟集的标准是又快又有用：条数控制在两位数以内、两三分钟跑完，它才会在每次提交后被真的跑起来。</p>
+<h3 id="572-一条用例验证一个点">5.7.2 一条用例验证一个点<a class="headerlink" href="#572-一条用例验证一个点" title="Permanent link">&para;</a></h3>
+<p>粒度比优先级更容易做错。反例长这样：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_pay_all_in_one</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">api</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3003</span>   <span class="c1"># 重复支付被拒</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_product</span><span class="p">(</span><span class="mi">13</span><span class="p">))[</span><span class="s2">"stock"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span>                           <span class="c1"># 顺带看一眼库存</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>                                     <span class="c1"># 顺带看一眼余额</span>
+</code></pre></div>
+<p>一条用例塞了三个验证目标：重复支付被拒、库存合理、余额合理。问题是：第二条断言失败时，你不知道是支付没拦住还是库存真有问题；第一行一旦失败，后面两个「顺带」根本没执行；用例名字说不清它测什么，半年后没人敢删也没人敢改。</p>
+<p>本章的写法是各回各家：重复支付被拒归状态迁移（5.4），库存增减归它所属的下单、取消用例，余额扣减归支付用例自己。<strong>一条用例一个验证目标，名字就是把目标说出口。</strong> 串联用例（5.6）看起来断了很多，但断的是同一条流程链上的检查点，链断在哪一步，用例就报哪一步，这和「顺带看一眼」有本质区别。</p>
+<h2 id="58-把设计落进-pytest">5.8 把设计落进 pytest<a class="headerlink" href="#58-把设计落进-pytest" title="Permanent link">&para;</a></h2>
+<p>设计产出的是表格和清单，最后都要落进工程。本章的落法：</p>
+<p><strong>目录与命名。</strong> 五个新文件都放在 <code>tests/api/</code> 下，文件名以 <code>test_design_</code> 开头，方法名直接可见：</p>
+<div class="highlight"><pre><span></span><code>tests/api/
+├─ test_design_boundary.py         等价类与边界值（25 条）
+├─ test_design_decision_table.py   判定表（6 条）
+├─ test_design_status.py           状态迁移（9 条）
+├─ test_design_negative.py         负面与异常（7 条）
+├─ test_design_combo.py            组合与串联（4 条）
+├─ test_login.py                   （第 3、4 章已有）
+├─ ...
+</code></pre></div>
+<p><strong>中文 ids。</strong> 每组参数化的 <code>ids</code> 都写中文场景名，报告、<code>-k</code> 筛选、失败清单里都直接可读。比如按「密码」挑用例：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -k 密码 -v
+collected 79 items / 74 deselected / 5 selected
+
+tests/api/test_design_decision_table.py::test_login_decision_table[用户名密码都为空] PASSED [ 20%]
+tests/api/test_design_decision_table.py::test_login_decision_table[只有密码为空] PASSED [ 40%]
+tests/api/test_design_decision_table.py::test_login_decision_table[密码错误] PASSED [ 60%]
+tests/api/test_login.py::test_login_fail[密码错误] PASSED                [ 80%]
+tests/api/test_login.py::test_login_fail[密码为空] PASSED                [100%]
+
+====================== 5 passed, 74 deselected in 0.27s =======================
+</code></pre></div>
+<p>再来一个按状态词挑的：<code>-k 已支付</code> 只选中「已支付再支付」「已支付再取消」两条非法迁移用例，状态类用例改完一个就能按词快速重跑。</p>
+<p><strong>smoke 标记挑 P0。</strong> 给两条 P0 用例打上 <code>@pytest.mark.smoke</code>（标记已在 <code>pytest.ini</code> 登记，第 4 章 4.5 节），和前两章的三条 P0 合在一起，一条命令挑出冒烟集：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api -m smoke -v
+collected 79 items / 74 deselected / 5 selected
+
+tests/api/test_design_combo.py::test_same_product_lines_merge PASSED     [ 20%]
+tests/api/test_design_status.py::test_unpaid_to_paid PASSED              [ 40%]
+tests/api/test_login.py::test_login_success PASSED                       [ 60%]
+tests/api/test_order_flow.py::test_purchase_flow PASSED                  [ 80%]
+tests/api/test_products.py::test_search_by_keyword PASSED                [100%]
+
+====================== 5 passed, 74 deselected in 1.20s =======================
+</code></pre></div>
+<p><strong>总量。</strong> 全部接口用例跑一遍：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api
+...
+tests\api\test_design_negative.py .......                            [ 53%]
+tests\api\test_design_status.py .........                           [ 64%]
+tests\api\test_login.py ........                                    [ 74%]
+tests\api\test_order_flow.py ..........                             [ 87%]
+tests\api\test_pay_concurrency.py .                                 [ 88%]
+tests\api\test_products.py .........                                [100%]
+============================= 79 passed in 10.16s =============================
+</code></pre></div>
+<p>本章之前是 28 条 3.1 秒，现在 79 条 10.2 秒。<strong>净增 51 条用例，运行时间只多了 7 秒</strong>——用例设计几乎不增加等待成本，却把「没测到的取值」这类风险成片消掉，这是接口层设计投入产出比最高的一件事。后面开始写 UI 自动化时，这些接口用例还会兼任数据准备和结果核对的后台。</p>
+<p>最后，把设计文档留下来。判定表、状态图、取值表格，这些中间产物比用例代码更耐放：接口重构时代码要跟着改，设计表格却能直接评审「有没有漏状态、漏边界」。把它们放进工程的 docs 目录或者用例管理平台，评审时拿表格说话，比指着几十行代码讲设计清楚得多。</p>
+<h2 id="59-常见的坑">5.9 常见的坑<a class="headerlink" href="#59-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>边界值照文档抄了一遍，全过，心里没底</td>
+<td>文档是「想做什么」，实测才知道「做成了什么」。每个取值都要真发请求；本章的字符串数量、空格昵称都是实测挖出来的</td>
+</tr>
+<tr>
+<td>参数化变量起名 <code>page</code>，用例编号多了个 <code>chromium-</code> 前缀，断言报错说拿到的是浏览器对象</td>
+<td>和 pytest-playwright 的 <code>page</code> 夹具重名了。参数名换一个（比如 <code>page_no</code>）</td>
+</tr>
+<tr>
+<td>想把几个参数的取值组合全测，用例数爆炸</td>
+<td>每次只让一个因素取边界值，其余取正常值（5.6.4）；确认两个因素真的互相影响时才做组合</td>
+</tr>
+<tr>
+<td>非法迁移的用例单独跑通过，一起跑就失败</td>
+<td>上一条用例把订单支付了，这条拿到的已经是已支付订单，断言全部错位。每条用例自己下一单：登录态可以共享，业务数据不要共享</td>
+</tr>
+<tr>
+<td>边界用例通过了，系统还是有问题</td>
+<td>只断言了「返回成功」。有效边界要连业务数据一起断：库存真的少了、金额真的对（5.2.3 的要点）</td>
+</tr>
+<tr>
+<td>跑完 token 用例，后面的用例全是 401</td>
+<td>用例把共享的登录态弄失效了。会破坏凭证的操作用专用客户端和专用账号（第 4 章 4.6.1 节的 <code>test_logout_invalidates_token</code> 同理）</td>
+</tr>
+<tr>
+<td>第二天再跑，手办和余额的用例全红</td>
+<td>上一轮把库存、余额消耗掉了。要么当场归还，要么 <code>pytest.skip</code> 并注明重启练习网站恢复（5.6.2、5.6.3 的写法），别让用例只能跑一轮</td>
+</tr>
+<tr>
+<td>负面用例断言写成 <code>code != 0</code></td>
+<td>3001 和 3003 混着断都能过，等于没断。断到具体的业务码，状态类再断到提示文案</td>
+</tr>
+<tr>
+<td>用例名叫 <code>test_order_1</code>，过一个月没人知道它测什么</td>
+<td>名字说出输入和预期；参数化用例的 <code>ids</code> 写中文场景名，报告和 <code>-k</code> 筛选都受益</td>
+</tr>
+</tbody>
+</table>
+<h2 id="510-练习">5.10 练习<a class="headerlink" href="#510-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>给商品搜索的 <code>keyword</code> 设计等价类：空字符串、正常关键词、前后带空格的关键词、SKU 编号、超长字符串、特殊字符。先列表格再写成参数化用例，实测对照（提示：空关键词返回全部 25 件；关键词匹配是对名称和编号做模糊搜索，前后带空格也能搜到，因为服务器会先去掉首尾空格——想想这和 5.2.6 的发现像不像）。</li>
+<li>新增收货地址接口 <code>POST /api/addresses</code> 的手机号约定是「1 开头的 11 位数字」，收货人 2～20 个字、详细地址 5～100 个字。给手机号设计 3 条有效、5 条无效的取值，写一条参数化用例（无效的返回业务码 5002）；注意其他字段不合法时返回的是 HTTP 422 而不是 5002，两套校验别混。有效用例测完把地址删掉（<code>DELETE /api/addresses/{id}</code>）。</li>
+<li>把「订单取消后按状态筛选」写成用例：取消一张订单，然后 <code>GET /api/orders?status=CANCELLED</code> 能查到它、<code>status=UNPAID</code> 查不到。写完想想：状态筛选查不到，除了状态不对，还有什么可能？（提示：列表接口只返回自己的订单。）</li>
+<li>给下单接口列一张判定表，条件三个：商品存在？库存够？数量合法？把所有组合和预期业务码列全，然后对照本章和第 4 章已有的下单用例，找出你列了但没人测过的组合（比如「数量和库存都没问题，但商品编号是 0」返回 2001），把它写成用例。</li>
+<li>思考题：5.6.2 的库存时序用例，如果练习网站改成「支付时才扣库存」，用例会先在哪一行断言失败？顺着 <code>finally</code> 清理继续推：两笔订单都取消之后，库存会变成几？这个和初始值对不上的数字，说明了什么？</li>
+</ol>
+<h2 id="511-自检清单">5.11 自检清单<a class="headerlink" href="#511-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出等价类和边界值各自解决什么问题，给 <code>quantity</code> 不看正文列出全部边界取值；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会列判定表，知道什么情况下两个条件该合并成一行；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能画出订单的状态图，说出全部合法迁移和四条非法迁移；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会设计 token 和数据隔离的负面用例，能解释为什么别人的订单也返回「订单不存在」；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用「每次只让一个因素取边界」砍组合，说得出什么时候才该真的组合两个因素；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能给自己的用例标 P0～P3，并用 <code>pytest -m smoke</code> 把 P0 挑出来；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道消耗型数据（库存、余额）怎么处理才能让用例反复跑。</li>
+</ul>
+<p>下一章：<a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html">第 6 章 常见接口场景</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 4 章 接口自动化进阶">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 4 章 接口自动化进阶
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 6 章 常见接口场景">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 6 章 常见接口场景
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

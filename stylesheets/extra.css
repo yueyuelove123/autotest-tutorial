@@ -1,0 +1,59 @@
+/* 教程网站的样式微调：中文字体、行距、表格和代码块 */
+
+:root {
+  --md-text-font: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif;
+  --md-code-font: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+/* 正文区域放宽一些，表格和长代码不用频繁左右滚动 */
+.md-grid {
+  max-width: 1360px;
+}
+
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+}
+
+/* 主题默认的二级标题字很细，中文看着发虚，加粗一些 */
+.md-typeset h2 {
+  font-weight: 600;
+  margin-top: 2em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* 表格：铺满宽度、表头加底色，单元格里的长文字自动换行。
+   主题给表格外面套了一层按内容收窄的容器，这层也要设成满宽 */
+.md-typeset__table {
+  width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) td {
+  word-break: break-word;
+}
+
+/* 代码块里的命令行提示与输出，字号略小一点 */
+.md-typeset pre > code {
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+/* 自检清单的复选框和文字对齐 */
+.md-typeset .task-list-item {
+  margin-bottom: 0.3em;
+}

@@ -1,0 +1,2685 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html">
+      
+      
+        <link rel="next" href="12-Selenium%E5%AF%B9%E7%85%A7.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 11 章 UI 自动化进阶 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-11-章-ui-自动化进阶" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 11 章 UI 自动化进阶
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111-pytest-playwright-的参数和夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 pytest-playwright 的参数和夹具
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 pytest-playwright 的参数和夹具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111-命令行参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.1 命令行参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112-夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.2 夹具
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-页面对象模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 页面对象模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.2 页面对象模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121-遇到的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.1 遇到的问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1122-页面对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.2 页面对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1123-用页面对象重写用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.3 用页面对象重写用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1124-页面对象的几条约定" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.4 页面对象的几条约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-登录态复用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 登录态复用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 登录态复用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131-用接口登录把-token-种进浏览器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.1 用接口登录，把 token 种进浏览器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132-另一种做法保存登录状态文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.2 另一种做法：保存登录状态文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-接口造数页面操作接口核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 接口造数，页面操作，接口核对
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115-等待接口响应拦截接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 等待接口响应、拦截接口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 等待接口响应、拦截接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151-等某个接口的响应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.1 等某个接口的响应
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1152-拦截接口伪造返回" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.2 拦截接口，伪造返回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1153-完整的商品页用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.3 完整的商品页用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#116-弹窗新标签页iframe上传下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 弹窗、新标签页、iframe、上传下载
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.6 弹窗、新标签页、iframe、上传下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1161-浏览器自带的弹窗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.1 浏览器自带的弹窗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1162-新标签页" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.2 新标签页
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1163-iframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.3 iframe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1164-上传和下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.4 上传和下载
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#117-调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 调试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.7 调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1171-看着它跑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.1 看着它跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1172-单步调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.2 单步调试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1173-操作录像trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.3 操作录像（trace）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#118-失败截图进-allure-报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8 失败截图进 Allure 报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#119-为什么-ui-用例时好时坏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9 为什么 UI 用例时好时坏
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110-ui-用例写多少" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10 UI 用例写多少
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1111-现在的工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.11 现在的工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1112-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.12 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1113-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.13 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1114-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.14 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111-pytest-playwright-的参数和夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 pytest-playwright 的参数和夹具
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 pytest-playwright 的参数和夹具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111-命令行参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.1 命令行参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112-夹具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.2 夹具
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-页面对象模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 页面对象模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.2 页面对象模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121-遇到的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.1 遇到的问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1122-页面对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.2 页面对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1123-用页面对象重写用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.3 用页面对象重写用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1124-页面对象的几条约定" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2.4 页面对象的几条约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-登录态复用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 登录态复用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 登录态复用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131-用接口登录把-token-种进浏览器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.1 用接口登录，把 token 种进浏览器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132-另一种做法保存登录状态文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.2 另一种做法：保存登录状态文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-接口造数页面操作接口核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 接口造数，页面操作，接口核对
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115-等待接口响应拦截接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 等待接口响应、拦截接口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 等待接口响应、拦截接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151-等某个接口的响应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.1 等某个接口的响应
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1152-拦截接口伪造返回" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.2 拦截接口，伪造返回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1153-完整的商品页用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.3 完整的商品页用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#116-弹窗新标签页iframe上传下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 弹窗、新标签页、iframe、上传下载
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.6 弹窗、新标签页、iframe、上传下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1161-浏览器自带的弹窗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.1 浏览器自带的弹窗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1162-新标签页" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.2 新标签页
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1163-iframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.3 iframe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1164-上传和下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.4 上传和下载
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#117-调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 调试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.7 调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1171-看着它跑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.1 看着它跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1172-单步调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.2 单步调试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1173-操作录像trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.3 操作录像（trace）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#118-失败截图进-allure-报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8 失败截图进 Allure 报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#119-为什么-ui-用例时好时坏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9 为什么 UI 用例时好时坏
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110-ui-用例写多少" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10 UI 用例写多少
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1111-现在的工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.11 现在的工程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1112-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.12 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1113-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.13 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1114-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.14 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-11-章-ui-自动化进阶">第 11 章 UI 自动化进阶<a class="headerlink" href="#第-11-章-ui-自动化进阶" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>用好 pytest-playwright 的参数和夹具；</li>
+<li>用页面对象模式组织 UI 代码；</li>
+<li>用接口登录跳过登录页，用接口准备测试数据；</li>
+<li>会等待接口响应、拦截和伪造接口返回；</li>
+<li>会处理浏览器弹窗、新标签页、iframe、上传下载；</li>
+<li>会用操作录像（trace）排查失败，让失败截图进 Allure 报告；</li>
+<li>知道 UI 用例为什么时好时坏，以及怎么治。</li>
+</ul>
+<hr />
+<h2 id="111-pytest-playwright-的参数和夹具">11.1 pytest-playwright 的参数和夹具<a class="headerlink" href="#111-pytest-playwright-的参数和夹具" title="Permanent link">&para;</a></h2>
+<h3 id="1111-命令行参数">11.1.1 命令行参数<a class="headerlink" href="#1111-命令行参数" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--headed</code></td>
+<td>显示浏览器窗口</td>
+</tr>
+<tr>
+<td><code>--slowmo 500</code></td>
+<td>每个操作之间停 500 毫秒</td>
+</tr>
+<tr>
+<td><code>--browser chromium</code> / <code>firefox</code> / <code>webkit</code></td>
+<td>换浏览器内核，可以写多次，一条用例在几个浏览器上各跑一遍</td>
+</tr>
+<tr>
+<td><code>--browser-channel chrome</code> / <code>msedge</code></td>
+<td>用本机安装的 Chrome 或 Edge</td>
+</tr>
+<tr>
+<td><code>--device "iPhone 15"</code></td>
+<td>模拟手机：屏幕尺寸、触屏、手机浏览器标识</td>
+</tr>
+<tr>
+<td><code>--base-url http://...</code></td>
+<td>网站地址（本工程由 <code>base_url</code> 夹具提供，不用写）</td>
+</tr>
+<tr>
+<td><code>--screenshot only-on-failure</code></td>
+<td>失败时截图，也可以是 <code>on</code>、<code>off</code></td>
+</tr>
+<tr>
+<td><code>--video retain-on-failure</code></td>
+<td>录屏，只留失败用例的</td>
+</tr>
+<tr>
+<td><code>--tracing retain-on-failure</code></td>
+<td>记录操作录像，只留失败用例的（11.7 节详细讲）</td>
+</tr>
+<tr>
+<td><code>--output test-results</code></td>
+<td>截图、录屏、操作录像放在哪，默认就是 <code>test-results</code></td>
+</tr>
+</tbody>
+</table>
+<p>截图、录屏、操作录像都存在 <code>test-results/</code> 下，每条用例一个文件夹。<strong>这个文件夹在每次运行开始时会被清空</strong>，要留存就在跑完后拷走。</p>
+<p>把常用的参数写进 <code>pytest.ini</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-ra --strict-markers --browser-channel=chrome --tracing=retain-on-failure --screenshot=only-on-failure</span>
+</code></pre></div>
+<p>这里顺便加了 <code>--strict-markers</code>：用了没在 <code>markers</code> 里登记的标记就直接报错，防止把标记名写错了还不知道，第 19 章 19.2 节细讲。</p>
+<h3 id="1112-夹具">11.1.2 夹具<a class="headerlink" href="#1112-夹具" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>夹具</th>
+<th>是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td>一个新标签页，每条用例一个，用完自动关闭</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>page</code> 所在的浏览器上下文，每条用例一个，用例之间的 cookie 互不影响</td>
+</tr>
+<tr>
+<td><code>browser</code></td>
+<td>浏览器，整轮测试共用一个</td>
+</tr>
+<tr>
+<td><code>browser_context_args</code></td>
+<td>创建上下文时的参数，覆盖它可以改窗口大小、语言、时区等</td>
+</tr>
+</tbody>
+</table>
+<p>想让所有用例都用 1440×900 的窗口、中文环境，在 <code>conftest.py</code> 里覆盖 <code>browser_context_args</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">browser_context_args</span><span class="p">(</span><span class="n">browser_context_args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">browser_context_args</span><span class="p">,</span> <span class="s2">"viewport"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"width"</span><span class="p">:</span> <span class="mi">1440</span><span class="p">,</span> <span class="s2">"height"</span><span class="p">:</span> <span class="mi">900</span><span class="p">},</span> <span class="s2">"locale"</span><span class="p">:</span> <span class="s2">"zh-CN"</span><span class="p">}</span>
+</code></pre></div>
+<p>只想改某一条用例，用标记：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">browser_context_args</span><span class="p">(</span><span class="n">viewport</span><span class="o">=</span><span class="p">{</span><span class="s2">"width"</span><span class="p">:</span> <span class="mi">390</span><span class="p">,</span> <span class="s2">"height"</span><span class="p">:</span> <span class="mi">844</span><span class="p">})</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_mobile_layout</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h2 id="112-页面对象模式">11.2 页面对象模式<a class="headerlink" href="#112-页面对象模式" title="Permanent link">&para;</a></h2>
+<h3 id="1121-遇到的问题">11.2.1 遇到的问题<a class="headerlink" href="#1121-遇到的问题" title="Permanent link">&para;</a></h3>
+<p>第 8 章的两条登录用例里，「找到用户名框、填写、找到密码框、填写、点登录」写了两遍。用例多了以后，同一个按钮的定位写法会散落在几十个地方；开发改了一下按钮文字，你得一个个找出来改。</p>
+<h3 id="1122-页面对象">11.2.2 页面对象<a class="headerlink" href="#1122-页面对象" title="Permanent link">&para;</a></h3>
+<p><strong>页面对象模式</strong>（Page Object Model，简称 POM）的做法是：每个页面写一个类，页面上的元素和能做的操作都收在这个类里，用例只调用这些操作、做断言。和第 4 章接口客户端的思路一样，都是分层。</p>
+<p>新建 <code>pages</code> 文件夹（里面放一个空的 <code>__init__.py</code>），写三个页面对象。</p>
+<p><code>pages/login_page.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""登录页的页面对象：页面上有什么元素、能做什么操作，都写在这里。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Page</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LoginPage</span><span class="p">:</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s2">"/login.html"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"用户名"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"密码"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submit</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"登录"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submit</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+<p><code>pages/products_page.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""商品列表页的页面对象。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Page</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductsPage</span><span class="p">:</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s2">"/products.html"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">welcome</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"welcome"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"balance"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keyword</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"关键词"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_button</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"搜索"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"product-row"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"#state"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"dialog"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toast</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"status"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keyword</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""名称里包含 name 的那一行商品。"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">buy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"购买"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"数量"</span><span class="p">)</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"确认下单"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+<p><code>pages/orders_page.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""我的订单页的页面对象。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Page</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OrdersPage</span><span class="p">:</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s2">"/orders.html"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"balance"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_filter</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"状态"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"order-row"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toast</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"status"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_by_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""按状态筛选，text 是下拉框里显示的文字，比如「已取消」。"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_filter</span><span class="o">.</span><span class="n">select_option</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="n">order_no</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_no</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># 取消前页面会弹出浏览器自带的确认框，先说好「出现了就点确定」，再去点按钮</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">once</span><span class="p">(</span><span class="s2">"dialog"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">dialog</span><span class="p">:</span> <span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"取消"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+<p>在 <code>__init__</code> 里写定位不会马上去页面上找元素。<strong>定位器是惰性的</strong>，每次对它做操作或断言时才去找，所以页面刷新、列表重新渲染之后照样能用。</p>
+<h3 id="1123-用页面对象重写用例">11.2.3 用页面对象重写用例<a class="headerlink" href="#1123-用页面对象重写用例" title="Permanent link">&para;</a></h3>
+<p><code>tests/ui/test_login_ui.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""登录页的 UI 用例。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">expect</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pages.login_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoginPage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pages.products_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProductsPage</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-登录"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"输入正确的账号密码，登录后进入商品页"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_success</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"accounts"</span><span class="p">][</span><span class="s2">"login"</span><span class="p">]</span>
+    <span class="n">LoginPage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">acc</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">acc</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_url</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"/products\.html$"</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">ProductsPage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">welcome</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"欢迎，</span><span class="si">{</span><span class="n">acc</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-登录"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"密码错误时提示「用户名或密码错误」，停留在登录页"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_login_wrong_password</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">LoginPage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">login</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"bob"</span><span class="p">,</span> <span class="s2">"wrong-password"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">login</span><span class="o">.</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"用户名或密码错误"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_url</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"/login\.html$"</span><span class="p">))</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-登录"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"没登录时打开订单页，会被带回登录页"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_redirect_when_not_logged_in</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/orders.html"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_url</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"/login\.html$"</span><span class="p">))</span>
+</code></pre></div>
+<p>开发把登录按钮的文字改成「立即登录」，只需要改 <code>LoginPage</code> 里的一行。</p>
+<h3 id="1124-页面对象的几条约定">11.2.4 页面对象的几条约定<a class="headerlink" href="#1124-页面对象的几条约定" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>方法按业务动作起名</strong>：<code>login()</code>、<code>buy()</code>、<code>pay()</code>，而不是 <code>click_button_3()</code>；</li>
+<li><strong>页面对象里不写断言</strong>，断言留在用例里。同一个操作，不同用例要检查的东西不一样；</li>
+<li><strong>一个页面一个类</strong>；页面上有独立的大组件（比如顶部导航栏、通用弹窗），可以单独拆成组件类；</li>
+<li><strong>页面对象里不写测试数据</strong>，账号、商品名这些从参数传进来。</li>
+</ul>
+<h2 id="113-登录态复用">11.3 登录态复用<a class="headerlink" href="#113-登录态复用" title="Permanent link">&para;</a></h2>
+<p>每条 UI 用例都从登录页开始，会带来两个问题：慢，每条用例多花一两秒；登录页一出问题，所有用例都失败，看报告完全不知道是哪里坏了。</p>
+<h3 id="1131-用接口登录把-token-种进浏览器">11.3.1 用接口登录，把 token 种进浏览器<a class="headerlink" href="#1131-用接口登录把-token-种进浏览器" title="Permanent link">&para;</a></h3>
+<p>第 2 章讲过，练习网站登录后把 token 存在 cookie 里。那就先用接口登录拿到 token，直接写进浏览器的 cookie，跳过登录页。新建 <code>tests/ui/conftest.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""UI 用例专用的夹具和钩子。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">logged_in_page</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""已登录的页面：把接口登录拿到的 token 种进浏览器，省掉每条用例都走一遍登录页。</span>
+
+<span class="sd">    页面会同时检查 token 和 username 两个 cookie，少种一个就当成没登录、跳回登录页。</span>
+<span class="sd">    """</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">add_cookies</span><span class="p">([</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">token</span><span class="p">,</span> <span class="s2">"url"</span><span class="p">:</span> <span class="n">base_url</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"username"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">api</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s2">"url"</span><span class="p">:</span> <span class="n">base_url</span><span class="p">},</span>
+    <span class="p">])</span>
+    <span class="k">return</span> <span class="n">page</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">hookimpl</span><span class="p">(</span><span class="n">hookwrapper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pytest_runtest_makereport</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">call</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""用例失败时截一张整页图，挂进 Allure 报告。"""</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="k">yield</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">funcargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"page"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">when</span> <span class="o">==</span> <span class="s2">"call"</span> <span class="ow">and</span> <span class="n">report</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">allure</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">full_page</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"失败截图"</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">allure</span><span class="o">.</span><span class="n">attachment_type</span><span class="o">.</span><span class="n">PNG</span><span class="p">)</span>
+</code></pre></div>
+<p>（第二个函数是失败截图，11.8 节讲。）</p>
+<p><code>api</code> 是第 4 章写的已登录接口客户端，浏览器和接口用的是同一个 token。需要登录的用例把参数 <code>page</code> 换成 <code>logged_in_page</code> 就行。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>只种 token 不够。</strong> 实测只种 <code>token</code>、不种 <code>username</code>，打开商品页会直接被带回登录页。真实系统也经常这样：页面脚本会同时检查好几个 cookie 或本地存储里的值。<strong>怎么知道要种哪些？</strong> 先在浏览器里正常登录一次，打开开发者工具的 Application（应用）面板，把 Cookies 和 Local Storage 里登录后新出现的东西都记下来，一个不落地种上。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>有的系统同一账号只允许一处登录。</strong> 新的登录会让旧 token 失效。这种系统里，浏览器和接口一定要共用同一次登录拿到的 token，像上面这样；要是浏览器又走了一遍登录页，接口那边的 token 就作废了。</p>
+</div>
+<h3 id="1132-另一种做法保存登录状态文件">11.3.2 另一种做法：保存登录状态文件<a class="headerlink" href="#1132-另一种做法保存登录状态文件" title="Permanent link">&para;</a></h3>
+<p>登录过程很复杂（单点登录、要扫码、要手工过验证）时，可以登录一次，把浏览器的登录状态存成文件，之后直接加载：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 登录一次后保存（cookie 和本地存储都会存进去）</span>
+<span class="n">context</span><span class="o">.</span><span class="n">storage_state</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">"auth.json"</span><span class="p">)</span>
+
+<span class="c1"># 之后创建上下文时加载</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">new_context</span><span class="p">(</span><span class="n">storage_state</span><span class="o">=</span><span class="s2">"auth.json"</span><span class="p">)</span>
+</code></pre></div>
+<p>pytest-playwright 里可以用 11.1.2 节的方法，在 <code>browser_context_args</code> 里加上 <code>"storage_state": "auth.json"</code>。</p>
+<p><strong><code>auth.json</code> 里是明文的登录凭证</strong>，不要上传到代码仓库，第 19 章会把它加进忽略清单。</p>
+<h2 id="114-接口造数页面操作接口核对">11.4 接口造数，页面操作，接口核对<a class="headerlink" href="#114-接口造数页面操作接口核对" title="Permanent link">&para;</a></h2>
+<p>测订单页的「支付」按钮，需要先有一张待支付订单。在页面上从头买一单也能造出来，但这样做：慢；商品页出了问题，订单页的用例也跟着失败，报告里分不清到底是哪里坏了。</p>
+<p>更好的做法是三段式：</p>
+<ol>
+<li><strong>用接口准备数据</strong>：快、稳定，准备阶段失败了一眼就能看出来；</li>
+<li><strong>在页面上做被测的操作</strong>：这才是这条 UI 用例真正要测的；</li>
+<li><strong>页面断言加接口核对</strong>：页面显示对了，再用接口确认后台数据也对了。页面显示「已支付」不代表钱真的扣了。</li>
+</ol>
+<p><code>tests/ui/test_orders_ui.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""订单页的 UI 用例：订单用接口造好，页面只验页面上的操作和展示。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">expect</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pages.orders_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrdersPage</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"在订单页支付待支付订单，状态变成已支付，余额减少"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pay_in_page</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">order_no</span> <span class="o">=</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span>
+    <span class="n">balance_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="n">OrdersPage</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">))</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">"待支付"</span><span class="p">)</span>
+
+    <span class="n">orders</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="n">order_no</span><span class="p">)</span>
+
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">toast</span><span class="p">)</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"支付成功，订单号：</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">))</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">"已支付"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"余额：¥</span><span class="si">{</span><span class="n">balance_before</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">unpaid_order</span><span class="p">[</span><span class="s1">'amount'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAID"</span>     <span class="c1"># 再用接口核对后台数据</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"在订单页取消订单，确认弹窗后状态变成已取消"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_cancel_in_page</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">order_no</span> <span class="o">=</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="n">OrdersPage</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+    <span class="n">orders</span><span class="o">.</span><span class="n">cancel</span><span class="p">(</span><span class="n">order_no</span><span class="p">)</span>
+
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order_no</span><span class="p">))</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">"已取消"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">))[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"CANCELLED"</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"按状态筛选「已取消」，列表里只剩已取消的订单"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_filter_by_status</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]))</span>
+    <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span>           <span class="c1"># 用接口造一张已取消的订单</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="n">OrdersPage</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+    <span class="n">orders</span><span class="o">.</span><span class="n">filter_by_status</span><span class="p">(</span><span class="s2">"已取消"</span><span class="p">)</span>
+
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]))</span><span class="o">.</span><span class="n">to_be_visible</span><span class="p">()</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="s2">"待支付"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="s2">"已支付"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><code>unpaid_order</code>、<code>product</code> 都是第 4 章在 <code>tests/conftest.py</code> 里写的夹具，接口用例和 UI 用例共用。</p>
+<h2 id="115-等待接口响应拦截接口">11.5 等待接口响应、拦截接口<a class="headerlink" href="#115-等待接口响应拦截接口" title="Permanent link">&para;</a></h2>
+<h3 id="1151-等某个接口的响应">11.5.1 等某个接口的响应<a class="headerlink" href="#1151-等某个接口的响应" title="Permanent link">&para;</a></h3>
+<p>在页面上点「确认下单」后，想拿到新订单的订单号。页面提示里有，但从文字里抠不可靠；更好的办法是等下单接口的响应，从响应里拿：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_response</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"/api/orders"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"POST"</span><span class="p">)</span> <span class="k">as</span> <span class="n">info</span><span class="p">:</span>
+    <span class="n">products</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">order_no</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]</span>
+</code></pre></div>
+<p><code>with</code> 块里的操作触发了请求，<code>with</code> 结束时会等到符合条件的响应回来，<code>info.value</code> 就是这个响应。这同时也验证了「点按钮确实调了下单接口」。</p>
+<h3 id="1152-拦截接口伪造返回">11.5.2 拦截接口，伪造返回<a class="headerlink" href="#1152-拦截接口伪造返回" title="Permanent link">&para;</a></h3>
+<p>想测「商品接口出错时页面怎么提示」，总不能真去把后端弄坏。Playwright 可以拦截页面发出的请求，直接返回你给的结果：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-商品"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"商品接口出错时，页面提示加载失败"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_load_error</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">logged_in_page</span>
+    <span class="c1"># 拦截商品接口，直接返回 500，模拟后端出故障（不用真的把服务弄坏）</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"**/api/products*"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">route</span><span class="p">:</span> <span class="n">route</span><span class="o">.</span><span class="n">fulfill</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="s2">"Internal Server Error"</span><span class="p">))</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">ProductsPage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"加载失败，请稍后重试"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><code>page.route(地址规则, 处理函数)</code> 里，地址规则中 <code>**</code> 匹配任意字符，<code>*</code> 匹配除 <code>/</code> 以外的任意字符。处理函数里常用的几种做法：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>route.fulfill(status=500, body="...")</code></td>
+<td>不发给服务器，直接返回指定结果</td>
+</tr>
+<tr>
+<td><code>route.fulfill(json={"code": 0, "data": {...}})</code></td>
+<td>返回伪造的 JSON，用来造特殊数据：超长商品名、库存为 0、空列表</td>
+</tr>
+<tr>
+<td><code>route.abort()</code></td>
+<td>让请求失败，模拟断网</td>
+</tr>
+<tr>
+<td><code>route.continue_()</code></td>
+<td>放行，可以顺便改请求头或请求体</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1153-完整的商品页用例">11.5.3 完整的商品页用例<a class="headerlink" href="#1153-完整的商品页用例" title="Permanent link">&para;</a></h3>
+<p><code>tests/ui/test_products_ui.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""商品页的 UI 用例。"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">expect</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ok</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pages.products_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProductsPage</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-商品"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"搜索「耳机」，列表里只剩两款耳机"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_search</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">):</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">ProductsPage</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">products</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"耳机"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>        <span class="c1"># 会自动等列表刷新，不用 sleep</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">rows</span><span class="o">.</span><span class="n">first</span><span class="p">)</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">"耳机"</span><span class="p">)</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-商品"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"在页面上购买，提示下单成功，后台生成待支付订单"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">smoke</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_buy_from_page</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">product</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">logged_in_page</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">ProductsPage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">products</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+    <span class="c1"># 一边点按钮，一边等下单接口的响应，从响应里拿订单号</span>
+    <span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_response</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"/api/orders"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"POST"</span><span class="p">)</span> <span class="k">as</span> <span class="n">info</span><span class="p">:</span>
+        <span class="n">products</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">order_no</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">][</span><span class="s2">"orderNo"</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">toast</span><span class="p">)</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"下单成功，订单号：</span><span class="si">{</span><span class="n">order_no</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">dialog</span><span class="p">)</span><span class="o">.</span><span class="n">to_be_hidden</span><span class="p">()</span>
+        <span class="c1"># 页面说成功不算数，再用接口核对后台数据</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"UNPAID"</span>
+        <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"quantity"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">))</span>            <span class="c1"># 清理：取消订单，归还库存</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"UI-商品"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"购买数量填 0，弹窗里提示数量范围，不会下单"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_buy_invalid_quantity</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">):</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">ProductsPage</span><span class="p">(</span><span class="n">logged_in_page</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+    <span class="n">products</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"中性笔"</span><span class="p">)</span>
+    <span class="n">products</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="s2">"中性笔"</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">dialog</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"数量要在 1 到 999 之间"</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">dialog</span><span class="p">)</span><span class="o">.</span><span class="n">to_be_visible</span><span class="p">()</span>
+</code></pre></div>
+<p>再加上 11.5.2 的 <code>test_load_error</code>，一共 4 条。</p>
+<h2 id="116-弹窗新标签页iframe上传下载">11.6 弹窗、新标签页、iframe、上传下载<a class="headerlink" href="#116-弹窗新标签页iframe上传下载" title="Permanent link">&para;</a></h2>
+<h3 id="1161-浏览器自带的弹窗">11.6.1 浏览器自带的弹窗<a class="headerlink" href="#1161-浏览器自带的弹窗" title="Permanent link">&para;</a></h3>
+<p><code>alert</code>、<code>confirm</code>、<code>prompt</code> 这三种是浏览器自带的弹窗，不属于页面元素，用定位器找不到。要提前告诉 Playwright「弹窗出现了怎么处理」：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">once</span><span class="p">(</span><span class="s2">"dialog"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">dialog</span><span class="p">:</span> <span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">())</span>        <span class="c1"># 点确定；dialog.dismiss() 是点取消</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"取消"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>             <span class="c1"># 这一步会弹出确认框</span>
+</code></pre></div>
+<p><code>page.once</code> 只处理下一个弹窗，<code>page.on</code> 处理之后所有的弹窗。还可以用 <code>dialog.message</code> 读弹窗里的文字。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>不处理弹窗不会报错，而是默默点了取消。</strong> Playwright 的默认行为是自动关掉弹窗（相当于点取消）。实测订单页不注册处理函数直接点「取消」，用例不报错，订单却还是待支付。所以遇到「点了按钮没反应」，先想想是不是有个确认框被自动关掉了。</p>
+</div>
+<p>页面自己画的弹窗（比如练习网站的购买弹窗）就是普通的页面元素，正常定位就行：<code>page.get_by_role("dialog")</code>。</p>
+<h3 id="1162-新标签页">11.6.2 新标签页<a class="headerlink" href="#1162-新标签页" title="Permanent link">&para;</a></h3>
+<p>点链接打开了新标签页时，要等这个新页面出现，再在新页面上操作：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/lab.html"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">expect_page</span><span class="p">()</span> <span class="k">as</span> <span class="n">info</span><span class="p">:</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"open-tab"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>          <span class="c1"># 练习场上的「点我打开新标签页」</span>
+<span class="n">new_page</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">value</span>
+<span class="n">new_page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">new_page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"from"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"link"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="1163-iframe">11.6.3 iframe<a class="headerlink" href="#1163-iframe" title="Permanent link">&para;</a></h3>
+<p>页面里嵌套的另一个页面（常见于支付、富文本编辑器、第三方组件）叫 iframe。里面的元素不能直接定位，要先进入 iframe：</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">frame_locator</span><span class="p">(</span><span class="s2">"#inner"</span><span class="p">)</span>                <span class="c1"># 用 CSS 找到练习场里的 iframe</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"from"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"frame"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="1164-上传和下载">11.6.4 上传和下载<a class="headerlink" href="#1164-上传和下载" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 上传：直接给文件输入框设置文件，不用去点系统的文件选择窗口（个人中心页，要先登录）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/profile.html"</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"avatar-file"</span><span class="p">)</span><span class="o">.</span><span class="n">set_input_files</span><span class="p">(</span><span class="s2">"data/avatar.png"</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"avatar-upload"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># 下载：等下载开始，再把文件存到指定位置（订单页的「导出 CSV」）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/orders.html"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_download</span><span class="p">()</span> <span class="k">as</span> <span class="n">info</span><span class="p">:</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"export"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">info</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">save_as</span><span class="p">(</span><span class="s2">"reports/orders.csv"</span><span class="p">)</span>
+</code></pre></div>
+<p>（这一节的四种情况，第 10 章已经在练习网站上逐个实测过：弹窗、新标签页、iframe 在练习场页面 <code>/lab.html</code>，上传在个人中心，下载在订单页的「导出 CSV」。这里只把写法汇总一遍，细节和坑回第 10 章看。）</p>
+<h2 id="117-调试">11.7 调试<a class="headerlink" href="#117-调试" title="Permanent link">&para;</a></h2>
+<p>UI 用例失败了，最难的是搞清楚「当时页面上到底是什么样」。几种手段：</p>
+<h3 id="1171-看着它跑">11.7.1 看着它跑<a class="headerlink" href="#1171-看着它跑" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\ui\test_orders_ui.py --headed --slowmo 500
+</code></pre></div>
+<h3 id="1172-单步调试">11.7.2 单步调试<a class="headerlink" href="#1172-单步调试" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:PWDEBUG = "1"
+(.venv) &gt; pytest tests\ui\test_orders_ui.py::test_pay_in_page
+</code></pre></div>
+<p>会打开浏览器和 Playwright Inspector（调试器）窗口，可以一步步执行、看每一步定位到了哪个元素、在调试器里试写定位。在代码里写一行 <code>page.pause()</code>，跑到这里也会停下来打开调试器。调试完记得 <code>Remove-Item Env:PWDEBUG</code> 去掉这个环境变量。</p>
+<h3 id="1173-操作录像trace">11.7.3 操作录像（trace）<a class="headerlink" href="#1173-操作录像trace" title="Permanent link">&para;</a></h3>
+<p><code>pytest.ini</code> 里配了 <code>--tracing=retain-on-failure</code>，用例失败时 Playwright 会在 <code>test-results/用例名/</code> 下留一个 <code>trace.zip</code>。打开它：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; playwright show-trace test-results\tests-ui-test-orders-ui-py-test-pay-in-page-chromium\trace.zip
+</code></pre></div>
+<p>这是排查 UI 用例最有用的工具：</p>
+<ul>
+<li>左边是每一步操作的列表，点一步就能看到<strong>这一步前后页面的截图</strong>；</li>
+<li>能看到每一步的页面结构快照，可以在里面选元素、试定位；</li>
+<li>有这条用例期间所有的网络请求和响应，以及浏览器控制台的报错。</li>
+</ul>
+<p>不想装任何东西，也可以把 <code>trace.zip</code> 拖到 <a href="https://trace.playwright.dev">https://trace.playwright.dev</a> 打开，文件只在你的浏览器里解析，不会上传。</p>
+<p>同一个文件夹里还有失败瞬间的截图 <code>test-failed-1.png</code>。</p>
+<h2 id="118-失败截图进-allure-报告">11.8 失败截图进 Allure 报告<a class="headerlink" href="#118-失败截图进-allure-报告" title="Permanent link">&para;</a></h2>
+<p><code>test-results</code> 里的截图只在本机，而且下次运行就清空了。把截图挂进 Allure 报告，别人看报告就能看到失败瞬间的页面。11.3.1 节 <code>tests/ui/conftest.py</code> 里的第二个函数就是干这个的：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">hookimpl</span><span class="p">(</span><span class="n">hookwrapper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pytest_runtest_makereport</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">call</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""用例失败时截一张整页图，挂进 Allure 报告。"""</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="k">yield</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">funcargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"page"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">when</span> <span class="o">==</span> <span class="s2">"call"</span> <span class="ow">and</span> <span class="n">report</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">allure</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">full_page</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"失败截图"</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">allure</span><span class="o">.</span><span class="n">attachment_type</span><span class="o">.</span><span class="n">PNG</span><span class="p">)</span>
+</code></pre></div>
+<p>这是一个<strong>钩子</strong>：pytest 在每条用例的每个阶段（准备、执行、清理）结束时都会调用它。<code>yield</code> 之后能拿到这个阶段的结果，如果是执行阶段（<code>call</code>）失败了，并且这条用例用到了浏览器页面，就截一张整页图挂进报告。用的是 <code>logged_in_page</code> 也没关系，它依赖 <code>page</code>，<code>item.funcargs</code> 里一样能取到。</p>
+<h2 id="119-为什么-ui-用例时好时坏">11.9 为什么 UI 用例时好时坏<a class="headerlink" href="#119-为什么-ui-用例时好时坏" title="Permanent link">&para;</a></h2>
+<p>同一条用例，代码没改，有时通过有时失败，这种用例叫<strong>不稳定用例</strong>（英文 flaky）。它是 UI 自动化最大的敌人：大家会渐渐不再相信失败结果，真正的缺陷就被放过了。常见原因：</p>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>表现</th>
+<th>怎么治</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时机</td>
+<td>用了 <code>sleep</code>、<code>count()</code>、<code>is_visible()</code> 判断，页面慢一点就失败</td>
+<td>一律用 <code>expect</code>，操作依赖 Playwright 的自动等待</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>依赖别的用例留下的数据，或者数据被别的用例改了</td>
+<td>每条用例用接口自己造数据、自己清理</td>
+</tr>
+<tr>
+<td>共享账号</td>
+<td>几条用例同时操作一个账号的余额、购物车</td>
+<td>断言变化量；并行时每个进程用不同账号（第 19 章）</td>
+</tr>
+<tr>
+<td>提示自动消失</td>
+<td>提示条几秒后消失，断言太晚就找不到了</td>
+<td>断言紧跟在操作后面</td>
+</tr>
+<tr>
+<td>定位不唯一</td>
+<td>按位置定位，列表顺序一变就点错</td>
+<td>用文字、<code>data-testid</code> 精确定位</td>
+</tr>
+<tr>
+<td>环境</td>
+<td>测试环境慢、偶尔超时、被别人重启</td>
+<td>和开发、运维约定稳定的测试环境；监控环境的可用性</td>
+</tr>
+<tr>
+<td>动画</td>
+<td>元素还在移动、还在渐显</td>
+<td>Playwright 会等元素稳定；个别情况和开发约定测试时关掉动画</td>
+</tr>
+</tbody>
+</table>
+<p>还可以用 pytest-rerunfailures 插件让失败的用例自动重跑一次（<code>pip install pytest-rerunfailures</code>，运行时加 <code>--reruns 1</code>）。<strong>重跑只是兜底，不是解决办法</strong>：每一条靠重跑才通过的用例都要记下来、找到原因修好，否则真正的偶发缺陷也会被重跑掩盖。</p>
+<h2 id="1110-ui-用例写多少">11.10 UI 用例写多少<a class="headerlink" href="#1110-ui-用例写多少" title="Permanent link">&para;</a></h2>
+<p>UI 用例不是越多越好。一个参考：</p>
+<ul>
+<li>每个核心页面的主流程各一两条（登录、搜索、下单、支付、取消）；</li>
+<li>页面特有的交互和提示（弹窗、禁用状态、错误提示）；</li>
+<li>接口层已经覆盖的业务规则，UI 层不再重复测。</li>
+</ul>
+<p>本工程的 UI 用例只有 10 条，接口用例有 27 条（第 8 章还会再加 1 条），这个比例是正常的。</p>
+<h2 id="1111-现在的工程">11.11 现在的工程<a class="headerlink" href="#1111-现在的工程" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>autotest-demo/
+├─ common/                 接口客户端、读配置
+├─ config/                 环境配置
+├─ data/                   测试数据
+├─ pages/                  页面对象
+│  ├─ __init__.py
+│  ├─ login_page.py
+│  ├─ products_page.py
+│  └─ orders_page.py
+├─ shop/                   练习网站
+├─ tests/
+│  ├─ conftest.py          全局夹具
+│  ├─ api/                 接口用例
+│  └─ ui/
+│     ├─ conftest.py       UI 夹具：登录态、失败截图
+│     ├─ test_login_ui.py
+│     ├─ test_products_ui.py
+│     └─ test_orders_ui.py
+├─ allurerc.yaml
+├─ pytest.ini
+└─ requirements.txt
+</code></pre></div>
+<p>跑一遍全部 UI 用例：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\ui -q
+..........                                                               [100%]
+10 passed in 8.13s
+</code></pre></div>
+<h2 id="1112-常见的坑">11.12 常见的坑<a class="headerlink" href="#1112-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>种了 cookie 还是被带回登录页</td>
+<td>页面还依赖别的 cookie 或本地存储，照 11.3.1 的方法找全</td>
+</tr>
+<tr>
+<td>点了按钮没反应，也不报错</td>
+<td>有浏览器确认框被自动关掉了，提前用 <code>page.once("dialog", ...)</code> 处理</td>
+</tr>
+<tr>
+<td><code>test-results</code> 里的截图不见了</td>
+<td>每次运行开始会清空它，要留存就跑完后拷走，或者挂进 Allure 报告</td>
+</tr>
+<tr>
+<td>失败用例没有 <code>trace.zip</code></td>
+<td>没加 <code>--tracing=retain-on-failure</code>；通过的用例不保留</td>
+</tr>
+<tr>
+<td><code>page.route</code> 没拦住请求</td>
+<td>地址规则写错了，<code>*</code> 不匹配 <code>/</code>；不确定时先用 <code>page.on("request", print)</code> 把请求地址打印出来看</td>
+</tr>
+<tr>
+<td>找不到 iframe 里的元素</td>
+<td>要先 <code>frame_locator</code> 进入 iframe</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1113-练习">11.13 练习<a class="headerlink" href="#1113-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>给 <code>ProductsPage</code> 加一个 <code>next_page()</code> 方法，写一条用例：翻到第 3 页，断言只有 5 件商品（一共 25 件，每页 10 件）。</li>
+<li>用 <code>page.route</code> 伪造商品接口，返回一个名字有 100 个字的商品，看看页面会不会被撑乱。</li>
+<li>写一条用例：用接口造一张已支付的订单，在订单页断言这一行没有「支付」和「取消」按钮。</li>
+<li>故意让一条 UI 用例失败，用 <code>playwright show-trace</code> 打开操作录像，找到失败那一步前后的页面截图。</li>
+<li>把 <code>OrdersPage.cancel</code> 里 <code>page.once("dialog", ...)</code> 那一行注释掉，再跑 <code>test_cancel_in_page</code>，看它在哪一步失败、报错信息是什么。</li>
+</ol>
+<h2 id="1114-自检清单">11.14 自检清单<a class="headerlink" href="#1114-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 <code>--headed</code>、<code>--slowmo</code>、<code>--tracing</code> 这几个参数；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出页面对象模式解决了什么问题，页面对象里为什么不写断言；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用接口登录跳过登录页，知道怎么找出页面依赖的登录信息；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出「接口造数、页面操作、接口核对」三段式的好处；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 <code>expect_response</code> 等接口响应，会用 <code>route</code> 伪造接口返回；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道浏览器确认框不处理时会发生什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会打开 <code>trace.zip</code> 排查失败；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出三种以上导致用例时好时坏的原因和解决办法。</li>
+</ul>
+<p>下一章：<a href="12-Selenium%E5%AF%B9%E7%85%A7.html">第 12 章 Selenium 对照</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 10 章 页面操作大全">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 10 章 页面操作大全
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 12 章 Selenium 对照">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 12 章 Selenium 对照
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

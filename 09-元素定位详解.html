@@ -1,0 +1,2224 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html">
+      
+      
+        <link rel="next" href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 9 章 元素定位详解 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-9-章-元素定位详解" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 9 章 元素定位详解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-定位器是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 定位器是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-get_by_-家族" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 get_by_* 家族
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2 get_by_* 家族">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#921-get_by_role按角色和名称首选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.1 get_by_role：按角色和名称，首选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#922-get_by_label按标签文字找表单项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.2 get_by_label：按标签文字找表单项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#923-get_by_placeholder按提示文字找输入框" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.3 get_by_placeholder：按提示文字找输入框
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#924-get_by_text按文字找当心超配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.4 get_by_text：按文字找，当心超配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#925-get_by_test_id按测试专用属性找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.5 get_by_test_id：按测试专用属性找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#926-get_by_alt_text按图片说明找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.6 get_by_alt_text：按图片说明找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#927-get_by_title按悬浮提示找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.7 get_by_title：按悬浮提示找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#928-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.8 小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-css-选择器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 CSS 选择器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-xpath留到最后再用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 XPath：留到最后再用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-链式与过滤在列表里精确定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 链式与过滤：在列表里精确定位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 链式与过滤：在列表里精确定位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#951-filter从一组元素里筛选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.1 filter：从一组元素里筛选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#952-链式定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.2 链式定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#953-firstnthlast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.3 first、nth、last
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96-定位策略的取舍" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 定位策略的取舍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 定位策略的取舍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#961-脆定位的三个特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.1 脆定位的三个特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#962-data-testid给测试留的门" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.2 data-testid：给测试留的门
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#963-团队落地建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.3 团队落地建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-调试定位器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 调试定位器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#98-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#99-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#910-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-定位器是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 定位器是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-get_by_-家族" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 get_by_* 家族
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2 get_by_* 家族">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#921-get_by_role按角色和名称首选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.1 get_by_role：按角色和名称，首选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#922-get_by_label按标签文字找表单项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.2 get_by_label：按标签文字找表单项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#923-get_by_placeholder按提示文字找输入框" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.3 get_by_placeholder：按提示文字找输入框
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#924-get_by_text按文字找当心超配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.4 get_by_text：按文字找，当心超配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#925-get_by_test_id按测试专用属性找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.5 get_by_test_id：按测试专用属性找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#926-get_by_alt_text按图片说明找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.6 get_by_alt_text：按图片说明找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#927-get_by_title按悬浮提示找" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.7 get_by_title：按悬浮提示找
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#928-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.8 小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-css-选择器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 CSS 选择器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-xpath留到最后再用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 XPath：留到最后再用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-链式与过滤在列表里精确定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 链式与过滤：在列表里精确定位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 链式与过滤：在列表里精确定位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#951-filter从一组元素里筛选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.1 filter：从一组元素里筛选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#952-链式定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.2 链式定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#953-firstnthlast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.3 first、nth、last
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96-定位策略的取舍" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 定位策略的取舍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 定位策略的取舍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#961-脆定位的三个特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.1 脆定位的三个特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#962-data-testid给测试留的门" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.2 data-testid：给测试留的门
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#963-团队落地建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.3 团队落地建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-调试定位器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 调试定位器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#98-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#99-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#910-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.10 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-9-章-元素定位详解">第 9 章 元素定位详解<a class="headerlink" href="#第-9-章-元素定位详解" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>理解定位器（Locator）的工作方式：惰性求值与严格模式；</li>
+<li>把 <code>get_by_*</code> 家族完整用一遍，知道每种写法适合什么元素；</li>
+<li>会写常用的 CSS 选择器，分清哪些是标准 CSS、哪些是 Playwright 的扩展；</li>
+<li>知道 XPath 什么时候才值得用，会写按文本定位和按轴定位；</li>
+<li>会用 <code>filter</code> 和 <code>first</code> / <code>nth</code> / <code>last</code> 在列表里精确定位；</li>
+<li>能给团队定一套稳定的定位约定；</li>
+<li>会用 <code>count()</code>、调试器、浏览器开发者工具快速验证定位写法。</li>
+</ul>
+<hr />
+<h2 id="91-定位器是什么">9.1 定位器是什么<a class="headerlink" href="#91-定位器是什么" title="Permanent link">&para;</a></h2>
+<p>第 8 章 8.5 节已经用过最常用的几种定位写法，这一章把它们讲透。</p>
+<p>先纠正一个容易有的误解。下面这行代码执行的时候，什么都没有发生：</p>
+<div class="highlight"><pre><span></span><code><span class="n">row</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"order-row"</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="s2">"SO20261022000027"</span><span class="p">)</span>
+</code></pre></div>
+<p><code>get_by_test_id(...)</code> 不会马上去页面上找元素，它只是把「怎么找」记下来，返回一个<strong>定位器</strong>（Locator）对象。真正去找元素的时刻，是对它做操作或断言的那一刻：<code>.click()</code>、<code>.inner_text()</code>、<code>expect(...)</code>。这个特点叫<strong>惰性求值</strong>。</p>
+<p>它带来两个直接的好处：</p>
+<ul>
+<li>页面刷新、列表重新渲染之后，定位器照样能用。每次操作都按描述重新找一遍，不会攥着一个已经从页面上删掉的旧元素；</li>
+<li>定位器可以先定义、后使用。第 11 章讲页面对象模式，<code>__init__</code> 里定义的全是定位器，靠的就是这个特性。</li>
+</ul>
+<p>第二个关键设定是<strong>严格模式</strong>（strict mode）。对一条定位器做操作或断言时，如果它在页面上命中了多个元素，Playwright 不猜你要哪一个，直接报错。在练习场页面（<code>/lab.html</code>，不需要登录）上故意写一条宽泛的定位试试：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Locator.click: Error: strict mode violation: get_by_role("button") resolved to 7 elements:
+    1) &lt;button id="logout" type="button"&gt;退出&lt;/button&gt; aka get_by_role("button", name="退出")
+    2) &lt;button type="button" id="btn-alert" data-testid="btn-alert"&gt;弹提示框&lt;/button&gt; aka get_by_test_id("btn-alert")
+    3) &lt;button type="button" id="btn-confirm" data-testid="btn-confirm"&gt;弹确认框&lt;/button&gt; aka get_by_test_id("btn-confirm")
+    4) &lt;button type="button" id="btn-prompt" data-testid="btn-prompt"&gt;弹输入框&lt;/button&gt; aka get_by_test_id("btn-prompt")
+    5) &lt;button type="button" id="btn-hover" data-testid="btn-hover"&gt;把鼠标放上来&lt;/button&gt; aka get_by_test_id("btn-hover")
+    6) &lt;button type="button" id="btn-dblclick" data-testid="btn-dblclick"&gt;…&lt;/button&gt; aka get_by_test_id("btn-dblclick")
+    7) &lt;button type="button" id="btn-submit" data-testid="btn-submit"&gt;提交&lt;/button&gt; aka get_by_test_id("btn-submit")
+</code></pre></div>
+<p>页面上有 7 个按钮，Playwright 一个一个列出来，<code>aka</code> 后面还给出每个元素更精确的定位写法——照着抄一条就行。这条报错是定位写错了时最有用的提示，值得学会读。</p>
+<p>反过来，定位器一个元素都没命中时，定位本身不报错，操作会一直等元素出现，等到超时：</p>
+<div class="highlight"><pre><span></span><code>Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="不存在的按钮")
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>多个命中</th>
+<th>零个命中</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>click()</code> 这类操作</td>
+<td>严格模式报错</td>
+<td>等到超时</td>
+</tr>
+<tr>
+<td><code>expect(...)</code> 断言</td>
+<td>严格模式报错</td>
+<td>等到超时</td>
+</tr>
+<tr>
+<td><code>count()</code>、<code>all()</code></td>
+<td>不受限，照实返回</td>
+<td>返回 0 或空列表</td>
+</tr>
+</tbody>
+</table>
+<p><code>count()</code> 和 <code>all()</code> 故意不受严格模式约束，它们就是用来看「现在到底有几个」的，9.7 节调试时会用到。</p>
+<h2 id="92-get_by_-家族">9.2 get_by_* 家族<a class="headerlink" href="#92-get_by_-家族" title="Permanent link">&para;</a></h2>
+<p>第 8 章给过一张推荐顺序表，这一节把每个方法在练习网站上真实跑一遍。总的原则：<strong>先问用户怎么看这个元素</strong>（它是什么角色、带什么标签、显示什么文字），再问代码里它长什么样（有什么属性、嵌在哪个位置）。</p>
+<h3 id="921-get_by_role按角色和名称首选">9.2.1 get_by_role：按角色和名称，首选<a class="headerlink" href="#921-get_by_role按角色和名称首选" title="Permanent link">&para;</a></h3>
+<p>按钮、链接、输入框、复选框、下拉框、标题、表格行，浏览器都给它们定了<strong>角色</strong>（role），<code>get_by_role</code> 按角色加名称来找。把练习场扫一遍：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/lab.html"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                    <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"link"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                      <span class="c1"># 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"checkbox"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"radio"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                     <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"combobox"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"textbox"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                   <span class="c1"># 2（键盘输入框 + 日期框）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"heading"</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>          <span class="c1"># 5</span>
+</code></pre></div>
+<p><code>name=</code> 参数匹配的是元素的<strong>可访问名称</strong>：按钮和链接取文字，输入框取关联的 label。它默认模糊匹配，<code>exact=True</code> 转成完整匹配：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"双击我"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>           <span class="c1"># 1，按钮文字是「双击我（0 次）」</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"双击我"</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 0，完整相等匹配不上</span>
+</code></pre></div>
+<p>双击按钮的文字是「双击我（0 次）」，里面的计数一变，完整匹配就失效，模糊匹配不受影响。要匹配变化的文字，用正则：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"双击我（\d+ 次）"</span><span class="p">)))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><code>get_by_role</code> 还能带状态筛选，把「是什么」和「是什么状态」一句话写完：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"checkbox"</span><span class="p">,</span> <span class="n">checked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>          <span class="c1"># 没勾选的复选框</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"上一页"</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># 禁用状态的上一页按钮（商品页第 1 页时）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"dialog"</span><span class="p">,</span> <span class="n">include_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>      <span class="c1"># 连隐藏的弹窗也算进来（默认不算）</span>
+</code></pre></div>
+<p>怎么知道某个元素的角色和名称？两个办法：在开发者工具里看元素有没有语义标签（<code>button</code> 天生就是 <code>button</code> 角色）；或者打印<strong>可访问性快照</strong>，它就是 Playwright 眼中的页面：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"main"</span><span class="p">)</span><span class="o">.</span><span class="n">aria_snapshot</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>- main:
+  - heading "交互练习场" [level=1]
+  - heading "浏览器自带弹窗" [level=2]
+  - button "弹提示框"
+  - button "弹确认框"
+  - button "弹输入框"
+  - heading "各种输入控件" [level=2]
+  - paragraph:
+    - text: 城市
+    - combobox "城市":
+      - option "请选择" [selected]
+      - option "上海"
+      ...
+</code></pre></div>
+<p>快照里每行的角色和名称就是 <code>get_by_role</code> 的参数。这也是检查页面语义好不好用的办法：一个按钮在快照里连名字都没有，屏幕阅读器同样读不出它，多半是页面写得有问题。</p>
+<h3 id="922-get_by_label按标签文字找表单项">9.2.2 get_by_label：按标签文字找表单项<a class="headerlink" href="#922-get_by_label按标签文字找表单项" title="Permanent link">&para;</a></h3>
+<p>练习网站的登录页用的是 <code>label for="id"</code> 加 <code>input id</code> 的写法，商品页的关键词搜索框也是；练习场的控件则把 <code>input</code> 直接包在 <code>&lt;label&gt;</code> 里。两种写法 <code>get_by_label</code> 都认得：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"键盘按键"</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># 练习场的键盘输入框</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"同意协议"</span><span class="p">)</span>              <span class="c1"># 复选框</span>
+</code></pre></div>
+<p>有一个细节要留意：label 包裹写法里，<strong>label 里的全部文字都算标签文字</strong>。练习场「城市」的 label 长这样：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>城市
+  <span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">"city"</span> <span class="na">data-testid</span><span class="o">=</span><span class="s">"city"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>请选择<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    ...
+  <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>label 里除了「城市」两个字，还包着下拉框的全部选项文字，所以完整匹配匹配不上：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"城市"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>            <span class="c1"># 1，模糊匹配命中</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_label</span><span class="p">(</span><span class="s2">"城市"</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 0，完整相等匹配不上</span>
+</code></pre></div>
+<p>遇到 <code>exact=True</code> 突然找不到元素，先想想是不是有额外的文字混进了匹配范围。</p>
+<h3 id="923-get_by_placeholder按提示文字找输入框">9.2.3 get_by_placeholder：按提示文字找输入框<a class="headerlink" href="#923-get_by_placeholder按提示文字找输入框" title="Permanent link">&para;</a></h3>
+<p>输入框里那段灰色提示文字：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_placeholder</span><span class="p">(</span><span class="s2">"在这里敲键盘"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>   <span class="c1"># 1，练习场的键盘输入框</span>
+</code></pre></div>
+<p>提示文字经常随产品文案改动，有 label 或角色可用时优先用它们，placeholder 放在靠后的位置。</p>
+<h3 id="924-get_by_text按文字找当心超配">9.2.4 get_by_text：按文字找，当心超配<a class="headerlink" href="#924-get_by_text按文字找当心超配" title="Permanent link">&para;</a></h3>
+<p><code>get_by_text</code> 找所有<strong>文字包含</strong>目标内容的元素，同样默认模糊、可加 <code>exact=True</code>。它适合找不需要操作的展示文字，但文字太短时会大量超配。订单页上试一下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/orders.html"</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_text</span><span class="p">(</span><span class="s2">"支付"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                          <span class="c1"># 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">all_inner_texts</span><span class="p">())))</span>   <span class="c1"># ['已支付', '待支付', '支付']</span>
+</code></pre></div>
+<p>「支付」两个字同时命中了按钮「支付」、「待支付」、「已支付」，共 30 个元素。按文字定位时把文字写长一点，或者先定位到容器再往里找（9.5 节）。</p>
+<h3 id="925-get_by_test_id按测试专用属性找">9.2.5 get_by_test_id：按测试专用属性找<a class="headerlink" href="#925-get_by_test_id按测试专用属性找" title="Permanent link">&para;</a></h3>
+<p><code>get_by_test_id("btn-submit")</code> 找的是带 <code>data-testid="btn-submit"</code> 属性的元素。这个属性不参与样式和逻辑，唯一用途就是给自动化测试定位，是<strong>最稳定</strong>的定位方式，9.6 节专门讲怎么在团队里推行。默认认 <code>data-testid</code> 属性，个别团队用别的名字时可以全局改：</p>
+<div class="highlight"><pre><span></span><code><span class="n">p</span><span class="o">.</span><span class="n">selectors</span><span class="o">.</span><span class="n">set_test_id_attribute</span><span class="p">(</span><span class="s2">"data-qa"</span><span class="p">)</span>   <span class="c1"># 之后 get_by_test_id 认 data-qa</span>
+</code></pre></div>
+<h3 id="926-get_by_alt_text按图片说明找">9.2.6 get_by_alt_text：按图片说明找<a class="headerlink" href="#926-get_by_alt_text按图片说明找" title="Permanent link">&para;</a></h3>
+<p>图片的 <code>alt</code> 属性是图片加载不出来时的替代文字，也是屏幕阅读器读图片的依据。个人中心页的头像图就带 <code>alt="头像"</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/profile.html"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_alt_text</span><span class="p">(</span><span class="s2">"头像"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>   <span class="c1"># 1</span>
+</code></pre></div>
+<h3 id="927-get_by_title按悬浮提示找">9.2.7 get_by_title：按悬浮提示找<a class="headerlink" href="#927-get_by_title按悬浮提示找" title="Permanent link">&para;</a></h3>
+<p><code>title</code> 属性是鼠标放上去显示的气泡提示。练习网站没有带 <code>title</code> 的元素，用 <code>set_content</code> 造一小段页面演示（<code>set_content</code> 的意思是「把这段 HTML 当作当前页面」，造演示页面、复现问题都很方便）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">set_content</span><span class="p">(</span><span class="s1">'&lt;span title="库存数量"&gt;128&lt;/span&gt;'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_title</span><span class="p">(</span><span class="s2">"库存数量"</span><span class="p">)</span><span class="o">.</span><span class="n">inner_text</span><span class="p">())</span>   <span class="c1"># 128</span>
+</code></pre></div>
+<h3 id="928-小结">9.2.8 小结<a class="headerlink" href="#928-小结" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>找什么</th>
+<th>练习网站上的例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_by_role</code></td>
+<td>有角色的元素，首选</td>
+<td><code>get_by_role("button", name="提交")</code></td>
+</tr>
+<tr>
+<td><code>get_by_label</code></td>
+<td>有标签的表单项</td>
+<td><code>get_by_label("同意协议")</code></td>
+</tr>
+<tr>
+<td><code>get_by_placeholder</code></td>
+<td>带提示文字的输入框</td>
+<td><code>get_by_placeholder("在这里敲键盘")</code></td>
+</tr>
+<tr>
+<td><code>get_by_text</code></td>
+<td>展示文字，当心超配</td>
+<td><code>get_by_text("没有找到相关商品")</code></td>
+</tr>
+<tr>
+<td><code>get_by_test_id</code></td>
+<td>测试专用属性，最稳</td>
+<td><code>get_by_test_id("order-row")</code></td>
+</tr>
+<tr>
+<td><code>get_by_alt_text</code></td>
+<td>图片</td>
+<td><code>get_by_alt_text("头像")</code></td>
+</tr>
+<tr>
+<td><code>get_by_title</code></td>
+<td>悬浮提示</td>
+<td>页面上暂无，较少用</td>
+</tr>
+</tbody>
+</table>
+<p>前四种在元素没有语义标签、没有 label 时会失效，那时候再落到下一节的 CSS。</p>
+<h2 id="93-css-选择器">9.3 CSS 选择器<a class="headerlink" href="#93-css-选择器" title="Permanent link">&para;</a></h2>
+<p><code>locator("...")</code> 里直接写 CSS 选择器。CSS 是前端的基本功，这一节只过自动化常用的那些，全部例子都在订单页和商品页实测。</p>
+<p><strong>基础写法</strong>：<code>#id</code> 按 id、<code>.class</code> 按类名、<code>tag</code> 按标签、<code>[attr]</code> 和 <code>[attr='值']</code> 按属性，可以自由组合：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"#status"</span><span class="p">)</span>                    <span class="c1"># 订单页的状态下拉框</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"select#status"</span><span class="p">)</span>              <span class="c1"># 再限定必须是 select 标签</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">".pager button"</span><span class="p">)</span>              <span class="c1"># 商品页翻页区里的全部按钮（上一页、下一页）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"[data-testid='order-row']"</span><span class="p">)</span>  <span class="c1"># 属性选择器，等价于 get_by_test_id</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"#status option:checked"</span><span class="p">)</span>     <span class="c1"># 下拉框当前选中的选项，文字是「全部」</span>
+</code></pre></div>
+<p><strong>属性匹配三件套</strong>，<code>^=</code> 开头、<code>$=</code> 结尾、<code>*=</code> 包含：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"[data-testid^='order']"</span><span class="p">)</span>   <span class="c1"># data-testid 以 order 开头</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"[data-testid$='row']"</span><span class="p">)</span>     <span class="c1"># 以 row 结尾</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"[data-testid*='der']"</span><span class="p">)</span>     <span class="c1"># 包含 der</span>
+</code></pre></div>
+<p><strong>后代与直接子代</strong>：空格表示「里面任何层级」，<code>&gt;</code> 表示「直接子级」。订单页的表格体 <code>tbody</code> 下直接放着数据行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"tbody &gt; tr"</span><span class="p">)</span>       <span class="c1"># 直接子级</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"#rows tr"</span><span class="p">)</span>         <span class="c1"># 后代，这里与上面等价</span>
+</code></pre></div>
+<p><strong>位置</strong>：<code>:nth-child(n)</code> 从 1 数起。它有个容易踩的地方——在<strong>每个父容器里各数一遍</strong>，所以 <code>table tr:nth-child(1)</code> 会同时命中表头行和第一行数据：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"table tr:nth-child(1)"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>   <span class="c1"># 2：thead 的表头行 + tbody 的第一行</span>
+</code></pre></div>
+<p>按位置定位本来就不稳（数据一变就错位），这里知道它怎么数数就行。</p>
+<p><strong>按内容选元素的三个伪类</strong>，补上普通 CSS 按内容选元素的短板：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:has-text('文字')</code></td>
+<td>元素内部（任何层级）包含这段文字</td>
+<td>Playwright 独有的扩展</td>
+</tr>
+<tr>
+<td><code>:has(里层选择器)</code></td>
+<td>元素内部能找到匹配里层选择器的元素</td>
+<td>标准 CSS，较新的浏览器才支持</td>
+</tr>
+<tr>
+<td><code>:is(选择器组)</code></td>
+<td>自身匹配组里任意一个</td>
+<td>标准 CSS，较新的浏览器才支持</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"tr[data-testid='order-row']:has-text('待支付')"</span><span class="p">)</span>     <span class="c1"># 含「待支付」的数据行</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"tr:has(button)"</span><span class="p">)</span>                                     <span class="c1"># 里面有按钮的行</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"button:is(#prev, #next)"</span><span class="p">)</span>                            <span class="c1"># 上一页或下一页按钮</span>
+</code></pre></div>
+<p><code>:has-text()</code> 是 <strong>Playwright 的扩展</strong>，浏览器本身不认识。拿浏览器原生的查找接口一试便知：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">"document.querySelectorAll('button:has-text(提交)').length"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Page.evaluate: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': 'button:has-text(提交)' is not a valid selector.
+</code></pre></div>
+<p>所以它只能写在 <code>locator()</code> 里，别写进样式表，也别指望 <code>page.evaluate</code> 认识它。同样的原生接口换成 <code>section:has(button)</code> 就认，返回 3——<code>:has()</code> 和 <code>:is()</code> 是标准 CSS，较新的浏览器原生支持；但老浏览器内核（比如一些嵌入设备里的网页组件）未必有，离开 Playwright、换个工具或环境时不一定能用。同一个选择器「<code>locator()</code> 里能用、原生接口不认」时，先想到扩展伪类。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>两种写法混着用。</strong> <code>:has-text('待支付')</code> 和 <code>filter(has_text="待支付")</code> 效果一样，后者是定位器的正式方法，还能和 <code>has=</code>、<code>has_not=</code> 自由组合。团队里统一用一种，别在同一个工程里两种混写。</p>
+</div>
+<h2 id="94-xpath留到最后再用">9.4 XPath：留到最后再用<a class="headerlink" href="#94-xpath留到最后再用" title="Permanent link">&para;</a></h2>
+<p>XPath 是另一种查询语言，能做 CSS 做不到的两件事：<strong>按文本找</strong>、<strong>按相对关系（轴）找</strong>。但它读写都费劲，页面结构一改就断，原则是：<strong>CSS 能办到就别上 XPath</strong>。</p>
+<p>写法是在 <code>locator()</code> 里加 <code>xpath=</code> 前缀（以 <code>//</code> 或 <code>..</code> 开头时前缀可以省略）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//th"</span><span class="p">)</span>                          <span class="c1"># 等价于 page.locator("//th")</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//button"</span><span class="p">)</span>                      <span class="c1"># 全部按钮</span>
+</code></pre></div>
+<p>语法速查：<code>//</code> 从任意层级找，<code>@属性名</code> 取属性，<code>text()</code> 精确文本，<code>contains()</code> 部分匹配，<code>[n]</code> 第几个（从 1 数起），<code>following-sibling::</code> 后面的同级元素。</p>
+<p>订单表格是 XPath 的主场。订单页要登录、还要有订单，下面的例子用了两个现成的夹具：第 4 章写的已登录接口客户端 <code>api</code>（用来造订单），和第 11 章 11.3 节要讲的 <code>logged_in_page</code>（把接口拿到的登录态种进浏览器，省掉每次走登录页），这里先直接用。实测时造好的订单号是 <code>SO20261022000027</code>（订单号按日期和流水号生成，你自己造出来的号会不一样，照着换成自己的）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 订单号精确等值的行，取第 3 格（金额）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//tr[td[1]='SO20261022000027']/td[3]"</span><span class="p">)</span>         <span class="c1"># ¥2.50</span>
+<span class="c1"># contains 按部分文本找行，取第 5 格（下单时间）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//tr[contains(., 'SO20261022000027')]/td[5]"</span><span class="p">)</span>  <span class="c1"># 2026-10-22 16:44:03</span>
+<span class="c1"># 轴：表头「状态」右边那个表头</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//th[text()='状态']/following-sibling::th[1]"</span><span class="p">)</span> <span class="c1"># 下单时间</span>
+<span class="c1"># 待支付那一行的最后一个单元格（操作列，放着支付和取消按钮）</span>
+<span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">"xpath=//tr[td[1]='SO20261022000027']/td[contains(text(),'待支付')]/following-sibling::td[last()]"</span><span class="p">)</span>
+</code></pre></div>
+<p><code>contains(., '...')</code> 里的 <code>.</code> 表示整行元素的全部文字，比逐格判断短得多。<code>following-sibling::tr[1]</code> 能拿到「下一行」，是表格逐行比对时的常用轴。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong><code>contains()</code> 是部分匹配，会超配。</strong> <code>//td[contains(text(),'支付')]</code> 同时命中「待支付」「已支付」两种单元格。用 XPath 按文本找，文本要给足，或者用完整等值的写法 <code>//td[text()='待支付']</code>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>绝对路径 XPath 是一次性的。</strong> <code>/html/body/main/section[1]/button[3]</code> 这种从页面根一路数下来的写法，今天在练习场上确实能找到「弹输入框」按钮，开发在中间加一个 <code>div</code> 就全部失效。看到路径里有 <code>/html/body</code>，直接重写。</p>
+</div>
+<h2 id="95-链式与过滤在列表里精确定位">9.5 链式与过滤：在列表里精确定位<a class="headerlink" href="#95-链式与过滤在列表里精确定位" title="Permanent link">&para;</a></h2>
+<p>真实页面上到处都是列表：商品列表、订单列表、表格行。定位列表里的目标分两步：<strong>先筛出容器，再在容器里面找</strong>。第 8 章 8.5 节见过一次，这里展开。</p>
+<h3 id="951-filter从一组元素里筛选">9.5.1 filter：从一组元素里筛选<a class="headerlink" href="#951-filter从一组元素里筛选" title="Permanent link">&para;</a></h3>
+<p><code>filter()</code> 在现有定位器的基础上继续筛，可以串多次。四种常用参数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">rows</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"order-row"</span><span class="p">)</span>        <span class="c1"># 全部订单行</span>
+
+<span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="s2">"SO20261022000027"</span><span class="p">)</span>            <span class="c1"># 按文字筛：包含这段文字的行</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"×[2-9]"</span><span class="p">))</span>         <span class="c1"># 文字支持正则：商品列是「中性笔 ×3」这种 2～9 件的行</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_not_text</span><span class="o">=</span><span class="s2">"已取消"</span><span class="p">)</span>                   <span class="c1"># 反向：不包含</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has</span><span class="o">=</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">))</span>    <span class="c1"># 行里找得到支付按钮的</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_not</span><span class="o">=</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">))</span>  <span class="c1"># 行里没有支付按钮的</span>
+</code></pre></div>
+<p><code>has=</code> 里的定位器是<strong>相对外层元素</strong>找的：上面最后一行的意思是「在这行的范围内找得到『支付』按钮」。文字筛不动的场景它都能写，比如「有附件图标的工单」「没有头像的用户行」。</p>
+<h3 id="952-链式定位">9.5.2 链式定位<a class="headerlink" href="#952-链式定位" title="Permanent link">&para;</a></h3>
+<p>筛选和定位可以一直链下去，范围逐步收窄。订单页的完整例子：造一张待支付订单（<code>product</code> 也是第 4 章写的夹具，给出一件便宜的商品），按订单号筛出行，在行内找按钮：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">create_order</span><span class="p">([{</span><span class="s2">"productId"</span><span class="p">:</span> <span class="n">product</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]))</span>
+<span class="n">no</span> <span class="o">=</span> <span class="n">order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">]</span>
+<span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">"/orders.html"</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"order-row"</span><span class="p">)</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">first</span><span class="p">)</span><span class="o">.</span><span class="n">to_be_visible</span><span class="p">()</span>                    <span class="c1"># 先等列表渲染出来</span>
+
+<span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">has_text</span><span class="o">=</span><span class="n">no</span><span class="p">)</span>                        <span class="c1"># 这一单的行</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                          <span class="c1"># 订单号唯一，应该恰好一行</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"cell"</span><span class="p">)</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_text</span><span class="p">(</span><span class="s2">"待支付"</span><span class="p">)</span>   <span class="c1"># 行内第 4 格是状态</span>
+</code></pre></div>
+<p>行定位器 <code>row</code> 是惰性的，支付之后页面重新渲染，同一条 <code>row</code> 再去读，读到的是渲染后的新内容：</p>
+<div class="highlight"><pre><span></span><code><span class="n">row</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">"已支付"</span><span class="p">)</span>                  <span class="c1"># 重新渲染后状态变了</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"支付"</span><span class="p">))</span><span class="o">.</span><span class="n">to_have_count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># 支付按钮消失了</span>
+</code></pre></div>
+<h3 id="953-firstnthlast">9.5.3 first、nth、last<a class="headerlink" href="#953-firstnthlast" title="Permanent link">&para;</a></h3>
+<p>一条定位器命中多个元素时，<code>.first</code>、<code>.last</code>、<code>.nth(n)</code> 取第几个（从 0 数起）。它们常见于「列表有固定顺序」的场景，比如最新一条订单永远在最上面：</p>
+<div class="highlight"><pre><span></span><code><span class="n">rows</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"cell"</span><span class="p">)</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">inner_text</span><span class="p">()</span>   <span class="c1"># 第一行第一格：订单号</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">last</span>                                            <span class="c1"># 最后一行</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>                                 <span class="c1"># 0：越界不报错，就是匹配不到</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>按位置定位是脆的。</strong> <code>nth(2)</code> 依赖「第三行永远是它」，排序一变、插一条数据就点错行，而且<strong>用例照样通过</strong>——点错了元素但没人发现，比报错更糟。能用文字、订单号、<code>data-testid</code> 筛的，不用位置；确实要按位置的（比如验证默认排序），在断言里把顺序本身测出来。</p>
+</div>
+<p>配套的 <code>all()</code> 把命中元素逐个变成定位器，适合遍历：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">"cell"</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">inner_text</span><span class="p">())</span>
+</code></pre></div>
+<p>注意 <code>all()</code> 不等待、有多少算多少，前面先 <code>expect(rows.first).to_be_visible()</code> 把列表等出来再用它。</p>
+<h2 id="96-定位策略的取舍">9.6 定位策略的取舍<a class="headerlink" href="#96-定位策略的取舍" title="Permanent link">&para;</a></h2>
+<h3 id="961-脆定位的三个特征">9.6.1 脆定位的三个特征<a class="headerlink" href="#961-脆定位的三个特征" title="Permanent link">&para;</a></h3>
+<p>回看已经踩过的坑，脆定位几乎都落在三类：</p>
+<ol>
+<li><strong>动态生成的 id 或类名</strong>。前端框架构建时生成的 <code>css-1x2y3z</code> 这类哈希类名，每次发版都可能变；id 里带序号的（<code>input-847</code>），加一个字段就变；</li>
+<li><strong>装饰性类名与位置</strong>。<code>.text-red</code> 表达的是样式意图（红字），开发调成橙色用例就挂；<code>nth(2)</code>、<code>table tr:nth-child(1)</code> 表达的是位置，数据一变就错位；</li>
+<li><strong>绝对路径 XPath</strong>。<code>/html/body/main/div[2]/…</code>，页面加个容器就全部失效。</li>
+</ol>
+<p>它们的共同点：<strong>把定位建立在与业务无关的细节上</strong>。样式会改、位置会挪、结构会重排，只有「这是个提交按钮」「这是订单 SO20261022000027 的行」这种业务含义不会轻易变。</p>
+<h3 id="962-data-testid给测试留的门">9.6.2 data-testid：给测试留的门<a class="headerlink" href="#962-data-testid给测试留的门" title="Permanent link">&para;</a></h3>
+<p><code>data-testid</code> 的做法来自前端测试工具 Testing Library 的约定：开发在写页面时，给自动化测试需要触碰的元素加一个 <code>data-testid</code> 属性，值用稳定的业务名（<code>order-row</code>、<code>btn-submit</code>），不参与样式和逻辑，改版时也没人会动它。Playwright 的 <code>get_by_test_id</code> 默认就认这个属性。</p>
+<p>它和语义定位不冲突：有角色、有 label 的元素优先语义定位（顺便验证了页面语义没坏），列表行、状态徽标这类「不好用一句话描述」的元素用 <code>data-testid</code>。练习网站两者都有，对比着体会。</p>
+<h3 id="963-团队落地建议">9.6.3 团队落地建议<a class="headerlink" href="#963-团队落地建议" title="Permanent link">&para;</a></h3>
+<p>定位约定要写成文档，光靠口头约定很难长期执行：</p>
+<ul>
+<li><strong>定优先级</strong>：写进团队文档，比如「role → label → testid → CSS → XPath（评审才放行）」，和 9.2 节的顺序一致；</li>
+<li><strong>向开发提需求</strong>：新页面提测时，列表行、按钮、输入框要带 <code>data-testid</code>，命名用业务名。这条写进提测标准，比事后补便宜得多；</li>
+<li><strong>评审看定位</strong>：用例代码评审时专看一眼定位写法，出现 <code>/html/body</code>、哈希类名、裸 <code>nth()</code> 就退回。定位是 UI 用例维护成本的大头，值得在评审里花时间。</li>
+</ul>
+<h2 id="97-调试定位器">9.7 调试定位器<a class="headerlink" href="#97-调试定位器" title="Permanent link">&para;</a></h2>
+<p>定位写不出来或者行为不符合预期时，按下面的顺序排查，基本都能就地解决。</p>
+<p><strong>第一步：用 count() 验证。</strong> <code>count()</code> 立刻返回当前命中的个数，是定位器世界的 print：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_test_id</span><span class="p">(</span><span class="s2">"order-row"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>          <span class="c1"># 0 是还没渲染出来，有一个数就是查出来了</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_text</span><span class="p">(</span><span class="s2">"支付"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>                   <span class="c1"># 30：超配了，文字太短</span>
+</code></pre></div>
+<p>命中 0 个，要么定位写错、要么元素还没出现（配合 <code>expect(...).to_be_visible()</code> 分辨）；命中多个，缩小范围。</p>
+<p><strong>第二步：用调试器看命中。</strong> 代码里加一行 <code>page.pause()</code>，或者在运行前设置环境变量 <code>PWDEBUG=1</code>：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:PWDEBUG = "1"
+(.venv) &gt; pytest tests\ui\test_orders_ui.py::test_pay_in_page
+</code></pre></div>
+<p>会打开浏览器和 Playwright Inspector（调试器）窗口：可以一步步执行，看每一步定位到了哪个元素；在调试器里试写定位表达式，<strong>命中的元素会在浏览器里高亮显示</strong>，命中几个、每个是什么一目了然。设置了 <code>PWDEBUG=1</code> 时 Playwright 会自动用有头模式启动浏览器，不用再加 <code>--headed</code>；只写 <code>page.pause()</code> 不设环境变量的话，必须自己加 <code>--headed</code>，否则无头模式下这行什么都不做、直接往下走。调试完记得去掉环境变量。录制工具 <code>playwright codegen</code> 的 <strong>Pick locator</strong> 按钮也能干这件事：点一下再悬停到元素上，直接给出推荐的定位写法。</p>
+<p><strong>第三步：浏览器开发者工具。</strong> 设置 <code>PWDEBUG=console</code> 再加 <code>--headed</code> 运行，Playwright 会往页面里注入一个 <code>playwright</code> 对象。在浏览器窗口按 F12 打开开发者工具的 Console 面板，就能用 Playwright 同一套定位引擎：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">playwright</span><span class="p">.</span><span class="nx">$$</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span><span class="w">                                         </span><span class="c1">// 按选择器找，练习场上返回 7 个按钮</span>
+<span class="nx">playwright</span><span class="p">.</span><span class="nx">selector</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#btn-submit"</span><span class="p">))</span><span class="w">      </span><span class="c1">// 反查选择器：internal:testid=[data-testid="btn-submit"s]</span>
+<span class="nx">playwright</span><span class="p">.</span><span class="nx">generateLocator</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#btn-submit"</span><span class="p">),</span><span class="w"> </span><span class="s2">"python"</span><span class="p">)</span><span class="w">   </span><span class="c1">// 反查 Python 写法</span>
+</code></pre></div>
+<p>最后一句返回 <code>get_by_test_id("btn-submit")</code>，对页面上任何元素都能反查出推荐的 Python 定位写法，非常好用。配合浏览器原生的 <code>document.querySelectorAll("选择器")</code>（控制台里可以简写成 <code>$$("选择器")</code>），可以区分「CSS 本身写得对不对」和「是不是用了 Playwright 扩展伪类」——9.3 节证明 <code>:has-text()</code> 不被浏览器认识，用的就是原生接口。</p>
+<p><strong>顺手一招：aria_snapshot。</strong> 9.2.1 节的快照也能在调试时打印，定位不到元素时先看快照里有没有它、角色和名称是什么，比在 DOM 树里翻快得多。</p>
+<h2 id="98-常见的坑">9.8 常见的坑<a class="headerlink" href="#98-常见的坑" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>用 .first 把严格模式报错压下去。</strong> 严格模式报错了，说明这条定位本来就是模糊的。加 <code>.first</code> 只是不报错了，点的可能还是错的元素，用例照样通过。正确做法是照报错里的 aka 提示加条件，把范围缩到唯一。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>get_by_text 的文字太短。</strong> 「支付」命中 30 个元素（9.2.4 节）。按文字定位把文字给足，或者先定位容器再往里找。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>label 包裹写法下 exact=True 匹配不上。</strong> 「城市」的 label 里包着下拉框的全部选项文字，完整匹配失效（9.2.2 节）。exact 找不到时，先打印 <code>aria_snapshot()</code> 看可访问名称到底是什么。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>把 :has-text() 写进普通 CSS。</strong> 它是 Playwright 独有的扩展，<code>document.querySelectorAll</code> 和样式表都不认识，直接报 <code>is not a valid selector</code>。同一段选择器在 <code>locator()</code> 里能用、在开发者工具里不能用时，先想想是不是扩展伪类。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>nth-child 在每个父容器里各数一遍。</strong> <code>table tr:nth-child(1)</code> 命中表头行和第一行数据（9.3 节）。要全表唯一，选择器里把父容器写死：<code>tbody &gt; tr</code>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>XPath 的 contains() 超配。</strong> <code>contains(text(),'支付')</code> 同时命中「待支付」「已支付」。文本给足或用 <code>text()</code> 等值匹配。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>ElementHandle 在页面重渲染后失效。</strong> <code>page.query_selector(...)</code> 返回的是元素句柄，攥住的是「当时那个元素」。实测在订单页先拿一行的句柄，再在页面上支付这一单：定位器读到的状态是「已支付」，句柄读到的还是「待支付」——它指向的旧元素已经从页面上摘掉了；拿句柄去点按钮，直接报 <code>Element is not attached to the DOM</code>。测试代码一律用定位器（Locator），别用 ElementHandle。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>一个元素一个写法到处复制。</strong> 同一个按钮的定位散落在二十个用例里，改一次文案改二十处。收进页面对象（第 11 章 11.2 节），一个页面一个类，定位只写一遍。</p>
+</div>
+<h2 id="99-练习">9.9 练习<a class="headerlink" href="#99-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在练习场上分别用 <code>get_by_role</code>、<code>get_by_label</code>、<code>get_by_test_id</code> 定位「提交」按钮，各打印一次 <code>count()</code>，体会三种写法的长短。</li>
+<li>打印商品页 <code>main</code> 的 <code>aria_snapshot()</code>，找到「下一页」按钮的角色和名称，然后写断言：第 1 页时它是禁用的，点一下之后「第 2 页」出现。</li>
+<li>在订单页分别用 CSS（<code>:has-text</code>）和 XPath（<code>contains</code> + 轴）定位一张待支付订单的「取消」按钮，两种写法各点一次（用接口造两张订单）。</li>
+<li>故意写一条命中多个元素的定位触发严格模式报错，照着 aka 提示改成唯一定位；再故意写一条命中零个的，看超时报错长什么样。</li>
+</ol>
+<h2 id="910-自检清单">9.10 自检清单<a class="headerlink" href="#910-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出定位器的惰性求值是什么，它为什么让定位器可以提前定义；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 遇到 strict mode violation 时知道怎么读报错、怎么缩小范围；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能按推荐顺序说出 <code>get_by_*</code> 家族各方法适合的元素；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释「城市」的 label 为什么 <code>exact=True</code> 匹配不上；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 <code>:has-text()</code>、<code>:has()</code>、<code>:is()</code> 里哪个是 Playwright 独有的扩展、哪两个是标准 CSS；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能写出「按订单号筛行、行内找支付按钮」的链式定位；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出脆定位的三个特征，以及 <code>data-testid</code> 约定怎么在团队落地；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 调试定位时会用 <code>count()</code>、调试器和开发者工具这三招。</li>
+</ul>
+<p>下一章：<a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html">第 10 章 页面操作大全</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 8 章 UI 自动化基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 8 章 UI 自动化基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 10 章 页面操作大全">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 10 章 页面操作大全
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>
