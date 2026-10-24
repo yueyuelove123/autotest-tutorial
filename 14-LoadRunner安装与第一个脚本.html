@@ -1,0 +1,3745 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html">
+      
+      
+        <link rel="next" href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 14 章 LoadRunner 安装与第一个脚本 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-14-章-loadrunner-安装与第一个脚本" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 14 章 LoadRunner 安装与第一个脚本
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-准备工作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 准备工作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-电脑要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 电脑要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-为什么用-2023-社区版" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 为什么用 2023 社区版
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413-拿到安装包" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 拿到安装包
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-安装-loadrunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 安装 LoadRunner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 安装 LoadRunner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-解压主程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 解压主程序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-跟着安装向导走" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 跟着安装向导走
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-装完之后" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.3 装完之后
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1424-c-盘空间不够时进阶可跳过" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.4 C 盘空间不够时（进阶，可跳过）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-安装中文语言包" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 安装中文语言包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 安装中文语言包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-安装步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.1 安装步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-装完以后-vugen-卡住不出主窗口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.2 装完以后 VuGen 卡住不出主窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-认识-vugen-和脚本结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 认识 VuGen 和脚本结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 认识 VuGen 和脚本结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441-界面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442-新建脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 新建脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443-一个脚本由哪些文件组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 一个脚本由哪些文件组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1444-三个操作的执行顺序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.4 三个操作的执行顺序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-录制第一个脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 录制第一个脚本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 录制第一个脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451-启动练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.1 启动练习网站
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452-开始录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.2 开始录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453-走一遍业务流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.3 走一遍业务流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1454-停止录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.4 停止录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146-读懂录制的脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 读懂录制的脚本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.6 读懂录制的脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1461-先看整体" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.1 先看整体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1462-web_url-和-web_custom_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.2 web_url 和 web_custom_request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1463-每个参数的意思" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.3 每个参数的意思
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1464-cookie-和请求头" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.4 cookie 和请求头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1465-css-和-js-为什么没有单独的步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.5 css 和 js 为什么没有单独的步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1466-中文关键词变成了百分号编码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.6 中文关键词变成了百分号编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1467-你的脚本里可能多出来的语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.7 你的脚本里可能多出来的语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1468-哪些值是写死的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.8 哪些值是写死的
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-回放与看结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 回放与看结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.7 回放与看结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1471-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.1 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1472-看回放日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.2 看回放日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1473-401-是怎么回事" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.3 401 是怎么回事
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1474-让-vugen-录下-token-请求头" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.4 让 VuGen 录下 token 请求头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1475-再回放一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.5 再回放一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-回放成功不等于业务成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 回放成功不等于业务成功
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.8 回放成功不等于业务成功">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1481-订单其实没付上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.1 订单其实没付上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1482-网站一重启又是-401" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.2 网站一重启又是 401
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1483-本章结束时你手里的脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.3 本章结束时你手里的脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#149-另外两种录制方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9 另外两种录制方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.9 另外两种录制方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1491-远程应用程序通过-loadrunner-代理服务器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.1 远程应用程序（通过 LoadRunner 代理服务器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1492-捕获的流量文件分析导入-har" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.2 捕获的流量文件分析（导入 HAR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1493-三种方式怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.3 三种方式怎么选
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1410-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.10 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1411-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.11 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1412-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.12 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-准备工作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 准备工作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-电脑要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 电脑要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-为什么用-2023-社区版" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 为什么用 2023 社区版
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413-拿到安装包" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 拿到安装包
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-安装-loadrunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 安装 LoadRunner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 安装 LoadRunner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-解压主程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 解压主程序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-跟着安装向导走" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 跟着安装向导走
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-装完之后" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.3 装完之后
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1424-c-盘空间不够时进阶可跳过" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.4 C 盘空间不够时（进阶，可跳过）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-安装中文语言包" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 安装中文语言包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 安装中文语言包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-安装步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.1 安装步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-装完以后-vugen-卡住不出主窗口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.2 装完以后 VuGen 卡住不出主窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-认识-vugen-和脚本结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 认识 VuGen 和脚本结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 认识 VuGen 和脚本结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441-界面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442-新建脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 新建脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443-一个脚本由哪些文件组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 一个脚本由哪些文件组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1444-三个操作的执行顺序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.4 三个操作的执行顺序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-录制第一个脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 录制第一个脚本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 录制第一个脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451-启动练习网站" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.1 启动练习网站
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452-开始录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.2 开始录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453-走一遍业务流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.3 走一遍业务流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1454-停止录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.4 停止录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146-读懂录制的脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 读懂录制的脚本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.6 读懂录制的脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1461-先看整体" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.1 先看整体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1462-web_url-和-web_custom_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.2 web_url 和 web_custom_request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1463-每个参数的意思" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.3 每个参数的意思
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1464-cookie-和请求头" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.4 cookie 和请求头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1465-css-和-js-为什么没有单独的步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.5 css 和 js 为什么没有单独的步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1466-中文关键词变成了百分号编码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.6 中文关键词变成了百分号编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1467-你的脚本里可能多出来的语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.7 你的脚本里可能多出来的语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1468-哪些值是写死的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6.8 哪些值是写死的
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-回放与看结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 回放与看结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.7 回放与看结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1471-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.1 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1472-看回放日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.2 看回放日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1473-401-是怎么回事" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.3 401 是怎么回事
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1474-让-vugen-录下-token-请求头" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.4 让 VuGen 录下 token 请求头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1475-再回放一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7.5 再回放一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-回放成功不等于业务成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 回放成功不等于业务成功
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.8 回放成功不等于业务成功">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1481-订单其实没付上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.1 订单其实没付上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1482-网站一重启又是-401" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.2 网站一重启又是 401
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1483-本章结束时你手里的脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8.3 本章结束时你手里的脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#149-另外两种录制方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9 另外两种录制方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.9 另外两种录制方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1491-远程应用程序通过-loadrunner-代理服务器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.1 远程应用程序（通过 LoadRunner 代理服务器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1492-捕获的流量文件分析导入-har" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.2 捕获的流量文件分析（导入 HAR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1493-三种方式怎么选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9.3 三种方式怎么选
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1410-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.10 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1411-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.11 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1412-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.12 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-14-章-loadrunner-安装与第一个脚本">第 14 章 LoadRunner 安装与第一个脚本<a class="headerlink" href="#第-14-章-loadrunner-安装与第一个脚本" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>在自己的电脑上装好 LoadRunner 2023 社区版和简体中文语言包，避开安装时最常见的几个坑；</li>
+<li>认识 VuGen 的界面，知道一个脚本由哪些文件组成，vuser_init、Action、vuser_end 按什么顺序执行；</li>
+<li>把练习网站上登录、搜索、下单、支付的流程录成第一个脚本；</li>
+<li>读懂录出来的每一类语句和参数；</li>
+<li>会回放脚本、看回放日志，能自己排查回放时的 401 错误；</li>
+<li>明白回放成功和业务成功的区别，知道下一章要解决哪些问题。</li>
+</ul>
+<hr />
+<h2 id="141-准备工作">14.1 准备工作<a class="headerlink" href="#141-准备工作" title="Permanent link">&para;</a></h2>
+<h3 id="1411-电脑要求">14.1.1 电脑要求<a class="headerlink" href="#1411-电脑要求" title="Permanent link">&para;</a></h3>
+<p>本章用的是 <strong>LoadRunner 2023 社区版</strong>（版本号 23.0.0.628），装上简体中文语言包以后界面是中文。实测环境是 Windows 11 和 Chrome 155。下面的要求来自官方的 2023 版支持矩阵（Support Matrix）和安装指南：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统</td>
+<td>64 位 Windows。支持矩阵列出的是 Windows 10（Enterprise LTSC 2019、20H2、21H2）和 Windows 11（21H2）；本教程是在更新版本的 Windows 11 上装的，录制、回放都正常</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>至少 2 核，推荐 8 核</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>至少 8 GB，推荐 16 GB</td>
+</tr>
+<tr>
+<td>磁盘</td>
+<td>官方要求可用空间 50 GB，推荐 100 GB 的固态硬盘，压测结果和日志都要占地方。单看安装：装好后的 LoadRunner 目录约 3.9 GB，解压出来的安装文件约 1.8 GB</td>
+</tr>
+<tr>
+<td>C 盘</td>
+<td><strong>就算装到 D 盘、E 盘，C 盘也要留 5 GB 以上</strong>，原因见下面</td>
+</tr>
+<tr>
+<td>浏览器</td>
+<td>Google Chrome，官方推荐用它录制</td>
+</tr>
+<tr>
+<td>账号</td>
+<td>安装要用管理员账号；要在这台电脑上直接装，官方不支持通过远程桌面安装</td>
+</tr>
+</tbody>
+</table>
+<p>装到别的盘还要占 C 盘，原因有三处：</p>
+<ul>
+<li>主程序是一个自解压包，默认把 1.8 GB 的安装文件解到 <code>C:\Temp</code> 下面，这一处可以改；</li>
+<li>安装时，Windows 的安装服务（Windows Installer）会先把 1.4 GB 的安装包整份复制到 <code>C:\Windows\Installer</code>，再往目标盘装，这一处改不了；</li>
+<li>一部分运行库和系统组件只能装在 C 盘。</li>
+</ul>
+<p>实测 C 盘只剩 1.94 GB 时安装直接失败。C 盘实在腾不出空间，用 14.2.4 节的进阶做法。</p>
+<p>官方安装指南还建议：安装前关掉杀毒软件，并确认 Windows 更新没有在后台装补丁。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：显示器分辨率。</strong> 支持矩阵要求屏幕分辨率至少 1366×768，并且写明 Controller（第 16 章要用）不支持 4K 及以上分辨率的显示器。用 4K 屏的同学，用 Controller 之前先把显示分辨率调到 4K 以下。</p>
+</div>
+<h3 id="1412-为什么用-2023-社区版">14.1.2 为什么用 2023 社区版<a class="headerlink" href="#1412-为什么用-2023-社区版" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>免费，50 个虚拟用户一直能用。</strong> 安装时会自动装上社区版授权，官方安装指南的原话是免费提供 50 个虚拟用户。不用申请许可证，也不会过期（官方说明里它是永久授权，绑定在装的这个版本上），学习和做小规模验证足够了。</li>
+<li><strong>官方支持 Windows 11。</strong> 支持矩阵里列了 Windows 11，在新电脑上装不容易出兼容问题。</li>
+<li><strong>学会了能用到老版本上。</strong> web_url、web_custom_request、lr_think_time 这些核心的脚本函数，在 11、12 版里就是这么写的；各版本的菜单和对话框有些差别，对照着找一般都能找到。公司里还在用老版本的，在这里学到的东西照样能用。</li>
+</ul>
+<p>官方后来又发布了好几个新版本（写这一章时最新的是 26.3，VuGen 起始页的新闻里能看到），界面陆续有变化。本教程统一用 2023 版。</p>
+<h3 id="1413-拿到安装包">14.1.3 拿到安装包<a class="headerlink" href="#1413-拿到安装包" title="Permanent link">&para;</a></h3>
+<p><strong>官方渠道。</strong> 产品改名以后（第 13 章 13.5.1 节），官方的试用页在 <a href="https://www.opentext.com/products/professional-performance-engineering/trial">https://www.opentext.com/products/professional-performance-engineering/trial</a>：</p>
+<ol>
+<li>打开试用页，填写申请表；</li>
+<li>邮箱要用公司邮箱；</li>
+<li>提交以后，按官方发来的指引下载。</li>
+</ol>
+<p>这条路有两个限制：给的是当时的最新版，和本教程的 2023 版界面有出入；2023 版这样的旧版本放在官方的软件授权与下载门户里，要有正式授权的账号才能下载。</p>
+<p><strong>国内软件下载站。</strong> 2023 版在国内一些软件下载站能找到原版安装包，一般是一个压缩包，解开后有三个程序：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>大小（字节）</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro_Focus_LoadRunner_2023_Community_Edition.exe</td>
+<td>1,797,204,368</td>
+<td>主程序</td>
+</tr>
+<tr>
+<td>Micro_Focus_LoadRunner_2023_Community_Edition-Language_Packs.exe</td>
+<td>577,016,632</td>
+<td>语言包，简体中文在里面</td>
+</tr>
+<tr>
+<td>Micro_Focus_LoadRunner_2023_Community_Edition-Additional_Components.exe</td>
+<td>1,254,766,456</td>
+<td>附加组件，本教程用不到</td>
+</tr>
+</tbody>
+</table>
+<p>压缩包里夹带的网址快捷方式、说明文件不用管，也不要运行这三个程序以外的东西。把它们放到一个空间够的盘上，比如 <code>E:\LR2023-setup</code>。</p>
+<p><strong>下载后一定核对数字签名。</strong> 数字签名能证明文件确实出自官方，下载以后没被改过：</p>
+<ol>
+<li>右键安装程序，选「属性」，切到「数字签名」页签；</li>
+<li>签名列表里的签名者是 Micro Focus Group Limited；</li>
+<li>选中它，点「详细信息」，弹出的窗口里显示「此数字签名正常。」</li>
+</ol>
+<p>主程序和语言包两个文件都要查。没有「数字签名」页签、签名者不对，或者详细信息里说签名无效的，说明文件不是原版或者被改动过，删掉换个地方重新下载。</p>
+<p>也可以在 PowerShell 里查，在安装程序所在的文件夹执行：</p>
+<div class="highlight"><pre><span></span><code>&gt; $s = Get-AuthenticodeSignature .\Micro_Focus_LoadRunner_2023_Community_Edition.exe
+&gt; $s.Status
+Valid
+&gt; $s.SignerCertificate.Subject
+CN=Micro Focus Group Limited, O=Micro Focus Group Limited, S=Berkshire, C=GB
+</code></pre></div>
+<p>Status 是 Valid 就说明签名正常。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>网上的破解补丁。</strong> 社区版本身免费，装好就有 50 个虚拟用户的授权，用不着任何破解补丁或注册机。来路不明的补丁可能夹带病毒、木马，一律不要下载、不要运行。</p>
+</div>
+<h2 id="142-安装-loadrunner">14.2 安装 LoadRunner<a class="headerlink" href="#142-安装-loadrunner" title="Permanent link">&para;</a></h2>
+<h3 id="1421-解压主程序">14.2.1 解压主程序<a class="headerlink" href="#1421-解压主程序" title="Permanent link">&para;</a></h3>
+<p>双击 Micro_Focus_LoadRunner_2023_Community_Edition.exe。它是一个自解压包，先弹出一个英文的解压窗口，Save files in folder 下面的路径就是解压位置，默认是 <code>C:\Temp\Micro Focus LoadRunner 2023 Community Edition</code>。</p>
+<p><strong>把这个路径改到空间够的盘</strong>，比如 <code>E:\LR2023-setup</code>：可以直接改框里的路径，也可以点 Change... 选文件夹，然后点 Next 开始解压。解出来约 1.8 GB，里面是一个 <code>DVD</code> 文件夹。解压完成后，安装程序（<code>DVD\lrunner\En\setup.exe</code>）会自动启动。</p>
+<h3 id="1422-跟着安装向导走">14.2.2 跟着安装向导走<a class="headerlink" href="#1422-跟着安装向导走" title="Permanent link">&para;</a></h3>
+<p>安装向导是中文的，按下面几步走，没提到的页面保持默认、点「下一步」：</p>
+<ol>
+<li><strong>前置组件。</strong> 电脑上缺少 LoadRunner 需要的前置软件（清单在官方的支持矩阵里）时，会先弹出一个对话框列出缺少的程序，点确定让它先装上。官方安装指南说，装完前置软件可能会重启电脑，重启了就再运行一次解压目录里的 <code>DVD\lrunner\En\setup.exe</code>。前置软件齐全的电脑不会出现这一步。</li>
+<li><strong>欢迎页</strong>「欢迎使用 Micro Focus LoadRunner 2023 安装向导」。这一页要选装哪个产品：选 <strong>LoadRunner</strong>，不要选 LoadRunner Enterprise Host。</li>
+<li><strong>最终用户许可协议。</strong> 勾选「我接受许可协议中的条款」。下面的「安装后启动 LoadRunner 代理」「创建桌面快捷方式」保持默认。</li>
+<li><strong>目标文件夹。</strong> 默认装在 C 盘（官方指南写的默认路径是 <code>C:\Program Files (x86)\Micro Focus\LoadRunner</code>）。点「更改」换到别的盘，比如 <code>E:\LoadRunner\</code>。页面上写着「路径不得包含非英语字符」，路径里不要有中文，也尽量短。</li>
+<li><strong>已准备好安装。</strong> 点「安装」，等进度条走完。</li>
+<li><strong>Micro Focus 身份验证设置。</strong> 装完会先出现这一页，上面有一个「指定 LoadRunner 代理将要使用的证书。」的勾选框，<strong>不要勾</strong>，直接点「下一步」。官方指南的说法是，这里的证书用于 LoadRunner 各组件之间的身份验证和加密通信，本教程用不到。</li>
+<li><strong>安装已完成。</strong> 最后一页有「安装 Network Virtualization」的勾选框。Network Virtualization 用来分析应用在各种网络条件下的表现，本教程用不到，勾着的话去掉，点「完成」。</li>
+</ol>
+<h3 id="1423-装完之后">14.2.3 装完之后<a class="headerlink" href="#1423-装完之后" title="Permanent link">&para;</a></h3>
+<ul>
+<li>社区版授权已经自动装好，50 个虚拟用户，不用额外操作。想看一眼的话，在开始菜单找到 Micro Focus → LoadRunner → License → LoadRunner License Utility，要右键选「以管理员身份运行」才能打开。</li>
+<li>开始菜单的 Micro Focus → LoadRunner 文件夹里有 Virtual User Generator（也就是 VuGen）、Controller、Analysis 三个程序，桌面上也有它们的图标。按 Win 键直接输入 Virtual User Generator 也能搜到。</li>
+<li>先别急着打开，接着装中文语言包（14.3 节）。</li>
+<li>解压出来的 <code>DVD</code> 文件夹先留着，等语言包也装好、VuGen 能正常打开以后再删；下载的原始安装程序建议一直留着。</li>
+</ul>
+<h3 id="1424-c-盘空间不够时进阶可跳过">14.2.4 C 盘空间不够时（进阶，可跳过）<a class="headerlink" href="#1424-c-盘空间不够时进阶可跳过" title="Permanent link">&para;</a></h3>
+<p>C 盘留不出 5 GB 的，可以绕开自解压和安装包复制这两处：先把安装文件解到 E 盘，再用 Windows Installer 的管理安装（<code>msiexec /a</code>）把安装包解成一份不压缩的映像，最后从映像安装。从映像安装时，复制到 <code>C:\Windows\Installer</code> 的只是一个约 10 MB 的安装数据库，1.4 GB 的安装包就不用整份复制了。</p>
+<p>下面的命令都在<strong>以管理员身份运行</strong>的 PowerShell 里执行（右键开始按钮，选「终端(管理员)」或「Windows PowerShell(管理员)」）。假设三个安装程序放在 <code>E:\LR2023-setup</code>，路径按你的实际位置改。</p>
+<p>第一步，用 Windows 自带的 tar 把主程序解到 E 盘。tar 能直接解开这种自解压包，不会启动安装向导：</p>
+<div class="highlight"><pre><span></span><code>&gt; cd E:\LR2023-setup
+&gt; mkdir pkg
+&gt; mkdir tmp
+&gt; tar -xf .\Micro_Focus_LoadRunner_2023_Community_Edition.exe -C pkg
+</code></pre></div>
+<p>第二步，只装前置组件（运行库）。这条命令来自官方安装指南；本教程的电脑上运行库本来就齐全，没有实际跑这一步：</p>
+<div class="highlight"><pre><span></span><code>&gt; Start-Process .\pkg\DVD\lrunner\En\setup.exe -ArgumentList "/InstallOnlyPrerequisite /s" -Wait
+</code></pre></div>
+<p>第三步，把安装包解成映像。第一行把临时文件也放到 E 盘，只对当前这个 PowerShell 窗口有效：</p>
+<div class="highlight"><pre><span></span><code>&gt; $env:TEMP = "E:\LR2023-setup\tmp"; $env:TMP = "E:\LR2023-setup\tmp"
+&gt; $p = Start-Process msiexec -ArgumentList '/a "E:\LR2023-setup\pkg\DVD\lrunner\MSI\LoadRunner_x64.msi" /qn TARGETDIR="E:\LR2023-setup\admin" /l*v "E:\LR2023-setup\admin.log"' -Wait -PassThru; $p.ExitCode
+0
+</code></pre></div>
+<p>第四步，从映像安装：</p>
+<div class="highlight"><pre><span></span><code>&gt; $p = Start-Process msiexec -ArgumentList '/i "E:\LR2023-setup\admin\LoadRunner_x64.msi" /qn /norestart INSTALLDIR="E:\LoadRunner" NVINSTALL=N IMPROVEMENTPROGRAM=0 /l*v "E:\LR2023-setup\install.log"' -Wait -PassThru; $p.ExitCode
+0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/a</code></td>
+<td>管理安装：把安装包解成不压缩的映像，放到 TARGETDIR 指定的文件夹，不会真的安装</td>
+</tr>
+<tr>
+<td><code>/i</code></td>
+<td>安装</td>
+</tr>
+<tr>
+<td><code>/qn</code></td>
+<td>不显示界面，静默执行</td>
+</tr>
+<tr>
+<td><code>/norestart</code></td>
+<td>装完不自动重启</td>
+</tr>
+<tr>
+<td><code>/l*v 文件</code></td>
+<td>把详细日志写进这个文件，出错时看它</td>
+</tr>
+<tr>
+<td><code>INSTALLDIR</code></td>
+<td>装到哪里</td>
+</tr>
+<tr>
+<td><code>NVINSTALL=N</code></td>
+<td>不装 Network Virtualization</td>
+</tr>
+<tr>
+<td><code>IMPROVEMENTPROGRAM=0</code></td>
+<td>不参加 LoadRunner 改进计划</td>
+</tr>
+<tr>
+<td><code>$p.ExitCode</code></td>
+<td>打印退出码，0 表示成功</td>
+</tr>
+</tbody>
+</table>
+<p>实测映像约 3.7 GB，从映像安装用了约 8 分钟，装好后的 <code>E:\LoadRunner</code> 约 3.9 GB。静默安装没有界面，14.2.2 节里的证书页、Network Virtualization 页都不会出现。映像先留着别删，装语言包、以后修复 LoadRunner 时可能还要用到它。</p>
+<h2 id="143-安装中文语言包">14.3 安装中文语言包<a class="headerlink" href="#143-安装中文语言包" title="Permanent link">&para;</a></h2>
+<h3 id="1431-安装步骤">14.3.1 安装步骤<a class="headerlink" href="#1431-安装步骤" title="Permanent link">&para;</a></h3>
+<ol>
+<li>双击 Micro_Focus_LoadRunner_2023_Community_Edition-Language_Packs.exe。它也是自解压包，解压窗口和主程序一样，默认位置也是 <code>C:\Temp\Micro Focus LoadRunner 2023 Community Edition</code>，改到和主程序同一个地方（比如 <code>E:\LR2023-setup</code>）就行。这个包只解压，不会自动开始安装。</li>
+<li>打开解压目录下的 <code>DVD\Language-Packs\Chinese-Simplified\LoadRunner\</code>，<strong>右键 LR_CHS.exe，选「以管理员身份运行」</strong>，会出现名为 LoadRunner 2023 CHS 的安装程序，按提示装完。</li>
+<li>打开 VuGen，菜单变成「文件(F)、编辑(E)、查看(V)……」就装好了。VuGen 迟迟打不开的，看 14.3.2 节。</li>
+</ol>
+<p>几点说明：</p>
+<ul>
+<li>同一个文件夹里还有一个 LR_CHS_PSEUDO.exe，不要装它；旁边的 VugenSA、AnalysisSA 文件夹是给单独安装的 VuGen、Analysis 用的，装了完整版的不用管。</li>
+<li>官方要求 Windows 本身的语言和语言包一致，简体中文语言包要装在中文版 Windows 上。</li>
+<li>LR_CHS.exe 自己没有数字签名，它是从签名正常的语言包程序里解出来的，查过外面那个程序的签名就行。</li>
+</ul>
+<h3 id="1432-装完以后-vugen-卡住不出主窗口">14.3.2 装完以后 VuGen 卡住不出主窗口<a class="headerlink" href="#1432-装完以后-vugen-卡住不出主窗口" title="Permanent link">&para;</a></h3>
+<p>装完语言包第一次打开 VuGen，可能遇到这种情况：任务管理器里有 VuGen.exe 进程，主窗口却一直不出来。</p>
+<p>去看 VuGen 的日志：按 Win+R，输入 <code>%TEMP%</code> 回车，打开里面的 HP.LR.VuGen.log，能看到这样的记录（节选）：</p>
+<div class="highlight"><pre><span></span><code>FATAL - UnhandledException caught
+System.IO.FileLoadException: 未能加载文件或程序集"System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139"或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+   在 ICSharpCode.UsageDataCollector.UsageDataSessionWriter..ctor(String databaseFileName, Func`1 guidProvider)
+   在 HP.Utt.UsageDataCollector.AnalyticsMonitor.OpenSession()
+</code></pre></div>
+<p>堆栈里的 AnalyticsMonitor 是 VuGen 的使用数据统计功能。语言包把这个功能打开了，它要加载 1.0.117.0 版的 SQLite 组件，安装目录里带的却是 1.0.115 版，加载失败，VuGen 就卡在了启动阶段。把这个功能关掉就好：</p>
+<ol>
+<li>在任务管理器里结束卡住的 VuGen.exe；</li>
+<li>用管理员身份打开记事本（开始菜单搜「记事本」，右键选「以管理员身份运行」），用「文件 → 打开」打开 <code>C:\ProgramData\Micro Focus\LoadRunner\config.json</code>。ProgramData 是隐藏文件夹，在文件名框里直接输入完整路径回车最省事；</li>
+<li>文件原来的内容是：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"usageAnalytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>把 <code>true</code> 改成 <code>false</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"usageAnalytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>保存，重新打开 VuGen。</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>装完 LoadRunner 要重开命令行窗口。</strong> 安装程序新增了 LR_PATH、LG_PATH、VUGEN_PATH 几个系统环境变量，值都是安装目录（比如 <code>E:\LoadRunner\</code>），VuGen 启动时靠它们找自己的文件。装之前就开着的 PowerShell 窗口里没有这几个变量，从那里启动 VuGen（比如输入 <code>E:\LoadRunner\bin\VuGen.exe</code>）会直接崩溃，弹出标题是「Critical error (cannot use ExceptionDialog)」的窗口，内容开头是：</p>
+<div class="highlight"><pre><span></span><code>System.ArgumentNullException: 值不能为 null。
+参数名: path
+   在 System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   在 HP.Utt.UttCore.UttAssemblyResolver.AddToLookupDictionary(String lookupDir, Boolean versionSpecific, Boolean includeChildFolders) ……
+</code></pre></div>
+<p>关掉旧窗口重新打开就好；VS Code 里的终端要把 VS Code 整个关掉再打开（第 1 章 1.2 节）。从开始菜单或桌面图标启动不受影响。</p>
+</div>
+<h2 id="144-认识-vugen-和脚本结构">14.4 认识 VuGen 和脚本结构<a class="headerlink" href="#144-认识-vugen-和脚本结构" title="Permanent link">&para;</a></h2>
+<h3 id="1441-界面">14.4.1 界面<a class="headerlink" href="#1441-界面" title="Permanent link">&para;</a></h3>
+<p>从开始菜单或桌面图标打开 Virtual User Generator。第一次看到的是<strong>起始页</strong>（Start Page）：左边「最近的活动」列出最近打开过的脚本；右边「新增功能」是联网读取的官方新闻，讲的是最新版本，和你装的 2023 版无关。没有打开脚本的时候，菜单里的「设计」「回放」是灰的。</p>
+<p>打开一个脚本以后，界面是这样的（图里是窗口的左半部分，脚本名 shop_har 是 14.9.2 节生成的那个脚本）：</p>
+<p><img alt="VuGen 主窗口的左半部分：左边是解决方案资源管理器，中间开着运行时设置页，下面是输出窗格" src="images/14-vugen-main.png" /></p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>位置</th>
+<th>干什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>菜单栏</td>
+<td>最上面</td>
+<td>文件(F)、编辑(E)、查看(V)、搜索(S)、设计(D)、录制(R)、回放(P)、工具(T)、集成(I)、窗口(W)、帮助(H)。本章主要用录制和回放两个菜单</td>
+</tr>
+<tr>
+<td>解决方案资源管理器（Solution Explorer）</td>
+<td>左边</td>
+<td>列出打开的脚本和脚本里的各个部分，双击打开</td>
+</tr>
+<tr>
+<td>步骤导航器（Step Navigator）</td>
+<td>左下角的页签，和解决方案资源管理器来回切换</td>
+<td>把脚本按步骤一条条列出来</td>
+</tr>
+<tr>
+<td>编辑区</td>
+<td>中间</td>
+<td>打开的文件、设置页排成一排标签页，图里开着的是运行时设置、录制报告和 Action.c</td>
+</tr>
+<tr>
+<td>输出（Output）</td>
+<td>下面</td>
+<td>回放日志、代码生成日志都显示在这里，左上角的下拉框选看哪一种；窗格底部还有任务、错误、运行时数据几个页签</td>
+</tr>
+<tr>
+<td>状态栏</td>
+<td>最下面</td>
+<td>显示「就绪」表示空闲</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1442-新建脚本">14.4.2 新建脚本<a class="headerlink" href="#1442-新建脚本" title="Permanent link">&para;</a></h3>
+<ol>
+<li>菜单 文件 → 新建脚本和解决方案（New Script and Solution），弹出「创建新脚本」（Create a New Script）对话框；</li>
+<li>左边「类别」选 VuGen 下面的<strong>单协议</strong>（Single Protocol）；</li>
+<li>中间的协议列表很长，选 <strong>Web - HTTP/HTML</strong>，可以在上方的筛选框里输入 web 缩小范围；</li>
+<li>「脚本名」填 <code>shop_first</code>；「位置」默认是 <code>C:\Users\你的用户名\Documents\VuGen\Scripts</code>，建议改成工程目录下的 lr 文件夹，比如 <code>D:\work\autotest-demo\lr</code>（先在资源管理器里建好这个文件夹），路径里不要有中文；「解决方案名称」留空；</li>
+<li>点「创建」。</li>
+</ol>
+<p><strong>协议</strong>决定了 VuGen 用什么方式录制和回放。Web - HTTP/HTML 录的是浏览器和服务器之间来往的 HTTP 请求，回放时不需要浏览器，由 VuGen 直接把这些请求按顺序发出去。网站和接口的压测最常用的就是这个协议。</p>
+<p><strong>解决方案</strong>是装脚本的容器，一个解决方案里可以放好几个脚本。名称留空，VuGen 会建一个叫「无标题」的解决方案。本教程每次只用一个脚本，不用管它。</p>
+<h3 id="1443-一个脚本由哪些文件组成">14.4.3 一个脚本由哪些文件组成<a class="headerlink" href="#1443-一个脚本由哪些文件组成" title="Permanent link">&para;</a></h3>
+<p>创建以后，解决方案资源管理器里的 shop_first 下面有这些节点（上一张图的左边）：</p>
+<ul>
+<li><strong>操作</strong>：vuser_init、Action、vuser_end，脚本的代码就写在这三个操作里；</li>
+<li><strong>额外文件</strong>：globals.h；</li>
+<li>运行时设置、参数、录制报告、回放摘要。</li>
+</ul>
+<p>到 <code>D:\work\autotest-demo\lr\shop_first</code> 文件夹里看，一个刚创建的脚本有这些文件：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shop_first.usr</td>
+<td>脚本的总入口：用什么协议、包含哪几个操作、用哪份运行时设置。在 VuGen 里打开脚本，选的就是这个文件</td>
+</tr>
+<tr>
+<td>vuser_init.c、Action.c、vuser_end.c</td>
+<td>三个操作的代码，每个文件里是一个同名的函数</td>
+</tr>
+<tr>
+<td>globals.h</td>
+<td>公共头文件，引入 LoadRunner 的函数库，全局变量也写在这里</td>
+</tr>
+<tr>
+<td>default.cfg</td>
+<td>运行时设置：思考时间怎么处理、日志记多详细等</td>
+</tr>
+<tr>
+<td>default.usp</td>
+<td>运行逻辑：开始、运行、结束三段各放哪些操作，按什么顺序执行，Action 迭代几次</td>
+</tr>
+<tr>
+<td>其他 .xml、.txt、.h 文件</td>
+<td>书签、断点这类编辑器的状态，以及录制要用的辅助文件，不用管</td>
+</tr>
+</tbody>
+</table>
+<p>录制以后还会多出一个 <strong>data</strong> 文件夹，里面是录下来的原始数据和每一步的快照，重新生成脚本（14.7 节）就靠它，不要删；回放以后会多出 result1 文件夹和几个日志文件。</p>
+<p>新建的 Action.c 只有一个空函数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>globals.h 的内容：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef _GLOBALS_H</span>
+<span class="cp">#define _GLOBALS_H</span>
+
+<span class="c1">//--------------------------------------------------------------------</span>
+<span class="c1">// Include Files</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"lrun.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"web_api.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"lrw_custom_body.h"</span>
+
+<span class="c1">//--------------------------------------------------------------------</span>
+<span class="c1">// Global Variables</span>
+
+<span class="cp">#endif </span><span class="c1">// _GLOBALS_H</span>
+</code></pre></div>
+<p>lrun.h 里是 lr_ 开头的通用函数（比如 lr_think_time），web_api.h 里是 web_ 开头的网页函数。脚本语言是 C 语言的写法，函数调用、字符串、注释和 C 一样。</p>
+<p>default.cfg 是普通的文本文件，打开能看到几项默认值（节选）：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[ThinkTime]</span>
+<span class="na">Options</span><span class="o">=</span><span class="s">NOTHINK</span>
+<span class="k">[Log]</span>
+<span class="na">LogOptions</span><span class="o">=</span><span class="s">LogBrief</span>
+</code></pre></div>
+<p>依次表示回放时忽略思考时间、标准日志。</p>
+<p>迭代次数记在 default.usp 里，看运行那一段，也就是 [RunLogicRunRoot] 这一节（节选）：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[RunLogicRunRoot]</span>
+<span class="na">RunLogicActionOrder</span><span class="o">=</span><span class="s">"Action"</span>
+<span class="na">RunLogicNumOfIterations</span><span class="o">=</span><span class="s">"1"</span>
+</code></pre></div>
+<p>意思是运行这一段放的是 Action，迭代 1 次。default.cfg 里也有一节 [Iterations]，下面同样有一行 NumOfIterations=1，但回放跑几次不看它：实测把它改成 3，回放还是只跑 1 次；把 default.usp 里的这个 <code>"1"</code> 改成 <code>"3"</code>，才跑 3 次。</p>
+<p>这些值一般在 VuGen 的运行时设置页里改（回放 → 运行时设置，快捷键 F4），不用手工编辑文件。</p>
+<h3 id="1444-三个操作的执行顺序">14.4.4 三个操作的执行顺序<a class="headerlink" href="#1444-三个操作的执行顺序" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>执行几次</th>
+<th>适合放什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vuser_init</td>
+<td>开始时执行 1 次</td>
+<td>登录这类每个用户只做一次的准备</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>按迭代次数反复执行，默认 1 次</td>
+<td>要反复压的业务：搜索、下单、支付</td>
+</tr>
+<tr>
+<td>vuser_end</td>
+<td>结束时执行 1 次</td>
+<td>退出登录、清理数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>迭代</strong>（iteration）就是 Action 完整执行一遍。迭代数设成 3，执行顺序就是：</p>
+<div class="highlight"><pre><span></span><code>vuser_init → Action → Action → Action → vuser_end
+</code></pre></div>
+<p>压测时每个虚拟用户都按这个顺序跑。上一张图中间那页就是运行时设置里的运行逻辑（Run Logic）：initialize 里放的是 vuser_init，run 里放的是 Action，finalize 里放的是 vuser_end。</p>
+<p>本章录的内容先全部放在 Action 里，第 15 章新建的脚本会把登录放进 vuser_init。</p>
+<h2 id="145-录制第一个脚本">14.5 录制第一个脚本<a class="headerlink" href="#145-录制第一个脚本" title="Permanent link">&para;</a></h2>
+<h3 id="1451-启动练习网站">14.5.1 启动练习网站<a class="headerlink" href="#1451-启动练习网站" title="Permanent link">&para;</a></h3>
+<p>和第 2 章 2.1 节一样，在工程根目录激活虚拟环境后启动练习网站，这个窗口一直开着：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python -m uvicorn shop.app:app --port 8000
+</code></pre></div>
+<p>可以先用 Edge 打开 <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> 确认能看到登录页。先别用 Chrome，下一步录制前要把 Chrome 全部关掉。</p>
+<h3 id="1452-开始录制">14.5.2 开始录制<a class="headerlink" href="#1452-开始录制" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>说明：</strong> 这条路写作时只实际走到下面「必须先关闭 Chrome」的提示，之后 VuGen 启动 Chrome 录制的过程是按官方帮助写的。本章的例子脚本、回放日志和录制工具栏的截图，都来自 14.9 节另外两种方式的实际录制。录不下来时，看 14.5.4 节最后的提示。</p>
+</div>
+<p>在 VuGen 里打开 shop_first，菜单 录制 → 录制（Record，快捷键 Ctrl+R），弹出「开始录制 - [shop_first]」对话框：</p>
+<p><img alt="开始录制对话框" src="images/14-start-recording.png" /></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>录制到操作（Record into action）</td>
+<td>Action</td>
+</tr>
+<tr>
+<td>录制（Record）</td>
+<td>Web 浏览器（Web Browser）。下拉框里另外几种方式见 14.9 节</td>
+</tr>
+<tr>
+<td>应用程序（Application）</td>
+<td>Google Chrome</td>
+</tr>
+<tr>
+<td>URL 地址（URL address）</td>
+<td><code>http://127.0.0.1:8000/</code></td>
+</tr>
+<tr>
+<td>开始录制</td>
+<td>立即（Immediately）。另一个选项「采用延迟模式」（In delayed mode），按官方帮助的说法，要等你在录制工具栏上开始录制才真正开始录，适合先在应用里走到某个位置再录</td>
+</tr>
+<tr>
+<td>工作目录（Working directory）</td>
+<td>保持默认，就是安装目录下的 Bin</td>
+</tr>
+</tbody>
+</table>
+<p>左下角的「录制选项」（Recording Options）这次先不动，14.7 节会用到。点「开始录制」。</p>
+<p><strong>必须先关闭 Chrome。</strong> 电脑上有 Chrome 开着时，会弹出这个提示：</p>
+<p><img alt="录制前必须关闭正在运行的 Chrome" src="images/14-close-chrome.png" /></p>
+<p>提示的原文是：「录制前，必须关闭正在运行的 Google Chrome 实例。单击『确定』立即关闭它们并开始录制，或者如果要手动关闭它们，然后再重新启动录制，则单击『取消』。」</p>
+<p>点「确定」会把所有 Chrome 窗口一起关掉，网页上没保存的内容会丢。如果你正用 Chrome 看这份教程，先换 Edge 打开，或者把 14.5.3 节的几步抄下来。Chrome 关掉以后，VuGen 会自己启动 Chrome，打开你填的网址，练习网站会自动跳到登录页。</p>
+<p><strong>录制工具栏。</strong> 录制开始后，VuGen 主窗口自动最小化，屏幕顶部出现一条浮动的录制工具栏（下图是用 14.9.1 节的代理方式录制时截的）：</p>
+<p><img alt="录制工具栏" src="images/14-recording-toolbar.png" /></p>
+<p>标题「正在录制事件」后面括号里的数字是到目前为止录到的事件数，右边是录制时长。按钮从左到右：</p>
+<table>
+<thead>
+<tr>
+<th>按钮</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>继续</td>
+<td>暂停以后继续录，正在录的时候是灰的</td>
+</tr>
+<tr>
+<td>停止</td>
+<td>停止录制，生成脚本</td>
+</tr>
+<tr>
+<td>暂停</td>
+<td>暂停录制，这期间的操作不会录进脚本</td>
+</tr>
+<tr>
+<td>取消录制</td>
+<td>放弃这次录制，录到的内容全部丢掉</td>
+</tr>
+<tr>
+<td>下拉框（图里是 Action）</td>
+<td>接下来的操作录到哪个操作里</td>
+</tr>
+<tr>
+<td>后面几个图标</td>
+<td>依次是新建操作、插入开始事务、插入结束事务、插入集合点、插入注释、插入文本检查，第 15 章会用到其中几个</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1453-走一遍业务流程">14.5.3 走一遍业务流程<a class="headerlink" href="#1453-走一遍业务流程" title="Permanent link">&para;</a></h3>
+<p>在 VuGen 打开的 Chrome 里，按第 2 章 2.2 节手工走过的流程操作：</p>
+<ol>
+<li>在登录页输入用户名 alice、密码 alice123，点「登录」；</li>
+<li>进入商品列表后，在关键词框输入「键盘」，点「搜索」；</li>
+<li>在「机械键盘」那一行点「购买」，弹窗里数量保持 1，点「确认下单」；</li>
+<li>页面底部出现「下单成功，订单号：SO……」，点提示里的「去支付」；</li>
+<li>进入我的订单，在刚下的那一单上点「支付」，出现「支付成功」的提示。</li>
+</ol>
+<p>每做完一步停一两秒再做下一步，像平时用网站一样就行。录制期间不要点无关的地方，也不要在这个浏览器里打开别的网站，浏览器这段时间发出的请求都会录进脚本。</p>
+<h3 id="1454-停止录制">14.5.4 停止录制<a class="headerlink" href="#1454-停止录制" title="Permanent link">&para;</a></h3>
+<p>点录制工具栏上的「停止」。VuGen 弹出「代码生成」（Code Generation）进度窗口，把录到的请求转换成代码。生成完回到 VuGen 主窗口，双击解决方案资源管理器里的 Action，就能看到录出来的脚本。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：Web 浏览器方式录不下来怎么办。</strong> 这种方式要由 VuGen 启动 Chrome 并截获它的请求。如果在你的电脑上录不下来（比如 Chrome 打开了，工具栏上的事件数却一直不涨），改用 14.9.2 节导入 HAR 文件的方式：关掉 VuGen，在资源管理器里删掉 shop_first 文件夹，再打开 VuGen，按 14.4.2 节重新建一个同名脚本，再按 14.9.2 节把 HAR 导进去。导入时跳过「第二步，导入」里的第 2 小步（把标头设成只录 token），标头留到 14.7.4 节再改，否则看不到 14.7 节的 401。生成的脚本一样能往下学。</p>
+</div>
+<h2 id="146-读懂录制的脚本">14.6 读懂录制的脚本<a class="headerlink" href="#146-读懂录制的脚本" title="Permanent link">&para;</a></h2>
+<p>下面的例子是用 14.9.2 节导入 HAR 文件的方式生成的，录的是同一套操作。用代理方式录（14.9.1 节）实测得到的站内步骤和它完全一样，你用 Web 浏览器方式录的也应该是这些步骤。和你手里的脚本相比有两处区别：</p>
+<ul>
+<li>例子是改好标头设置（14.7 节）以后生成的，多了 web_add_header、web_add_auto_header、web_revert_auto_header 这几行，你现在的脚本里还没有；</li>
+<li>你的脚本里可能还有 lr_think_time 语句和谷歌的请求，14.6.7 节讲。</li>
+</ul>
+<h3 id="1461-先看整体">14.6.1 先看整体<a class="headerlink" href="#1461-先看整体" title="Permanent link">&para;</a></h3>
+<p>脚本里每个 web_url、web_custom_request 是一个<strong>步骤</strong>，对应浏览器发出的一个请求。14 个步骤和你的操作是这样对上的：</p>
+<table>
+<thead>
+<tr>
+<th>你的操作</th>
+<th>脚本里的步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开 <code>http://127.0.0.1:8000/</code>，跳到登录页</td>
+<td>web_url("127.0.0.1:8000")</td>
+</tr>
+<tr>
+<td>点「登录」</td>
+<td>web_custom_request("login")</td>
+</tr>
+<tr>
+<td>登录后进入商品列表</td>
+<td>web_url("products.html")、web_url("me")、web_url("products")</td>
+</tr>
+<tr>
+<td>搜索「键盘」</td>
+<td>web_url("products_2")</td>
+</tr>
+<tr>
+<td>确认下单</td>
+<td>web_custom_request("orders")、web_url("products_3")（下单后刷新商品列表）</td>
+</tr>
+<tr>
+<td>点「去支付」进入我的订单</td>
+<td>web_url("orders.html")、web_url("me_2")、web_url("orders_2")</td>
+</tr>
+<tr>
+<td>点「支付」</td>
+<td>web_custom_request("pay")、web_url("orders_3")、web_url("me_3")（支付后刷新订单和余额）</td>
+</tr>
+</tbody>
+</table>
+<p>me 那几步是页面右上角显示余额时调的 <code>/api/me</code>，每进一个页面调一次，支付成功后又调了一次刷新余额。</p>
+<p>脚本的前半段（节选，…… 是省略的部分）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"127.0.0.1:8000"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Resource=0"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"RecContentType=text/html"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Referer="</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Snapshot=t1.inf"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Mode=HTML"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">""</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Resource=0"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"RecContentType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Referer=http://127.0.0.1:8000/login.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Snapshot=t2.inf"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Mode=HTML"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_cookie</span><span class="p">(</span><span class="s">"token=928fbf03673960daa2c0cb7333681e50; DOMAIN=127.0.0.1"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_cookie</span><span class="p">(</span><span class="s">"username=alice; DOMAIN=127.0.0.1"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"products.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/products.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"928fbf03673960daa2c0cb7333681e50"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"me"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/api/me"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Resource=0"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"RecContentType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Referer=http://127.0.0.1:8000/products.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Snapshot=t4.inf"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Mode=HTML"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="err">……</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"products_2"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"orders"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/api/orders"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">items</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">productId</span><span class="se">\"</span><span class="s">:3,</span><span class="se">\"</span><span class="s">quantity</span><span class="se">\"</span><span class="s">:1}]}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+</code></pre></div>
+<p>后半段（节选）：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">web_revert_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"orders.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/orders.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"928fbf03673960daa2c0cb7333681e50"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="err">……</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/api/orders/SO20261023000001/pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="s">"EncType="</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="err">……</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="1462-web_url-和-web_custom_request">14.6.2 web_url 和 web_custom_request<a class="headerlink" href="#1462-web_url-和-web_custom_request" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>干什么</th>
+<th>本例中的步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>web_url</td>
+<td>发一个 GET 请求，打开网页或调查询接口</td>
+<td>打开登录页、商品页，查余额、搜索商品</td>
+</tr>
+<tr>
+<td>web_custom_request</td>
+<td>发任意方法的请求，可以带请求体</td>
+<td>登录、下单、支付这三个 POST 请求</td>
+</tr>
+</tbody>
+</table>
+<p>两个函数的第一个参数都是<strong>步骤名</strong>，日志里用它称呼这一步。VuGen 按网址的最后一段起名，重名的在后面加 _2、_3，所以有 products、products_2、products_3。</p>
+<h3 id="1463-每个参数的意思">14.6.3 每个参数的意思<a class="headerlink" href="#1463-每个参数的意思" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>例子</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL</td>
+<td><code>URL=http://127.0.0.1:8000/api/login</code></td>
+<td>请求地址</td>
+</tr>
+<tr>
+<td>Method</td>
+<td><code>Method=POST</code></td>
+<td>请求方法。只有 web_custom_request 有这个参数，web_url 固定是 GET</td>
+</tr>
+<tr>
+<td>EncType</td>
+<td><code>EncType=application/json</code></td>
+<td>请求体的格式，回放时作为 Content-Type 请求头发出去</td>
+</tr>
+<tr>
+<td>Body</td>
+<td><code>Body={\"username\":\"alice\",...}</code></td>
+<td>请求体。双引号前面的反斜杠是 C 语言的转义写法，<code>\"</code> 就是一个双引号</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td><code>Resource=0</code></td>
+<td>0 表示这一步是网页或接口本身，1 表示图片、样式这类资源</td>
+</tr>
+<tr>
+<td>RecContentType</td>
+<td><code>RecContentType=application/json</code></td>
+<td>录制时这一步返回的内容类型：text/html 是网页，application/json 是接口返回的数据</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td><code>Referer=http://127.0.0.1:8000/login.html</code></td>
+<td>发出请求时浏览器所在的页面，回放时作为 Referer 请求头发出去</td>
+</tr>
+<tr>
+<td>Snapshot</td>
+<td><code>Snapshot=t2.inf</code></td>
+<td>录制快照的编号。在 VuGen 的快照窗格（查看 → 快照）里能看到录制时这一步的页面和数据</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td><code>Mode=HTML</code></td>
+<td>HTML 模式：收到网页以后，像浏览器一样找出页面引用的 css、js、图片，自动下载</td>
+</tr>
+<tr>
+<td>LAST</td>
+<td><code>LAST</code></td>
+<td>参数到此结束。web_url、web_custom_request 这类参数个数不固定的函数要用它收尾；web_add_header 这类参数个数固定的函数不用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1464-cookie-和请求头">14.6.4 cookie 和请求头<a class="headerlink" href="#1464-cookie-和请求头" title="Permanent link">&para;</a></h3>
+<p>第 2 章 2.5 节讲过练习网站的登录态：登录后页面用脚本把 token 存进 cookie，之后调每个接口时，再从 cookie 里取出 token 放进名为 token 的请求头。脚本里对应的是这几个函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>干什么</th>
+<th>为什么会录出它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>web_add_cookie</td>
+<td>往虚拟用户的 cookie 里加一个值</td>
+<td>token 和 username 这两个 cookie 是页面用脚本写进去的，服务器的响应里没有，VuGen 就在用到之前直接写一句把它们加上</td>
+</tr>
+<tr>
+<td>web_add_header</td>
+<td>只给下一个请求加一个请求头</td>
+<td>页面调接口时总会带 token 请求头，登录前还没有 token，带的是空值</td>
+</tr>
+<tr>
+<td>web_add_auto_header</td>
+<td>从这里开始，之后每个请求都自动带上这个请求头</td>
+<td>登录以后，每次调接口都带着 token</td>
+</tr>
+<tr>
+<td>web_revert_auto_header</td>
+<td>停止自动添加这个请求头</td>
+<td>orders.html 是浏览器直接打开的网页，打开网页时浏览器不带 token 请求头，VuGen 在它前面停掉、后面再加回来，和录制时浏览器的行为一致</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1465-css-和-js-为什么没有单独的步骤">14.6.5 css 和 js 为什么没有单独的步骤<a class="headerlink" href="#1465-css-和-js-为什么没有单独的步骤" title="Permanent link">&para;</a></h3>
+<p>录制时浏览器还下载了 style.css、common.js，脚本里却找不到它们的步骤，因为它们算在网页那一步里了。回放日志里能看到 Mode=HTML 的效果（怎么看日志，见 14.7 节）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(4): web_url("127.0.0.1:8000") 已启动
+Action.c(4): 正在重定向 "http://127.0.0.1:8000/" (重定向深度为 0)
+Action.c(4): 目标位置"http://127.0.0.1:8000/login.html"
+Action.c(4): 在 HTML"http://127.0.0.1:8000/login.html"中找到资源"http://127.0.0.1:8000/style.css"
+Action.c(4): 在 HTML"http://127.0.0.1:8000/login.html"中找到资源"http://127.0.0.1:8000/common.js"
+Action.c(4): web_url("127.0.0.1:8000") 已成功，5635 个正文字节，871 个标头字节
+</code></pre></div>
+<p>打开首页时服务器让浏览器跳到登录页（第 2 章 2.3.2 节状态码表里的跳转），VuGen 自动跟着跳了过去；拿到登录页以后，它从 HTML 里找出两个资源，像浏览器一样下载下来。到了商品页，同样的 css、js 不再下载：</p>
+<div class="highlight"><pre><span></span><code>Action.c(32): 资源"http://127.0.0.1:8000/style.css"已在缓存中，不会再次下载
+Action.c(32): 资源"http://127.0.0.1:8000/common.js"已在缓存中，不会再次下载
+</code></pre></div>
+<p>这是 VuGen 在模拟浏览器缓存，运行时设置里的「模拟浏览器缓存」默认是勾上的。</p>
+<h3 id="1466-中文关键词变成了百分号编码">14.6.6 中文关键词变成了百分号编码<a class="headerlink" href="#1466-中文关键词变成了百分号编码" title="Permanent link">&para;</a></h3>
+<p>搜索那一步的地址是 <code>keyword=%E9%94%AE%E7%9B%98</code>，这就是「键盘」两个字：中文放进地址要先编码（第 2 章 2.3.1 节），键是 <code>%E9%94%AE</code>，盘是 <code>%E7%9B%98</code>。想换别的搜索词，不能直接把中文写进地址，实测服务器会返回 400，第 15 章讲怎么转换。</p>
+<h3 id="1467-你的脚本里可能多出来的语句">14.6.7 你的脚本里可能多出来的语句<a class="headerlink" href="#1467-你的脚本里可能多出来的语句" title="Permanent link">&para;</a></h3>
+<p>你自己录的脚本里，可能还有两类例子里没有的语句：</p>
+<ul>
+<li><strong>lr_think_time(数字)</strong>：录制时两步之间停顿超过 3 秒（录制选项里的默认阈值，英文选项名 Generate think time greater than threshold），VuGen 会记下停顿的秒数，生成这一句，这就是思考时间（第 13 章 13.2.1 节）。VuGen 回放时默认忽略它，也就是 default.cfg 里的 NOTHINK；压测时思考时间怎么用，在第 15、16 章里定。例子用的 HAR 每步只停了 2 秒，没有生成；14.9.1 节用代理方式录的那次每步停 3 秒，也没有生成。</li>
+<li><strong>谷歌的请求</strong>：脚本里出现 clients2.google.com、update.googleapis.com 这类和练习网站无关的地址，是 Chrome 自己的后台请求被录了进来，14.9.1 节讲怎么处理。</li>
+</ul>
+<h3 id="1468-哪些值是写死的">14.6.8 哪些值是写死的<a class="headerlink" href="#1468-哪些值是写死的" title="Permanent link">&para;</a></h3>
+<p>脚本里有不少<strong>写死</strong>的值，也就是录制时是什么、回放时就原样发出去的值：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>在哪里</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token <code>928fbf03673960daa2c0cb7333681e50</code></td>
+<td>web_add_cookie、web_add_auto_header</td>
+</tr>
+<tr>
+<td>订单号 <code>SO20261023000001</code></td>
+<td>pay 那一步的地址里</td>
+</tr>
+<tr>
+<td>账号密码 alice、alice123</td>
+<td>login 的请求体里</td>
+</tr>
+<tr>
+<td>商品编号 3、数量 1</td>
+<td>orders 的请求体里</td>
+</tr>
+<tr>
+<td>搜索词「键盘」</td>
+<td>products_2 的地址里</td>
+</tr>
+</tbody>
+</table>
+<p>后面两节会看到它们惹出的问题。</p>
+<h2 id="147-回放与看结果">14.7 回放与看结果<a class="headerlink" href="#147-回放与看结果" title="Permanent link">&para;</a></h2>
+<p><strong>回放</strong>就是让 VuGen 把录好的脚本重新执行一遍，看能不能跑通。</p>
+<h3 id="1471-运行">14.7.1 运行<a class="headerlink" href="#1471-运行" title="Permanent link">&para;</a></h3>
+<p>菜单 回放 → 运行（Replay → Run，快捷键 F5）。VuGen 先编译脚本，检查有没有语法错误（也可以单独用 回放 → 编译，快捷键 Shift+F5），然后按 vuser_init → Action → vuser_end 的顺序执行一遍。Web - HTTP/HTML 脚本回放不需要浏览器，由 VuGen 直接发出请求。</p>
+<h3 id="1472-看回放日志">14.7.2 看回放日志<a class="headerlink" href="#1472-看回放日志" title="Permanent link">&para;</a></h3>
+<p>回放日志显示在下面的输出窗格里。开头几行（节选，行尾的 [MsgId: ……] 编号本章都省掉了）：</p>
+<div class="highlight"><pre><span></span><code>虚拟用户脚本启动时间: 2026/10/23 15:25:36
+正在开始操作 vuser_init。
+LoadRunner 2023.0.0 (Windows 11) 的 Web Turbo 回放；内部版本 506 (3月 08 2023 13:11:40)
+运行模式: HTML
+……
+正在结束操作 vuser_init。
+正在运行 Vuser...
+正在开始迭代 1。
+每个服务器的最大并发连接数: 6
+正在开始操作 Action。
+</code></pre></div>
+<p>能看到 14.4.4 节说的顺序：先执行 vuser_init，再开始第 1 次迭代、执行 Action，最后是 vuser_end。之后每个步骤打印「已启动」「已成功」两行，出错的步骤打印「错误」。行首的 <code>Action.c(4)</code> 表示 Action.c 第 4 行的那一步。</p>
+<p>用默认设置录出来的脚本，第一次回放一般会在 me 那一步失败：</p>
+<div class="highlight"><pre><span></span><code>Action.c(38): web_url("me") 已启动
+Action.c(38): 错误 -26546: 需要进行身份验证，请使用"web_set_user"，例如 web_set_user("domain\\user", "password", "host:port")；
+Action.c(38): 错误 -26629: 对于"http://127.0.0.1:8000/api/me"，HTTP 状态代码=401 (Unauthorized)
+Action.c(38): web_url("me") 最高严重级别为"ERROR"，60 个正文字节，135 个标头字节
+正在结束操作 Action。
+正在结束迭代 1。
+</code></pre></div>
+<p>括号里的行号以你自己的脚本为准。出错以后，Action 后面的步骤都没有执行，这次迭代直接结束了，因为运行时设置里的「出错时仍继续」默认没勾。</p>
+<h3 id="1473-401-是怎么回事">14.7.3 401 是怎么回事<a class="headerlink" href="#1473-401-是怎么回事" title="Permanent link">&para;</a></h3>
+<p>两条错误要分开看：</p>
+<ul>
+<li><strong>-26629 说得很清楚</strong>：<code>/api/me</code> 返回了 HTTP 401，也就是没有登录或者凭证不对（第 2 章 2.3.2 节）。</li>
+<li><strong>-26546 会误导人</strong>：它让你用 web_set_user，这个函数是给另一种身份验证准备的，服务器要求用户名和密码时（比如 Windows 域账号登录）才用得上。实测两种 401（没带 token、带的 token 已经作废）日志里给的都是这条建议。练习网站用的是 token，和 web_set_user 无关，别照着它去改脚本。</li>
+</ul>
+<p>真正的原因是：练习网站的接口只认请求头里的 token（第 2 章 2.5 节），而默认的录制选项不录请求头。打开脚本目录下的 <code>data\CodeGenerationLog.txt</code>（代码生成日志），开头就写着：</p>
+<div class="highlight"><pre><span></span><code>Recording Mode: HTML-based script
+Not recording headers
+</code></pre></div>
+<p>所以脚本里只有 web_add_cookie 写进 cookie 的 token，请求头里没有 token，服务器就回了 401。</p>
+<h3 id="1474-让-vugen-录下-token-请求头">14.7.4 让 VuGen 录下 token 请求头<a class="headerlink" href="#1474-让-vugen-录下-token-请求头" title="Permanent link">&para;</a></h3>
+<ol>
+<li>菜单 录制 → 录制选项（Recording Options，快捷键 Ctrl+F7）；</li>
+<li>左边的树选 HTTP 属性 → 高级（HTTP Properties → Advanced），点右边「录制方案」里的「标头(D)...」（Headers）按钮；</li>
+<li>「标头」对话框最上面的下拉框选「录制列表中的标头」（Record headers in list）。这时列表里默认勾着 Accept-Language，把它的勾去掉；</li>
+<li>点列表右上角的绿色加号，列表最下面多出一行，输入 <code>token</code> 回车，再勾上它。改好的样子：</li>
+</ol>
+<p><img alt="标头对话框：选录制列表中的标头，只勾 token" src="images/14-headers-token.png" /></p>
+<ol>
+<li>点「确定」关掉标头对话框，再点「确定」关掉录制选项；</li>
+<li>菜单 录制 → 重新生成脚本（Regenerate Script，快捷键 Ctrl+Shift+R），弹出确认框：「重新生成脚本将覆盖在生成初始代码后进行的所有变更，如关联、参数化和手动编辑。录制的操作将被完全覆盖，但是手动创建的操作(包括已录制和随后重命名的项)将不会受到影响。单击『确定』覆盖脚本。」点「确定」。</li>
+</ol>
+<p><strong>重新生成脚本</strong>不用重新录：VuGen 拿 data 文件夹里录下的原始数据，按新的录制选项再生成一遍代码。生成完，代码生成日志的开头变成了：</p>
+<div class="highlight"><pre><span></span><code>Recording Mode: HTML-based script
+Recording headers in list:
+    token
+</code></pre></div>
+<p>Action.c 里多出了 14.6 节例子里的 web_add_header、web_add_auto_header、web_revert_auto_header 这几行。</p>
+<p>标头下拉框的三个选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不录制标头（Do not record headers）</td>
+<td>默认值，请求头一个都不录</td>
+</tr>
+<tr>
+<td>录制列表中的标头（Record headers in list）</td>
+<td>只录列表里勾上的请求头</td>
+</tr>
+<tr>
+<td>录制不在列表中的标头（Record headers not in list）</td>
+<td>除了勾上的，其余请求头都录</td>
+</tr>
+</tbody>
+</table>
+<p>拿 14.9.1 节用代理方式录的那个脚本实测，选第三种，token 录上了，Sec-Fetch-Mode、sec-ch-ua 这些浏览器自动加的请求头也全录了进来，web_add_ 开头的语句从 2 处变成 73 处（那个脚本里还带着谷歌的请求，你的脚本数出来会不一样）；选第二种只多 token 一个，脚本干净得多。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>重新生成会覆盖手工修改。</strong> 确认框说得很清楚，生成初始代码以后做的修改，包括关联、参数化和手工编辑，重新生成时都会被覆盖。第 15 章开始要往脚本里加东西，加了之后就别随手重新生成了；实在要重新生成，先用 文件 → 将脚本另存为 存一份。</p>
+</div>
+<h3 id="1475-再回放一次">14.7.5 再回放一次<a class="headerlink" href="#1475-再回放一次" title="Permanent link">&para;</a></h3>
+<p>按 F5 再回放，这次全部通过。日志节选：</p>
+<div class="highlight"><pre><span></span><code>Action.c(13): web_add_header("token") 已启动
+Action.c(13): 警告 -26596: 添加的标头值为 NULL、为空或仅包含空格。已添加它
+Action.c(13): web_add_header("token") 最高严重级别为"warning"
+Action.c(16): web_custom_request("login") 已启动
+Action.c(16): web_custom_request("login") 已成功，142 个正文字节，126 个标头字节
+……
+Action.c(41): web_add_auto_header("token") 已启动
+Action.c(41): web_add_auto_header("token") 已成功
+Action.c(44): web_url("me") 已启动
+Action.c(44): web_url("me") 已成功，132 个正文字节，126 个标头字节
+……
+Action.c(124): web_custom_request("pay") 已启动
+Action.c(124): web_custom_request("pay") 已成功，64 个正文字节，125 个标头字节
+……
+正在结束操作 Action。
+正在结束迭代 1。
+正在结束 Vuser...
+正在开始操作 vuser_end。
+正在结束操作 vuser_end。
+Vuser 已终止。
+</code></pre></div>
+<p>开头那条 -26596 警告说的是登录前那个空的 token 请求头，前面讲过登录前本来就没有 token，这条警告可以不管。</p>
+<p>菜单 回放 → 回放摘要（Replay Summary）汇总最近一次回放的结果：通过还是失败、有几个错误、用了多长时间。这次是通过，0 个错误，整个回放用了约 2 秒。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：这一节要趁练习网站还没重启的时候做。</strong> 脚本里的 token 是录制那一刻服务器发的，网站一重启它就作废了，那样改完标头回放还是 401（14.8.2 节）。遇到这种情况，重新录一遍再改标头。</p>
+</div>
+<h2 id="148-回放成功不等于业务成功">14.8 回放成功不等于业务成功<a class="headerlink" href="#148-回放成功不等于业务成功" title="Permanent link">&para;</a></h2>
+<h3 id="1481-订单其实没付上">14.8.1 订单其实没付上<a class="headerlink" href="#1481-订单其实没付上" title="Permanent link">&para;</a></h3>
+<p>回放全部成功，回放摘要也是通过。现在用浏览器登录 alice，打开「我的订单」看看。实测是这样的（订单号由日期和流水号组成，你的不一样）：</p>
+<table>
+<thead>
+<tr>
+<th>订单号</th>
+<th>状态</th>
+<th>哪来的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SO20261023000002</td>
+<td>待支付</td>
+<td>回放时下的单</td>
+</tr>
+<tr>
+<td>SO20261023000001</td>
+<td>已支付</td>
+<td>录制时下的单，录制时就付过了</td>
+</tr>
+</tbody>
+</table>
+<p>回放确实下了一单，可支付那一步付的是脚本里写死的 SO20261023000001，这一单录制时已经付过了。服务器返回的业务码是 3003（第 2 章 2.6 节：订单状态不允许这个操作），HTTP 状态码却是 200。VuGen 默认只看 HTTP 状态码，200 就算这一步成功，返回的内容里写了什么，它不管。</p>
+<p>想直接在日志里看到服务器回了什么：回放 → 运行时设置（Runtime Settings，快捷键 F4），左边选 常规 → 日志，「详细级别」选「扩展日志」，勾上下面的「服务器返回的数据」，再回放一次。pay 那一步的日志变成了这样（节选）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(124): web_custom_request("pay") 已启动
+……
+Action.c(124):     {"code":3003,"msg":"……","data":null}
+Action.c(124): web_custom_request("pay") 已成功，64 个正文字节，125 个标头字节
+</code></pre></div>
+<p>msg 的内容是「订单已支付，不能支付」，日志里这段中文显示成了乱码，这里省掉了。标准日志里那个「64 个正文字节」就是这段内容的长度。看完记得把日志改回标准日志，扩展日志很长。</p>
+<p>第 13 章 13.2.4 节说过，错误率要把业务失败也算进去。压测时如果不检查业务结果，几千次支付可能一单都没付上，报告却很好看。第 15 章会给关键步骤加检查点，并用关联取到每次新下的订单号。</p>
+<h3 id="1482-网站一重启又是-401">14.8.2 网站一重启又是 401<a class="headerlink" href="#1482-网站一重启又是-401" title="Permanent link">&para;</a></h3>
+<p>动手试一下：在练习网站的窗口里按 Ctrl+C 停掉它，再重新启动，脚本什么都不改，再回放一次 shop_first。me 那一步又报 401：</p>
+<div class="highlight"><pre><span></span><code>Action.c(44): web_url("me") 已启动
+Action.c(44): 错误 -26546: 需要进行身份验证，请使用"web_set_user"，例如 web_set_user("domain\\user", "password", "host:port")；
+Action.c(44): 错误 -26629: 对于"http://127.0.0.1:8000/api/me"，HTTP 状态代码=401 (Unauthorized)
+Action.c(44): web_url("me") 最高严重级别为"ERROR"，60 个正文字节，135 个标头字节
+</code></pre></div>
+<p>token 是登录时服务器随机生成的，存在服务器的内存里，网站一重启就没了（第 2 章 2.1 节：数据都放在内存里，重启就恢复初始状态）。脚本里的 login 那一步其实成功了，服务器也发了新的 token，可后面的请求带的还是写死的旧 token。</p>
+<p>做完这个实验，shop_first 会一直 401。要让它回到回放全部通过的状态：关掉 VuGen，在资源管理器里删掉 shop_first 文件夹，再打开 VuGen，按 14.4.2、14.5 节重新建一个同名脚本、录一遍；录完看脚本里有没有 web_add_auto_header("token", ...)，没有的话按 14.7.4 节设置标头、重新生成，再回放。</p>
+<h3 id="1483-本章结束时你手里的脚本">14.8.3 本章结束时你手里的脚本<a class="headerlink" href="#1483-本章结束时你手里的脚本" title="Permanent link">&para;</a></h3>
+<ul>
+<li>脚本名 shop_first，录的是登录、搜索、下单、支付，全部在 Action 里；</li>
+<li>脚本里只有练习网站（127.0.0.1:8000）的请求，要是录进了谷歌这类无关的地址，按 14.9.1 节删掉；</li>
+<li>改过标头设置（只录 token）并重新生成，回放全部通过；</li>
+<li>token 和订单号都是录制时写死的：网站一重启就 401，支付那一步付的是录制时的旧订单。</li>
+</ul>
+<p>这些问题都留给第 15 章：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>第 15 章的办法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网站重启后回放 401</td>
+<td>token 写死了</td>
+<td>关联：每次从登录的响应里取出新的 token</td>
+</tr>
+<tr>
+<td>付的是录制时的旧订单</td>
+<td>订单号写死了</td>
+<td>关联：从下单的响应里取出新订单号</td>
+</tr>
+<tr>
+<td>所有虚拟用户都用 alice 一个账号</td>
+<td>账号写死了</td>
+<td>参数化：每个虚拟用户用不同的账号</td>
+</tr>
+<tr>
+<td>业务失败也算成功</td>
+<td>只检查了 HTTP 状态码</td>
+<td>检查点：检查返回的业务码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="149-另外两种录制方式">14.9 另外两种录制方式<a class="headerlink" href="#149-另外两种录制方式" title="Permanent link">&para;</a></h2>
+<p>「开始录制」对话框的「录制」下拉框里一共有四种方式：Web 浏览器、Windows 应用程序、远程应用程序（通过 LoadRunner 代理服务器）、捕获的流量文件分析。Windows 应用程序用来录本机的桌面程序；下面讲后两种。</p>
+<h3 id="1491-远程应用程序通过-loadrunner-代理服务器">14.9.1 远程应用程序（通过 LoadRunner 代理服务器）<a class="headerlink" href="#1491-远程应用程序通过-loadrunner-代理服务器" title="Permanent link">&para;</a></h3>
+<p>这种方式（Remote Application via LoadRunner Proxy）由 VuGen 在本机开一个<strong>代理服务器</strong>：浏览器、手机 App 或者别的电脑上的程序把代理设成它，请求经过代理时就被记下来。对话框里的「LoadRunner 代理服务器侦听端口」默认是 8888，「LoadRunner 代理服务器 IP」默认是全部。点「开始录制」后会弹出一个说明框「要通过代理服务器录制业务流程，请执行以下操作」，要做的是三件事：在客户端把代理设成 VuGen 这台电脑的地址和端口，并清掉浏览器缓存和 cookie；在客户端走一遍业务；在录制工具栏上点停止录制。</p>
+<p>它适合录手机 App、别的电脑上的程序，以及 VuGen 没法直接启动的客户端。用它录本机的练习网站，有两个坑。</p>
+<p><strong>坑一：本机地址默认不走代理。</strong> Chrome 访问 127.0.0.1、localhost 时默认直接连接，不经过代理，什么都录不到。实测时是用 Playwright（第 8 章）启动浏览器，把代理设成 VuGen 的 8888 端口，并加上 <code>&lt;-loopback&gt;</code>，让本机地址也走代理：</p>
+<div class="highlight"><pre><span></span><code><span class="n">browser</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">"chrome"</span><span class="p">,</span>
+    <span class="n">proxy</span><span class="o">=</span><span class="p">{</span><span class="s2">"server"</span><span class="p">:</span> <span class="s2">"http://127.0.0.1:8888"</span><span class="p">,</span> <span class="s2">"bypass"</span><span class="p">:</span> <span class="s2">"&lt;-loopback&gt;"</span><span class="p">},</span>   <span class="c1"># 去掉默认的本机地址直连，否则 127.0.0.1 不走代理</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>坑二：谷歌后台请求混进脚本。</strong> 实测用这种方式录出来的脚本有 382 行、31 个步骤，其中 17 个步骤和练习网站无关，地址是 clients2.google.com、update.googleapis.com、accounts.google.com、optimizationguide-pa.googleapis.com、android.clients.google.com，还有 web_submit_data("register3") 这样的表单提交；站内步骤的 EXTRARES 里也夹带了 www.google.com、content-autofill.googleapis.com、gvt1.com 的地址（EXTRARES 后面列的是这一步额外下载的资源，每一项以 ENDITEM 结尾）。这些是 Chrome 自己在后台检查更新、同步账号、下载功能模型时发的请求，全被代理记了下来。节选几段：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"current"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://clients2.google.com/time/1/current?cup2key=……"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"127.0.0.1:8000"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=http://127.0.0.1:8000/"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+<span class="w">        </span><span class="n">EXTRARES</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Url=https://www.google.com/async/folae?……"</span><span class="p">,</span><span class="w"> </span><span class="s">"Referer="</span><span class="p">,</span><span class="w"> </span><span class="n">ENDITEM</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="err">……</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"ListAccounts"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL=https://accounts.google.com/ListAccounts?gpsia=1&amp;source=ChromiumBrowser&amp;json=standard&amp;laf=b64bin"</span><span class="p">,</span>
+<span class="w">        </span><span class="err">……</span>
+</code></pre></div>
+<p>这个脚本目录里的录制数据有 121 MB，大部分是 Chrome 后台下载的文件；同样的流程导入 HAR 生成的脚本只有 154 行、14 个步骤，录制数据不到 1 MB。</p>
+<p>这些请求一定要清理：</p>
+<ul>
+<li>回放时它们真的会发出去（实测确认）。压测时 50 个虚拟用户一起跑，就是拿你的压测流量去访问谷歌的服务器，等于在压别人的系统；</li>
+<li>它们的耗时和失败会混进压测结果，让数字说不清楚；</li>
+<li>它们和你要测的系统无关，留着只会添乱。</li>
+</ul>
+<p>清理的办法：</p>
+<ol>
+<li><strong>手工删。</strong> 地址不是 127.0.0.1 的步骤整段删掉（web_submit_data 看的是 Action= 后面的地址）；站内步骤 EXTRARES 后面夹带的 <code>"Url=https://……", "Referer=", ENDITEM,</code> 这样的行也删掉，删完 EXTRARES 后面一行都不剩的，EXTRARES 这一行也一起删。</li>
+<li><strong>流量筛选不管用。</strong> 录制选项 → 网络 → 映射和筛选（Mapping and Filtering）里可以设流量筛选，实测用它挡掉 127.0.0.1 以外的地址（正则 <code>^(?!127\.0\.0\.1)</code>，筛选级别选代码生成）再重新生成，脚本里的谷歌请求还在。</li>
+<li><strong>最省事的是改用下一节的 HAR 方式。</strong></li>
+</ol>
+<p>用 Web 浏览器方式录的时候，Chrome 自己的后台请求也可能被录进来。不管用哪种方式，录完都先在脚本里搜一遍，看有没有 127.0.0.1 以外的地址。</p>
+<h3 id="1492-捕获的流量文件分析导入-har">14.9.2 捕获的流量文件分析（导入 HAR）<a class="headerlink" href="#1492-捕获的流量文件分析导入-har" title="Permanent link">&para;</a></h3>
+<p><strong>HAR</strong>（HTTP Archive）是浏览器把一次访问里所有请求和响应存下来的文件，内容是 JSON 格式。这种方式（Captured Traffic File Analysis）让 VuGen 分析一个现成的抓包文件，直接生成脚本。</p>
+<p><strong>第一步，导出 HAR 文件。</strong> 在 Chrome 里打开练习网站，按 F12 打开开发者工具，切到 Network（网络）面板，勾上 Preserve log（保留日志，见第 2 章 2.4 节），然后走一遍 14.5.3 节的流程，最后点网络面板工具栏上那个向下箭头的导出按钮（Export HAR），把 HAR 文件保存到电脑上。开发者工具只记录这个标签页里网页发出的请求，Chrome 自己的后台请求不在里面，所以导出来的文件是干净的。</p>
+<p>Chrome 130 以后，这个按钮默认导出的是去掉了敏感信息的 HAR，Cookie、Set-Cookie、Authorization 这几个标头不导出。这样生成的脚本里不会有 14.6 节例子里那两句 web_add_cookie；练习网站的接口只认 token 请求头，不看 cookie，所以不影响回放。这条路写作时没有实际导出过，14.6 节的例子用的是下一段 Playwright 录的 HAR。</p>
+<p>不想手工点，也可以用第 8 章的 Playwright 录：创建上下文时写 <code>browser.new_context(record_har_path="shop.har")</code>，脚本走完流程，调用 <code>context.close()</code> 关闭上下文时，HAR 文件就写好了。14.6 节的例子脚本就是用这种办法录的 HAR 生成的。</p>
+<p><strong>第二步，导入。</strong></p>
+<ol>
+<li>新建一个脚本，比如叫 shop_har（14.4.2 节）；</li>
+<li>先打开 录制 → 录制选项，按 14.7.4 节把标头设成只录 token。新脚本的录制选项不一定沿用上一个脚本的设置，导入前确认一遍；</li>
+<li>菜单 录制 → 录制，「录制」选「捕获的流量文件分析」；</li>
+<li>「捕获的文件」点右边的 … 按钮，选刚才的 HAR 文件。文件类型是「捕获文件 (*.har, *.pcap, *.saz)」，抓包工具 Fiddler 的 .saz、Wireshark 的 .pcap 也能导入；其余保持默认：</li>
+</ol>
+<p><img alt="开始录制对话框：录制方式选捕获的流量文件分析" src="images/14-start-recording-har.png" /></p>
+<ol>
+<li>选好文件后「开始录制」按钮才能点，点它。VuGen 不打开浏览器，直接分析文件、生成脚本。</li>
+</ol>
+<p>实测 HAR 里只有练习网站的 21 个请求（其中 6 个是 css、js），生成的脚本 154 行、14 个步骤，就是 14.6 节的那个例子。</p>
+<h3 id="1493-三种方式怎么选">14.9.3 三种方式怎么选<a class="headerlink" href="#1493-三种方式怎么选" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>适合</th>
+<th>要注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web 浏览器</td>
+<td>日常录网站，最直接</td>
+<td>要先关掉所有 Chrome；Chrome 自己的后台请求可能混进来</td>
+</tr>
+<tr>
+<td>远程应用程序（通过 LoadRunner 代理服务器）</td>
+<td>录手机 App、别的电脑上的程序、VuGen 启动不了的客户端</td>
+<td>本机地址默认不走代理；浏览器的后台请求会混进来，一定要清理</td>
+</tr>
+<tr>
+<td>捕获的流量文件分析</td>
+<td>关不了 Chrome、想要干净的脚本、手里有别人给的抓包文件</td>
+<td>生成脚本时没有录制工具栏，插入事务、插入注释这些操作要等生成以后在脚本里加</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1410-常见的坑">14.10 常见的坑<a class="headerlink" href="#1410-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装中途失败，用命令安装时退出码是 112</td>
+<td>C 盘空间不足。实测 C 盘只剩 1.94 GB 时安装失败：Windows Installer 要先把 1.4 GB 的安装包整份复制到 <code>C:\Windows\Installer</code>，自解压默认还往 <code>C:\Temp</code> 解 1.8 GB。装前 C 盘留 5 GB 以上，或者用 14.2.4 节的进阶做法</td>
+</tr>
+<tr>
+<td>下载的安装程序属性里没有「数字签名」页签，或者签名者不是 Micro Focus Group Limited</td>
+<td>不是官方原版，或者被改动过。删掉，换个地方重新下载</td>
+</tr>
+<tr>
+<td>从已经开着的命令行窗口启动 VuGen，弹出「Critical error (cannot use ExceptionDialog)」，报 ArgumentNullException、参数名 path</td>
+<td>窗口是安装前打开的，里面没有 LR_PATH 等环境变量。关掉重开，VS Code 要整个重启；或者从开始菜单、桌面图标启动</td>
+</tr>
+<tr>
+<td>装完语言包，VuGen 进程在，主窗口一直不出来</td>
+<td>使用数据统计功能加载 SQLite 组件失败。把 <code>C:\ProgramData\Micro Focus\LoadRunner\config.json</code> 里的 enabled 改成 false，结束 VuGen 进程再打开（14.3.2 节）</td>
+</tr>
+<tr>
+<td>点「开始录制」后弹出「录制前，必须关闭正在运行的 Google Chrome 实例」</td>
+<td>Web 浏览器方式要由 VuGen 自己启动 Chrome。点确定会关掉所有 Chrome 窗口，先保存好网页上的内容；不想关就用 HAR 方式</td>
+</tr>
+<tr>
+<td>回放在 web_url("me") 报 -26546「请使用 web_set_user」和 -26629 HTTP 401</td>
+<td>默认设置不录请求头，脚本里没有 token 请求头。按 14.7.4 节在录制选项里只录 token，再重新生成。web_set_user 是给另一种身份验证用的，这里用不上</td>
+</tr>
+<tr>
+<td>回放报警告 -26596「添加的标头值为 NULL、为空或仅包含空格」</td>
+<td>登录前 token 请求头本来就是空的，可以不管</td>
+</tr>
+<tr>
+<td>改了标头设置并重新生成，回放还是 401</td>
+<td>练习网站在录制以后重启过，录下的 token 已经作废。重新录一遍；彻底解决要靠第 15 章的关联</td>
+</tr>
+<tr>
+<td>重新生成脚本以后，手工改的内容没了</td>
+<td>重新生成会覆盖生成初始代码以后的所有修改。先用 文件 → 将脚本另存为 存一份再重新生成</td>
+</tr>
+<tr>
+<td>脚本里有一堆 google.com、googleapis.com、gvt1.com 的请求</td>
+<td>录进了 Chrome 自己的后台请求。手工删掉这些步骤，或者改用 HAR 方式。不清理的话，压测时会去访问别人的服务器</td>
+</tr>
+<tr>
+<td>用代理方式录本机的练习网站，脚本里没有 127.0.0.1 的请求</td>
+<td>Chrome 访问本机地址默认不走代理。启动浏览器时加上 <code>&lt;-loopback&gt;</code>（14.9.1 节），或者改用 HAR 方式</td>
+</tr>
+<tr>
+<td>回放全部成功，新下的订单却一直待支付</td>
+<td>支付那一步的订单号是录制时写死的，付的是旧订单，服务器回业务码 3003，HTTP 状态码还是 200。VuGen 默认只看 HTTP 状态码，要靠第 15 章的关联和检查点解决</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1411-练习">14.11 练习<a class="headerlink" href="#1411-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>按 14.5 节再录一个脚本，这次每一步之间停 5 秒左右，和 shop_first 对比，看有没有多出 lr_think_time、括号里的数字是多少。</li>
+<li>在标头对话框里改成「录制不在列表中的标头」，重新生成，数一数脚本里多了多少个 web_add_ 开头的语句、都是哪些请求头；看完改回「录制列表中的标头」并重新生成。</li>
+<li>按 14.8.2 节停掉练习网站再启动，回放 shop_first，记下是哪一步、报的什么错误；再照 14.8.2 节最后一段的办法，让 shop_first 回到回放全部通过的状态。</li>
+<li>用开发者工具导出一个 HAR（或者用 Playwright 录一个），新建脚本 shop_har，用「捕获的流量文件分析」导入，对比 shop_har 和 shop_first 的步骤，看看有没有不一样的地方。</li>
+<li>在 shop_first 里找出所有写死的值，列一张表：值是什么、在哪一步、会让回放失败还是会让业务结果不对。</li>
+</ol>
+<h2 id="1412-自检清单">14.12 自检清单<a class="headerlink" href="#1412-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道装到 D 盘、E 盘时 C 盘也要留 5 GB 以上，能说出原因；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会核对安装程序的数字签名；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 vuser_init、Action、vuser_end 的执行顺序，以及各自适合放什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 .usr、default.cfg、default.usp、globals.h 各是什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 web_url 和 web_custom_request 的区别，知道 css、js 为什么没有单独的步骤；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 看到「请使用 web_set_user」的 401 报错，知道先去查请求头；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道重新生成脚本会覆盖手工修改；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能解释为什么回放全部成功不代表业务成功；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道录制混进谷歌后台请求的危害和清理办法。</li>
+</ul>
+<p>下一章：<a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html">第 15 章 VuGen 脚本增强</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 13 章 性能测试基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 13 章 性能测试基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 15 章 VuGen 脚本增强">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 15 章 VuGen 脚本增强
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

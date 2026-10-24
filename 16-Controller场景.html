@@ -1,0 +1,2909 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html">
+      
+      
+        <link rel="next" href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 16 章 Controller 场景 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-16-章-controller-场景" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 16 章 Controller 场景
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.1 准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1611-练习网站和脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.1 练习网站和脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1612-场景和结果放在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.2 场景和结果放在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-新建场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 新建场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2 新建场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1621-从-vugen-直接建" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.1 从 VuGen 直接建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1622-从开始菜单打开-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.2 从开始菜单打开 Controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1623-手动场景和面向目标的场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.3 手动场景和面向目标的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1624-保存场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.4 保存场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-设计视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 设计视图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-虚拟用户数和计划" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 虚拟用户数和计划
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.4 虚拟用户数和计划">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1641-计划由四个操作组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.1 计划由四个操作组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1642-设成本章的计划" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.2 设成本章的计划
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1643-阶梯加压不用加操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.3 阶梯加压不用加操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1644-第-13-章的测试类型怎么配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.4 第 13 章的测试类型怎么配
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-运行时设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 运行时设置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.5 运行时设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1651-场景里有自己的一份" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5.1 场景里有自己的一份
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1652-刷新" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5.2 刷新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-结果设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6 结果设置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#167-sla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7 SLA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#168-监控服务器资源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.8 监控服务器资源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#169-运行场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9 运行场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.9 运行场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1691-开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.1 开始
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1692-运行视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.2 运行视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1693-跑完" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.3 跑完
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1694-用利特尔法则核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.4 用利特尔法则核对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1695-什么时候该手动停" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.5 什么时候该手动停
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1610-结果目录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.10 结果目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1611-load-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.11 Load Generator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1612-命令行运行场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.12 命令行运行场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1613-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.13 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1614-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.14 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1615-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.15 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.1 准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1611-练习网站和脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.1 练习网站和脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1612-场景和结果放在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.2 场景和结果放在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-新建场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 新建场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2 新建场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1621-从-vugen-直接建" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.1 从 VuGen 直接建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1622-从开始菜单打开-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.2 从开始菜单打开 Controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1623-手动场景和面向目标的场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.3 手动场景和面向目标的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1624-保存场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2.4 保存场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-设计视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 设计视图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-虚拟用户数和计划" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 虚拟用户数和计划
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.4 虚拟用户数和计划">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1641-计划由四个操作组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.1 计划由四个操作组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1642-设成本章的计划" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.2 设成本章的计划
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1643-阶梯加压不用加操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.3 阶梯加压不用加操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1644-第-13-章的测试类型怎么配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.4 第 13 章的测试类型怎么配
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-运行时设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 运行时设置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.5 运行时设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1651-场景里有自己的一份" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5.1 场景里有自己的一份
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1652-刷新" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5.2 刷新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-结果设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6 结果设置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#167-sla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7 SLA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#168-监控服务器资源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.8 监控服务器资源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#169-运行场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9 运行场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.9 运行场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1691-开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.1 开始
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1692-运行视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.2 运行视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1693-跑完" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.3 跑完
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1694-用利特尔法则核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.4 用利特尔法则核对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1695-什么时候该手动停" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.9.5 什么时候该手动停
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1610-结果目录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.10 结果目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1611-load-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.11 Load Generator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1612-命令行运行场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.12 命令行运行场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1613-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.13 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1614-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.14 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1615-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.15 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-16-章-controller-场景">第 16 章 Controller 场景<a class="headerlink" href="#第-16-章-controller-场景" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会从 VuGen 或开始菜单新建场景，把第 15 章的 shop_order 放进去；</li>
+<li>认得设计视图的三块：场景组、场景计划、服务水平协议；</li>
+<li>会设置虚拟用户数和加压计划，能把第 13 章的几种测试类型配成对应的计划；</li>
+<li>知道场景里的运行时设置和 VuGen 里的是两份，思考时间的默认值不一样；</li>
+<li>会设置结果目录和 SLA，会添加 Windows 资源监控；</li>
+<li>会运行场景，看得懂运行视图里的状态和图，能用利特尔法则核对运行数据；</li>
+<li>知道 Load Generator 是什么，会用命令行运行场景，知道命令行的退出码说明不了业务结果。</li>
+</ul>
+<p>第 15 章整理出了压测脚本 shop_order，在 VuGen 里它一次只跑一个虚拟用户。本章把它放进 Controller，配一个 10 个虚拟用户、跑 3 分钟的场景：每 10 秒加 2 个用户，加满后保持 3 分钟，再分两批停下。整章围绕这个场景展开，场景文件叫 demo16。跑完的结果留给第 17 章在 Analysis 里分析。</p>
+<p>本章的截图和数字都是在作者电脑上实际运行得到的。截图里的脚本放在 <code>E:\lr-work</code> 下，和你的路径不一样是正常的；正文里的路径按工程目录 <code>D:\work\autotest-demo</code> 来写。</p>
+<hr />
+<h2 id="161-准备">16.1 准备<a class="headerlink" href="#161-准备" title="Permanent link">&para;</a></h2>
+<h3 id="1611-练习网站和脚本">16.1.1 练习网站和脚本<a class="headerlink" href="#1611-练习网站和脚本" title="Permanent link">&para;</a></h3>
+<ol>
+<li>照第 2 章 2.1 节把练习网站跑起来，本章不改任何开关；</li>
+<li>用 VuGen 打开 <code>D:\work\autotest-demo\lr\shop_order\shop_order.usr</code>，回放一次，确认 3 次迭代全部通过（第 15 章 15.10.4 节）；</li>
+<li>关掉 VuGen 前保存一次（文件 → 保存脚本）。</li>
+</ol>
+<p>第 3 步是为了让脚本的 .usr 文件里带上事务清单。Controller 设置 SLA 时，事务列表取自 .usr 里的这份清单，不读代码；VuGen 保存脚本时会把它写进去。直接用参考代码里的 shop_order 也没关系，它已经带着这份清单。16.7 节设置 SLA 时会用到它。</p>
+<h3 id="1612-场景和结果放在哪">16.1.2 场景和结果放在哪<a class="headerlink" href="#1612-场景和结果放在哪" title="Permanent link">&para;</a></h3>
+<p>先在资源管理器里建好两个文件夹：</p>
+<table>
+<thead>
+<tr>
+<th>文件夹</th>
+<th>放什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>D:\work\autotest-demo\lr\scenarios</code></td>
+<td>场景文件（扩展名 .lrs）。它是一个文本文件，只有几十 KB，可以跟着工程一起保存</td>
+</tr>
+<tr>
+<td><code>D:\work\lr-results</code></td>
+<td>每次运行的结果。本章的场景跑一次约 1 MB，第 18 章 50 个用户跑 5 分钟约 13 MB，不放进工程目录</td>
+</tr>
+</tbody>
+</table>
+<p>路径里不要有中文和空格。</p>
+<h2 id="162-新建场景">16.2 新建场景<a class="headerlink" href="#162-新建场景" title="Permanent link">&para;</a></h2>
+<h3 id="1621-从-vugen-直接建">16.2.1 从 VuGen 直接建<a class="headerlink" href="#1621-从-vugen-直接建" title="Permanent link">&para;</a></h3>
+<p>最省事的办法是在 VuGen 里打开脚本，从脚本直接建场景：</p>
+<ol>
+<li>VuGen 里打开 shop_order，点菜单 集成 → 创建 Controller 场景；</li>
+<li>弹出「创建场景」对话框：</li>
+</ol>
+<p><img alt="从 VuGen 创建场景：手动场景，Vuser 数填 10" src="images/16-create-scenario.png" /></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择场景类型</td>
+<td>手动场景（16.2.3 节说两种类型的区别）</td>
+</tr>
+<tr>
+<td>Vuser 数</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Load Generator</td>
+<td>保持 localhost，就是本机（16.11 节）</td>
+</tr>
+<tr>
+<td>组名称</td>
+<td>保持 shop_order</td>
+</tr>
+<tr>
+<td>结果目录</td>
+<td>默认是脚本目录下的 res 文件夹，先不管，16.6 节统一设置</td>
+</tr>
+<tr>
+<td>将脚本添加到当前场景中</td>
+<td>不勾。Controller 已经开着一个场景、想把脚本加进那个场景时才勾</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>点「确定」，Controller 启动，打开一个名叫 Scenario1 的新场景，shop_order 已经在里面，10 个虚拟用户。</li>
+</ol>
+<p>这样建出来的场景带着一份默认计划：每 15 秒启动 1 个虚拟用户，全部启动后运行 5 分钟，再每 30 秒停止 1 个。16.4 节会把它改成本章要的计划。</p>
+<h3 id="1622-从开始菜单打开-controller">16.2.2 从开始菜单打开 Controller<a class="headerlink" href="#1622-从开始菜单打开-controller" title="Permanent link">&para;</a></h3>
+<p>也可以先打开 Controller 再加脚本：开始菜单 → Micro Focus → LoadRunner → Controller。打开后先弹出「新场景」对话框：</p>
+<p><img alt="新场景对话框：两种场景类型、按编号和按百分比、添加脚本" src="images/16-new-scenario.png" /></p>
+<ol>
+<li>场景类型选「手动场景」，下面选「按编号」；</li>
+<li>点「添加脚本」，弹出「添加脚本」对话框，里面列着最近用过的脚本。shop_order 在列表里就勾上它，不在就点「浏览」找到 shop_order.usr；</li>
+</ol>
+<p><img alt="添加脚本对话框：列出最近用过的脚本，勾上要用的再点添加（图里是作者电脑上的几个脚本，勾的是作者另一个练习脚本）" src="images/16-add-script.png" /></p>
+<ol>
+<li>点「添加」，再点「确定」。</li>
+</ol>
+<p>这样建的场景，每个脚本默认只有 1 个虚拟用户，计划同样是每 15 秒启动 1 个、运行 5 分钟、每 30 秒停止 1 个。虚拟用户数在 16.4.2 节改。</p>
+<p>左下角的「在启动时显示」勾着时，每次打开 Controller 都会弹出这个对话框。</p>
+<h3 id="1623-手动场景和面向目标的场景">16.2.3 手动场景和面向目标的场景<a class="headerlink" href="#1623-手动场景和面向目标的场景" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手动场景</td>
+<td>用多少个虚拟用户、什么时候启动、跑多久，都由你定。本教程只用这一种</td>
+</tr>
+<tr>
+<td>面向目标的场景</td>
+<td>给出一个目标（比如每秒点击数要达到多少），由 Controller 自己增减虚拟用户去达到它</td>
+</tr>
+</tbody>
+</table>
+<p>手动场景的结果最好解释：压力是你设的，响应时间、每秒请求数的变化都能对上压力的变化。先把手动场景用熟。</p>
+<p>「按编号」和「按百分比」决定虚拟用户怎么分配：按编号是每个脚本各填各的个数；按百分比是先定一个总数，再按百分比分给各个脚本，适合按真实流量比例混合几个脚本的场景。本章只有一个脚本，选按编号。</p>
+<h3 id="1624-保存场景">16.2.4 保存场景<a class="headerlink" href="#1624-保存场景" title="Permanent link">&para;</a></h3>
+<p>点菜单 文件 → 另存为，存到 <code>D:\work\autotest-demo\lr\scenarios\demo16.lrs</code>。窗口标题会从 Scenario1 变成 demo16.lrs。</p>
+<p>场景文件里记着脚本的完整路径、虚拟用户数、计划、运行时设置、SLA、监控，后面每改一处都记得保存（文件 → 保存）。退出 Controller 时如果有未保存的改动，会问「是否要保存对…….lrs 的变更？」。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>场景文件记的是脚本的完整路径。</strong> 把工程挪到别的文件夹，或者拷到另一台电脑，场景还会去原来的路径找脚本。挪了位置就在场景里删掉旧的组，重新添加脚本。</p>
+</div>
+<h2 id="163-设计视图">16.3 设计视图<a class="headerlink" href="#163-设计视图" title="Permanent link">&para;</a></h2>
+<p>建好场景后看到的是<strong>设计视图</strong>，下面是本章的场景设置完成后的样子：</p>
+<p><img alt="设计视图：上面是场景组和服务水平协议，下面是场景计划和计划图" src="images/16-design.png" /></p>
+<p>窗口分成三块，最下面的「设计」「运行」两个标签在设计视图和运行视图之间切换：</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>位置</th>
+<th>干什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景组</td>
+<td>左上</td>
+<td>场景里有哪些脚本。每个脚本是一个<strong>组</strong>，表头是 组名称、脚本路径、数量（虚拟用户数）、Load Generator；行首的勾去掉，这个组就不参加运行</td>
+</tr>
+<tr>
+<td>服务水平协议</td>
+<td>右上</td>
+<td>这次压测的达标标准，也就是 SLA（16.7 节）</td>
+</tr>
+<tr>
+<td>场景计划</td>
+<td>下半部分</td>
+<td>虚拟用户什么时候启动、跑多久、怎么停（16.4 节）。左边是计划表，右边是按计划画出来的虚拟用户数曲线</td>
+</tr>
+</tbody>
+</table>
+<p>场景组上方那排小按钮，从左到右依次是：开始场景、Vuser、添加组、移除组、运行时设置、参数列表、详细信息、查看脚本、Service Virtualization。把鼠标停在按钮上会显示它的名字。本章用到的是开始场景、运行时设置、详细信息。</p>
+<p>菜单栏是 文件、视图、场景、结果、诊断、工具、帮助。本章用到的命令都在 文件、场景、结果 三个菜单里。</p>
+<h2 id="164-虚拟用户数和计划">16.4 虚拟用户数和计划<a class="headerlink" href="#164-虚拟用户数和计划" title="Permanent link">&para;</a></h2>
+<h3 id="1641-计划由四个操作组成">16.4.1 计划由四个操作组成<a class="headerlink" href="#1641-计划由四个操作组成" title="Permanent link">&para;</a></h3>
+<p>计划表里默认有四行，每一行是一个<strong>操作</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>管什么</th>
+<th>选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td>什么时候执行 vuser_init（shop_order 的登录在这里）</td>
+<td>同时初始化所有 Vuser / 初始化 N 个 Vuser，每隔一段时间 / 在每个 Vuser 运行之前将其初始化（默认）</td>
+</tr>
+<tr>
+<td>启动 Vuser</td>
+<td>一共启动多少个、怎么启动</td>
+<td>同时 / N 个 Vuser，每隔一段时间</td>
+</tr>
+<tr>
+<td>持续时间</td>
+<td>全部启动以后跑多久</td>
+<td>完成前一直运行 / 运行时间：几天几时几分几秒</td>
+</tr>
+<tr>
+<td>停止 Vuser</td>
+<td>怎么停</td>
+<td>同时 / N 个 Vuser，每隔一段时间</td>
+</tr>
+</tbody>
+</table>
+<p>初始化保持默认就好：每个虚拟用户启动前才登录，登录请求随着加压分散开。选「同时初始化所有 Vuser」，所有用户会在一开始一起登录，登录接口要承受一个瞬间的高峰。</p>
+<p>选中计划表的某一行，点计划表上方左数第二个按钮「编辑操作」（双击这一行也可以），打开「编辑操作」对话框。下面是启动 Vuser 的对话框：</p>
+<p><img alt="编辑操作：启动 Vuser，选同时，或者每隔一段时间启动几个（图中是 2 个、每 5 秒启动 1 个）" src="images/16-edit-start.png" /></p>
+<p>对话框右上角的「上一步」「下一步」在四个操作之间切换。改了某一项以后，这两个按钮会变灰，点「应用」后才能接着切换；全部改完点「确定」。</p>
+<h3 id="1642-设成本章的计划">16.4.2 设成本章的计划<a class="headerlink" href="#1642-设成本章的计划" title="Permanent link">&para;</a></h3>
+<p>本章的计划：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>设置</th>
+<th>在计划表里显示为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td>保持默认</td>
+<td>在每个 Vuser 运行之前将其初始化</td>
+</tr>
+<tr>
+<td>启动 Vuser</td>
+<td>启动 10 个，2 个 Vuser，每隔 00:00:10</td>
+<td>启动 10 (个) Vuser: 每 00:00:10 (时:分:秒) 启动 2 个</td>
+</tr>
+<tr>
+<td>持续时间</td>
+<td>运行时间 0 天 00:03:00</td>
+<td>运行 00:03:00 (时:分:秒)</td>
+</tr>
+<tr>
+<td>停止 Vuser</td>
+<td>停止全部，5 个 Vuser，每隔 00:00:05</td>
+<td>停止 全部 (个) Vuser: 每 00:00:05 (时:分:秒) 停止 5 个</td>
+</tr>
+</tbody>
+</table>
+<p>从 VuGen 建的场景，启动 Vuser 已经是 10 个，只要改「每隔」那一行。从开始菜单建的场景只有 1 个，先把启动 Vuser 对话框里「启动」那一格改成 10，点「应用」，场景组表格里的数量也跟着变成 10。</p>
+<p>改完看计划表上方的「总计: 10 个 Vuser」和右边的计划图：40 秒时加满 10 个，一直保持到 3 分 40 秒，然后 5 秒内分两批降到 0。</p>
+<p>计划区上面还有三个选项，保持默认：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>另一个选项是什么意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计划名称</td>
+<td>计划 1</td>
+<td>一个场景可以存几份计划，用下拉框切换</td>
+</tr>
+<tr>
+<td>计划方式</td>
+<td>场景</td>
+<td>选「组」时每个组各有一份计划，比如一个脚本先跑、另一个脚本过 5 分钟再加进来</td>
+</tr>
+<tr>
+<td>运行模式</td>
+<td>实际计划</td>
+<td>「基本计划」只有启动、持续、停止各一步；实际计划可以添加更多操作，模拟一天里压力起起落落</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1643-阶梯加压不用加操作">16.4.3 阶梯加压不用加操作<a class="headerlink" href="#1643-阶梯加压不用加操作" title="Permanent link">&para;</a></h3>
+<p>第 13 章 13.3 节说过，压力测试要一直加压到出现拐点；找拐点时一档一档地加，每一档保持一段时间。初学者容易想到在计划表里连着加几个「启动 Vuser」操作，可实际试一下（想自己试，先 文件 → 另存为 一份别的名字再试，别改坏 demo16）：在持续时间后面再加一个「同时启动 2 个」（计划表上方的「以下操作后添加操作」按钮），计划图上会出现红色虚线，下面报一行警告：</p>
+<p><img alt="连着两个启动 Vuser 时，计划图出现红色虚线和警告（图里是作者另一个练习场景）" src="images/16-add-action-warn.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>为了避免在场景运行过程中出现非预期行为，请在连续的"启动 Vuser"操作和"停止 Vuser"操作之间添加"持续时间"操作。</p>
+</div>
+<p>而且实测加完以后，前一个启动 Vuser 的人数和组的数量都被自动改了，这时就很难说清场景到底会怎么跑。</p>
+<p>阶梯加压用一个启动 Vuser 就够了：比如「启动 50 个，10 个 Vuser，每隔 00:01:00」，就是每分钟加 10 个，每一档保持 1 分钟，最后一档的时间由持续时间决定。第 18 章找拐点用的就是这个计划。</p>
+<h3 id="1644-第-13-章的测试类型怎么配">16.4.4 第 13 章的测试类型怎么配<a class="headerlink" href="#1644-第-13-章的测试类型怎么配" title="Permanent link">&para;</a></h3>
+<p>第 13 章 13.3 节列了几种测试类型，在 Controller 里主要是计划不一样：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>启动 Vuser</th>
+<th>持续时间</th>
+<th>其他</th>
+<th>本教程的例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基准测试</td>
+<td>1～5 个，同时或很快加满</td>
+<td>5～10 分钟</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>负载测试</td>
+<td>逐步加到预期峰值对应的人数</td>
+<td>30 分钟以上</td>
+<td></td>
+<td>本章 demo16 是一个缩小的负载测试</td>
+</tr>
+<tr>
+<td>压力测试</td>
+<td>每隔一段时间加一档，加到出现拐点</td>
+<td>最后一档保持一段时间</td>
+<td></td>
+<td>第 18 章找拐点</td>
+</tr>
+<tr>
+<td>尖峰测试</td>
+<td>同时</td>
+<td>较短</td>
+<td>在一段平稳压力上突然加人，可以用组计划叠一个组</td>
+<td></td>
+</tr>
+<tr>
+<td>稳定性测试</td>
+<td>逐步加到正常压力</td>
+<td>几小时到几十小时</td>
+<td>同时监控内存</td>
+<td>第 18 章跑 30 分钟</td>
+</tr>
+<tr>
+<td>并发测试</td>
+<td>同时</td>
+<td>完成前一直运行</td>
+<td>脚本里放集合点（第 15 章 15.7 节）</td>
+<td>第 18 章并发支付</td>
+</tr>
+<tr>
+<td>容量测试</td>
+<td>同负载测试</td>
+<td>同负载测试</td>
+<td>先把数据量造上去</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="165-运行时设置">16.5 运行时设置<a class="headerlink" href="#165-运行时设置" title="Permanent link">&para;</a></h2>
+<h3 id="1651-场景里有自己的一份">16.5.1 场景里有自己的一份<a class="headerlink" href="#1651-场景里有自己的一份" title="Permanent link">&para;</a></h3>
+<p>场景组上方的「运行时设置」按钮打开的窗口，和 VuGen 里的运行时设置页面一样（第 15 章 15.6 节）。改完点右下角的「保存」，再关掉窗口。</p>
+<p>要注意的是：<strong>脚本加进场景时，场景复制了一份运行时设置，之后两边各管各的。</strong> 在 VuGen 里改脚本的运行时设置，已经建好的场景不受影响；在 Controller 里改，也不会改到脚本。而且这一份的几个默认值和 VuGen 里不一样：</p>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>VuGen 回放</th>
+<th>场景里</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>思考时间</td>
+<td>忽略思考时间</td>
+<td>按录制参数回放思考时间</td>
+</tr>
+<tr>
+<td>日志 → 发送消息</td>
+<td>始终</td>
+<td>出错时记录并将日志缓存限制为 1 KB</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="场景里的运行时设置：思考时间默认是按录制参数回放" src="images/16-rts-think.png" /></p>
+<p>本章的场景就用默认的「按录制参数回放思考时间」：shop_order 里三处 <code>lr_think_time(1)</code>，每次迭代停 3 秒，更接近真人，16.9 节核对数字时会用到这 3 秒。</p>
+<p>日志只在出错时写，是为了省资源：每个虚拟用户先把日志放在一个 1 KB 的缓存里，出错时才把缓存里出错前的几行连同错误一起写出来，写到结果目录的 log 文件夹，一个虚拟用户一个文件。几十个用户一直写完整日志，压测机的磁盘会成为额外的负担，测出来的数字也会受影响。没出错时 log 文件夹是空的。</p>
+<p>「其他」页里「将每个操作定义为一个事务」默认是勾着的，所以运行结果里除了你写的四个事务，还会多出 vuser_init_Transaction、Action_Transaction、vuser_end_Transaction，分别是三个操作各自的耗时。</p>
+<h3 id="1652-刷新">16.5.2 刷新<a class="headerlink" href="#1652-刷新" title="Permanent link">&para;</a></h3>
+<p>场景组上方的「详细信息」按钮打开「组信息」对话框，右边的「刷新」按钮有两项：</p>
+<p><img alt="组信息对话框：右边有「刷新」按钮" src="images/16-group-details.png" /></p>
+<p>点「刷新」右边的小三角，弹出两项：</p>
+<p><img alt="刷新按钮的菜单：脚本、运行时设置" src="images/16-refresh-menu.png" /></p>
+<table>
+<thead>
+<tr>
+<th>刷新项</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>脚本</td>
+<td>在 VuGen 里改了脚本（加了事务、加了参数）以后，让场景重新读一遍脚本，提示「已成功刷新脚本。」</td>
+</tr>
+<tr>
+<td>运行时设置</td>
+<td>放弃场景里的这一份，重新复制脚本自己的运行时设置，提示「已成功刷新运行时设置。」</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>刷新运行时设置以后，思考时间变成了忽略。</strong> 刷新是把脚本自己的设置原样复制过来，而脚本的思考时间是 VuGen 的默认值「忽略」。刷新以后要重新检查思考时间。</p>
+</div>
+<h2 id="166-结果设置">16.6 结果设置<a class="headerlink" href="#166-结果设置" title="Permanent link">&para;</a></h2>
+<p>点菜单 结果 → 结果设置：</p>
+<p><img alt="结果设置：结果名称和目录（图里是作者另一次运行填的名字）" src="images/16-result-settings.png" /></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结果名称</td>
+<td>demo16</td>
+</tr>
+<tr>
+<td>目录</td>
+<td><code>D:\work\lr-results</code></td>
+</tr>
+<tr>
+<td>自动为每个场景执行创建结果目录</td>
+<td>先不勾</td>
+</tr>
+<tr>
+<td>无需确认提示，自动覆盖现有结果目录</td>
+<td>不勾</td>
+</tr>
+</tbody>
+</table>
+<p>结果会放在「目录」下以结果名称命名的文件夹里，也就是 <code>D:\work\lr-results\demo16</code>。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>结果默认放在不好找的地方。</strong> 不设置的话，从开始菜单新建的场景，结果目录默认是临时文件夹下的 res（<code>C:\Users\你的用户名\AppData\Local\Temp\res</code>）；从 VuGen 建的场景，默认是脚本目录下的 res（16.2.1 节）。跑完不好找，几个场景的结果还会挤在同一个地方，放在脚本目录里还会混进工程。每个场景都先设好结果名称和目录。</p>
+</div>
+<h2 id="167-sla">16.7 SLA<a class="headerlink" href="#167-sla" title="Permanent link">&para;</a></h2>
+<p>第 13 章 13.4 节的目标表里，搜索的 P95 不超过 300 毫秒，下单、支付不超过 500 毫秒。把它写进场景的 SLA，跑完 Analysis 会自动对照、给出达标与否（第 17 章）。</p>
+<ol>
+<li>在右上角服务水平协议窗格里点「新建」，弹出「服务水平协议 - 目标定义」向导，左边是五个步骤：开始、度量、事务、阈值、完成。开始页是一段说明，点「下一步」；</li>
+<li>度量页选「事务响应时间」，右边的下拉框选「百分位」：</li>
+</ol>
+<p><img alt="SLA 度量页：选事务响应时间，按百分位" src="images/16-sla-measure.png" /></p>
+<ol>
+<li>事务页把 02_search、03_order、04_pay 从左边的「可用事务」移到右边的「选定事务」（选中后点中间的箭头）：</li>
+</ol>
+<p><img alt="SLA 事务页：选定三个业务事务" src="images/16-sla-tx.png" /></p>
+<ol>
+<li>阈值页的「百分位」改成 95，在下面的表格里给每个事务填阈值（单位是秒）：02_search 填 0.3，03_order、04_pay 填 0.5。上面的「提供所有事务的阈值」配合「应用到全部」可以一次给所有事务填同一个值：</li>
+</ol>
+<p><img alt="SLA 阈值页：百分位 95，三个事务的阈值" src="images/16-sla-threshold.png" /></p>
+<ol>
+<li>点「下一步」，完成页显示「已成功定义 SLA。」，点「完成」。</li>
+</ol>
+<p>服务水平协议窗格里多出一行「事务响应时间(百分位)」，选中它点「编辑」可以改。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>可用事务里只有 Action_Transaction 这类自动事务。</strong> Controller 只从 .usr 文件里的事务清单认事务。脚本是在 VuGen 外面改的（比如用 VS Code 加了一个事务），或者 .usr 是别人手写的，清单里就没有你的事务，向导里只看得到 vuser_init_Transaction、Action_Transaction、vuser_end_Transaction。在 VuGen 里打开脚本保存一次，再回到 Controller，组信息 → 刷新 → 脚本，向导里就有了。</p>
+</div>
+<p>SLA 只是评判标准，不影响运行：运行时就算超了阈值，场景也照常跑完。</p>
+<h2 id="168-监控服务器资源">16.8 监控服务器资源<a class="headerlink" href="#168-监控服务器资源" title="Permanent link">&para;</a></h2>
+<p>压测时除了看响应时间，还要看服务器忙不忙。Controller 能在运行的同时采集服务器的 CPU、内存等<strong>计数器</strong>（Windows 自带的性能指标，任务管理器、性能监视器里看到的 CPU 使用率就来自它们），和压测数据放在一起。本例的服务器就是本机，监控本机的 CPU：</p>
+<ol>
+<li>点窗口底部的「运行」标签，切到运行视图（16.9 节细讲）；</li>
+<li>左边图的列表拉到最下面，在「系统资源图」下勾上「Windows 资源」，右边多出一张「Windows 资源 - 最后 60 秒」的图，中间有一个「添加度量」按钮：</li>
+</ol>
+<p><img alt="运行视图里勾上 Windows 资源，图里有一个添加度量按钮" src="images/16-run-winres.png" /></p>
+<ol>
+<li>点「添加度量」，弹出「Windows 资源」对话框。点上半部分「监控的服务器计算机」下的「添加」，弹出「添加计算机」对话框，名称填 localhost，平台保持 Windows，确定。这时下面的资源度量列表是空的；</li>
+<li>点下半部分的「添加」，弹出计数器对话框：对象选 Processor，计数器选 % Processor Time，实例选 _Total，点「添加」，再点「关闭」：</li>
+</ol>
+<p><img alt="选计数器：对象 Processor、计数器 % Processor Time、实例 _Total" src="images/16-winres-counters.png" /></p>
+<ol>
+<li>列表里出现「% Processor Time (Processor _Total)」，选中它，下面的「资源度量描述」会解释这个计数器的含义。点「确定」：</li>
+</ol>
+<p><img alt="Windows 资源对话框：监控 localhost 的 % Processor Time" src="images/16-winres.png" /></p>
+<ol>
+<li>回到设计视图，保存场景。监控设置也存在场景文件里。</li>
+</ol>
+<p>% Processor Time 的 _Total 是整台电脑所有 CPU 核的平均使用率。它统计的是整台电脑，练习网站和发压的虚拟用户都在这台电脑上，所以这里看到的主要是两者加起来的 CPU。实际项目里服务器是另一台机器，要在「添加计算机」里填服务器的名字或 IP，还要有对方的访问权限；Linux 服务器用的是别的监控方式，一般看公司现成的监控平台。</p>
+<h2 id="169-运行场景">16.9 运行场景<a class="headerlink" href="#169-运行场景" title="Permanent link">&para;</a></h2>
+<h3 id="1691-开始">16.9.1 开始<a class="headerlink" href="#1691-开始" title="Permanent link">&para;</a></h3>
+<p>确认练习网站在运行，保存场景，然后点场景组上方的「开始场景」（或者菜单 场景 → 启动，快捷键 F5）。Controller 自动切到运行视图，虚拟用户按计划一批批启动。下面是运行到 2 分 12 秒时的样子：</p>
+<p><img alt="运行视图：运行到 2 分 12 秒，10 个用户都在运行" src="images/16-run-120s.png" /></p>
+<h3 id="1692-运行视图">16.9.2 运行视图<a class="headerlink" href="#1692-运行视图" title="Permanent link">&para;</a></h3>
+<p>上半部分左边是<strong>场景组</strong>，每个组一行，列是虚拟用户的各种状态：关闭、挂起、初始化、就绪、运行、集合点、通过、失败、错误、逐渐退出、退出、停止。每一格是处在这个状态的用户数，加压时「运行」列的数字一点点变大。</p>
+<p>中间一列按钮：开始场景、停止、重置、Vuser、运行/停止 Vuser、暂停计划程序。</p>
+<p>右边是<strong>场景状态</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>2 分 12 秒时</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景状态</td>
+<td>正在运行</td>
+<td>跑完变成「关闭」</td>
+</tr>
+<tr>
+<td>正在运行的 Vuser 数</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>已用时间</td>
+<td>00:02:12</td>
+<td></td>
+</tr>
+<tr>
+<td>点击数/秒</td>
+<td>9.60（最后 60 秒）</td>
+<td>最近 60 秒平均每秒发出的 HTTP 请求数</td>
+</tr>
+<tr>
+<td>通过的事务</td>
+<td>1320</td>
+<td>包括自动事务（16.5.1 节）</td>
+</tr>
+<tr>
+<td>失败的事务</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>错误</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>下半部分是<strong>运行时的图</strong>。左边是图的列表，勾上哪张就显示哪张；默认显示四张：正在运行的 Vuser 数、事务响应时间、每秒点击数、吞吐量，标题后面都带着「整个负载测试」。</p>
+<p>看事务响应时间那张图会发现：02_search、03_order、04_pay 都贴着横轴，Action_Transaction 却在 3.2 秒左右。Action_Transaction 是整个 Action 的耗时，三次 1 秒的思考时间也算在里面了。Analysis 默认会扣掉思考时间（第 17 章），在那里它只有 0.16 秒左右。</p>
+<p>点「Vuser」按钮打开 Vuser 对话框，能看到每个虚拟用户的状态和已经跑了多久。选中某个用户，可以单独停止它，或者点「详细信息」看它的情况：</p>
+<p><img alt="Vuser 对话框：10 个用户的状态、脚本、Load Generator 和已用时间" src="images/16-vusers.png" /></p>
+<h3 id="1693-跑完">16.9.3 跑完<a class="headerlink" href="#1693-跑完" title="Permanent link">&para;</a></h3>
+<p>3 分 49 秒时场景结束，场景状态变成「关闭」：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>结束时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已用时间</td>
+<td>00:03:49</td>
+</tr>
+<tr>
+<td>通过的事务</td>
+<td>2598</td>
+</tr>
+<tr>
+<td>失败的事务</td>
+<td>0</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>0</td>
+</tr>
+<tr>
+<td>场景组的「停止」列</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>10 个用户都在「停止」列：按时间跑的场景，用户是到点被计划停下的。第 18 章「完成前一直运行」的场景里，用户跑完自己的迭代就结束，会显示在「通过」列。</p>
+<p>通过的事务 2598 是怎么来的：每个用户登录一次，共 10 次 01_login，vuser_init_Transaction、vuser_end_Transaction 也各 10 次；每次迭代有 02_search、03_order、04_pay、Action_Transaction 四个事务，一共跑了 642 次迭代：</p>
+<div class="highlight"><pre><span></span><code>642 × 4 + 10 × 3 = 2598
+</code></pre></div>
+<p>状态栏右下角显示着「自动整理结果」：运行结束后，Controller 会自动把各个 Load Generator 上的数据收集到结果目录，这一步叫整理结果。</p>
+<h3 id="1694-用利特尔法则核对">16.9.4 用利特尔法则核对<a class="headerlink" href="#1694-用利特尔法则核对" title="Permanent link">&para;</a></h3>
+<p>第 13 章 13.2.6 节的公式：</p>
+<div class="highlight"><pre><span></span><code>每秒请求数 ≈ 并发用户数 ÷（响应时间 + 思考时间）
+</code></pre></div>
+<p>拿本章的场景算一下。一次迭代里搜索、下单、支付三个请求，第 17 章会在 Analysis 里看到它们平均各约 0.053 秒，加起来约 0.16 秒；思考时间 3 秒。10 个用户：</p>
+<div class="highlight"><pre><span></span><code>每秒迭代次数 ≈ 10 ÷ (0.16 + 3) ≈ 3.16
+每秒请求数 ≈ 3.16 × 3 ≈ 9.5
+</code></pre></div>
+<p>运行视图里满载时的点击数/秒是 9.60，对得上。第 17 章按时间段统计，10 个用户都在跑的那段时间，每个业务事务每秒完成 3.13～3.15 次，也和 3.16 对得上。</p>
+<p>能对上，说明场景是按设计在跑的。对不上就要先找原因再看结果，常见的是思考时间的设置和你以为的不一样（16.5 节），或者有用户在报错、迭代提前结束了。</p>
+<p>这个公式还说明了：10 个用户、每次迭代停 3 秒，每秒只有 9.5 个请求，对服务器几乎没有压力。想加大压力，要么加用户，要么减思考时间。第 18 章找拐点时把思考时间乘以 0.1，同样 10 个用户每秒请求数到了 60 左右。</p>
+<h3 id="1695-什么时候该手动停">16.9.5 什么时候该手动停<a class="headerlink" href="#1695-什么时候该手动停" title="Permanent link">&para;</a></h3>
+<p>场景会按计划自己结束。运行中出现下面的情况，就点「停止」，查清原因再重跑：</p>
+<ul>
+<li>失败的事务、错误的数字一直在涨。比如练习网站没启动，所有请求都会失败，跑下去没有意义；</li>
+<li>响应时间成倍上涨，并且还在往上走，已经远远超出了目标；</li>
+<li>压测机自己的 CPU 一直在 100% 附近，这时测出来的是压测机的瓶颈（第 13 章 13.7 节）。</li>
+</ul>
+<h2 id="1610-结果目录">16.10 结果目录<a class="headerlink" href="#1610-结果目录" title="Permanent link">&para;</a></h2>
+<p>跑完到 <code>D:\work\lr-results\demo16</code> 里看看，主要有这些：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>demo16.lrr</td>
+<td>结果文件，Analysis 打开的就是它</td>
+</tr>
+<tr>
+<td>扩展名 .eve、.map 的文件</td>
+<td>原始运行数据</td>
+</tr>
+<tr>
+<td>SqliteDb.db</td>
+<td>Controller 运行时的输出消息，比如脚本里 lr_error_message 写的错误</td>
+</tr>
+<tr>
+<td>log 文件夹</td>
+<td>虚拟用户的日志，按 16.5.1 节的设置只在出错时写，没出错就是空的</td>
+</tr>
+<tr>
+<td>SLAConfiguration.xml</td>
+<td>这次运行用的 SLA</td>
+</tr>
+<tr>
+<td>shop_order.cfg、shop_order.usp</td>
+<td>这次运行用的运行时设置</td>
+</tr>
+</tbody>
+</table>
+<p>本章的结果目录大约 1 MB。</p>
+<p>点菜单 结果 → 分析结果，会用 Analysis 打开这次的结果，下一章就从这里开始。</p>
+<h2 id="1611-load-generator">16.11 Load Generator<a class="headerlink" href="#1611-load-generator" title="Permanent link">&para;</a></h2>
+<p><strong>Load Generator</strong>（负载生成器）是真正运行虚拟用户、发出请求的机器，第 13 章 13.5.2 节介绍过。点菜单 场景 → Load Generator 能看到列表：</p>
+<p><img alt="Load Generator 列表：只有本机 localhost" src="images/16-lg.png" /></p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名称</td>
+<td>localhost 就是本机，装 LoadRunner 时一起装好的</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>没有运行场景时显示「关闭」</td>
+</tr>
+<tr>
+<td>平台、类型</td>
+<td>Windows、本地</td>
+</tr>
+</tbody>
+</table>
+<p>一台电脑能模拟的虚拟用户有上限，CPU、内存、网络先用完的那一样决定了上限。人数多了就要加机器：在别的电脑上安装 LoadRunner 的 Load Generator 组件，再在这里点「添加」，填那台电脑的名字或 IP。场景组的 Load Generator 一列选哪台，这个组的虚拟用户就在哪台上运行。</p>
+<p>社区版自带的许可是 50 个虚拟用户，本教程所有场景都在一台电脑上完成，没有用到远程的 Load Generator。</p>
+<h2 id="1612-命令行运行场景">16.12 命令行运行场景<a class="headerlink" href="#1612-命令行运行场景" title="Permanent link">&para;</a></h2>
+<p>不用在 Controller 里手动操作，也能用命令行运行一个场景，用的是安装目录 bin 下的 <strong>Wlrun.exe</strong>（Controller 程序本身）。先把开着的 Controller 保存好场景、关掉，再在 PowerShell 里执行：</p>
+<div class="highlight"><pre><span></span><code>&gt; $p = Start-Process "$env:LR_PATH\bin\Wlrun.exe" -ArgumentList "-TestPath", "D:\work\autotest-demo\lr\scenarios\demo16.lrs", "-ResultName", "D:\work\lr-results\demo16_cli", "-Run" -PassThru
+&gt; $p.WaitForExit(); $p.ExitCode
+0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-TestPath</code></td>
+<td>场景文件的完整路径</td>
+</tr>
+<tr>
+<td><code>-ResultName</code></td>
+<td>结果目录的完整路径，盖过场景里的结果设置</td>
+</tr>
+<tr>
+<td><code>-Run</code></td>
+<td>打开场景后马上运行，跑完自动退出</td>
+</tr>
+</tbody>
+</table>
+<p>运行时 Controller 的窗口会最大化弹出来，直接显示运行视图，跑完自动关闭。2 个用户、持续 60 秒的场景，从启动到退出实测 83～87 秒，多出来的时间用在打开场景、加压减压、整理结果上。</p>
+<p>这里没有像第 15 章运行 mdrv.exe 那样给 Start-Process 加 -Wait。-Wait 会把 Wlrun.exe 启动的子进程也一起等完，实测同一个场景要 150 秒才返回，比 Wlrun.exe 本身多等了一分钟左右。先用 -PassThru 拿到进程，再用 WaitForExit() 只等 Wlrun.exe 本身。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>结果目录已经存在时，会被直接覆盖。</strong> 实测 -ResultName 指向一个已有的结果目录时，不提示，直接覆盖上一次的结果。要保留历史结果，每次换一个名字，比如带上日期时间：把 -ResultName 后面的路径写成 <code>"D:\work\lr-results\demo16_$(Get-Date -Format yyyyMMdd_HHmm)"</code>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>退出码说明不了业务结果。</strong> 实测场景里有大量事务失败、错误时，Wlrun.exe 的退出码仍然是 0（第 18 章 18.5 节：一千多个事务失败的那次和全部通过的那次，退出码都是 0）。和第 15 章 15.9.5 节的 mdrv.exe 一样，命令行跑完还要检查结果：第 17 章会讲怎么把结果导出成数据，用脚本判断事务有没有失败、有没有超过 SLA。</p>
+</div>
+<h2 id="1613-常见的坑">16.13 常见的坑<a class="headerlink" href="#1613-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLA 向导的可用事务里只有 vuser_init_Transaction、Action_Transaction、vuser_end_Transaction</td>
+<td>.usr 里没有事务清单。在 VuGen 里打开脚本保存一次，再 组信息 → 刷新 → 脚本（16.7 节）</td>
+</tr>
+<tr>
+<td>在 VuGen 里改了思考时间，场景里没变</td>
+<td>场景有自己的一份运行时设置。在 Controller 里改，或者 组信息 → 刷新 → 运行时设置（16.5 节）</td>
+</tr>
+<tr>
+<td>刷新运行时设置以后，每秒请求数突然大了很多</td>
+<td>刷新把思考时间改回了脚本的「忽略」。重新设置思考时间</td>
+</tr>
+<tr>
+<td>运行视图里 Action_Transaction 要 3 秒多，单个接口却只要几十毫秒</td>
+<td>Action_Transaction 包含了思考时间。看业务事务，或者到 Analysis 里看扣掉思考时间的数字</td>
+</tr>
+<tr>
+<td>每秒请求数比估算的低很多</td>
+<td>在 VuGen 里回放时思考时间被忽略了，场景里默认按录制参数回放。用利特尔法则按实际的思考时间重算</td>
+</tr>
+<tr>
+<td>跑完找不到结果</td>
+<td>没设结果目录，结果放在了临时文件夹或脚本目录下的 res 里。每个场景先设好结果名称和目录（16.6 节）</td>
+</tr>
+<tr>
+<td>计划图里出现红色虚线和警告</td>
+<td>连着两个启动 Vuser 中间没有持续时间。阶梯加压用一个启动 Vuser 的「每隔一段时间启动几个」就够了（16.4.3 节）</td>
+</tr>
+<tr>
+<td>编辑操作里改了一项以后，「上一步」「下一步」变灰了</td>
+<td>改动还没应用。点「应用」以后就能切到别的操作了</td>
+</tr>
+<tr>
+<td>持续时间选「完成前一直运行」，点确定时提示「计划程序操作将被移除」</td>
+<td>选了这一项，后面的停止 Vuser 就用不上了，会被删掉。点「是」</td>
+</tr>
+<tr>
+<td>用户都在报 401</td>
+<td>多个用户用了同一个账号，账号参数的「选择下一行」不是「唯一」（第 15 章 15.5.3 节），第 18 章有实测</td>
+</tr>
+<tr>
+<td>命令行跑完退出码是 0，可事务失败了一大半</td>
+<td>Wlrun.exe 的退出码不反映事务结果，要分析结果（第 17 章）</td>
+</tr>
+<tr>
+<td>命令行又跑了一次，上一次的结果没了</td>
+<td>-ResultName 指向已有的目录时直接覆盖、不提示。每次用不同的结果名（16.12 节）</td>
+</tr>
+<tr>
+<td>PowerShell 里的命令半天才返回，Controller 窗口早就关了</td>
+<td>Start-Process 加了 -Wait，它连子进程一起等。改用 -PassThru 加 WaitForExit()（16.12 节）</td>
+</tr>
+<tr>
+<td>工程挪了位置，场景打开就报找不到脚本</td>
+<td>场景记的是脚本的完整路径。删掉旧的组，重新添加脚本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1614-练习">16.14 练习<a class="headerlink" href="#1614-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>把 demo16 另存为 demo16_nothink，结果名称改成 demo16_nothink（结果 → 结果设置），思考时间改成「忽略思考时间」，持续时间改成 1 分钟，其他不变。运行前先用利特尔法则估一下每秒请求数（一次迭代的请求按 0.16 秒算），再和运行视图里的点击数/秒比较。数字差得多的话，看看事务响应时间那张图，想一想为什么（第 18 章会解答）。做完重启练习网站：没有思考时间时下单很快，前几个账号的余额会花掉不少。</li>
+<li>把 demo16 另存为 demo16_at_once，结果名称也改成 demo16_at_once，启动 Vuser 改成「同时」，持续 1 分钟，运行后对比计划图和运行视图里正在运行的 Vuser 数那张图，两条曲线的形状有什么不同。</li>
+<li>在 Windows 资源监控里再加一个计数器：对象 Memory、计数器 Available MBytes（可用内存）。运行时看它的变化。</li>
+<li>用 16.12 节的命令在 PowerShell 里运行 demo16，结果名用 demo16_cli，记下退出码。再把练习网站停掉，结果名换成 demo16_down，重新运行，看看退出码是多少、结果目录的 log 文件夹里写了什么。看完把练习网站启动起来。</li>
+<li>运行场景前打开 场景 → Load Generator，记下 localhost 的状态；运行到一半再打开一次，看状态有什么变化。</li>
+</ol>
+<h2 id="1615-自检清单">16.15 自检清单<a class="headerlink" href="#1615-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会从 VuGen 和开始菜单两种方式新建场景，知道手动场景和面向目标的场景的区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出设计视图里场景组、场景计划、服务水平协议各管什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用编辑操作设置初始化、启动、持续时间、停止，知道阶梯加压为什么只用一个启动 Vuser；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出负载测试、压力测试、稳定性测试、并发测试的计划各怎么配；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道场景里的运行时设置是单独的一份，知道思考时间、日志的默认值和 VuGen 的区别，知道刷新运行时设置的副作用；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会设置结果名称和目录，知道结果目录里有哪些东西；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用向导设置按百分位的 SLA，知道可用事务里缺事务时怎么办；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会添加 Windows 资源监控，知道本机监控看到的 CPU 包含了哪些进程；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 看得懂运行视图的场景状态和默认的四张图，能用利特尔法则核对每秒请求数；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 Load Generator 的作用，会用 Wlrun.exe 在命令行运行场景，知道它的退出码说明不了业务结果。</li>
+</ul>
+<p>下一章：<a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html">第 17 章 Analysis 分析与报告</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 15 章 VuGen 脚本增强">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 15 章 VuGen 脚本增强
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 17 章 Analysis 分析与报告">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 17 章 Analysis 分析与报告
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

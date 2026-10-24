@@ -1,0 +1,3366 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html">
+      
+      
+        <link rel="next" href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 18 章 性能实战 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-18-章-性能实战" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 18 章 性能实战
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#181-准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.1 准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1811-五个实验一览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.1 五个实验一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1812-数据够不够用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.2 数据够不够用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1813-只改一个变量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.3 只改一个变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#182-实验一阶梯加压找拐点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 实验一：阶梯加压找拐点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.2 实验一：阶梯加压找拐点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1821-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.1 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1822-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.2 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1823-按档看数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.3 按档看数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1824-读懂拐点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.4 读懂拐点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1825-瓶颈在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.5 瓶颈在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183-实验二调大连接池再测一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 实验二：调大连接池再测一次
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.3 实验二：调大连接池再测一次">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1831-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.1 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1832-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.2 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1833-结论和代价" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.3 结论和代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184-实验三并发支付" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 实验三：并发支付
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.4 实验三：并发支付">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1841-要测什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.1 要测什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1842-脚本-pay_race" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.2 脚本 pay_race
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1843-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.3 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1844-默认模式只成功了一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.4 默认模式：只成功了一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1845-打开缺陷开关扣了十次钱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.5 打开缺陷开关：扣了十次钱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1846-原因和修复" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.6 原因和修复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1847-用-pytest-做同样的测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.7 用 pytest 做同样的测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#185-实验四同一账号多处登录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 实验四：同一账号多处登录
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.5 实验四：同一账号多处登录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1851-场景和开关" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.1 场景和开关
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1852-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.2 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1853-改回唯一" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.3 改回「唯一」
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#186-实验五稳定性测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 实验五：稳定性测试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.6 实验五：稳定性测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1861-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.1 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1862-记录练习网站的内存" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.2 记录练习网站的内存
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1863-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.3 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1864-内存一直在涨是泄漏吗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.4 内存一直在涨，是泄漏吗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1865-数据里的一个异常值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.5 数据里的一个异常值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#187-写测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.7 写测试报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#188-loadrunnerjmeterlocust-概念对照" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.8 LoadRunner、JMeter、Locust 概念对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#189-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1810-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1811-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#181-准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.1 准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1811-五个实验一览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.1 五个实验一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1812-数据够不够用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.2 数据够不够用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1813-只改一个变量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1.3 只改一个变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#182-实验一阶梯加压找拐点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 实验一：阶梯加压找拐点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.2 实验一：阶梯加压找拐点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1821-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.1 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1822-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.2 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1823-按档看数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.3 按档看数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1824-读懂拐点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.4 读懂拐点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1825-瓶颈在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2.5 瓶颈在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183-实验二调大连接池再测一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 实验二：调大连接池再测一次
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.3 实验二：调大连接池再测一次">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1831-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.1 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1832-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.2 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1833-结论和代价" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3.3 结论和代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184-实验三并发支付" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 实验三：并发支付
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.4 实验三：并发支付">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1841-要测什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.1 要测什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1842-脚本-pay_race" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.2 脚本 pay_race
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1843-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.3 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1844-默认模式只成功了一次" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.4 默认模式：只成功了一次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1845-打开缺陷开关扣了十次钱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.5 打开缺陷开关：扣了十次钱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1846-原因和修复" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.6 原因和修复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1847-用-pytest-做同样的测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4.7 用 pytest 做同样的测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#185-实验四同一账号多处登录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 实验四：同一账号多处登录
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.5 实验四：同一账号多处登录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1851-场景和开关" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.1 场景和开关
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1852-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.2 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1853-改回唯一" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5.3 改回「唯一」
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#186-实验五稳定性测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 实验五：稳定性测试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.6 实验五：稳定性测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1861-场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.1 场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1862-记录练习网站的内存" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.2 记录练习网站的内存
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1863-结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.3 结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1864-内存一直在涨是泄漏吗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.4 内存一直在涨，是泄漏吗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1865-数据里的一个异常值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6.5 数据里的一个异常值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#187-写测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.7 写测试报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#188-loadrunnerjmeterlocust-概念对照" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.8 LoadRunner、JMeter、Locust 概念对照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#189-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.9 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1810-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.10 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1811-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.11 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-18-章-性能实战">第 18 章 性能实战<a class="headerlink" href="#第-18-章-性能实战" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会在压测前核算测试数据够不够用，比如账号的余额能撑多久；</li>
+<li>会用阶梯加压找到系统的拐点，读得懂拐点前后各项指标的变化；</li>
+<li>会从「吞吐量不涨、响应时间变长、CPU 不高」推断瓶颈的方向，并用只改一个变量的对比实验验证；</li>
+<li>会用集合点做并发测试，知道并发测试关心的是数据对不对；</li>
+<li>知道测试账号设计不当会让压测结果失真；</li>
+<li>会做稳定性测试，分得清内存泄漏和数据量增长；</li>
+<li>能用实验数据写出一份性能测试报告；</li>
+<li>知道 LoadRunner 和 JMeter、Locust 的概念怎么对应。</li>
+</ul>
+<p>前三章学会了写脚本、配场景、看结果。本章用它们做五个实验：找拐点、调优后对比、并发支付、同一账号多处登录、稳定性测试。每个实验都按社区版的 50 个虚拟用户设计，一台电脑就能做完。</p>
+<p>本章的数字和截图都是在作者电脑上实际运行得到的。练习网站和 LoadRunner 在同一台电脑上，电脑上还开着别的程序，CPU 这类数字会有波动；你做出来的数字和这里有出入是正常的，变化的趋势应该一致。</p>
+<hr />
+<h2 id="181-准备">18.1 准备<a class="headerlink" href="#181-准备" title="Permanent link">&para;</a></h2>
+<h3 id="1811-五个实验一览">18.1.1 五个实验一览<a class="headerlink" href="#1811-五个实验一览" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>场景</th>
+<th>练习网站的开关</th>
+<th>结果名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一：找拐点</td>
+<td>knee：50 个用户，每分钟加 10 个</td>
+<td>SHOP_INIT_BALANCE=1000000</td>
+<td>knee_pool8</td>
+</tr>
+<tr>
+<td>二：调优后对比</td>
+<td>同上</td>
+<td>再加 SHOP_DB_POOL=32</td>
+<td>knee_pool32</td>
+</tr>
+<tr>
+<td>三：并发支付</td>
+<td>pay_race：10 个用户同时付同一张订单</td>
+<td>默认；再试 SHOP_PAY_RACE_BUG=1</td>
+<td>pay_race_nobug、pay_race_bug</td>
+</tr>
+<tr>
+<td>四：同一账号多处登录</td>
+<td>single：20 个用户，跑 1 分钟</td>
+<td>SHOP_SINGLE_SESSION=1</td>
+<td>single_seq、single_unique</td>
+</tr>
+<tr>
+<td>五：稳定性</td>
+<td>stable：20 个用户，跑 30 分钟</td>
+<td>SHOP_INIT_BALANCE=1000000</td>
+<td>stable_30m</td>
+</tr>
+</tbody>
+</table>
+<p>练习网站的开关是环境变量，在启动练习网站的 PowerShell 窗口里先设好再启动，比如：</p>
+<div class="highlight"><pre><span></span><code>&gt; $env:SHOP_INIT_BALANCE = "1000000"
+&gt; python -m uvicorn shop.app:app --port 8000 --no-access-log
+</code></pre></div>
+<p><code>--no-access-log</code> 让练习网站不打印每个请求的访问日志：每秒几百个请求时，打印日志本身就要占不少 CPU，会影响测出来的数字。</p>
+<p>两个约定：</p>
+<ul>
+<li><strong>每个实验开始前都重启练习网站。</strong> 练习网站的数据都在内存里，重启就回到初始状态：余额、订单、库存都是新的；</li>
+<li><strong>做完一个实验就去掉开关。</strong> 用 <code>Remove-Item Env:SHOP_INIT_BALANCE</code> 这样的命令，或者关掉窗口重开，否则开关会带到下一个实验里。</li>
+</ul>
+<h3 id="1812-数据够不够用">18.1.2 数据够不够用<a class="headerlink" href="#1812-数据够不够用" title="Permanent link">&para;</a></h3>
+<p>压测前先算一算测试数据能撑多久。shop_order 每次迭代买一件商品，第 15 章的五个搜索词搜到的商品，平均每单约 150 元（实验五里 75101 张订单一共 11231956.5 元，平均 149.56 元）。每个账号的初始余额是 10 万元。</p>
+<p>拿实验五算：20 个账号、每秒约 41 次迭代，每个账号每秒花 41 ÷ 20 × 150 ≈ 307 元，10 万元只够 100000 ÷ 307 ≈ 326 秒，<strong>5 分半钟就扣光了</strong>。之后支付全部返回业务码 3002（余额不足），后面 25 分钟测的都是失败的支付，结果就废了。所以实验五把初始余额调到 100 万。</p>
+<p>实验一、二只跑 5 分钟，可最早启动的 10 个用户一直在跑。实测实验二里它们每人支付了 614～619 次，按每单 150 元算要花 9 万多，已经很接近 10 万，所以这两个实验也把余额调到 100 万。</p>
+<p>账号的个数也要够：shop_order 的账号参数是「唯一」，一个虚拟用户一个账号，account.dat 里有 user001～user100 共 100 个，50 个用户够用。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>数据不够时，现象不一定是报错。</strong> 余额扣光了是报 3002，可如果是库存卖光、优惠券领完，有的系统返回的是「成功，但什么都没买到」。这也是第 15 章坚持给每个关键步骤加检查点的原因。</p>
+</div>
+<h3 id="1813-只改一个变量">18.1.3 只改一个变量<a class="headerlink" href="#1813-只改一个变量" title="Permanent link">&para;</a></h3>
+<p>实验一和实验二只差一个开关 SHOP_DB_POOL，场景、脚本、数据、思考时间完全一样，两次的差别才能归到连接池上。第 13 章 13.7 节说过：对比测试一次只改一个变量。</p>
+<h2 id="182-实验一阶梯加压找拐点">18.2 实验一：阶梯加压找拐点<a class="headerlink" href="#182-实验一阶梯加压找拐点" title="Permanent link">&para;</a></h2>
+<h3 id="1821-场景">18.2.1 场景<a class="headerlink" href="#1821-场景" title="Permanent link">&para;</a></h3>
+<p>在第 16 章 demo16 的基础上改：</p>
+<ol>
+<li>在 Controller 里打开 demo16，文件 → 另存为 knee.lrs；</li>
+<li>编辑计划（第 16 章 16.4 节）：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动 Vuser</td>
+<td>启动 50 个，10 个 Vuser，每隔 00:01:00</td>
+</tr>
+<tr>
+<td>持续时间</td>
+<td>运行 00:01:00</td>
+</tr>
+<tr>
+<td>停止 Vuser</td>
+<td>同时</td>
+</tr>
+</tbody>
+</table>
+<p>计划图是五级台阶：每分钟加 10 个用户，第 4 分钟加满 50 个，再跑 1 分钟。每一级台阶就是一档压力；</p>
+<ol>
+<li>运行时设置 → 思考时间，选「将录制思考时间乘以」，填 0.1；</li>
+<li>结果设置：结果名称 knee_pool8；</li>
+<li>SLA 和 Windows 资源监控保留 demo16 的设置，保存。</li>
+</ol>
+<p>为什么把思考时间缩成十分之一：按利特尔法则（第 13 章 13.2.6 节，第 16 章 16.9.4 节核对过），每次迭代 0.16 秒的请求加 3 秒的思考，50 个用户每秒只能发 50 ÷ 3.16 × 3 ≈ 47 个请求，离练习网站的上限还远，社区版的 50 个用户不够用。思考时间乘以 0.1 后一次迭代只停 0.3 秒，同样 50 个用户每秒最多能发三百多个请求。</p>
+<p>这样做的代价是：一个虚拟用户不再代表一个真实的人，「50 个用户」和真实的 50 人在线不是一回事。所以看拐点时以<strong>每秒请求数</strong>为准，用户数只是加压的手段。真实项目里有足够的许可时，应该按真实的思考时间加更多的用户。</p>
+<h3 id="1822-运行">18.2.2 运行<a class="headerlink" href="#1822-运行" title="Permanent link">&para;</a></h3>
+<p>用 <code>$env:SHOP_INIT_BALANCE = "1000000"</code> 启动练习网站（连接池用默认的 8），运行 knee，一共跑 5 分钟出头。</p>
+<p>用 Analysis 打开结果，摘要里三个业务事务（02_search、03_order、04_pay）各通过 13181 次、0 失败，SLA 全部通过：</p>
+<p><img alt="实验一的摘要：最大运行 Vuser 数 50，SLA 已定义" src="images/18-knee-summary.png" /></p>
+<p>全程的数字看不出什么问题：02_search 平均 0.115 秒，P90 0.208 秒，都在 0.3 秒的目标以内。可这是五档压力混在一起的平均数，要按档来看。</p>
+<h3 id="1823-按档看数据">18.2.3 按档看数据<a class="headerlink" href="#1823-按档看数据" title="Permanent link">&para;</a></h3>
+<p>用第 17 章 17.10 节的 lr_summary.py 按档汇总，每档 60 秒，去掉每档开头 15 秒（用户刚加上来，数据还不稳）：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\knee_pool8 --step 60 --skip 15
+</code></pre></div>
+<p>输出的最后一张表（响应时间单位是毫秒，CPU 来自 Windows 资源监控）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">用户数</th>
+<th style="text-align: right;">每秒请求数</th>
+<th style="text-align: right;">02_search 平均 / 90%</th>
+<th style="text-align: right;">03_order 平均 / 90%</th>
+<th style="text-align: right;">04_pay 平均 / 90%</th>
+<th style="text-align: right;">失败</th>
+<th style="text-align: right;">CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">61.9</td>
+<td style="text-align: right;">53 / 68</td>
+<td style="text-align: right;">54 / 69</td>
+<td style="text-align: right;">54 / 69</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.1</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">158.2</td>
+<td style="text-align: right;">77 / 99</td>
+<td style="text-align: right;">85 / 106</td>
+<td style="text-align: right;">84 / 105</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">16%</td>
+</tr>
+<tr>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">158.7</td>
+<td style="text-align: right;">137 / 163</td>
+<td style="text-align: right;">148 / 170</td>
+<td style="text-align: right;">148 / 171</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">28%</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">157.9</td>
+<td style="text-align: right;">201 / 227</td>
+<td style="text-align: right;">213 / 236</td>
+<td style="text-align: right;">213 / 235</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">36%</td>
+</tr>
+</tbody>
+</table>
+<p>在 Analysis 里把平均事务响应时间和正在运行的 Vuser 数叠加（第 17 章 17.7 节），台阶和响应时间的关系一目了然：</p>
+<p><img alt="平均事务响应时间叠加正在运行的 Vuser 数：20 个用户以后，每加一档，响应时间上一个台阶" src="images/18-knee-rt-vusers.png" /></p>
+<p>每秒点击数叠加 Vuser 数，粒度调到 30 秒（第 17 章 17.6 节）：</p>
+<p><img alt="每秒点击数叠加 Vuser 数：涨到 160 左右就不再涨" src="images/18-knee-hits.png" /></p>
+<h3 id="1824-读懂拐点">18.2.4 读懂拐点<a class="headerlink" href="#1824-读懂拐点" title="Permanent link">&para;</a></h3>
+<p>逐档看：</p>
+<ul>
+<li><strong>10 到 20 个用户</strong>：每秒请求数从 61.9 翻倍到 123.1，响应时间几乎不变。系统还有余力，加多少压力就处理多少。用利特尔法则核对：一次迭代约 0.16 + 0.3 = 0.46 秒，10 个用户每秒 10 ÷ 0.46 × 3 ≈ 65 个请求，和 61.9 差不多（实际每次迭代还有一点 LoadRunner 自己的开销）；</li>
+<li><strong>20 到 30 个用户</strong>：按比例应该到 185 左右，实际只有 158.2，搜索的响应时间从 54 毫秒涨到 77 毫秒。系统开始处理不过来了；</li>
+<li><strong>30 到 50 个用户</strong>：每秒请求数一直停在 158 左右，响应时间却从 77 毫秒涨到 201 毫秒。多加的用户没有带来更多的处理量，只是在排队。</li>
+</ul>
+<p><strong>拐点在 20 到 30 个用户之间，系统的最大吞吐量约为每秒 158 个请求。</strong> 拐点以后再加压，只会让每个人等得更久。</p>
+<p>拐点以后的响应时间也能用利特尔法则算出来。每秒请求数固定在 158，也就是每秒 158 ÷ 3 ≈ 52.7 次迭代；50 个用户，每人一次迭代要 50 ÷ 52.7 ≈ 0.95 秒，去掉 0.3 秒思考时间，三个请求一共 0.65 秒，平均每个约 0.216 秒，和实测的 201～213 毫秒很接近。也就是说，多出来的响应时间全是排队的时间。</p>
+<p>对照第 13 章 13.4 节的目标，四个接口合计要每秒 200 次请求，这套系统最多 158 次，<strong>达不到目标</strong>，要找出瓶颈。</p>
+<h3 id="1825-瓶颈在哪">18.2.5 瓶颈在哪<a class="headerlink" href="#1825-瓶颈在哪" title="Permanent link">&para;</a></h3>
+<p>把几个现象放在一起：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每秒请求数到 158 就不涨了</td>
+<td>有一个地方限制了处理能力</td>
+</tr>
+<tr>
+<td>响应时间随用户数线性上涨</td>
+<td>请求在某个地方排队</td>
+</tr>
+<tr>
+<td>整台电脑的 CPU 只有 16%～36%</td>
+<td>不是 CPU 算不过来</td>
+</tr>
+<tr>
+<td>没有任何错误</td>
+<td>不是报错导致请求变少</td>
+</tr>
+</tbody>
+</table>
+<p>CPU 不忙、请求却在排队，常见的原因是<strong>数量有限的资源</strong>：数据库连接池、线程池、锁、调用的外部服务限制了并发数。请求要先拿到这个资源才能往下走，资源用完了，后来的请求只能等。</p>
+<p>练习网站的代码能证实这一点。shop_order 用到的登录、搜索、下单、支付几个接口，每次都会调用一次 db_query，它模拟一次数据库查询（下面是 app.py 的节选）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">DB_POOL</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"SHOP_DB_POOL"</span><span class="p">,</span> <span class="s2">"8"</span><span class="p">))</span>
+<span class="n">DB_LATENCY_MS</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"SHOP_DB_LATENCY_MS"</span><span class="p">,</span> <span class="s2">"50"</span><span class="p">))</span>
+<span class="n">_db_pool</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">BoundedSemaphore</span><span class="p">(</span><span class="n">DB_POOL</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">db_query</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""模拟一次数据库查询：先拿到连接（连接池用完了就排队等），再花一点时间。"""</span>
+    <span class="k">with</span> <span class="n">_db_pool</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DB_LATENCY_MS</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">))</span>
+</code></pre></div>
+<p>连接池只有 8 个连接，每次查询平均 50 毫秒。对连接池也用一次利特尔法则：8 个连接一直不停地查，每秒最多 8 ÷ 0.05 = <strong>160 次</strong>查询。这几个接口每次查一次，所以每秒最多处理 160 个请求，实测的 158 就是碰到了这个上限。</p>
+<p>真实项目里看不到这么直白的代码，要靠证据一步步缩小范围：</p>
+<ul>
+<li>看应用的连接池监控：活跃连接数一直等于最大值，等待获取连接的线程很多；</li>
+<li>在压测过程中抓应用的线程快照（Java 用 jstack），大量线程停在获取连接的地方；</li>
+<li>看数据库这一侧：连接数、慢查询、锁等待。数据库自己很闲，问题就在应用的连接池；数据库也忙，就要先优化查询。</li>
+</ul>
+<p>性能测试工程师不一定要自己改代码，但要能拿着这些证据和开发说清楚「慢在哪里、为什么」。</p>
+<p>这也解答了第 16 章练习 1 的问题：思考时间改成忽略以后，10 个用户每秒想发的请求超过 160 个，同样碰到了连接池的上限，响应时间随之变长。</p>
+<h2 id="183-实验二调大连接池再测一次">18.3 实验二：调大连接池再测一次<a class="headerlink" href="#183-实验二调大连接池再测一次" title="Permanent link">&para;</a></h2>
+<h3 id="1831-运行">18.3.1 运行<a class="headerlink" href="#1831-运行" title="Permanent link">&para;</a></h3>
+<p>用两个开关重启练习网站：</p>
+<div class="highlight"><pre><span></span><code>&gt; $env:SHOP_INIT_BALANCE = "1000000"
+&gt; $env:SHOP_DB_POOL = "32"
+&gt; python -m uvicorn shop.app:app --port 8000 --no-access-log
+</code></pre></div>
+<p>knee 场景一点都不改，只把结果名称改成 knee_pool32，再跑一次。</p>
+<h3 id="1832-结果">18.3.2 结果<a class="headerlink" href="#1832-结果" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">用户数</th>
+<th style="text-align: right;">每秒请求数</th>
+<th style="text-align: right;">02_search 平均 / 90%</th>
+<th style="text-align: right;">03_order 平均 / 90%</th>
+<th style="text-align: right;">04_pay 平均 / 90%</th>
+<th style="text-align: right;">失败</th>
+<th style="text-align: right;">CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">62.3</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">124.1</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">186.1</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">247.6</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 70</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">43%</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">308.3</td>
+<td style="text-align: right;">54 / 70</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">56%</td>
+</tr>
+</tbody>
+</table>
+<p>每秒请求数随用户数一路涨上去，50 个用户时到了 308.3，响应时间始终在 53～55 毫秒。连接池的上限变成了每秒 32 ÷ 0.05 = 640 次，50 个用户还碰不到它：按利特尔法则，50 个用户每秒最多发 50 ÷ 0.46 × 3 ≈ 326 个请求，实测 308.3，这时的瓶颈变成了压力本身，系统还有余力。</p>
+<p>用交叉结果（第 17 章 17.8 节）把两次放在一起看：</p>
+<p><img alt="交叉结果的摘要：连接池 8 和 32 的统计信息、事务并排对比" src="images/18-cross-summary.png" /></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">knee_pool8</th>
+<th style="text-align: right;">knee_pool32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总点击数</td>
+<td style="text-align: right;">39,643</td>
+<td style="text-align: right;">55,714</td>
+</tr>
+<tr>
+<td>每秒平均点击数</td>
+<td style="text-align: right;">131.268</td>
+<td style="text-align: right;">184.483</td>
+</tr>
+<tr>
+<td>通过的事务总数</td>
+<td style="text-align: right;">52,874</td>
+<td style="text-align: right;">74,302</td>
+</tr>
+<tr>
+<td>02_search 平均 / P90（秒）</td>
+<td style="text-align: right;">0.115 / 0.208</td>
+<td style="text-align: right;">0.054 / 0.069</td>
+</tr>
+<tr>
+<td>02_search 最大值（秒）</td>
+<td style="text-align: right;">0.531</td>
+<td style="text-align: right;">0.110</td>
+</tr>
+</tbody>
+</table>
+<p>在交叉会话的平均事务响应时间里，用筛选条件只留下 02_search（事务名的下拉列表里勾选）：</p>
+<p><img alt="只看 02_search：连接池 8 的红线三次上台阶，连接池 32 的绿线一直平稳" src="images/18-cross-search.png" /></p>
+<p>红线在第 2、3、4 分钟各上一个台阶，正好是用户加到 30、40、50 的时刻；绿线一直贴在 0.054 秒附近。</p>
+<h3 id="1833-结论和代价">18.3.3 结论和代价<a class="headerlink" href="#1833-结论和代价" title="Permanent link">&para;</a></h3>
+<p>调大连接池以后，同样 50 个用户，吞吐量从每秒 158 提高到 308，提高了近一倍，响应时间回到了没有压力时的水平。第 13 章的目标每秒 200 次已经可以达到。</p>
+<p>两点要注意：</p>
+<ul>
+<li><strong>CPU 跟着涨了。</strong> 50 个用户时整机 CPU 从 36% 涨到 56%，处理的请求多了，CPU 用得也多了。再往上加压，下一个瓶颈很可能是 CPU，要用更多的用户验证，社区版的 50 个用户已经不够了；</li>
+<li><strong>连接池不是越大越好。</strong> 真实的数据库，每个连接都要占内存，数据库也有最大连接数的限制；几十台应用服务器各开 32 个连接，数据库可能先承受不住。调多大，要和开发、数据库管理员一起，结合数据库那一侧的监控来定。</li>
+</ul>
+<h2 id="184-实验三并发支付">18.4 实验三：并发支付<a class="headerlink" href="#184-实验三并发支付" title="Permanent link">&para;</a></h2>
+<h3 id="1841-要测什么">18.4.1 要测什么<a class="headerlink" href="#1841-要测什么" title="Permanent link">&para;</a></h3>
+<p>前两个实验关心的是「快不快」。第 13 章 13.3 节说过，并发测试关心的是「对不对」：很多请求同时做同一件事时，结果还对不对。典型的例子是用户手快，在支付按钮上连点了好几下，或者网络不好、客户端自动重试，同一张订单的支付请求几乎同时到了服务器好几次。正确的结果是：只有一次支付成功，钱只扣一次。</p>
+<h3 id="1842-脚本-pay_race">18.4.2 脚本 pay_race<a class="headerlink" href="#1842-脚本-pay_race" title="Permanent link">&para;</a></h3>
+<p>参考代码的 <code>lr/pay_race/</code> 是专门为这个实验写的脚本，结构和 shop_order 一样，源文件同样存成 GBK。</p>
+<p>vuser_init.c 用 alice 登录，所有虚拟用户都用这个账号，相当于同一个人在连点：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.token"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 所有虚拟用户都用 alice 登录：模拟同一个人在支付按钮上连点</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span><span class="w"> </span><span class="s">"{token}"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Action.c 先到集合点等齐，再付同一张订单：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 集合点：先到的虚拟用户在这里等，到齐了再一起往下走，让支付请求同时到达服务器</span>
+<span class="w">    </span><span class="n">lr_rendezvous</span><span class="p">(</span><span class="s">"pay"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"05_pay_same_order"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=payCode"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.code"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 订单号来自 order.dat，所有虚拟用户付的是同一张订单</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders/{orderNo}/pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">),</span><span class="w"> </span><span class="s">"0"</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_error_message</span><span class="p">(</span><span class="s">"支付失败：订单 %s，业务码 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orderNo}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"05_pay_same_order"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_FAIL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"支付成功：订单 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orderNo}"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"05_pay_same_order"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>vuser_end.c 退出登录。参数 orderNo 是文件类型，来自 order.dat，「选择下一行」是「顺序」、「更新值的时间」是「一次」：每个虚拟用户都取第一行，付的是同一张订单。运行时设置的迭代数是 1，每个用户只付一次。</p>
+<p>订单要在压测前准备好。脚本目录里的 make_order.py 用 alice 下一张订单，把订单号写进 order.dat。在工程根目录执行（练习网站要在运行）：</p>
+<div class="highlight"><pre><span></span><code>&gt; python lr\pay_race\make_order.py
+已下单：SO20261024000001，金额 129.0 元，订单号已写进 order.dat
+alice 当前余额：100000.0 元
+</code></pre></div>
+<p>搜的是充电宝，129 元。练习网站刚重启时，这是第一张订单，所以订单号是当天的 000001。</p>
+<h3 id="1843-场景">18.4.3 场景<a class="headerlink" href="#1843-场景" title="Permanent link">&para;</a></h3>
+<ol>
+<li>在 VuGen 里打开 pay_race，集成 → 创建 Controller 场景，Vuser 数填 10（第 16 章 16.2.1 节）；</li>
+<li>编辑启动 Vuser：启动 10 个，选「同时」；</li>
+<li>编辑持续时间：选「完成前一直运行」，点「确定」时提示「计划程序操作将被移除」，点「是」，停止 Vuser 那一行被删掉。每个用户付完一次就结束，不需要停止操作：</li>
+</ol>
+<p><img alt="并发支付的计划：同时启动 10 个，完成前一直运行" src="images/18-race-plan.png" /></p>
+<ol>
+<li>点菜单 场景 → 集合，打开「集合信息」：左边是脚本里的集合点 pay，右边列着会到达这个集合点的 10 个虚拟用户：</li>
+</ol>
+<p><img alt="集合信息：集合点 pay 和 10 个虚拟用户" src="images/18-race-rendezvous.png" /></p>
+<ol>
+<li>点「策略」看放行的条件：</li>
+</ol>
+<p><img alt="集合策略：默认是运行中的用户 100% 到达才放行，超时 30 秒" src="images/18-race-policy.png" /></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>释放，当 [100]% 比例的 Vuser（占总数）到达集合</td>
+<td>按场景里的用户总数算</td>
+</tr>
+<tr>
+<td>释放，当 [100]% 比例的 Vuser（占运行的总数）到达集合</td>
+<td>默认。按正在运行的用户数算</td>
+</tr>
+<tr>
+<td>释放，当 [1] Vuser 到达集合</td>
+<td>到了几个人就放行</td>
+</tr>
+<tr>
+<td>Vuser 之间的超时值 [30] 秒</td>
+<td>两个用户先后到达的间隔超过 30 秒，就不再等，把已经到的放行</td>
+</tr>
+</tbody>
+</table>
+<p>保持默认：10 个用户都到齐了才一起放行；
+6. 结果 → 结果设置：结果名称 pay_race_nobug，目录 <code>D:\work\lr-results</code>；文件 → 另存为 <code>D:\work\autotest-demo\lr\scenarios\pay_race.lrs</code>。</p>
+<h3 id="1844-默认模式只成功了一次">18.4.4 默认模式：只成功了一次<a class="headerlink" href="#1844-默认模式只成功了一次" title="Permanent link">&para;</a></h3>
+<p>练习网站不带开关重启，执行 make_order.py 下单，然后运行场景。场景几秒钟就跑完了。再用 make_order.py check 查订单和余额：</p>
+<div class="highlight"><pre><span></span><code>&gt; python lr\pay_race\make_order.py check
+订单 SO20261024000001：状态 PAID，金额 129.0 元
+alice 当前余额：99871.0 元
+</code></pre></div>
+<p>订单已支付，余额只少了 129 元。LoadRunner 这边，05_pay_same_order 通过 1 次、失败 9 次：</p>
+<p><img alt="并发支付的摘要：通过 41，失败 9，05_pay_same_order 通过 1、失败 9" src="images/18-race-summary.png" /></p>
+<p>失败的 9 次是脚本里的 lr_error_message 报的，错误信息是：</p>
+<div class="highlight"><pre><span></span><code>Action.c(21): 错误: 支付失败：订单 SO20261024000001，业务码 3003
+</code></pre></div>
+<p>3003 是「订单已支付，不能支付」：第一个请求付完以后，订单变成了已支付，后面 9 个请求都被拒绝了。在 Analysis 里添加错误类的「错误统计 (按描述)」图，能看到这一种错误一共 9 次，错误号 -17999 是 lr_error_message 报的错：</p>
+<p><img alt="错误统计 (按描述)：9 次支付失败" src="images/18-race-errors.png" /></p>
+<p><strong>这 9 次失败恰恰说明系统是对的。</strong> 并发测试的预期本来就是「只有一次成功」，所以判断并发测试通没通过，要看业务数据：订单的状态、余额扣了几次，而不是看 LoadRunner 的通过率。</p>
+<p>另外，摘要里的「最大运行 Vuser 数」显示 0：场景只跑了 3 秒，这一项没统计上，以事务数为准。</p>
+<h3 id="1845-打开缺陷开关扣了十次钱">18.4.5 打开缺陷开关：扣了十次钱<a class="headerlink" href="#1845-打开缺陷开关扣了十次钱" title="Permanent link">&para;</a></h3>
+<p>用 <code>$env:SHOP_PAY_RACE_BUG = "1"</code> 重启练习网站，结果名改成 pay_race_bug，重新执行 make_order.py 下单、运行场景、检查：</p>
+<div class="highlight"><pre><span></span><code>&gt; python lr\pay_race\make_order.py
+已下单：SO20261024000001，金额 129.0 元，订单号已写进 order.dat
+alice 当前余额：100000.0 元
+&gt; python lr\pay_race\make_order.py check
+订单 SO20261024000001：状态 PAID，金额 129.0 元
+alice 当前余额：98710.0 元
+</code></pre></div>
+<p>一张 129 元的订单，余额少了 1290 元：<strong>扣了 10 次钱</strong>。</p>
+<p>LoadRunner 这边，05_pay_same_order 通过 10 次、失败 0 次。用第 17 章的 lr_summary.py 检查（<code>python tools/lr_summary.py D:\work\lr-results\pay_race_bug --check</code>），结论是「检查通过：没有失败的事务，场景里没有定义 SLA」，退出码 0。工具看来一切正常，钱却多扣了 9 次。只看通过率的话，这个严重的资金缺陷就漏过去了。</p>
+<h3 id="1846-原因和修复">18.4.6 原因和修复<a class="headerlink" href="#1846-原因和修复" title="Permanent link">&para;</a></h3>
+<p>支付接口的代码（app.py）：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/api/orders/</span><span class="si">{order_no}</span><span class="s2">/pay"</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"订单"</span><span class="p">],</span> <span class="n">summary</span><span class="o">=</span><span class="s2">"支付订单（从余额扣款）"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pay_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">login_user</span><span class="p">)):</span>
+    <span class="c1"># 正常情况下同一用户的支付排队处理；打开缺陷开关后不排队，并发支付会重复扣款</span>
+    <span class="n">guard</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">nullcontext</span><span class="p">()</span> <span class="k">if</span> <span class="n">PAY_RACE_BUG</span> <span class="k">else</span> <span class="n">_user_locks</span><span class="p">[</span><span class="n">username</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">guard</span><span class="p">:</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">find_order</span><span class="p">(</span><span class="n">order_no</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">3001</span><span class="p">,</span> <span class="s2">"订单不存在"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">o</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"UNPAID"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">3003</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"订单</span><span class="si">{</span><span class="n">STATUS_TEXT</span><span class="p">[</span><span class="n">o</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]]</span><span class="si">}</span><span class="s2">，不能支付"</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">USERS</span><span class="p">[</span><span class="n">username</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">user</span><span class="p">[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">o</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="mi">3002</span><span class="p">,</span> <span class="s2">"余额不足"</span><span class="p">)</span>
+        <span class="n">db_query</span><span class="p">()</span>                                   <span class="c1"># 模拟调用支付通道、写支付流水</span>
+        <span class="n">user</span><span class="p">[</span><span class="s2">"balance"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">o</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span>
+        <span class="n">o</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"PAID"</span>
+        <span class="n">o</span><span class="p">[</span><span class="s2">"paidAt"</span><span class="p">]</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ok</span><span class="p">({</span><span class="s2">"orderNo"</span><span class="p">:</span> <span class="n">order_no</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"PAID"</span><span class="p">,</span> <span class="s2">"balance"</span><span class="p">:</span> <span class="n">yuan</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"balance"</span><span class="p">])})</span>
+</code></pre></div>
+<p>支付分三步：检查订单是不是待支付，调用支付通道（db_query，约 50 毫秒），扣钱并把订单改成已支付。打开开关后没有锁，10 个请求同时到达，都在第一步看到「待支付」，都通过了检查，然后各自扣了一次钱。这种「先检查、再修改」，中间有空档被别的请求插进来的问题，叫<strong>竞态条件</strong>。</p>
+<p>默认模式下有一把按用户分的锁（_user_locks），同一个用户的支付排队一个一个处理：第一个付完把订单改成已支付，后面的再检查就过不去了。</p>
+<p>真实系统里常见的修复办法：</p>
+<table>
+<thead>
+<tr>
+<th>办法</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加锁</td>
+<td>同一张订单、同一个用户的支付串行处理。多台服务器时要用分布式锁</td>
+</tr>
+<tr>
+<td>数据库条件更新</td>
+<td><code>UPDATE 订单 SET 状态='已支付' WHERE 订单号=? AND 状态='待支付'</code>，看更新了几行：1 行才继续扣款，0 行说明别的请求已经付过了</td>
+</tr>
+<tr>
+<td>幂等</td>
+<td>每次支付带一个唯一的请求号，服务端记录处理过的请求号，同一个号只处理一次</td>
+</tr>
+<tr>
+<td>唯一约束</td>
+<td>支付流水表上给订单号加唯一索引，第二条流水插不进去</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1847-用-pytest-做同样的测试">18.4.7 用 pytest 做同样的测试<a class="headerlink" href="#1847-用-pytest-做同样的测试" title="Permanent link">&para;</a></h3>
+<p>同样的测试也能写成一条接口用例。第 4 章 4.14 节说过，接口用例里还差一条并发支付的用例，现在把它加上：在 <code>tests/api</code> 下新建 <code>test_pay_concurrency.py</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""并发支付：同一张订单被同时支付多次，钱只能扣一次。</span>
+
+<span class="sd">练习网站默认没有这个缺陷，这条用例会通过。用 SHOP_PAY_RACE_BUG=1 重启练习网站，</span>
+<span class="sd">它就会失败，这就是并发测试能发现、单线程测试发现不了的那类资金问题。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">allure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+<span class="n">THREADS</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s2">"订单"</span><span class="p">)</span>
+<span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"同一订单并发支付 10 次，只成功 1 次、只扣 1 次钱"</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">concurrency</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_concurrent_pay_deducts_once</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">unpaid_order</span><span class="p">):</span>
+    <span class="n">balance_before</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="n">barrier</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Barrier</span><span class="p">(</span><span class="n">THREADS</span><span class="p">)</span>   <span class="c1"># 10 个线程都准备好了再一起发，尽量撞在同一时刻</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay_once</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"base_url"</span><span class="p">])</span>           <span class="c1"># 每个线程用自己的连接</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"token"</span><span class="p">]</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">token</span>    <span class="c1"># 同一个登录态，相当于同一个人连点支付</span>
+        <span class="n">barrier</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">pay_order</span><span class="p">(</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">])</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"code"</span><span class="p">]</span>
+
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">THREADS</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="n">codes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">pay_once</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">THREADS</span><span class="p">)))</span>
+
+    <span class="n">balance_after</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">codes</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"应该只有 1 次支付成功，实际返回的业务码：</span><span class="si">{</span><span class="n">codes</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">assert</span> <span class="n">balance_after</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="n">balance_before</span> <span class="o">-</span> <span class="n">unpaid_order</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]),</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"余额应该只扣 1 次：支付前 </span><span class="si">{</span><span class="n">balance_before</span><span class="si">}</span><span class="s2">，支付后 </span><span class="si">{</span><span class="n">balance_after</span><span class="si">}</span><span class="s2">，订单金额 </span><span class="si">{</span><span class="n">unpaid_order</span><span class="p">[</span><span class="s1">'amount'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>用 10 个线程、同一个登录态一起支付：</p>
+<ul>
+<li><strong>threading.Barrier(10)</strong> 是线程版的集合点：每个线程执行到 <code>barrier.wait()</code> 就停下来等，10 个都到了再一起往下走；</li>
+<li>每个线程用自己的 ShopApi 对象，各走各的连接，但请求头里带的是同一个 token，相当于同一个人连点；</li>
+<li><code>ThreadPoolExecutor</code> 是线程池，<code>pool.map</code> 让 10 个线程各执行一次 pay_once，收集 10 个业务码；</li>
+<li>最后断言两件事：业务码 0（成功）只出现一次；余额只少了一张订单的钱。</li>
+</ul>
+<p>用例带着 <code>@pytest.mark.concurrency</code> 标记，第 7 章 7.8 节登记过这个标记，可以按标记单独运行。练习网站按默认方式启动，运行：</p>
+<div class="highlight"><pre><span></span><code>&gt; pytest -m concurrency
+……
+tests\api\test_pay_concurrency.py .                                      [100%]
+====================== 1 passed, 159 deselected in 0.63s ======================
+</code></pre></div>
+<p>deselected 的个数取决于你的工程里有多少条用例。用 <code>$env:SHOP_PAY_RACE_BUG = "1"</code> 重启练习网站再运行，它就失败了：</p>
+<div class="highlight"><pre><span></span><code>&gt; pytest -m concurrency
+……
+E       AssertionError: 应该只有 1 次支付成功，实际返回的业务码：[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+E       assert 10 == 1
+……
+FAILED tests/api/test_pay_concurrency.py::test_concurrent_pay_deducts_once - ...
+====================== 1 failed, 159 deselected in 0.95s ======================
+</code></pre></div>
+<p>10 次都返回了业务码 0。第 7 章 7.6 节 skipif 的例子 <code>tests/adv/test_adv_skip_xfail.py</code> 里，有一条专门演示这个缺陷的用例，只在开关打开时才运行。运行 pytest 的窗口也要设上这个环境变量，skipif 才会放行：</p>
+<div class="highlight"><pre><span></span><code>&gt; $env:SHOP_PAY_RACE_BUG = "1"
+&gt; pytest tests/adv/test_adv_skip_xfail.py
+……
+tests\adv\test_adv_skip_xfail.py .x                                      [100%]
+……
+======================== 1 passed, 1 xfailed in 0.59s =========================
+</code></pre></div>
+<p>演示缺陷的那条通过了（它断言的就是会重复扣款），x 是同一个文件里第 7 章预期失败的例子。做完去掉开关：<code>Remove-Item Env:SHOP_PAY_RACE_BUG</code>，按默认方式重启练习网站。</p>
+<p>LoadRunner 和 pytest 都能做并发测试，各有用处：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>LoadRunner 的集合点</th>
+<th>pytest 的多线程用例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>适合</td>
+<td>并发量大（几十、几百个用户），或者要在持续的背景压力下测并发</td>
+<td>并发量小、只验证一个点，比如「同时支付 10 次只成功 1 次」</td>
+</tr>
+<tr>
+<td>判断结果</td>
+<td>要自己去查业务数据</td>
+<td>断言直接写在用例里，能放进日常的自动化回归</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>要准备场景、要有许可</td>
+<td>和普通的接口用例一样</td>
+</tr>
+</tbody>
+</table>
+<p>资金、库存这类功能，最好两种都有：pytest 的用例放进流水线，每次改代码都跑；上线前再用 LoadRunner 在压力下验证一次。</p>
+<h2 id="185-实验四同一账号多处登录">18.5 实验四：同一账号多处登录<a class="headerlink" href="#185-实验四同一账号多处登录" title="Permanent link">&para;</a></h2>
+<h3 id="1851-场景和开关">18.5.1 场景和开关<a class="headerlink" href="#1851-场景和开关" title="Permanent link">&para;</a></h3>
+<p>很多系统不允许同一个账号在多处登录：新的登录会让旧的 token 失效。练习网站用 SHOP_SINGLE_SESSION=1 启动时就是这样（第 2 章 2.5 节）。这个实验看看测试账号设计不当时，压测结果会变成什么样。</p>
+<p>场景 single：在第 16 章 demo16 的基础上另存为 single.lrs，启动 Vuser 改成启动 20 个、选「同时」，持续时间运行 00:01:00，停止 Vuser 选「同时」，思考时间保持按录制参数回放（每次迭代停 3 秒）。用 <code>$env:SHOP_SINGLE_SESSION = "1"</code> 重启练习网站。</p>
+<p>在 VuGen 里打开 shop_order，设计 → 参数 → 参数列表，把 username 的「选择下一行」从「唯一」改成「顺序」（「更新值的时间」还是「一次」），保存脚本，场景运行时用的就是改过的参数设置。结果名称 single_seq。</p>
+<h3 id="1852-结果">18.5.2 结果<a class="headerlink" href="#1852-结果" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\single_seq --check
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>事务</th>
+<th style="text-align: right;">通过</th>
+<th style="text-align: right;">失败</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01_login</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>02_search</td>
+<td style="text-align: right;">1064</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>03_order</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1045</td>
+</tr>
+<tr>
+<td>04_pay</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>vuser_end_Transaction</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP 状态码里有 401 共 1064 次。--check 列出了失败的事务，退出码 1；而 Controller 命令行运行的退出码仍然是 0（第 16 章 16.12 节）。</p>
+<p>怎么回事：「顺序」加「一次」，每个虚拟用户都从第一行开始取，20 个用户全用 user001 登录。每登录一次，前一个人的 token 就失效了，最后只有最后登录的那个用户的 token 有效。</p>
+<ul>
+<li>02_search 不需要登录，全部通过。失败的迭代在下单那一步就结束了，一次只要 1 秒多，所以搜索反而跑了 1064 次；</li>
+<li>03_order 只有最后登录的那个用户能成功，1 分钟跑了 19 次，其余 19 个用户的 1045 次全部 401；</li>
+<li>04_pay 只有那个用户走到了这一步，所以通过 19 次、没有失败；</li>
+<li>退出登录也一样，19 个用户的 token 已经失效，失败 19 次。</li>
+</ul>
+<p>结果目录的 log 文件夹里，每个出错的用户一个日志文件。按第 16 章的设置只在出错时写日志，所以每次迭代只记了出错前后的几行（日志里的弯引号换成了直引号，行尾的 [MsgId: ……] 省掉了）：</p>
+<div class="highlight"><pre><span></span><code>开始自动日志消息堆栈 – 迭代 1。
+Action.c(17): 注册的 web_reg_find 对于"Text="code":0"成功(计数=1)
+Action.c(17): web_url("search") 已成功，147 个正文字节，126 个标头字节
+Action.c(21): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.1109 浪费时间: 0.0002)。
+Action.c(23): lr_think_time: 1.00 秒。
+Action.c(25): 通知: 事务 "03_order" 已启动。
+……
+Action.c(34): web_custom_request("order") 已启动
+Action.c(34): 错误 -26546: 需要进行身份验证，请使用"web_set_user"，例如 web_set_user("domain\\user", "password", "host:port")；
+Action.c(34): 错误 -26629: 对于"http://127.0.0.1:8000/api/orders"，HTTP 状态代码=401 (Unauthorized)
+Action.c(34): 错误 -35060: 找不到所指定查询的匹配项:"$.data.orderNo"
+Action.c(34): 错误 -26366: 找不到 web_reg_find 的"Text="code":0"
+结束自动日志消息堆栈。
+</code></pre></div>
+<p>-26546 的提示让你用 web_set_user，那是另一种身份验证方式，和本例无关（第 14 章 14.7.3 节也遇到过它）。真正的原因看 -26629：HTTP 401。</p>
+<h3 id="1853-改回唯一">18.5.3 改回「唯一」<a class="headerlink" href="#1853-改回唯一" title="Permanent link">&para;</a></h3>
+<p>把 username 改回「唯一」，结果名 single_unique，再跑一次：0 个失败，三个业务事务各通过 380 次。</p>
+<p>这个实验说明：</p>
+<ul>
+<li><strong>账号设计会直接影响压测结果。</strong> 账号不够、取值方式选错，测出来的数字毫无意义，可场景照样能「跑完」；</li>
+<li><strong>要了解被测系统的登录规则。</strong> 只允许一处登录、登录次数有限制、密码输错几次就锁定，这些规则都要在准备数据时考虑进去；</li>
+<li>第 15 章 15.5.3 节说过，「顺序」和「唯一」在 VuGen 里回放看不出区别，到 Controller 里多个用户一起跑才显现出来。</li>
+</ul>
+<h2 id="186-实验五稳定性测试">18.6 实验五：稳定性测试<a class="headerlink" href="#186-实验五稳定性测试" title="Permanent link">&para;</a></h2>
+<h3 id="1861-场景">18.6.1 场景<a class="headerlink" href="#1861-场景" title="Permanent link">&para;</a></h3>
+<p>稳定性测试用正常的高负载长时间运行，看系统会不会越跑越慢、内存会不会一直涨。压力定多大：实验一的最大吞吐量约每秒 158 个请求，取它的八成左右。knee 场景的思考时间（乘以 0.1）下，20 个用户约每秒 123 个请求，是最大吞吐量的 78%。</p>
+<p>场景 stable：在 knee 的基础上另存，启动 Vuser 改成启动 20 个、5 个 Vuser 每隔 00:00:15；持续时间运行 00:30:00；结果名称 stable_30m。练习网站用 <code>$env:SHOP_INIT_BALANCE = "1000000"</code> 重启（18.1.2 节算过，默认余额只够 5 分半钟）。</p>
+<p>真实项目的稳定性测试一般跑 8 小时、24 小时甚至更久，本章为了演示只跑 30 分钟。</p>
+<h3 id="1862-记录练习网站的内存">18.6.2 记录练习网站的内存<a class="headerlink" href="#1862-记录练习网站的内存" title="Permanent link">&para;</a></h3>
+<p>第 16 章配的 Windows 资源监控只看整台电脑的 CPU。要看练习网站这一个进程的内存，用参考代码里的 <code>tools/mem_watch.py</code>（本章的内存数据是用同样做法的脚本记录的）。先找到练习网站的进程号：</p>
+<div class="highlight"><pre><span></span><code>&gt; netstat -ano | findstr :8000
+  TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING       27032
+</code></pre></div>
+<p>最后一列 27032 就是（你的进程号不一样）。在虚拟环境里用 python -m uvicorn 启动时，会有两个 python 进程，一定要用 netstat 查出来的那个监听端口的进程。</p>
+<p>另开一个 PowerShell 窗口，进入工程目录、激活虚拟环境，开始记录，每 30 秒记一次，一共记 2000 秒（比场景长一点，能看到停压以后的样子）：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/mem_watch.py 27032 2000 30 D:\work\lr-results\stable_mem.csv
+</code></pre></div>
+<p>然后在 Controller 里运行 stable 场景。</p>
+<h3 id="1863-结果">18.6.3 结果<a class="headerlink" href="#1863-结果" title="Permanent link">&para;</a></h3>
+<p>30 分 46 秒，三个业务事务各通过 75101 次，0 失败，SLA 全部达标。每 5 分钟汇总一次：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\stable_30m --step 300 --skip 0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">用户数</th>
+<th style="text-align: right;">每秒请求数</th>
+<th style="text-align: right;">02_search 平均 / 90%</th>
+<th style="text-align: right;">03_order 平均 / 90%</th>
+<th style="text-align: right;">04_pay 平均 / 90%</th>
+<th style="text-align: right;">失败</th>
+<th style="text-align: right;">CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">114.0</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">28%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.6</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">54 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">30%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.5</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.7</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.7</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">55 / 71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21%</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">123.6</td>
+<td style="text-align: right;">53 / 69</td>
+<td style="text-align: right;">55 / 70</td>
+<td style="text-align: right;">55 / 70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29%</td>
+</tr>
+</tbody>
+</table>
+<p>命令实际输出 7 行，最后一行是场景最后 46 秒减压的数据，按 300 秒平均只有每秒 19 个请求，上面没有列出来。第一段包含了开头 45 秒的加压，所以每秒请求数低一些。后面 25 分钟，每秒请求数、响应时间几乎一个数字都没变：<strong>系统没有越跑越慢</strong>。</p>
+<p>用第 6 章 6.3 节的开放接口 /api/stats/orders 查练习网站的订单统计，订单总数 75101，和 LoadRunner 的 03_order 通过次数一致，也都已支付。</p>
+<h3 id="1864-内存一直在涨是泄漏吗">18.6.4 内存一直在涨，是泄漏吗<a class="headerlink" href="#1864-内存一直在涨是泄漏吗" title="Permanent link">&para;</a></h3>
+<p>stable_mem.csv 里练习网站的内存（单位 MB）。<strong>工作集</strong>是进程现在占着的物理内存；<strong>专用字节</strong>是进程自己申请、别的进程不能共用的内存，判断内存泄漏主要看它：</p>
+<table>
+<thead>
+<tr>
+<th>开始后</th>
+<th style="text-align: right;">0 秒</th>
+<th style="text-align: right;">5 分</th>
+<th style="text-align: right;">10 分</th>
+<th style="text-align: right;">15 分</th>
+<th style="text-align: right;">20 分</th>
+<th style="text-align: right;">25 分</th>
+<th style="text-align: right;">30 分</th>
+<th style="text-align: right;">停压后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作集</td>
+<td style="text-align: right;">51.9</td>
+<td style="text-align: right;">63.2</td>
+<td style="text-align: right;">73.5</td>
+<td style="text-align: right;">82.8</td>
+<td style="text-align: right;">92.7</td>
+<td style="text-align: right;">102.0</td>
+<td style="text-align: right;">111.4</td>
+<td style="text-align: right;">113.2</td>
+</tr>
+<tr>
+<td>专用字节</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">51.1</td>
+<td style="text-align: right;">62.0</td>
+<td style="text-align: right;">70.9</td>
+<td style="text-align: right;">80.5</td>
+<td style="text-align: right;">90.5</td>
+<td style="text-align: right;">99.7</td>
+<td style="text-align: right;">101.8</td>
+</tr>
+</tbody>
+</table>
+<p>内存每分钟涨 2 MB 左右，30 分钟涨了 60 多 MB，压力停下以后不涨了，但也没有降回去。</p>
+<p>内存一直涨，先别急着下结论说是泄漏，要先找原因。练习网站把所有订单都放在内存里（app.py 开头的说明：数据都放在内存里），订单越多，占的内存就越多。算一下：专用字节涨了 101.8 − 40.3 = 61.5 MB，30 分钟下了 75101 张订单，平均每张订单约 0.84 KB，对一个带十来个字段的 Python 字典来说是合理的大小。所以这里的内存增长是<strong>数据量增长</strong>带来的，不是泄漏。</p>
+<p>区分两者的思路：</p>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>数据量增长</th>
+<th>内存泄漏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增长和业务量的关系</td>
+<td>和存下来的数据成正比，能算出每条数据占多少</td>
+<td>和请求次数有关，哪怕请求什么都没存下来，内存也在涨</td>
+</tr>
+<tr>
+<td>停压以后</td>
+<td>不再涨，数据还在所以不降</td>
+<td>也不再涨，泄漏掉的内存一般也降不回来，这一项区分不了两者，要结合前两项看</td>
+</tr>
+<tr>
+<td>是否合理</td>
+<td>看设计：数据本来就该放在内存里吗</td>
+<td>不合理</td>
+</tr>
+</tbody>
+</table>
+<p>真实系统里，订单存在数据库里，应用服务器的内存在压力稳定后应该是平的（有垃圾回收的语言会呈锯齿状，但每次回收后的低点不会一直抬高）。如果像这里一样一路上涨，就要查是哪些对象在增多：Java 用内存快照（堆转储）对比开始和结束时的对象数量，Python 可以用 tracemalloc，然后找开发确认这些对象该不该一直留着。常见的原因是缓存没有设上限、会话或监听器没有释放。</p>
+<h3 id="1865-数据里的一个异常值">18.6.5 数据里的一个异常值<a class="headerlink" href="#1865-数据里的一个异常值" title="Permanent link">&para;</a></h3>
+<p>lr_summary.py 算出的全程最小响应时间是 0.000 秒。查原始数据，第 1412 秒有 21 条业务事务的响应时间不到 20 毫秒，其中 17 条的开始时间和结束时间完全相同，而正常的请求至少要 30 毫秒；那一秒记下的事务有 146 条，前后几秒都是 123 条左右。这 21 条的时间没有记对，可事务总数和练习网站的订单数对得上，说明它们是真实发生的事务，不是多出来的记录。</p>
+<p>21 条只占三个业务事务共 22.5 万条的万分之一，对平均值、百分位数没有影响。看数据时，最小值、最大值这类极端的数字要多留个心眼，弄清楚它是怎么来的，再决定要不要写进报告。</p>
+<h2 id="187-写测试报告">18.7 写测试报告<a class="headerlink" href="#187-写测试报告" title="Permanent link">&para;</a></h2>
+<p>按第 17 章 17.11 节的结构，用本章实验的数据写一份报告。下面是一份精简的样例，真实的报告还要附上场景配置、完整的图表。</p>
+<div class="admonition example">
+<p class="admonition-title">迷你商城下单链路性能测试报告</p>
+<p><strong>一、结论</strong></p>
+<ol>
+<li>默认配置（数据库连接池 8）下，系统最大吞吐量约为每秒 158 个请求，低于目标每秒 200 个请求，<strong>不达标</strong>；</li>
+<li>瓶颈是数据库连接池：吞吐量达到上限后整机 CPU 只有 16%～36%，响应时间随压力线性上涨；</li>
+<li>连接池调到 32 后，50 个虚拟用户下吞吐量达到每秒 308 个请求，搜索、下单、支付的 P95 都在 73 毫秒以内，<strong>达标</strong>；</li>
+<li>30 分钟稳定性测试（每秒约 123 个请求）期间，吞吐量和响应时间没有变化，没有失败；</li>
+<li>并发支付存在重复扣款的风险：去掉同一用户的支付锁后，同一张订单被扣款 10 次。现有版本有锁，测试通过，建议保留针对它的自动化用例。</li>
+</ol>
+<p><strong>二、测试目标</strong></p>
+<p>合计每秒 200 个请求时，搜索的 P95 不超过 0.3 秒，下单、支付的 P95 不超过 0.5 秒，错误率搜索低于 1%、下单和支付低于 0.1%（第 13 章 13.4 节；本次脚本没有商品详情，按合计的每秒请求数评估）。</p>
+<p><strong>三、测试环境</strong></p>
+<p>练习网站和 LoadRunner 2023 社区版在同一台电脑上；数据库为模拟的连接池，每次查询约 50 毫秒。与生产环境的差别：没有真实的数据库和网络延迟，数据在内存里，结论只能用来说明方法。</p>
+<p><strong>四、测试场景</strong></p>
+<p>脚本 shop_order（登录、搜索、下单、支付），思考时间为录制值的 0.1 倍；阶梯加压，每分钟加 10 个虚拟用户，最多 50 个；每个虚拟用户使用独立账号。</p>
+<p><strong>五、测试结果</strong></p>
+<p>（此处放 18.2.3 节、18.3.2 节的两张分档表格，以及叠加图、交叉结果图）</p>
+<p><strong>六、问题与分析</strong></p>
+<ul>
+<li>问题：用户数超过 20 后吞吐量停在每秒 158，搜索的响应时间从 54 毫秒上升到 201 毫秒；</li>
+<li>证据：分档数据显示吞吐量不再增长、CPU 不高、没有错误；按利特尔法则，拐点后增加的响应时间全部是排队时间；</li>
+<li>原因：数据库连接池只有 8 个连接，每次查询约 50 毫秒，每秒最多处理 160 次查询；</li>
+<li>验证：连接池调到 32 后，吞吐量随压力线性增长，响应时间不变。</li>
+</ul>
+<p><strong>七、风险与建议</strong></p>
+<ol>
+<li>调大连接池要评估数据库侧的连接数上限和资源占用；</li>
+<li>连接池调大后 CPU 随压力上升，50 个虚拟用户时整机 CPU 达到 56%，更高的压力需要更多的虚拟用户许可继续验证；</li>
+<li>稳定性测试只做了 30 分钟，上线前应按生产的业务高峰做 8 小时以上的测试。</li>
+</ol>
+</div>
+<h2 id="188-loadrunnerjmeterlocust-概念对照">18.8 LoadRunner、JMeter、Locust 概念对照<a class="headerlink" href="#188-loadrunnerjmeterlocust-概念对照" title="Permanent link">&para;</a></h2>
+<p>第 13 章说过，学会一个压测工具，换另一个主要是在学界面和写法。下面这张表把本教程用到的 LoadRunner 概念和 JMeter、Locust 里对应的东西放在一起：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>LoadRunner</th>
+<th>JMeter</th>
+<th>Locust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>脚本</td>
+<td>VuGen 脚本（C 语言）</td>
+<td>测试计划（.jmx 文件，图形界面编辑）</td>
+<td>locustfile.py（Python 代码）</td>
+</tr>
+<tr>
+<td>虚拟用户</td>
+<td>Vuser</td>
+<td>线程组里的线程</td>
+<td>User 类的实例</td>
+</tr>
+<tr>
+<td>一次请求</td>
+<td>web_url、web_custom_request</td>
+<td>HTTP 请求取样器</td>
+<td>self.client.get、post</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>lr_start_transaction、lr_end_transaction</td>
+<td>事务控制器</td>
+<td>请求的 name 参数，或者自己记时间上报</td>
+</tr>
+<tr>
+<td>检查点</td>
+<td>web_reg_find</td>
+<td>响应断言、JSON 断言</td>
+<td>catch_response=True 后自己判断，失败时调 failure</td>
+</tr>
+<tr>
+<td>关联</td>
+<td>web_reg_save_param_json 等</td>
+<td>JSON 提取器、正则表达式提取器</td>
+<td>直接在代码里解析响应</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>参数列表、.dat 文件</td>
+<td>CSV 数据文件设置</td>
+<td>在代码里读文件、用队列分配</td>
+</tr>
+<tr>
+<td>思考时间</td>
+<td>lr_think_time</td>
+<td>定时器（固定、随机）</td>
+<td>wait_time（between、constant）</td>
+</tr>
+<tr>
+<td>集合点</td>
+<td>lr_rendezvous</td>
+<td>同步定时器</td>
+<td>没有现成的，要自己用 gevent 的事件实现</td>
+</tr>
+<tr>
+<td>场景、加压方式</td>
+<td>Controller 场景的计划</td>
+<td>线程组的线程数、启动时间、持续时间</td>
+<td>命令行的 -u、-r、-t，或者自定义的 LoadTestShape</td>
+</tr>
+<tr>
+<td>多台机器发压</td>
+<td>Load Generator</td>
+<td>远程服务器（分布式）</td>
+<td>master 和 worker</td>
+</tr>
+<tr>
+<td>结果分析</td>
+<td>Analysis</td>
+<td>聚合报告等监听器，命令行生成 HTML 报告</td>
+<td>网页界面、CSV、HTML 报告</td>
+</tr>
+<tr>
+<td>达标判断</td>
+<td>SLA</td>
+<td>断言加上自己检查结果</td>
+<td>在代码里检查统计数据，设置退出码</td>
+</tr>
+</tbody>
+</table>
+<p>参考代码的 perf/ 目录里有用 Locust 写的压测脚本，第 19 章的流水线用其中的 locustfile.py 做每天一次的冒烟压测，想对照着看 Locust 写法的可以读一读。</p>
+<h2 id="189-常见的坑">18.9 常见的坑<a class="headerlink" href="#189-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>压到一半，支付开始大量失败，业务码 3002</td>
+<td>余额扣光了。压测前先算数据能撑多久，按需调大 SHOP_INIT_BALANCE（18.1.2 节）</td>
+</tr>
+<tr>
+<td>50 个用户也压不出拐点</td>
+<td>思考时间太长，每个用户发的请求太少。社区版用户有限时，把思考时间按比例缩小，并以每秒请求数为准分析（18.2.1 节）</td>
+</tr>
+<tr>
+<td>每档开头的数字忽高忽低</td>
+<td>用户刚加上来，还没进入稳定状态。按档统计时去掉每档开头一段时间（--skip）</td>
+</tr>
+<tr>
+<td>只看全程的平均数，觉得一切正常</td>
+<td>几档压力混在一起被平均了。阶梯加压要按档看（18.2.3 节）</td>
+</tr>
+<tr>
+<td>两次测试的结果对比不出原因</td>
+<td>两次之间改了不止一个地方。一次只改一个变量（18.1.3 节）</td>
+</tr>
+<tr>
+<td>拐点以后继续加用户，以为能压出更高的吞吐量</td>
+<td>拐点以后只是排队变长。吞吐量的上限要靠消除瓶颈来提高</td>
+</tr>
+<tr>
+<td>CPU 不高，就认为服务器还有很大余量</td>
+<td>瓶颈也可能是连接池、线程池、锁这类数量有限的资源，要看吞吐量和响应时间的变化（18.2.5 节）</td>
+</tr>
+<tr>
+<td>并发支付全部通过，就以为没问题</td>
+<td>并发测试要看业务数据：订单状态、扣了几次钱（18.4.5 节）</td>
+</tr>
+<tr>
+<td>并发测试成功一次、失败九次，就当成缺陷</td>
+<td>这正是正确的结果。先想清楚预期再看结果</td>
+</tr>
+<tr>
+<td>大量 401，可脚本在 VuGen 里回放正常</td>
+<td>多个用户用了同一个账号，系统只允许一处登录。账号参数选「唯一」（18.5 节）</td>
+</tr>
+<tr>
+<td>稳定性测试内存一直涨，就报了内存泄漏</td>
+<td>先看是不是数据量增长：算一算每条数据占多少内存，看停压后是什么样（18.6.4 节）</td>
+</tr>
+<tr>
+<td>稳定性测试跑了几分钟就开始报错</td>
+<td>先查数据：余额、库存、账号这些测试数据是不是用完了</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1810-练习">18.10 练习<a class="headerlink" href="#1810-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>用 <code>$env:SHOP_DB_LATENCY_MS = "100"</code> 把每次查询的耗时调成 100 毫秒，连接池保持 8。先用利特尔法则算出新的最大吞吐量，再跑一次 knee 场景，用 lr_summary.py 按档汇总，看拐点出现在多少个用户、吞吐量停在多少，和你算的对不对得上。</li>
+<li>把连接池设成 16，先估算最大吞吐量，再跑 knee 场景，用交叉结果和 knee_pool8、knee_pool32 放在一起对比。</li>
+<li>实验三的集合策略改成「释放，当 [5] Vuser 到达集合」，在缺陷开关打开时跑一次，看 alice 的余额被扣了几次，想一想为什么。</li>
+<li>不调余额（默认 10 万），把 stable 场景的持续时间改成 10 分钟跑一次。按 18.1.2 节估算支付从什么时候开始失败，再用 Analysis 的筛选或者 lr_summary.py 的 --from、--to 找到失败开始的时间，和你的估算比较。</li>
+<li>用练习 1 或练习 2 的数据，照 18.7 节的样子写一份完整的测试报告，包括图表。</li>
+</ol>
+<h2 id="1811-自检清单">18.11 自检清单<a class="headerlink" href="#1811-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能在压测前算出测试数据（余额、账号）能撑多久；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用一个启动 Vuser 操作配出阶梯加压，知道为什么要缩短思考时间、为什么以每秒请求数为准；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能从分档数据里找出拐点，说清楚拐点前后吞吐量和响应时间的变化；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用利特尔法则解释拐点以后增加的响应时间；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道「吞吐量不涨、响应时间变长、CPU 不高」通常意味着什么，知道连接池的上限怎么算；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用交叉结果对比调优前后，知道调大连接池的代价；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用集合点、同时启动、完成前一直运行配出并发测试，知道要用业务数据判断结果；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出竞态条件的成因和几种修复办法；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道账号的取值方式选错会让压测结果失真；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会做稳定性测试并记录进程内存，分得清数据量增长和内存泄漏；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能用实验数据写出一份结论先行、有证据的测试报告；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 LoadRunner 的主要概念在 JMeter、Locust 里叫什么。</li>
+</ul>
+<p>下一章：<a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html">第 19 章 工程化与持续集成</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 17 章 Analysis 分析与报告">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 17 章 Analysis 分析与报告
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 19 章 工程化与持续集成">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 19 章 工程化与持续集成
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

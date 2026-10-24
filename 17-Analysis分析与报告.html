@@ -1,0 +1,2690 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="16-Controller%E5%9C%BA%E6%99%AF.html">
+      
+      
+        <link rel="next" href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 17 章 Analysis 分析与报告 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-17-章-analysis-分析与报告" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 17 章 Analysis 分析与报告
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-打开结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 打开结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.1 打开结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1711-三种打开方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.1 三种打开方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1712-界面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.2 界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1713-会话" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.3 会话
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-摘要报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 摘要报告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.2 摘要报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1721-顶部和统计信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.1 顶部和统计信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1722-事务表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.2 事务表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1723-sla-列" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.3 SLA 列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1724-http-响应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.4 HTTP 响应
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173-图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.3 图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1731-平均事务响应时间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.1 平均事务响应时间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1732-常用的图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.2 常用的图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174-添加图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 添加图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175-筛选只看稳定的一段" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.5 筛选：只看稳定的一段
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176-粒度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.6 粒度
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#177-合并图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.7 合并图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#178-交叉结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.8 交叉结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#179-html-报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.9 HTML 报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1710-用脚本处理结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10 用脚本处理结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.10 用脚本处理结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#17101-为什么要导出数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.1 为什么要导出数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17102-导出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.2 导出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17103-用-lr_summarypy-汇总" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.3 用 lr_summary.py 汇总
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1711-写测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.11 写测试报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1712-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.12 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1713-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.13 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1714-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.14 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-打开结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 打开结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.1 打开结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1711-三种打开方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.1 三种打开方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1712-界面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.2 界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1713-会话" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1.3 会话
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-摘要报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 摘要报告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.2 摘要报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1721-顶部和统计信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.1 顶部和统计信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1722-事务表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.2 事务表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1723-sla-列" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.3 SLA 列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1724-http-响应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2.4 HTTP 响应
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173-图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.3 图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1731-平均事务响应时间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.1 平均事务响应时间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1732-常用的图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.2 常用的图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174-添加图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 添加图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175-筛选只看稳定的一段" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.5 筛选：只看稳定的一段
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176-粒度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.6 粒度
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#177-合并图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.7 合并图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#178-交叉结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.8 交叉结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#179-html-报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.9 HTML 报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1710-用脚本处理结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10 用脚本处理结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.10 用脚本处理结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#17101-为什么要导出数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.1 为什么要导出数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17102-导出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.2 导出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17103-用-lr_summarypy-汇总" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.10.3 用 lr_summary.py 汇总
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1711-写测试报告" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.11 写测试报告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1712-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.12 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1713-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.13 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1714-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.14 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-17-章-analysis-分析与报告">第 17 章 Analysis 分析与报告<a class="headerlink" href="#第-17-章-analysis-分析与报告" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>会打开 Controller 的运行结果，认得 Analysis 的界面；</li>
+<li>读得懂摘要报告：统计信息、事务表、SLA 状态、HTTP 状态码；</li>
+<li>会添加图，知道几张常用的图各自回答什么问题；</li>
+<li>会用筛选只看稳定的那段时间，会调粒度，会把两张图合并起来看；</li>
+<li>会用交叉结果对比两次运行；</li>
+<li>会导出 HTML 报告；</li>
+<li>会把结果导出成数据，用脚本统计、按阶梯分档、对照 SLA 自动判断；</li>
+<li>知道一份性能测试报告应该写些什么。</li>
+</ul>
+<p>第 16 章跑完了 demo16：10 个虚拟用户，每 10 秒加 2 个，加满后跑 3 分钟。Controller 的运行视图只能边跑边看个大概，跑完以后的分析在 <strong>Analysis</strong> 里做：它把结果目录里的原始数据整理成摘要报告和各种图，还能筛选、合并、对比、导出报告。本章用 demo16 的结果把 Analysis 常用的功能走一遍，最后讲怎么用脚本处理结果、怎么写测试报告。</p>
+<p>本章的截图和数字来自作者那次运行的结果 demo16_1；你的结果和这里不完全一样是正常的。</p>
+<hr />
+<h2 id="171-打开结果">17.1 打开结果<a class="headerlink" href="#171-打开结果" title="Permanent link">&para;</a></h2>
+<h3 id="1711-三种打开方式">17.1.1 三种打开方式<a class="headerlink" href="#1711-三种打开方式" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>怎么做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>从 Controller 打开</td>
+<td>场景跑完后，点菜单 结果 → 分析结果，Analysis 启动并打开这次的结果</td>
+</tr>
+<tr>
+<td>从开始菜单打开</td>
+<td>开始菜单 → Micro Focus → LoadRunner → Analysis，再点 文件 → 打开，找到结果目录里的 .lrr 文件</td>
+</tr>
+<tr>
+<td>命令行</td>
+<td><code>&amp; "$env:LR_PATH\bin\AnalysisUI.exe" -RESULTPATH D:\work\lr-results\demo16\demo16.lrr</code>，效果和前两种一样，打开窗口并载入结果</td>
+</tr>
+</tbody>
+</table>
+<p>打开结果时 Analysis 要先把原始数据处理一遍，结果越大等得越久。</p>
+<h3 id="1712-界面">17.1.2 界面<a class="headerlink" href="#1712-界面" title="Permanent link">&para;</a></h3>
+<p><img alt="Analysis 打开结果后显示的摘要报告" src="images/17-summary.png" /></p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>位置</th>
+<th>干什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>会话浏览器</td>
+<td>左上</td>
+<td>一棵树：「报告」下是摘要报告，「图」下是已经打开的图。点哪个就显示哪个</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>左下</td>
+<td>当前这张图或报告的属性，比如粒度、筛选条件</td>
+</tr>
+<tr>
+<td>标签页</td>
+<td>中间上方</td>
+<td>和会话浏览器里的项目一一对应，点标签也能切换</td>
+</tr>
+<tr>
+<td>Controller 输出消息</td>
+<td>左下角的按钮</td>
+<td>运行时 Controller 收到的消息，比如脚本里 lr_error_message 写的错误</td>
+</tr>
+</tbody>
+</table>
+<p>菜单栏是 文件、编辑、查看、图、报告、工具、窗口、帮助。本章用到的命令都在 文件、查看、图、报告 四个菜单里。</p>
+<p>默认打开时除了摘要报告，还自动加了五张图：正在运行的 Vuser 数、每秒点击数、吞吐量、事务摘要、平均事务响应时间。</p>
+<h3 id="1713-会话">17.1.3 会话<a class="headerlink" href="#1713-会话" title="Permanent link">&para;</a></h3>
+<p>Analysis 把你打开的图、设的筛选条件存成一个<strong>会话</strong>，文件扩展名是 .lra，默认名字是 Session1.lra，窗口标题上显示的就是它。关闭 Analysis 时会问「是否保存当前的 Analysis 会话？」，选「是」弹出「保存分析会话」对话框，默认位置是「文档」文件夹。建议存到结果目录里，比如 <code>D:\work\lr-results\demo16\demo16.lra</code>，和结果放在一起；下次用 文件 → 打开 打开这个 .lra，加过的图和筛选都还在。选「否」就不保存，下次打开结果又是默认的那几张图。</p>
+<h2 id="172-摘要报告">17.2 摘要报告<a class="headerlink" href="#172-摘要报告" title="Permanent link">&para;</a></h2>
+<p>摘要报告是打开结果后第一个看到的页面，从上到下分几块。</p>
+<h3 id="1721-顶部和统计信息">17.2.1 顶部和统计信息<a class="headerlink" href="#1721-顶部和统计信息" title="Permanent link">&para;</a></h3>
+<p>顶部五格：运行时间（场景开始的日期和时间）、持续时间、场景名称、结果名、SLA（定义了 SLA 显示「已定义」）。下面左边是场景计划的曲线，右边是统计信息：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>demo16</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最大运行 Vuser 数</td>
+<td>10</td>
+<td>同时在跑的虚拟用户最多有几个</td>
+</tr>
+<tr>
+<td>总吞吐量 (字节)</td>
+<td>465,659</td>
+<td>服务器返回的数据一共多少字节</td>
+</tr>
+<tr>
+<td>平均吞吐量 (字节/秒)</td>
+<td>2,024.604</td>
+<td>总吞吐量除以持续时间</td>
+</tr>
+<tr>
+<td>总点击数</td>
+<td>1,946</td>
+<td>HTTP 请求一共多少次</td>
+</tr>
+<tr>
+<td>每秒平均点击数</td>
+<td>8.461</td>
+<td>总点击数除以持续时间</td>
+</tr>
+<tr>
+<td>通过的事务比率</td>
+<td>100%</td>
+<td>通过的事务占全部事务的比例</td>
+</tr>
+</tbody>
+</table>
+<p>每秒平均点击数 8.461 比运行视图里满载时的 9.60 小，因为它是全程的平均：开头 40 秒在加压、最后几秒在减压，用户没有满。Analysis 计算时用的持续时间是 230 秒（比显示的 3 分 49 秒多 1 秒），1946 ÷ 230 ≈ 8.46，平均吞吐量 465,659 ÷ 230 ≈ 2,024.6 也是这么算的。要看满载时的数字，用 17.5 节的筛选只看中间那段。</p>
+<p>定义了 SLA 时，统计信息里除了最大运行 Vuser 数，其余五项的数值前面多了一个带斜线的圆圈 ⊘，表示这一项没有设 SLA，也就是「无数据」。</p>
+<h3 id="1722-事务表">17.2.2 事务表<a class="headerlink" href="#1722-事务表" title="Permanent link">&para;</a></h3>
+<p>事务表上面先是三个总数：通过 2,598、失败 0、已停止 0，和 Controller 运行视图里的数字一致。下面每个事务一行：</p>
+<table>
+<thead>
+<tr>
+<th>事务名称</th>
+<th style="text-align: right;">最小值</th>
+<th style="text-align: right;">平均值</th>
+<th style="text-align: right;">最大值</th>
+<th style="text-align: right;">标准偏差</th>
+<th style="text-align: right;">90%</th>
+<th style="text-align: right;">通过</th>
+<th style="text-align: right;">失败</th>
+<th style="text-align: right;">停止</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01_login</td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>vuser_init_Transaction</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">0.074</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>02_search</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.053</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">642</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>03_order</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.053</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">0.068</td>
+<td style="text-align: right;">642</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>04_pay</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.068</td>
+<td style="text-align: right;">642</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Action_Transaction</td>
+<td style="text-align: right;">0.106</td>
+<td style="text-align: right;">0.158</td>
+<td style="text-align: right;">0.214</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right;">642</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>vuser_end_Transaction</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>时间的单位都是秒。几列的意思：</p>
+<ul>
+<li><strong>平均值</strong>：所有通过的事务的平均响应时间；</li>
+<li><strong>标准偏差</strong>：响应时间的波动大小，越小越稳定；</li>
+<li><strong>90%</strong>：把这个事务的所有响应时间从小到大排好，排在第 90% 位置的那个值。02_search 的 90% 是 0.069，就是说 90% 的搜索在 0.069 秒内完成。第 13 章说过要看百分位数，不能只看平均值；</li>
+<li><strong>通过、失败、停止</strong>：事务的个数。停止是场景结束时还没做完、被中途停下的事务。</li>
+</ul>
+<p>Action_Transaction 的平均值是 0.158 秒，约等于 02_search、03_order、04_pay 三个平均值之和：Analysis 计算响应时间时<strong>扣掉了思考时间</strong>，三次 1 秒的 lr_think_time 不算在里面。第 16 章运行视图里看到的 3.2 秒是没扣的。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>摘要报告的筛选写着「(包括思考时间)」。</strong> 选中摘要报告时，左下角属性窗格的「筛选」一项显示「(包括思考时间)」，HTML 报告（17.9 节）的摘要页也是这么写的；而 HTML 报告里几张事务图的筛选写的是「(未包括思考时间)」。从 Action_Transaction 只有 0.158 秒来看，摘要里的数字并没有包括思考时间。以数字为准。</p>
+</div>
+<h3 id="1723-sla-列">17.2.3 SLA 列<a class="headerlink" href="#1723-sla-列" title="Permanent link">&para;</a></h3>
+<p>定义了 SLA 的结果，事务表多出三列，表头上面也多了一个「SLA 状态」筛选：</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLA 状态</td>
+<td>绿色的勾是通过，红色的叉是失败，带斜线的灰色圆圈 ⊘ 是没有设 SLA（无数据）</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>SLA 里设的阈值，02_search 是 0.3，03_order、04_pay 是 0.5</td>
+</tr>
+<tr>
+<td>违反率 (%)</td>
+<td>违反 SLA 的比例，demo16 的三个事务都没有违反，全是 0</td>
+</tr>
+</tbody>
+</table>
+<p>demo16 的三个业务事务都通过了：P95 都在 0.07 秒左右，离阈值很远。10 个用户的压力太小了，第 18 章把压力加上去再看。</p>
+<h3 id="1724-http-响应">17.2.4 HTTP 响应<a class="headerlink" href="#1724-http-响应" title="Permanent link">&para;</a></h3>
+<p>摘要报告最下面是 HTTP 状态码的统计，每种状态码一行：总计和每秒。demo16 只有 HTTP_200 一种，1,946 次。出现 4xx、5xx 时这里一眼就能看到，第 18 章 18.5 节同一账号多处登录的实验就出了一千多个 401。</p>
+<h2 id="173-图">17.3 图<a class="headerlink" href="#173-图" title="Permanent link">&para;</a></h2>
+<h3 id="1731-平均事务响应时间">17.3.1 平均事务响应时间<a class="headerlink" href="#1731-平均事务响应时间" title="Permanent link">&para;</a></h3>
+<p>点「平均事务响应时间」标签：</p>
+<p><img alt="平均事务响应时间：横轴是场景已用时间，下面是图例" src="images/17-avg-rt.png" /></p>
+<p>横轴是场景开始后的时间，纵轴是响应时间（秒），每个事务一条线。最上面那条是 Action_Transaction，在 0.16 秒上下；三个业务事务挤在 0.05 秒附近。下面的<strong>图例</strong>每条线一行：颜色、比例、度量（事务名）、最小值、平均值、最大值、标准偏差，这几个数和摘要报告事务表里的一致。取消某一行前面的勾，图上就不画这条线。</p>
+<p>左下角属性窗格里的「粒度」是 4 秒：图上的每个点是 4 秒内的平均值（17.6 节）。</p>
+<h3 id="1732-常用的图">17.3.2 常用的图<a class="headerlink" href="#1732-常用的图" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>图</th>
+<th>在打开新图里的位置</th>
+<th>回答什么问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正在运行的 Vuser 数</td>
+<td>Vuser</td>
+<td>每个时刻有多少用户在跑，计划有没有按设计执行</td>
+</tr>
+<tr>
+<td>每秒点击数</td>
+<td>Web 资源</td>
+<td>服务器每秒收到多少请求。压力加上去了，它有没有跟着涨</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td>Web 资源</td>
+<td>服务器每秒返回多少字节，和每秒点击数一起看网络有没有成为瓶颈</td>
+</tr>
+<tr>
+<td>平均事务响应时间</td>
+<td>事务</td>
+<td>每个事务的响应时间随时间怎么变</td>
+</tr>
+<tr>
+<td>每秒事务数</td>
+<td>事务</td>
+<td>每秒完成多少个事务，相当于每个业务操作的吞吐量</td>
+</tr>
+<tr>
+<td>事务摘要</td>
+<td>事务</td>
+<td>每个事务通过、失败、停止各多少，是柱状图</td>
+</tr>
+<tr>
+<td>事务响应时间(百分比)</td>
+<td>事务</td>
+<td>百分位数：P90、P95、P99 各是多少</td>
+</tr>
+<tr>
+<td>Windows 资源</td>
+<td>系统资源</td>
+<td>场景里加了 Windows 资源监控（第 16 章 16.8 节）才有，看服务器的 CPU 等</td>
+</tr>
+<tr>
+<td>错误统计 (按描述)</td>
+<td>错误</td>
+<td>有错误时才有，按错误信息分类计数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="174-添加图">17.4 添加图<a class="headerlink" href="#174-添加图" title="Permanent link">&para;</a></h2>
+<p>点菜单 图 → 添加新图（Ctrl+A），弹出「打开新图」对话框：</p>
+<p><img alt="打开新图：选中事务下的事务响应时间(百分比)，下面是图描述" src="images/17-add-graph.png" /></p>
+<p>上面是图的分类，展开选一张，下面的「图描述」会说明这张图显示什么，再点「打开图」，最后点「关闭」。「仅显示包含数据的图」默认勾着，所以只有这次运行有数据的图才会列出来：demo16 加了 Windows 资源监控，所以有「系统资源」这一类；没有出错，就没有「错误」这一类。</p>
+<p>打开「事务」下的「事务响应时间(百分比)」：</p>
+<p><img alt="事务响应时间(百分比)：横轴是事务百分比，纵轴是响应时间" src="images/17-pct.png" /></p>
+<p>横轴是事务百分比，纵轴是响应时间。每条线是把这个事务的响应时间从小到大排好后画出来的，所以都是往右上升的。在横轴 95 的位置往上看，就是每个事务的 P95：三个业务事务都在 0.07 秒左右；Action_Transaction 那条最高，到 100% 时是它的最大值 0.214 秒。曲线在右端突然往上翘，说明有少数请求特别慢，翘得越厉害，平均值越掩盖问题。</p>
+<p>这张图的图例列的是图最小值、图平均值、图最大值、图中间值、图标准偏差，和平均事务响应时间那张图的不太一样。</p>
+<h2 id="175-筛选只看稳定的一段">17.5 筛选：只看稳定的一段<a class="headerlink" href="#175-筛选只看稳定的一段" title="Permanent link">&para;</a></h2>
+<p>加压和减压的那段时间，在跑的用户数不是 10，算进去会把平均数拉偏。要看满载时的表现，就要只看中间那一段。</p>
+<ol>
+<li>切到「平均事务响应时间」，点菜单 查看 → 设置筛选/分组方式（Ctrl+T），弹出「图设置」对话框。上半部分是筛选条件，每个条件一行，「事务结束状态」默认是 = Pass；下半部分是分组方式；</li>
+<li>在「场景已用时间」那一行，点「值」那一格，格子右边出现一个下拉箭头，点它弹出「场景已用时间」对话框。默认的范围是整个运行时间，改成从 000:01:00 到 000:03:30（时:分:秒），点「确定」：</li>
+</ol>
+<p><img alt="设置时间范围：第 1 分钟到第 3 分 30 秒" src="images/17-filter-range.png" /></p>
+<ol>
+<li>回到图设置，值那一格显示「自: 000:01:00 到: 000:03:30」，点「确定」：</li>
+</ol>
+<p><img alt="图设置：场景已用时间设好了范围" src="images/17-filter.png" /></p>
+<p>图上只剩 1 分钟到 3 分 30 秒的数据，图例里的数字也变了：</p>
+<p><img alt="筛选后的平均事务响应时间：只剩稳定的那段" src="images/17-filtered.png" /></p>
+<p>02_search、03_order、04_pay 的平均值是 0.053、0.052、0.051 秒，Action_Transaction 是 0.158 秒。01_login、vuser_init_Transaction 发生在开头加压的那 40 秒里，vuser_end_Transaction 在最后，它们都被筛掉了。左下角属性窗格的「筛选」一项也变成了以「(60 &lt;= 场景已用时间」开头的条件。</p>
+<p>筛选条件还有这些常用的：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事务名</td>
+<td>只看某几个事务。点值那一格的下拉箭头，在弹出的列表里勾选</td>
+</tr>
+<tr>
+<td>事务结束状态</td>
+<td>默认是 = Pass，只统计通过的事务</td>
+</tr>
+<tr>
+<td>Vuser ID</td>
+<td>只看某几个虚拟用户</td>
+</tr>
+</tbody>
+</table>
+<p>下半部分的「分组方式」把数据按选定的条件分成几组，每组画一条线。</p>
+<p>这样设的筛选只对当前这一张图有效。要让所有的图都用同一个筛选，用 文件 → 设置全局筛选（Ctrl+B）。</p>
+<h2 id="176-粒度">17.6 粒度<a class="headerlink" href="#176-粒度" title="Permanent link">&para;</a></h2>
+<p>图上的每个点是一小段时间内的平均值，这一小段时间叫<strong>粒度</strong>。Analysis 会按结果的长短自动选一个，demo16 是 4 秒。改粒度：点菜单 查看 → 设置粒度（Ctrl+G）：</p>
+<p><img alt="设置粒度：30 秒，不勾应用到所有图" src="images/17-granularity.png" /></p>
+<table>
+<thead>
+<tr>
+<th>粒度</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小（几秒）</td>
+<td>曲线细节多、锯齿大，短暂的抖动都看得到</td>
+</tr>
+<tr>
+<td>大（几十秒）</td>
+<td>曲线平滑，能看出趋势，短暂的高峰会被平均掉</td>
+</tr>
+</tbody>
+</table>
+<p>对话框里的「应用到所有图」旁边有个提示：该操作时间较长，并且会占用许多内存。一般只改当前这张图就够了。第 18 章找拐点时，每秒点击数的图把粒度从 8 秒调到 30 秒，锯齿没了，能清楚地看出每秒点击数涨到 160 左右就不再涨。</p>
+<h2 id="177-合并图">17.7 合并图<a class="headerlink" href="#177-合并图" title="Permanent link">&para;</a></h2>
+<p>单看一张图，只知道「响应时间在 2 分钟时变长了」；把它和「正在运行的 Vuser 数」合在一起，才能看出「用户加到 30 个时响应时间开始变长」。先切到平均事务响应时间这张图，点菜单 查看 → 合并图（Ctrl+M），在「选择要与其合并的图」里选「正在运行的 Vuser 数」，合并类型选「叠加」，点「确定」：</p>
+<p><img alt="合并图：当前图是平均事务响应时间，和正在运行的 Vuser 数合并，类型选叠加" src="images/17-merge.png" /></p>
+<table>
+<thead>
+<tr>
+<th>合并类型</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>叠加</td>
+<td>两张图画在一起，共用横轴，右边多一根纵轴给第二张图用</td>
+</tr>
+<tr>
+<td>平铺</td>
+<td>上下排开，共用横轴</td>
+</tr>
+<tr>
+<td>关联</td>
+<td>横轴换成第二张图的数值，比如横轴是 Vuser 数、纵轴是响应时间，直接看响应时间随用户数怎么变</td>
+</tr>
+</tbody>
+</table>
+<p>平铺和关联两种的说明来自官方帮助，本教程只用叠加。</p>
+<p>合并以后，会话浏览器里多出一张「平均事务响应时间 - 正在运行的 Vuser 数」。demo16 的用户数在 40 秒后就不变了，响应时间也一直平稳，合起来看不出什么；第 18 章阶梯加压的结果，用这张合并图一眼就能看出拐点。</p>
+<h2 id="178-交叉结果">17.8 交叉结果<a class="headerlink" href="#178-交叉结果" title="Permanent link">&para;</a></h2>
+<p>调优以后要和调优前比，就要把两次运行的结果放在一起看。点菜单 文件 → 交叉结果：</p>
+<p><img alt="交叉结果：列出要对比的几个结果（图里是第 18 章的两次运行）" src="images/17-cross.png" /></p>
+<ol>
+<li>点「添加」，选另一次运行的 .lrr 文件，列表里就有了两个结果；</li>
+<li>「为交叉结果创建新 Analysis 会话」默认勾着：对比结果放在一个新的会话里，不改动原来的会话；</li>
+<li>点「确定」。</li>
+</ol>
+<p>交叉会话的摘要报告把两个结果并排列出来：统计信息每个结果一列，事务表里每个事务分成两行，一个结果一行。图里的每条线后面带着结果名，比如「02_search:knee_pool32.lrr」。在图设置的筛选条件里多了一个 Result Name，可以只看某一个结果。第 18 章用它对比调大连接池前后的两次运行。</p>
+<h2 id="179-html-报告">17.9 HTML 报告<a class="headerlink" href="#179-html-报告" title="Permanent link">&para;</a></h2>
+<p>要把结果发给别人看，最方便的是 HTML 报告，对方用浏览器就能打开，不用装 LoadRunner。</p>
+<ol>
+<li>点菜单 报告 → HTML 报告，弹出「选择报告文件名和路径」的保存对话框；</li>
+<li>默认的文件名是 Report.htm，位置是临时文件夹。换到结果目录旁边，比如 <code>D:\work\lr-results\demo16_report\Report.htm</code>（先建好 demo16_report 文件夹）；</li>
+<li>点「保存」。</li>
+</ol>
+<p>生成的是一个 Report.htm 和一个同名的 Report 文件夹，两个要放在一起发。用浏览器打开 Report.htm：</p>
+<p><img alt="HTML 报告：左边是目录，右边是摘要" src="images/17-html.png" /></p>
+<p>左边是目录：摘要和会话里打开的每一张图；右边是内容，摘要和 Analysis 里的摘要报告基本一样。点开一张图，页面上方写着这张图的筛选条件和粒度，中间是图，下面是图例表格。右上角的「在 Excel 中打开」打开的是这张图的数据，Report 文件夹里每张图都有一个 CSV 文件（Report0.csv、Report1.csv……），可以拿去再加工。</p>
+<p>HTML 报告里有哪些图、每张图是什么样，取决于生成报告时会话里打开了哪些图、设了什么筛选。上面这份报告是在 17.5 节设好筛选以后生成的，所以里面的平均事务响应时间只有第 1 分钟到第 3 分 30 秒。先把要看的图都加好、筛选设好，再生成报告。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>文件名写成正斜杠的路径会报「文件名无效」。</strong> 在保存对话框的文件名框里直接写路径时，要用反斜杠，比如 <code>D:\work\lr-results\demo16_report\Report.htm</code>。</p>
+</div>
+<p>报告菜单里还有「新建报告」「报告模板」，可以按模板生成格式更完整的报告，本教程不展开。</p>
+<h2 id="1710-用脚本处理结果">17.10 用脚本处理结果<a class="headerlink" href="#1710-用脚本处理结果" title="Permanent link">&para;</a></h2>
+<h3 id="17101-为什么要导出数据">17.10.1 为什么要导出数据<a class="headerlink" href="#17101-为什么要导出数据" title="Permanent link">&para;</a></h3>
+<p>Analysis 适合人看，下面几件事用它就不方便：</p>
+<ul>
+<li>阶梯加压要按每一档分别统计（第 18 章），在 Analysis 里要一档一档地设筛选、抄数字；</li>
+<li>同样的统计每次都要做，想写成脚本一键得出；</li>
+<li>第 19 章的流水线要自动判断「这次压测通过没有」，第 16 章说过 Wlrun.exe 的退出码靠不住。</li>
+</ul>
+<p>LoadRunner 自带一个命令行工具 <strong>LrRawResultsExporter.exe</strong>，能把结果目录里的原始数据导出成 JSON 文件。</p>
+<h3 id="17102-导出">17.10.2 导出<a class="headerlink" href="#17102-导出" title="Permanent link">&para;</a></h3>
+<p>在 PowerShell 里执行：</p>
+<div class="highlight"><pre><span></span><code>&gt; $p = Start-Process "$env:LR_PATH\bin\LrRawResultsExporter.exe" -ArgumentList "-source_dir", "D:\work\lr-results\demo16", "-target_dir", "D:\work\lr-results\demo16\raw_json", "-to_json", "-f", "-silent" -Wait -PassThru
+&gt; $p.ExitCode
+0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-source_dir</code></td>
+<td>结果目录</td>
+</tr>
+<tr>
+<td><code>-target_dir</code></td>
+<td>导出到哪个文件夹，不存在会自动创建</td>
+</tr>
+<tr>
+<td><code>-to_json</code></td>
+<td>导出成 JSON</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>覆盖目标文件夹里已有的文件</td>
+</tr>
+<tr>
+<td><code>-silent</code></td>
+<td>安静运行，不弹界面</td>
+</tr>
+</tbody>
+</table>
+<p>它和 Wlrun.exe 一样是窗口程序。用 <code>&amp;</code> 直接运行时，实测命令行立刻就返回了，退出码是空的，过一会儿文件才出来；所以要用 Start-Process 加 -Wait，等它导出完。本章的结果导出只要 1 秒。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>不要用 -help 查看帮助。</strong> 实测加 -help 会弹出一个图形窗口，命令行一直卡在那里。</p>
+</div>
+<p>导出的文件夹里主要有这几个文件：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RawData.txt</td>
+<td>每一次事务的记录、部分请求的耗时细分、HTTP 状态码的计数、压测机自己的 CPU 和内存，一条一行</td>
+</tr>
+<tr>
+<td>offline.txt</td>
+<td>Windows 资源等监控数据（场景里加了监控才有内容）</td>
+</tr>
+<tr>
+<td>_t_rep.txt</td>
+<td>虚拟用户状态的变化和在跑的用户数</td>
+</tr>
+<tr>
+<td>RunInfo.txt</td>
+<td>场景开始、结束的时间和时区</td>
+</tr>
+</tbody>
+</table>
+<p>RawData.txt 里一条事务长这样（计算机名换成了 PC01）：</p>
+<div class="highlight"><pre><span></span><code>{"Transaction":{"Timestamp":"1792837222958901760","Name":"01_login","ScriptName":"shop_order","GroupName":"shop_order","VuserID":"1","Status":"passed","HostName":"PC01","Emulation":"N/A","StartTime":"1792837222914621","EndTime":"1792837222958902","ThinkTime":"0","WastedTime":"170"}},
+</code></pre></div>
+<p>StartTime、EndTime、ThinkTime、WastedTime 的单位都是<strong>微秒</strong>，Timestamp 是<strong>纳秒</strong>。和 Analysis 一样的响应时间是：</p>
+<div class="highlight"><pre><span></span><code>响应时间（秒）=（EndTime − StartTime − ThinkTime − WastedTime）÷ 1000000
+</code></pre></div>
+<p>WastedTime（浪费时间）是 LoadRunner 自己做统计、记日志这类事花的时间，真实用户的浏览器不会花这个时间，所以不算在响应时间里。这一条就是 (1792837222958902 − 1792837222914621 − 0 − 170) ÷ 1000000 = 0.044 秒。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>注意：导出的数据里有你的计算机名和 IP 地址。</strong> 监控数据的 Host 一项是「计算机名 [局域网 IP]」，事务的 HostName 是计算机名。把导出的数据发给别人之前想一想要不要去掉。</p>
+</div>
+<h3 id="17103-用-lr_summarypy-汇总">17.10.3 用 lr_summary.py 汇总<a class="headerlink" href="#17103-用-lr_summarypy-汇总" title="Permanent link">&para;</a></h3>
+<p>参考代码的 <code>tools/lr_summary.py</code> 把导出和统计做成了一步，口径和 Analysis 摘要报告一致。在工程根目录执行：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\demo16
+结果 demo16，场景持续 229 秒，统计全程
+HTTP 状态码：200 共 1946 次
+
+| 事务 | 通过 | 失败 | 停止 | 最小 | 平均 | 最大 | 标准偏差 | 90% | 每秒通过 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 01_login | 10 | 0 | 0 | 0.037 | 0.050 | 0.072 | 0.013 | 0.070 | 0.04 |
+| 02_search | 642 | 0 | 0 | 0.032 | 0.053 | 0.073 | 0.012 | 0.069 | 2.80 |
+| 03_order | 642 | 0 | 0 | 0.032 | 0.053 | 0.075 | 0.011 | 0.068 | 2.80 |
+| 04_pay | 642 | 0 | 0 | 0.032 | 0.052 | 0.081 | 0.012 | 0.068 | 2.80 |
+| Action_Transaction | 642 | 0 | 0 | 0.106 | 0.158 | 0.214 | 0.020 | 0.184 | 2.80 |
+| vuser_end_Transaction | 10 | 0 | 0 | 0.002 | 0.002 | 0.002 | 0.000 | 0.002 | 0.04 |
+| vuser_init_Transaction | 10 | 0 | 0 | 0.039 | 0.052 | 0.074 | 0.013 | 0.073 | 0.04 |
+
+| SLA 事务 | 百分位 | 阈值（秒） | 实际（秒） | 结论 |
+|---|---:|---:|---:|---|
+| 02_search | 95% | 0.3 | 0.071 | 达标 |
+| 03_order | 95% | 0.5 | 0.071 | 达标 |
+| 04_pay | 95% | 0.5 | 0.071 | 达标 |
+</code></pre></div>
+<p>和 17.2.2 节摘要报告的事务表逐个对照，最小、平均、最大、标准偏差、90% 都对得上。输出是 Markdown 表格，可以直接贴进测试报告。SLA 那张表读的是结果目录里的 SLAConfiguration.xml，Controller 运行时会把场景的 SLA 存一份在那里。</p>
+<p>只看 1 分钟到 3 分 30 秒：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\demo16 --from 60 --to 210
+</code></pre></div>
+<p>这时三个业务事务的「每秒通过」是 3.13～3.15，和第 16 章用利特尔法则算的 3.16 对得上。</p>
+<p>加上 <code>--check</code>，有事务失败或者 SLA 不达标时退出码是 1，并列出原因。拿第 18 章 18.5 节那次全是 401 的结果（single_seq）试一下：</p>
+<div class="highlight"><pre><span></span><code>&gt; python tools/lr_summary.py D:\work\lr-results\single_seq --check
+……
+检查不通过：
+  - 事务 03_order 失败 1045 次
+  - 事务 Action_Transaction 失败 1045 次
+  - 事务 vuser_end_Transaction 失败 19 次
+&gt; $LASTEXITCODE
+1
+</code></pre></div>
+<p>第 19 章把它接在 Wlrun.exe 后面，流水线就能判断压测通过没有。另外三个参数 <code>--step</code>、<code>--skip</code>、<code>--tx</code> 是给阶梯加压按档汇总用的，第 18 章会用到。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>结果目录重新跑过，汇总的还是旧数字。</strong> 脚本导出过一次就不再导出了。同一个结果目录重新跑了场景，先删掉里面的 raw_json 文件夹。</p>
+</div>
+<h2 id="1711-写测试报告">17.11 写测试报告<a class="headerlink" href="#1711-写测试报告" title="Permanent link">&para;</a></h2>
+<p>Analysis 的图和表是素材，测试报告要回答的是「系统性能怎么样、有什么问题、该怎么办」。一份完整的性能测试报告一般有这几部分：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>写什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结论</td>
+<td>放在最前面，三五句话：目标达到没有，最大能承受多少压力，发现了什么问题</td>
+</tr>
+<tr>
+<td>测试目标</td>
+<td>第 13 章 13.4 节那张表：每个接口的每秒请求数、P95、错误率目标</td>
+</tr>
+<tr>
+<td>测试环境</td>
+<td>被测系统的版本、服务器配置、数据量；压测机配置；和生产环境有什么不同</td>
+</tr>
+<tr>
+<td>测试场景</td>
+<td>脚本覆盖了哪些业务，每个场景的用户数、计划、思考时间、持续时间</td>
+</tr>
+<tr>
+<td>测试结果</td>
+<td>每个场景一节：关键数字的表格、关键的图（响应时间、每秒请求数、用户数、服务器资源）</td>
+</tr>
+<tr>
+<td>问题与分析</td>
+<td>每个问题写清楚现象、证据（数据和图）、原因、建议的解决办法</td>
+</tr>
+<tr>
+<td>风险与建议</td>
+<td>测试没覆盖到的地方，结论的适用范围，下一步要做什么</td>
+</tr>
+</tbody>
+</table>
+<p>几个要点：</p>
+<ul>
+<li><strong>结论先行，数字说话。</strong> 「系统性能良好」没有信息量；「合计每秒约 120 次请求时，搜索的 P95 是 0.071 秒，目标是 0.3 秒，达标」才是结论；</li>
+<li><strong>每个结论都有证据。</strong> 引用哪次运行（结果名）、哪个时间段、哪张图；</li>
+<li><strong>讲清楚测试和生产的差别。</strong> 本教程的练习网站和压测机在同一台电脑上，数据都在内存里，这些都会影响结论能不能推广到生产环境；</li>
+<li><strong>问题要写到能动手解决的程度。</strong> 第 18 章的瓶颈分析就是一个例子：只说「50 个用户时响应时间变长了」不够，要说出是数据库连接池不够用、证据是什么、调大以后效果如何。</li>
+</ul>
+<p>第 18 章 18.7 节会用实验的数据写一份报告样例。</p>
+<h2 id="1712-常见的坑">17.12 常见的坑<a class="headerlink" href="#1712-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摘要里的每秒平均点击数比 Controller 里看到的小</td>
+<td>摘要是全程平均，包括了加压、减压的时间。用筛选只看稳定段（17.5 节）</td>
+</tr>
+<tr>
+<td>Controller 里 Action_Transaction 要 3 秒多，Analysis 里只有 0.16 秒</td>
+<td>Analysis 计算响应时间时扣掉了思考时间（17.2.2 节）</td>
+</tr>
+<tr>
+<td>属性里写着「(包括思考时间)」，数字却没包括</td>
+<td>以数字为准（17.2.2 节）</td>
+</tr>
+<tr>
+<td>打开新图里找不到 Windows 资源、错误这几类图</td>
+<td>「仅显示包含数据的图」勾着，这次运行没有这类数据：没加监控，或者没有出错</td>
+</tr>
+<tr>
+<td>改了一张图的筛选，别的图的数字没变</td>
+<td>图设置里的筛选只对当前这张图有效。想让所有的图都用同一个筛选，用 文件 → 设置全局筛选</td>
+</tr>
+<tr>
+<td>关掉 Analysis 再打开，加的图和筛选都没了</td>
+<td>关闭时没有保存会话。保存成 .lra，下次打开它</td>
+</tr>
+<tr>
+<td>HTML 报告保存时报「文件名无效」</td>
+<td>路径写成了正斜杠，改用反斜杠</td>
+</tr>
+<tr>
+<td>发给别人的 HTML 报告打开是空白或缺图</td>
+<td>只发了 Report.htm，没带同名的 Report 文件夹</td>
+</tr>
+<tr>
+<td>HTML 报告里没有想要的图</td>
+<td>报告里的图就是会话里打开的图。先加好图再生成</td>
+</tr>
+<tr>
+<td>导出原始数据的命令一直不结束</td>
+<td>加了 -help 参数，它会弹出窗口等你关掉</td>
+</tr>
+<tr>
+<td>lr_summary.py 的数字和这次运行对不上</td>
+<td>结果目录重新跑过，删掉 raw_json 再运行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1713-练习">17.13 练习<a class="headerlink" href="#1713-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>用 Analysis 打开 demo16 的结果，给「每秒点击数」这张图设一个筛选，只看第 1 分钟到第 3 分 30 秒，看图例里的平均值是多少，和第 16 章运行视图里满载时的点击数/秒比一比。</li>
+<li>打开「事务响应时间(百分比)」这张图，在横轴 95 的位置读出 02_search 的 P95，和 lr_summary.py 的 SLA 表里的「实际」一列比较。</li>
+<li>把「平均事务响应时间」和「正在运行的 Vuser 数」分别用叠加、平铺两种方式合并，比较两种的效果。</li>
+<li>生成 HTML 报告，用浏览器打开，再用 Excel 打开 Report 文件夹里的一个 CSV 文件，看看里面的数据对应哪张图。</li>
+<li>做完第 16 章练习 1（思考时间改成忽略，结果名称 demo16_nothink）以后，用交叉结果对比 demo16 和 demo16_nothink：每秒点击数、平均响应时间各变了多少？用利特尔法则解释。</li>
+</ol>
+<h2 id="1714-自检清单">17.14 自检清单<a class="headerlink" href="#1714-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会从 Controller、开始菜单、命令行三种方式打开结果，知道会话文件 .lra 是什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 读得懂摘要报告的统计信息和事务表，能说出 90% 一列的意思；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 Analysis 计算响应时间时扣掉了思考时间，能解释 Action_Transaction 在 Controller 和 Analysis 里为什么差那么多；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 看得懂 SLA 状态、目标、违反率三列；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会添加图，知道几张常用的图各回答什么问题；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用筛选只看稳定段，知道粒度大小对曲线的影响；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会合并图，会用交叉结果对比两次运行；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会生成 HTML 报告，知道发给别人时要带上哪些文件；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 LrRawResultsExporter 导出原始数据，知道几个时间字段的单位和响应时间的算法；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 lr_summary.py 汇总结果、用 --check 自动判断；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道一份性能测试报告由哪几部分组成，结论应该怎么写。</li>
+</ul>
+<p>下一章：<a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html">第 18 章 性能实战</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 16 章 Controller 场景">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 16 章 Controller 场景
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 18 章 性能实战">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 18 章 性能实战
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

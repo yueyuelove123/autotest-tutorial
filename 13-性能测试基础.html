@@ -14,7 +14,7 @@
         <link rel="prev" href="12-Selenium%E5%AF%B9%E7%85%A7.html">
       
       
-        <link rel="next" href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html">
+        <link rel="next" href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html">
       
       
         
@@ -1106,6 +1106,146 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1576,7 +1716,7 @@
 <li><strong>QPS</strong>（Queries Per Second）：每秒查询数，含义和 RPS 差不多，常用在查询类接口和数据库上；</li>
 <li><strong>TPS</strong>（Transactions Per Second）：每秒事务数。一个「事务」是一次完整的业务操作。LoadRunner 里的<strong>事务</strong>（transaction）就是这个概念：脚本里用一对函数把若干请求圈成一个事务，比如「下单事务」包含搜索、选规格、提交三个请求，那么 1 TPS 就对应 3 RPS。</li>
 </ul>
-<p>LoadRunner 的报告里事务吞吐用 Passed Transactions、Failed Transactions 和每秒事务数表示，第 17 章看报告时都会见到。</p>
+<p>LoadRunner 的报告里事务吞吐用通过的事务、失败的事务和每秒事务数表示（英文界面是 Passed Transactions、Failed Transactions、Transactions per Second），第 17 章看报告时都会见到。</p>
 <h3 id="1323-响应时间">13.2.3 响应时间<a class="headerlink" href="#1323-响应时间" title="Permanent link">&para;</a></h3>
 <p>从发出请求到收到完整响应花的时间。看响应时间<strong>不能只看平均值</strong>。举个例子：100 个请求里 99 个都是 100 毫秒，1 个是 10 秒，平均值是 199 毫秒，看起来不错，可那一个用户等了 10 秒。所以要看<strong>分位数</strong>：</p>
 <ul>
@@ -1598,10 +1738,10 @@
 <p>举一个假设的例子：10 个虚拟用户，每个用户每次请求后停 1～2 秒（平均 1.5 秒），响应时间约 0.055 秒：</p>
 <div class="highlight"><pre><span></span><code>10 ÷ (0.055 + 1.5) ≈ 6.4 次/秒
 </code></pre></div>
-<p>实际压出来的数字会和这个估算对得上（后面章节实测时你可以自己验证一次）。这个关系告诉我们两件事：</p>
+<p>实际压出来的数字会和这个估算对得上（第 16 章 16.9.4 节会拿实际运行的数字核对一次）。这个关系告诉我们两件事：</p>
 <ul>
 <li><strong>「支持 1000 并发」这种说法不完整。</strong> 同样 1000 个用户，思考时间 10 秒和思考时间 0 秒，对服务器的压力能差几十倍。性能目标要用<strong>每秒请求数加响应时间</strong>来描述，比如「每秒 200 次请求时，P95 不超过 300 毫秒」；</li>
-<li><strong>系统处理不过来时，响应时间会变长。</strong> 用户数增加了，每秒请求数却不再增长，多出来的请求只能排队，表现就是响应时间上涨。这个转折点叫<strong>拐点</strong>，第 16、18 章会实际把它找出来。</li>
+<li><strong>系统处理不过来时，响应时间会变长。</strong> 用户数增加了，每秒请求数却不再增长，多出来的请求只能排队，表现就是响应时间上涨。这个转折点叫<strong>拐点</strong>，第 18 章会实际把它找出来。</li>
 </ul>
 <h2 id="133-性能测试的类型">13.3 性能测试的类型<a class="headerlink" href="#133-性能测试的类型" title="Permanent link">&para;</a></h2>
 <table>
@@ -1711,7 +1851,7 @@
 <p>它也有明显的另一面：商业软件按虚拟用户数买许可，价格不低；脚本语言是类 C 的一小段子集，写起来不如 Python 舒服。免费版本叫<strong>社区版（Community Edition）</strong>：装好后自带 50 个虚拟用户的许可，不过期，覆盖绝大多数常用协议，用来学习和做小型验证完全够用，本教程全部用社区版完成。</p>
 <div class="admonition warning">
 <p class="admonition-title">坑</p>
-<p><strong>找下载包时搜不到新名字。</strong> OpenText 把产品线改名后，官方网站搜 LoadRunner 反而找不到下载页。搜 OpenText Professional Performance Engineering trial，或者直接用第 14 章给出的申请步骤。</p>
+<p><strong>找下载包时搜不到新名字。</strong> OpenText 把产品线改名后，官方网站搜 LoadRunner 反而找不到下载页，要搜 OpenText Professional Performance Engineering。官方试用给的是当时的最新版，本教程用的是 2023 社区版，怎么拿到安装包见第 14 章 14.1.3 节。</p>
 </div>
 <h3 id="1352-三个主要部件">13.5.2 三个主要部件<a class="headerlink" href="#1352-三个主要部件" title="Permanent link">&para;</a></h3>
 <p>LoadRunner 的日常工作流由三个桌面程序加一类后台进程组成，后面三章各对应一个：</p>
@@ -1838,7 +1978,7 @@
 <li>用利特尔法则估算：200 个虚拟用户，思考时间平均 3 秒，响应时间平均 0.2 秒，每秒请求数大约多少？（提示：先加响应时间和思考时间，再除。）</li>
 <li>给「校园选课系统开抢那天早上 8 点」各选一种合适的测试类型：验证 5 万学生同时点提交；验证平时上课时间正常选课速度；验证系统连续运行 12 小时是否稳定。</li>
 <li>按二八原则估算：每天 5 万笔支付，每笔调 8 次接口，峰值每秒请求数是多少？留 3 倍余量后目标定多少？</li>
-<li>打开你申请到的 LoadRunner（第 14 章装好后），找出 VuGen、Controller、Analysis 三个程序的入口，截图存进你的练习文件夹。不用会操作，认得入口就行。</li>
+<li>第 14 章装好 LoadRunner 以后，在开始菜单里找出 VuGen、Controller、Analysis 三个程序的入口（开始菜单 → Micro Focus → LoadRunner），各打开一次截个图，存进你的练习文件夹。不用会操作，认得入口就行。</li>
 <li>面试题练习：被问「你们的性能目标是怎么定的」，按 13.4 的思路口头说一遍推算过程，说给同事听，让对方听懂。</li>
 </ol>
 <h2 id="139-自检清单">13.9 自检清单<a class="headerlink" href="#139-自检清单" title="Permanent link">&para;</a></h2>
@@ -1850,7 +1990,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出 LoadRunner 三个主要部件各负责什么，数据怎么流动；</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道社区版 50 个虚拟用户的许可能用来做什么、不能用来做什么。</li>
 </ul>
-<p>下一章：第 14 章 LoadRunner 安装与第一个脚本（正在编写，要先装好 LoadRunner 实测后才能写；在它完成之前，可以先读 <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html">第 19 章 工程化与持续集成</a>）</p>
+<p>下一章：<a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html">第 14 章 LoadRunner 安装与第一个脚本</a></p>
 
 
 
@@ -1903,13 +2043,13 @@
         
         
           
-          <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 19 章 工程化与持续集成">
+          <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 14 章 LoadRunner 安装与第一个脚本">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                第 19 章 工程化与持续集成
+                第 14 章 LoadRunner 安装与第一个脚本
               </div>
             </div>
             <div class="md-footer__button md-icon">

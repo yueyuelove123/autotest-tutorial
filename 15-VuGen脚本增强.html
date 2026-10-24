@@ -1,0 +1,4824 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="零基础动手教程：接口自动化、UI 自动化、性能测试与持续集成">
+      
+      
+      
+      
+        <link rel="prev" href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html">
+      
+      
+        <link rel="next" href="16-Controller%E5%9C%BA%E6%99%AF.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 15 章 VuGen 脚本增强 - 从零开始学 UI 自动化、接口自动化与性能测试</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-15-章-vugen-脚本增强" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-header__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            从零开始学 UI 自动化、接口自动化与性能测试
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 15 章 VuGen 脚本增强
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="从零开始学 UI 自动化、接口自动化与性能测试" class="md-nav__button md-logo" aria-label="从零开始学 UI 自动化、接口自动化与性能测试" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+
+    </a>
+    从零开始学 UI 自动化、接口自动化与性能测试
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83%E4%B8%8EPython%E9%80%9F%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 准备环境与 Python 速成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 认识练习网站与 HTTP 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    接口自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 接口自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 接口自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 接口测试用例设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 常见接口场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pytest%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 pytest 进阶与框架设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 自动化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI 自动化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 UI 自动化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 元素定位详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 10 章 页面操作大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-UI%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%9B%E9%98%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 11 章 UI 自动化进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-Selenium%E5%AF%B9%E7%85%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 12 章 Selenium 对照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    性能测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 13 章 性能测试基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#151-录制的脚本为什么不能直接压测" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 录制的脚本为什么不能直接压测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.1 录制的脚本为什么不能直接压测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1511-三个问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.1 三个问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1512-只留四个接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.2 只留四个接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1513-新建-shop_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.3 新建 shop_order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1514-第一次回放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.4 第一次回放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152-事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 事务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.2 事务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1521-给登录和搜索加上事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.1 给登录和搜索加上事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1522-事务的状态" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.2 事务的状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1523-事务怎么命名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.3 事务怎么命名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1524-在日志里看事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.4 在日志里看事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1525-自动事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.5 自动事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153-检查点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.3 检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1531-web_reg_find-要写在请求前面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.1 web_reg_find 要写在请求前面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1532-检查失败时" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.2 检查失败时
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1533-两个容易写错的地方" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.3 两个容易写错的地方
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1534-检查业务码的两种写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.4 检查业务码的两种写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1535-lr_error_message-和将打开的事务置为失败" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.5 lr_error_message 和「将打开的事务置为失败」
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#154-关联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 关联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.4 关联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1541-什么是关联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.1 什么是关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1542-找出脚本里的动态值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.2 找出脚本里的动态值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1543-用-web_reg_save_param_json-取-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.3 用 web_reg_save_param_json 取 token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1544-加上下单和支付" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.4 加上下单和支付
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1545-支付失败时是什么样子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.5 支付失败时是什么样子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1546-不是-json-的响应左右边界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.6 不是 JSON 的响应：左右边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1547-设计工作室自动找动态值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.7 设计工作室：自动找动态值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#155-参数化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 参数化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.5 参数化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1551-参数是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.1 参数是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1552-账号参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.2 账号参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1553-三个下拉框各是什么意思" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.3 三个下拉框各是什么意思
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1554-shop_order-为什么这样选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.4 shop_order 为什么这样选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1555-prm-和-dat-文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.5 .prm 和 .dat 文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1556-用多次迭代验证取值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.6 用多次迭代验证取值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1557-其他几种参数类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.7 其他几种参数类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#156-思考时间与节奏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6 思考时间与节奏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.6 思考时间与节奏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1561-lr_think_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.1 lr_think_time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1562-运行时设置里的思考时间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.2 运行时设置里的思考时间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1563-节奏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.3 节奏
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#157-集合点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.7 集合点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#158-中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8 中文
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.8 中文">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1581-源文件必须存成-gbk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.1 源文件必须存成 GBK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1582-地址里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.2 地址里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1583-搜索词参数化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.3 搜索词参数化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1584-请求体里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.4 请求体里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1585-检查点和日志里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.5 检查点和日志里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#159-调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9 调试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.9 调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1591-三个消息函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.1 三个消息函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1592-扩展日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.2 扩展日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1593-断点和分步运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.3 断点和分步运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1594-回放摘要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.4 回放摘要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1595-命令行回放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.5 命令行回放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1510-成品脚本-shop_order-全貌" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10 成品脚本 shop_order 全貌
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.10 成品脚本 shop_order 全貌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#15101-文件清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.1 文件清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15102-三个操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.2 三个操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15103-数据文件和参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.3 数据文件和参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15104-回放-3-次迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.4 回放 3 次迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15105-用接口核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.5 用接口核对
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1511-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.11 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1512-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.12 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1513-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.13 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 19 章 工程化与持续集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题与参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#151-录制的脚本为什么不能直接压测" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 录制的脚本为什么不能直接压测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.1 录制的脚本为什么不能直接压测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1511-三个问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.1 三个问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1512-只留四个接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.2 只留四个接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1513-新建-shop_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.3 新建 shop_order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1514-第一次回放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1.4 第一次回放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152-事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 事务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.2 事务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1521-给登录和搜索加上事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.1 给登录和搜索加上事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1522-事务的状态" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.2 事务的状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1523-事务怎么命名" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.3 事务怎么命名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1524-在日志里看事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.4 在日志里看事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1525-自动事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2.5 自动事务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153-检查点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 检查点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.3 检查点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1531-web_reg_find-要写在请求前面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.1 web_reg_find 要写在请求前面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1532-检查失败时" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.2 检查失败时
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1533-两个容易写错的地方" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.3 两个容易写错的地方
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1534-检查业务码的两种写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.4 检查业务码的两种写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1535-lr_error_message-和将打开的事务置为失败" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3.5 lr_error_message 和「将打开的事务置为失败」
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#154-关联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 关联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.4 关联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1541-什么是关联" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.1 什么是关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1542-找出脚本里的动态值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.2 找出脚本里的动态值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1543-用-web_reg_save_param_json-取-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.3 用 web_reg_save_param_json 取 token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1544-加上下单和支付" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.4 加上下单和支付
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1545-支付失败时是什么样子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.5 支付失败时是什么样子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1546-不是-json-的响应左右边界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.6 不是 JSON 的响应：左右边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1547-设计工作室自动找动态值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4.7 设计工作室：自动找动态值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#155-参数化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 参数化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.5 参数化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1551-参数是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.1 参数是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1552-账号参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.2 账号参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1553-三个下拉框各是什么意思" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.3 三个下拉框各是什么意思
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1554-shop_order-为什么这样选" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.4 shop_order 为什么这样选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1555-prm-和-dat-文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.5 .prm 和 .dat 文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1556-用多次迭代验证取值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.6 用多次迭代验证取值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1557-其他几种参数类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5.7 其他几种参数类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#156-思考时间与节奏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6 思考时间与节奏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.6 思考时间与节奏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1561-lr_think_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.1 lr_think_time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1562-运行时设置里的思考时间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.2 运行时设置里的思考时间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1563-节奏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6.3 节奏
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#157-集合点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.7 集合点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#158-中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8 中文
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.8 中文">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1581-源文件必须存成-gbk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.1 源文件必须存成 GBK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1582-地址里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.2 地址里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1583-搜索词参数化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.3 搜索词参数化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1584-请求体里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.4 请求体里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1585-检查点和日志里的中文" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.8.5 检查点和日志里的中文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#159-调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9 调试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.9 调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1591-三个消息函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.1 三个消息函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1592-扩展日志" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.2 扩展日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1593-断点和分步运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.3 断点和分步运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1594-回放摘要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.4 回放摘要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1595-命令行回放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.9.5 命令行回放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1510-成品脚本-shop_order-全貌" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10 成品脚本 shop_order 全貌
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.10 成品脚本 shop_order 全貌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#15101-文件清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.1 文件清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15102-三个操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.2 三个操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15103-数据文件和参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.3 数据文件和参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15104-回放-3-次迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.4 回放 3 次迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15105-用接口核对" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.10.5 用接口核对
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1511-常见的坑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.11 常见的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1512-练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.12 练习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1513-自检清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.13 自检清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="第-15-章-vugen-脚本增强">第 15 章 VuGen 脚本增强<a class="headerlink" href="#第-15-章-vugen-脚本增强" title="Permanent link">&para;</a></h1>
+<p><strong>本章目标</strong></p>
+<ul>
+<li>说清楚录制出来的脚本为什么不能直接拿去压测；</li>
+<li>会用事务给业务操作计时，读得懂回放日志里的事务耗时和思考时间；</li>
+<li>会用检查点检查业务结果，知道检查失败时事务和日志是什么样子；</li>
+<li>会找出脚本里的动态值，用按 JSON 取值和按左右边界取值两种办法做关联；</li>
+<li>会用参数列表做参数化，分得清几种取值方式在 VuGen 和 Controller 里的区别；</li>
+<li>会设置思考时间和节奏，知道集合点在哪里起作用；</li>
+<li>能处理脚本里的中文：源文件、地址、请求体、数据文件；</li>
+<li>会用日志、断点和命令行回放排查脚本问题；</li>
+<li>整理出一个能直接拿去压测的脚本 shop_order。</li>
+</ul>
+<p>第 14 章录出了第一个脚本 shop_first，回放全部通过，可它的 token、订单号、账号都是录制时写死的，支付成没成功也没人检查。本章从头整理出一个专门压接口的脚本 shop_order：只留登录、搜索、下单、支付四个接口，每个都有事务和检查点，token 和订单号从响应里取，每个虚拟用户用自己的账号。后面几章在 Controller 里压的就是它。</p>
+<p>成品脚本在参考代码的 <code>lr/shop_order/</code> 目录（文件清单见 15.10 节）。动手前照旧把练习网站跑起来（第 2 章 2.1 节）。本章的日志都是实际回放得到的，只摘了和讲解有关的行，行尾的 [MsgId: ……] 编号省掉了，日志里的弯引号换成了直引号，地址里的端口统一写成 8000；你回放时的耗时、token、订单号和这里不一样是正常的。</p>
+<hr />
+<h2 id="151-录制的脚本为什么不能直接压测">15.1 录制的脚本为什么不能直接压测<a class="headerlink" href="#151-录制的脚本为什么不能直接压测" title="Permanent link">&para;</a></h2>
+<h3 id="1511-三个问题">15.1.1 三个问题<a class="headerlink" href="#1511-三个问题" title="Permanent link">&para;</a></h3>
+<p>第 14 章最后列了 shop_first 留下的问题，归结起来是三个：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>第 14 章看到的现象</th>
+<th>本章的办法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>没有业务检查</td>
+<td>回放全部通过，支付那一步服务器回的却是业务码 3003（订单状态不允许这个操作），HTTP 状态码是 200，新下的订单一直待支付</td>
+<td>检查点（15.3 节）</td>
+</tr>
+<tr>
+<td>token 和订单号写死</td>
+<td>练习网站一重启，回放就在 me 那一步报 401；支付付的总是录制时那张旧订单</td>
+<td>关联（15.4 节）</td>
+</tr>
+<tr>
+<td>所有虚拟用户用同一个账号</td>
+<td>登录的请求体里写死了 alice、alice123</td>
+<td>参数化（15.5 节）</td>
+</tr>
+</tbody>
+</table>
+<p>前两个问题第 14 章都亲眼看到了。第三个问题在单个用户回放时看不出来，压测时才会暴露。几十个虚拟用户挤在一个账号上，测出来的数字会严重失真：</p>
+<ul>
+<li>很多真实系统不允许同一个账号在多处登录，新的登录会让旧 token 失效。练习网站用 <code>SHOP_SINGLE_SESSION=1</code> 启动时就是这样（第 2 章 2.5 节），大家共用一个账号，就会互相让对方的 token 失效，报一片 401；</li>
+<li>练习网站对同一个账号的支付是排队处理的，代码里的注释写着「正常情况下同一用户的支付排队处理」。所有人都用 alice，支付全排在一条队上，测出来的是这一个账号的排队时间；</li>
+<li>数据全堆在一个账号上：余额很快被扣光（每个账号初始只有 100000 元，第 2 章 2.1 节），订单越积越多，和真实的使用情况相差很远。</li>
+</ul>
+<h3 id="1512-只留四个接口">15.1.2 只留四个接口<a class="headerlink" href="#1512-只留四个接口" title="Permanent link">&para;</a></h3>
+<p>压测脚本留哪些请求，取决于这次压测要回答什么问题。本章要看的是下单链路上几个核心接口最多能承受多大的压力，对应第 13 章 13.4 节那张目标表里的搜索、下单、支付，再加上它们前面必须有的登录。所以 shop_order 只留这四个接口，第 14 章录到的其他请求都不要：</p>
+<table>
+<thead>
+<tr>
+<th>录制里的请求</th>
+<th>为什么不留</th>
+<th>什么时候该留</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开首页、商品页、订单页（127.0.0.1:8000、products.html、orders.html）和它们带的 css、js</td>
+<td>静态文件的压力和接口不是一回事。生产环境里它们一般由 CDN（把静态文件分发到各地、就近返回的服务）或 Web 服务器直接返回，浏览器还会缓存。混在一起，接口的数字会被冲淡</td>
+<td>要测「打开一个页面要多久」时。另写一个脚本，保留网页步骤，Mode=HTML 会像浏览器一样下载页面引用的资源（第 14 章）</td>
+</tr>
+<tr>
+<td>me、me_2、me_3（页面右上角的余额），products（登录后的商品列表），products_3（下单后刷新商品列表），orders_2、orders_3（订单列表）</td>
+<td>页面顺带调用的接口，不在这次要看的四个里面</td>
+<td>做混合场景、按真实的流量比例压测时，可以各自写成事务加进来</td>
+</tr>
+<tr>
+<td>谷歌的后台请求（如果录进来了）</td>
+<td>和被测系统无关，压测时会去访问别人的服务器</td>
+<td>任何时候都不留</td>
+</tr>
+</tbody>
+</table>
+<p>目标表里还有一行商品详情。第 14 章录的流程没有打开过商品详情，这里先不加，留作练习（15.12 节练习 1）。</p>
+<p>另外，shop_order 是<strong>新建</strong>的脚本，不在 shop_first 上改。第 14 章说过，重新生成脚本会覆盖手工修改；shop_first 留着它的录制数据，以后要看快照、要重新生成都还能用。</p>
+<h3 id="1513-新建-shop_order">15.1.3 新建 shop_order<a class="headerlink" href="#1513-新建-shop_order" title="Permanent link">&para;</a></h3>
+<ol>
+<li>照第 14 章新建脚本的步骤：文件 → 新建脚本和解决方案，选单协议里的 Web - HTTP/HTML，「脚本名」填 <code>shop_order</code>，「位置」还是工程目录下的 lr 文件夹，点「创建」；</li>
+<li>shop_first 的代码在 <code>lr\shop_first\Action.c</code> 里，在资源管理器里右键它 → 打开方式 → 记事本，开在旁边对照着复制。在解决方案资源管理器里双击 shop_order 的 vuser_init，把 shop_first 里 login 那一步复制过来；</li>
+<li>双击 Action，把 shop_first 里搜索「键盘」的那一步（products_2）复制过来，步骤名改成 search；</li>
+<li>照下面的样子删掉不用的参数，把地址开头的 <code>http://127.0.0.1:8000</code> 换成 <code>{base}</code>，在 vuser_init 最前面加一句 lr_save_string。</li>
+</ol>
+<p>改完的 vuser_init.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Action.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>几处改动的原因：</p>
+<ul>
+<li><strong>登录放进 vuser_init。</strong> vuser_init 只执行一次，Action 按迭代次数反复执行（第 14 章）。每个虚拟用户登录一次，然后反复搜索、下单、支付，每次迭代就是一次购物。要是登录本身也是压测目标，就另写一个脚本，把登录放进 Action 里反复执行。</li>
+<li><strong>删掉了 Resource、RecContentType、Referer、Snapshot、Mode 这几个参数。</strong> 它们是录制时记下的信息：Snapshot 指向录制快照，新脚本里没有这些快照；Referer 是浏览器当时所在的页面，练习网站的接口不看它；另外几个不写就按默认方式处理。删掉以后回放照样通过（下一节）。被测系统要检查 Referer 的话（有的系统拿它防跨站请求），就把它留着。</li>
+<li><strong>地址开头换成 <code>{base}</code>。</strong> lr_save_string 把字符串 <code>http://127.0.0.1:8000</code> 存进名叫 base 的<strong>参数</strong>，脚本里写 <code>{base}</code> 的地方，回放时会换成它的值。换测试环境只改这一行，不用一个个去改地址。参数在 15.4、15.5 节细讲。</li>
+<li><strong>步骤名改成 search。</strong> 步骤名只在日志和报告里用来称呼这一步，起个看得懂的名字。</li>
+</ul>
+<p>下单和支付要用到 token 和订单号，等 15.4 节做完关联再加。</p>
+<h3 id="1514-第一次回放">15.1.4 第一次回放<a class="headerlink" href="#1514-第一次回放" title="Permanent link">&para;</a></h3>
+<p>按 F5 回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>正在开始操作 vuser_init。
+vuser_init.c(6): web_custom_request("login") 已启动
+vuser_init.c(6): web_custom_request("login") 已成功，142 个正文字节，126 个标头字节
+正在结束操作 vuser_init。
+正在运行 Vuser...
+正在开始迭代 1。
+警告 -27077: "每次迭代模拟一个新用户"运行时设置为"开"时，"vuser_init" 部分将包含 Web 函数。这可能会产生具有多次迭代的不可预测结果
+每个服务器的最大并发连接数: 6
+正在开始操作 Action。
+Action.c(3): web_url("search") 已启动
+Action.c(3): web_url("search") 已成功，144 个正文字节，126 个标头字节
+正在结束操作 Action。
+正在结束迭代 1。
+</code></pre></div>
+<p>登录和搜索都成功了。日志里有两处要说明。</p>
+<p>第一处：每个返回 JSON 的步骤都会多一行「未对 Content-Type"application/json"执行 HTML 解析……」（上面省掉了），意思是返回的不是网页，VuGen 不去里面找 css、js 这类资源。这是正常的提示，不用管。</p>
+<p>第二处：第 1 次迭代开始时有一条<strong>警告 -27077</strong>。它说的是运行时设置里的「每次迭代模拟一个新用户」开着，而 vuser_init 里有 web 函数。这个设置开着时，每次迭代开始前都会把虚拟用户的浏览器状态重置一遍，像换了一个新用户来访问。官方错误码手册的解释是：开着它时，vuser_init 应该是空的；关掉它时，Action 才能依赖 vuser_init 里做好的准备（比如登录），否则从第 2 次迭代起，脚本可能因为状态被重置而失败。shop_order 是「登录一次、反复购物」的设计，属于后一种，所以把它关掉：</p>
+<ol>
+<li>回放 → 运行时设置（快捷键 F4），左边选 浏览器 → 浏览器模拟；</li>
+<li>在右边找到「每次迭代模拟一个新用户」（Simulate a new user on each iteration），去掉勾；</li>
+<li>文件 → 保存脚本，再回放一次。</li>
+</ol>
+<p>这次第 1 次迭代开始时没有那条警告了：</p>
+<div class="highlight"><pre><span></span><code>正在运行 Vuser...
+正在开始迭代 1。
+正在开始操作 Action。
+Action.c(3): web_url("search") 已启动
+Action.c(3): web_url("search") 已成功，144 个正文字节，126 个标头字节
+正在结束操作 Action。
+正在结束迭代 1。
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：开着它也不一定出错。</strong> 实测开着这个设置迭代 3 次，web_add_auto_header 加上的 token 请求头（15.4.3 节加上以后）一直都在，练习网站只认这个请求头，所以照样能通过。换成靠 cookie 保持登录的系统，第 2 次迭代起就可能变成没登录。反过来，要模拟「每次迭代都是一个新来的访客」，就开着它，并把登录、退出都放进 Action。</p>
+</div>
+<h2 id="152-事务">15.2 事务<a class="headerlink" href="#152-事务" title="Permanent link">&para;</a></h2>
+<h3 id="1521-给登录和搜索加上事务">15.2.1 给登录和搜索加上事务<a class="headerlink" href="#1521-给登录和搜索加上事务" title="Permanent link">&para;</a></h3>
+<p>第 13 章 13.2.2 节说过，<strong>事务</strong>是一次完整的业务操作，LoadRunner 统计的响应时间就是事务的耗时（第 13 章 13.2.3 节）。脚本里用一对函数把要计时的步骤圈起来：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lr_start_transaction("事务名")</code></td>
+<td>事务开始，开始计时</td>
+</tr>
+<tr>
+<td><code>lr_end_transaction("事务名", 状态)</code></td>
+<td>事务结束，记下耗时和结果。名字要和开始时的一样</td>
+</tr>
+</tbody>
+</table>
+<p>可以直接在代码里写，也可以用菜单插入：光标放在要开始的地方，设计 → 在脚本中插入 → 开始事务（Design → Insert in Script → Start Transaction，快捷键 Ctrl+T），结束用同一个菜单里的「结束事务」（Ctrl+Shift+T）；先选中几步再用「事务环绕」（Ctrl+Shift+I），开头和结尾一次插好。录制时也可以直接点录制工具栏上的「插入开始事务」「插入结束事务」（第 14 章）。</p>
+<p>vuser_init.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Action.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>搜索后面加了一句 <code>lr_think_time(1)</code>，表示真实用户看搜索结果要停 1 秒，也就是<strong>思考时间</strong>（第 13 章 13.2.1 节，15.6 节细讲）。注意它写在 lr_end_transaction <strong>后面</strong>，原因见 15.2.4 节。</p>
+<h3 id="1522-事务的状态">15.2.2 事务的状态<a class="headerlink" href="#1522-事务的状态" title="Permanent link">&para;</a></h3>
+<p>lr_end_transaction 的第二个参数是事务的状态：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LR_AUTO</code></td>
+<td>由 LoadRunner 判断：事务里没出错就是 Pass，出了错就是 Fail</td>
+<td>大多数事务，配合检查点（15.3 节）用</td>
+</tr>
+<tr>
+<td><code>LR_PASS</code></td>
+<td>记为成功</td>
+<td>脚本自己判断过结果、确认成功时</td>
+</tr>
+<tr>
+<td><code>LR_FAIL</code></td>
+<td>记为失败</td>
+<td>脚本自己判断出业务失败时，比如支付返回的业务码不是 0（15.4.4 节）</td>
+</tr>
+</tbody>
+</table>
+<p>另外还有一个 LR_STOP，表示事务中止，很少用到。LR_FAIL 一般放在 if 里，脚本自己判断出失败时用。后面支付那一步就是这么写的：业务码不是 0 时记 LR_FAIL，否则仍交给 LR_AUTO，让 LoadRunner 照常判断。</p>
+<h3 id="1523-事务怎么命名">15.2.3 事务怎么命名<a class="headerlink" href="#1523-事务怎么命名" title="Permanent link">&para;</a></h3>
+<p>VuGen 自带的提示文字里写着事务名的要求：不能重名，最多 256 个字符，只能包含可打印的字符，另外有几个特殊字符不能用。本教程统一用「两位序号 + 下划线 + 英文」：01_login、02_search、03_order、04_pay。</p>
+<ul>
+<li>序号让事务按名字排列时和业务流程的顺序一致，在 Controller、Analysis 的事务列表里一眼就能看出先后；</li>
+<li>用英文，是因为中文事务名在 Controller、Analysis 里显示有没有问题，本教程没有验证过，英文最稳妥；</li>
+<li>名字要说清楚是什么业务，别用 t1、test 这种，过一个月自己都看不懂。</li>
+</ul>
+<p>事务还可以嵌套，比如再用一个大事务把下单和支付一起包住。嵌套时先结束里面的、再结束外面的，而且里外两个事务都要在同一个操作里开始和结束。</p>
+<h3 id="1524-在日志里看事务">15.2.4 在日志里看事务<a class="headerlink" href="#1524-在日志里看事务" title="Permanent link">&para;</a></h3>
+<p>回放，每个事务开始、结束各有一行日志（节选）：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(6): 通知: 事务 "01_login" 已启动。
+……
+vuser_init.c(15): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0716)。
+……
+Action.c(3): 通知: 事务 "02_search" 已启动。
+……
+Action.c(9): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0535)。
+</code></pre></div>
+<p>结束那一行写着状态（Pass）和<strong>持续时间</strong>（单位是秒）。登录 0.07 秒、搜索 0.05 秒，单个用户访问本机的网站，这个速度是正常的。</p>
+<p>搜索后面的 <code>lr_think_time(1)</code> 在日志里看不到，因为 VuGen 回放默认忽略思考时间（第 14 章提过 default.cfg 里的 NOTHINK）。想看思考时间的效果，就按 F4 打开运行时设置，左边选 常规 → 思考时间，选「按录制参数回放思考时间」（15.6 节细讲），再回放：</p>
+<div class="highlight"><pre><span></span><code>Action.c(3): 通知: 事务 "02_search" 已启动。
+Action.c(9): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0541)。
+Action.c(11): lr_think_time: 1.00 秒。
+</code></pre></div>
+<p>思考时间在事务结束以后才执行，没有算进事务。做个对比，把 <code>lr_think_time(1)</code> 临时挪到 lr_end_transaction 前面：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(3): 通知: 事务 "02_search" 已启动。
+Action.c(9): lr_think_time: 1.00 秒。
+Action.c(11): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 1.0659 思考时间: 1.0020)。
+</code></pre></div>
+<p>持续时间变成了 1.07 秒，后面还多了「思考时间: 1.0020」：思考时间被算进了事务，搜索接口明明只用了几十毫秒。为了让事务时间只反映系统处理请求的时间，<strong>lr_think_time 一律写在两个事务之间</strong>。看完把它挪回原处，思考时间也改回「忽略思考时间」。</p>
+<h3 id="1525-自动事务">15.2.5 自动事务<a class="headerlink" href="#1525-自动事务" title="Permanent link">&para;</a></h3>
+<p>运行时设置 → 常规 → 其他（Miscellaneous）里有一组「自动事务」，15.3 节还要用到这一页的「错误处理」：</p>
+<p><img alt="运行时设置的其他页：错误处理、多线程、自动事务" src="images/15-rts-misc.png" /></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>将每个操作定义为一个事务</td>
+<td>勾着</td>
+<td>vuser_init、Action、vuser_end 各算一个事务，事务名是操作名后面加 _Transaction</td>
+</tr>
+<tr>
+<td>将每个步骤定义为一个事务</td>
+<td>不勾</td>
+<td>每个 web_url、web_custom_request 这样的步骤各算一个事务</td>
+</tr>
+</tbody>
+</table>
+<p>第一项生成的事务，实测在命令行回放（15.9.5 节）的日志里看不到；到了 Controller 的结果里，会看到 vuser_init_Transaction、Action_Transaction、vuser_end_Transaction 这三个事务。第二项建议保持不勾：勾上以后每个步骤都变成一个事务，真正关心的 01_login 这几个反而不好找。要统计哪段操作的耗时，就像上面这样手写事务。</p>
+<h2 id="153-检查点">15.3 检查点<a class="headerlink" href="#153-检查点" title="Permanent link">&para;</a></h2>
+<h3 id="1531-web_reg_find-要写在请求前面">15.3.1 web_reg_find 要写在请求前面<a class="headerlink" href="#1531-web_reg_find-要写在请求前面" title="Permanent link">&para;</a></h3>
+<p>第 13 章 13.2.4 节说过，错误率要把业务失败也算进去。<strong>检查点</strong>就是检查响应的内容对不对，最常用的是 web_reg_find：在响应里找一段文字，找不到就算这一步失败。</p>
+<p>web_reg_find 是一个<strong>注册函数</strong>（名字里的 reg 是 register 的缩写），它本身不发请求，只是先登记一件事：等下一个发请求的步骤收到响应，就在响应里找这段文字。所以它必须写在要检查的请求<strong>前面</strong>。</p>
+<p>练习网站的接口都返回 <code>{"code": 0, "msg": "ok", "data": {...}}</code> 这样的结构，code 是 0 表示成功（第 2 章 2.6 节）。实际返回的内容里冒号后面没有空格，第 14 章扩展日志里的 <code>{"code":3003,...}</code> 就是这样，所以检查成功就找 <code>"code":0</code> 这几个字符，要和响应逐字一致。vuser_init.c 和 Action.c 改成这样：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 检查点和关联都是注册函数，要写在请求前面</span>
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>C 语言的字符串里，双引号要写成 <code>\"</code>，所以 <code>"Text=\"code\":0"</code> 找的就是 <code>"code":0</code>。回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(6): 通知: 事务 "01_login" 已启动。
+vuser_init.c(9): web_reg_find 已启动
+vuser_init.c(9): 注册 web_reg_find 成功
+vuser_init.c(11): web_custom_request("login") 已启动
+vuser_init.c(11): 注册的 web_reg_find 对于"Text="code":0"成功(计数=1)
+vuser_init.c(11): web_custom_request("login") 已成功，142 个正文字节，126 个标头字节
+vuser_init.c(18): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0394 浪费时间: 0.0000)。
+……
+Action.c(3): 通知: 事务 "02_search" 已启动。
+Action.c(5): web_reg_find 已启动
+Action.c(5): 注册 web_reg_find 成功
+Action.c(7): web_url("search") 已启动
+Action.c(7): 注册的 web_reg_find 对于"Text="code":0"成功(计数=1)
+Action.c(7): web_url("search") 已成功，144 个正文字节，126 个标头字节
+Action.c(11): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0532 浪费时间: 0.0000)。
+</code></pre></div>
+<p>注册那一行（vuser_init.c 第 9 行）先打印「注册 web_reg_find 成功」，等第 11 行的请求发完，才打印检查结果「成功(计数=1)」，表示找到了 1 处。</p>
+<p>从这一版开始，事务结束那一行多了「浪费时间」。官方帮助的解释是：这是 LoadRunner 为了统计和分析做额外工作（比如记录事务数据）花的时间，真实用户不会花这些时间；Controller 和 Analysis 的图里，事务时间都是扣掉它以后的数。这里都不到 1 毫秒，可以不管。</p>
+<p>web_reg_find 常用的几个写法：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"Text=要找的文字"</code></td>
+<td>在响应里找这段文字</td>
+</tr>
+<tr>
+<td><code>"Fail=NotFound"</code></td>
+<td>找不到就算失败。这是默认值，不写就是它</td>
+</tr>
+<tr>
+<td><code>"Fail=Found"</code></td>
+<td>反过来，<strong>找到了</strong>算失败，用来找「系统繁忙」这类不该出现的文字</td>
+</tr>
+<tr>
+<td><code>"SaveCount=参数名"</code></td>
+<td>把找到的次数存进参数。注意它的副作用，见 15.3.3 节</td>
+</tr>
+<tr>
+<td><code>"Search=Body"</code></td>
+<td>在哪里找：Body 是响应体（默认），Headers 是响应头，ALL 是全部</td>
+</tr>
+</tbody>
+</table>
+<p>录制时也可以点录制工具栏上的「插入文本检查」（第 14 章），当场加一个文本检查。本章的脚本是手写的，直接写 web_reg_find。</p>
+<h3 id="1532-检查失败时">15.3.2 检查失败时<a class="headerlink" href="#1532-检查失败时" title="Permanent link">&para;</a></h3>
+<p>把 vuser_init 里的密码临时改成 wrong，登录接口会返回 <code>{"code":1001,"msg":"用户名或密码错误","data":null}</code>，HTTP 状态码仍是 200。回放：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(6): 通知: 事务 "01_login" 已启动。
+vuser_init.c(9): web_reg_find 已启动
+vuser_init.c(9): 注册 web_reg_find 成功
+vuser_init.c(11): web_custom_request("login") 已启动
+vuser_init.c(11): 错误 -26366: 找不到 web_reg_find 的"Text="code":0"
+vuser_init.c(11): web_custom_request("login") 最高严重级别为"ERROR"，58 个正文字节，125 个标头字节
+vuser_init.c(11): 通知: 事务 "01_login" 以 "Fail" 状态结束 (持续时间: 0.0738 浪费时间: 0.0000)。
+vuser_init.c(11): 通知: 事务 "01_login" 具有 1 条错误消息。
+vuser_init.c(11): 通知: 与事务 "01_login" 关联的 1st 错误消息为"错误 -26366: 找不到 web_reg_find 的"Text="code":0""
+从操作调用了中止。
+</code></pre></div>
+<p>依次看：-26366 说的是没找到 <code>"code":0</code>；登录这一步因此失败（最高严重级别为 ERROR）；01_login 事务以 <strong>Fail</strong> 结束，后面附上了导致失败的那条错误。最后一行「从操作调用了中止」：<strong>vuser_init 出错时，整个虚拟用户直接停止</strong>，Action 和 vuser_end 都不执行。登录都没成功，后面的事也没法做，这样处理是合理的。</p>
+<p>注意事务结束那一行的行号是 11，也就是出错的那一步，不是 lr_end_transaction 所在的第 18 行。脚本没有执行到 lr_end_transaction，是 LoadRunner 在出错时替你把还开着的事务结束了，记成失败。</p>
+<p>Action 里的步骤出错，结果不一样。把密码改回来，再把 Action 里的检查点临时改成 <code>web_reg_find("Text=\"total\":0", LAST);</code>（键盘明明搜到 1 个，所以一定找不到），迭代数设成 2（运行时设置 → 常规 → 运行逻辑 → 迭代数），回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>正在开始迭代 1。
+Action.c(3): 通知: 事务 "02_search" 已启动。
+Action.c(7): web_url("search") 已启动
+Action.c(7): 错误 -26366: 找不到 web_reg_find 的"Text="total":0"
+Action.c(7): web_url("search") 最高严重级别为"ERROR"，144 个正文字节，126 个标头字节
+Action.c(7): 通知: 事务 "02_search" 以 "Fail" 状态结束 (持续时间: 0.0415 浪费时间: 0.0000)。
+……
+正在结束迭代 1。
+正在开始迭代 2。
+Action.c(3): 通知: 事务 "02_search" 已启动。
+Action.c(7): web_url("search") 已启动
+Action.c(7): 错误 -26366: 找不到 web_reg_find 的"Text="total":0"
+Action.c(7): web_url("search") 最高严重级别为"ERROR"，144 个正文字节，126 个标头字节
+Action.c(7): 通知: 事务 "02_search" 以 "Fail" 状态结束 (持续时间: 0.0505 浪费时间: 0.0000)。
+……
+正在结束迭代 2。
+</code></pre></div>
+<p>Action 里出错时，<strong>这次迭代剩下的部分不再执行，下一次迭代照常开始</strong>。压测时一个请求失败，这个虚拟用户就放弃这次购物、从下一次迭代重新来，事务记一次失败。</p>
+<p>运行时设置 → 常规 → 其他 → 错误处理 里的「出错时仍继续」（Continue on error）默认不勾。勾上它，迭代数改回 1，为了看清后面的步骤有没有执行，思考时间也改成「按录制参数回放思考时间」，再回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(7): 发生错误后继续 -26366: 找不到 web_reg_find 的"Text="total":0"
+Action.c(7): web_url("search") 最高严重级别为"continue on error"，144 个正文字节，126 个标头字节
+Action.c(7): 在 Vuser 脚本出现错误之后仍在继续。
+Action.c(11): 通知: 事务 "02_search" 以 "Fail" 状态结束 (持续时间: 0.0379 浪费时间: 0.0000)。
+……
+Action.c(13): lr_think_time: 1.00 秒。
+</code></pre></div>
+<p>这次执行到了 lr_end_transaction（第 11 行），LR_AUTO 发现事务里出过错，照样记成 Fail，后面的思考时间也执行了。这个选项会让出错后的步骤带着错误的数据接着跑，日志也更乱，一般不勾。看完把检查点、思考时间和这个选项都改回去。</p>
+<h3 id="1533-两个容易写错的地方">15.3.3 两个容易写错的地方<a class="headerlink" href="#1533-两个容易写错的地方" title="Permanent link">&para;</a></h3>
+<p><strong>写在请求后面。</strong> 把 web_reg_find 挪到 login 那一步后面：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vuser_init.c(6): 通知: 事务 "01_login" 已启动。
+vuser_init.c(8): web_custom_request("login") 已启动
+vuser_init.c(8): web_custom_request("login") 已成功，142 个正文字节，126 个标头字节
+vuser_init.c(15): web_reg_find 已启动
+vuser_init.c(15): 注册 web_reg_find 成功
+vuser_init.c(17): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0363)。
+……
+正在开始迭代 1。
+错误 -27259: 检测到挂起的 web_reg_save_param/web_create_html_param/web_create_html_param_ex/web_reg_find 请求并在 vuser_init 部分的结尾进行重置
+正在结束 Vuser...
+正在开始操作 vuser_end。
+正在结束操作 vuser_end。
+Vuser 已终止。
+</code></pre></div>
+<p>登录这一步根本没检查，01_login 记成了 Pass。vuser_init 结束时还剩一个没用上的注册，第 1 次迭代一开始就报 -27259（检测到挂起的……web_reg_find 请求），Action 一步都没执行。写在 Action 中间的话后果更隐蔽：它会去检查下一个请求的响应，检查的对象就错了。看完把 web_reg_find 挪回请求前面。</p>
+<p><strong>只写了 SaveCount。</strong> 把密码再改成 wrong，检查点加上 SaveCount，再把次数打印出来：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">// 检查点和关联都是注册函数，要写在请求前面</span>
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="s">"SaveCount=login_ok"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">wrong</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0 出现了 %s 次"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{login_ok}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vuser_init.c(11): web_custom_request("login") 已启动
+vuser_init.c(11): 注册的 web_reg_find 对于"Text="code":0"成功
+vuser_init.c(11): web_custom_request("login") 已成功，58 个正文字节，125 个标头字节
+vuser_init.c(18): "code":0 出现了 0 次
+vuser_init.c(20): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0504 浪费时间: 0.0000)。
+</code></pre></div>
+<p>找到 0 次，检查点却显示成功，事务也是 Pass。官方函数参考写得很清楚：用了 SaveCount、又没写 Fail 时，<strong>不管找没找到，检查都不会失败</strong>，要自己判断次数。想既记次数、又在找不到时失败，就同时写上 <code>"Fail=NotFound"</code>。</p>
+<h3 id="1534-检查业务码的两种写法">15.3.4 检查业务码的两种写法<a class="headerlink" href="#1534-检查业务码的两种写法" title="Permanent link">&para;</a></h3>
+<p><strong>第一种：web_reg_find 找 <code>"code":0</code></strong>，就是上面的写法。简单，找不到自动算失败，适合「成功就继续、失败就放弃」的步骤。</p>
+<p><code>"Fail=Found"</code> 可以反过来找错误码，比如密码错误时找 <code>"code":1001</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:1001"</span><span class="p">,</span><span class="w"> </span><span class="s">"Fail=Found"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vuser_init.c(11): 错误 -26368: 找到了 web_reg_find 的"Text="code":1001"(count=1)
+vuser_init.c(11): 通知: 事务 "01_login" 以 "Fail" 状态结束 (持续时间: 0.0562 浪费时间: 0.0001)。
+</code></pre></div>
+<p>它只能挡住你事先想到的那几个错误码，日常还是检查成功码更稳妥。</p>
+<p><strong>第二种：取出业务码再判断。</strong> 用 web_reg_save_param_json（15.4 节细讲）把响应里的 code 存进参数，再用 if 判断：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 检查点和关联都是注册函数，要写在请求前面</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=loginCode"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.code"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">wrong</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{loginCode}"</span><span class="p">),</span><span class="w"> </span><span class="s">"0"</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_error_message</span><span class="p">(</span><span class="s">"登录失败，业务码 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{loginCode}"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+</code></pre></div>
+<p>lr_eval_string 取出参数的值（一个字符串），strcmp 比较两个字符串，相等时返回 0，所以 <code>strcmp(...) != 0</code> 就是「业务码不是 0」。这种写法能把真实的业务码写进日志，还能根据不同的码做不同的处理，代价是代码多几行。shop_order 的支付那一步用的就是它。</p>
+<h3 id="1535-lr_error_message-和将打开的事务置为失败">15.3.5 lr_error_message 和「将打开的事务置为失败」<a class="headerlink" href="#1535-lr_error_message-和将打开的事务置为失败" title="Permanent link">&para;</a></h3>
+<p>上面这段代码在业务码不对时调了 <strong>lr_error_message</strong>，它往日志里写一条错误。密码还是 wrong，回放：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(23): 错误: 登录失败，业务码 1001
+vuser_init.c(26): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0343 浪费时间: 0.0003)。
+</code></pre></div>
+<p>错误打印出来了，01_login 事务却是 <strong>Pass</strong>：lr_error_message 默认只写日志，不影响事务的状态。</p>
+<p>运行时设置 → 常规 → 其他（15.2.5 节的截图）里有一项「当调用 lr_error_message 时，将打开的事务置为失败」（Fail open transactions on lr_error_message），默认不勾。勾上它，脚本不改，再回放：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(23): 错误: 登录失败，业务码 1001
+vuser_init.c(26): 通知: 事务 "01_login" 以 "Fail" 状态结束 (持续时间: 0.0672 浪费时间: 0.0003)。
+vuser_init.c(26): 通知: 事务 "01_login" 具有 1 条错误消息。
+vuser_init.c(26): 通知: 与事务 "01_login" 关联的 1st 错误消息为"错误 0: 登录失败，业务码 1001"
+</code></pre></div>
+<p>这次 01_login 记成了 Fail。</p>
+<p>这个开关保存在运行时设置里，和代码是分开的：光看代码看不出事务会不会失败，运行时设置一改，结果也跟着变。所以本教程的写法是<strong>在代码里明确写 LR_FAIL</strong>：发现业务失败时，先用 lr_error_message 写清楚原因，再 <code>lr_end_transaction(..., LR_FAIL)</code>，不依赖这个开关。看完把开关和密码都改回去。</p>
+<h2 id="154-关联">15.4 关联<a class="headerlink" href="#154-关联" title="Permanent link">&para;</a></h2>
+<h3 id="1541-什么是关联">15.4.1 什么是关联<a class="headerlink" href="#1541-什么是关联" title="Permanent link">&para;</a></h3>
+<p>token 是登录时服务器随机生成的，订单号是下单时服务器分配的，每次都不一样，这样的值叫<strong>动态值</strong>。录制时它们被原样记进了脚本，回放时服务器早就不认了，这就是 15.1 节第二个问题的根源。</p>
+<p><strong>关联</strong>（correlation）就是在回放时把动态值从响应里取出来，存进参数，再用到后面的请求里。第 4 章 4.7 节串接口时已经做过同样的事：创建订单拿到订单号，再拿它去支付，只是当时用的是 Python。</p>
+<h3 id="1542-找出脚本里的动态值">15.4.2 找出脚本里的动态值<a class="headerlink" href="#1542-找出脚本里的动态值" title="Permanent link">&para;</a></h3>
+<p>动手关联之前，先要知道哪些值是动态的。有三个办法。</p>
+<p><strong>对比两次录制。</strong> 同一个流程录两遍，把两个 Action.c 放在一起看，不一样的地方多半就是动态值。实测用第 14 章的代理方式和导入 HAR 各录了一次，token 是这样的：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">// 用代理方式录的</span>
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"40da726cb4e930b1ceaaf4066142236f"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 导入 HAR 生成的</span>
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"928fbf03673960daa2c0cb7333681e50"</span><span class="p">);</span>
+</code></pre></div>
+<p>两次的支付地址却都是 <code>/api/orders/SO20261023000001/pay</code>：两次录制都是在练习网站刚启动后、同一天录的，订单的流水号都从 1 开始。只靠对比会漏掉它，还要结合业务想一想：每次下单都会生成新订单，订单号不可能固定。</p>
+<p><strong>看录制快照。</strong> 第 14 章介绍过快照窗格（查看 → 快照），也可以直接看脚本目录下的 data 文件夹：步骤里的 <code>"Snapshot=t6.inf"</code> 指向 data 文件夹里的 t6.inf，里面记着这一步的地址和响应文件名（FileName1=t6.json）。代理方式录的脚本里，login 那一步的 t6.json 是这样的：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">"msg"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="nt">"data"</span><span class="p">:{</span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"40da726cb4e930b1ceaaf4066142236f"</span><span class="p">,</span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"852a4f23c52b92eb79a233ab14700458"</span><span class="p">,</span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">}}</span>
+</code></pre></div>
+<p>token 就在登录接口的返回里，<code>data</code> 下面的 <code>token</code>。这就知道该从哪个响应、哪个位置取它了。导入 HAR 生成的脚本里，login 的快照实测是空的（HAR 文件里没记下这个响应的内容），这时用第三个办法。</p>
+<p><strong>看回放日志。</strong> 打开扩展日志的「服务器返回的数据」（第 14 章用过），回放第 14 章的脚本，login 那一步的日志是这样的：</p>
+<div class="highlight"><pre><span></span><code>Action.c(16): web_custom_request("login") 已启动
+Action.c(16): "http://127.0.0.1:8000/api/login" 的 t=716ms: 142 个字节响应正文 (RelFrameId=1, Internal ID=5)
+Action.c(16):     {"code":0,"msg":"ok","data":{"token":"3fb1bb7d6b8c71c1d77c1230fc9a8fd0","refreshToken":"82
+Action.c(16):     41b0db1df63cc55ec80f90a36d5343","username":"alice"}}
+Action.c(16): web_custom_request("login") 已成功，142 个正文字节，126 个标头字节
+</code></pre></div>
+<p>服务器这次发的 token 是 3fb1bb7d……，而脚本里 web_add_auto_header 写的还是录制时的那一个，对不上的就是动态值。第 14 章顺着支付的响应看到了业务码 3003，也是同样的思路：响应和预期对不上，就去找脚本里写死的值。</p>
+<h3 id="1543-用-web_reg_save_param_json-取-token">15.4.3 用 web_reg_save_param_json 取 token<a class="headerlink" href="#1543-用-web_reg_save_param_json-取-token" title="Permanent link">&para;</a></h3>
+<p>练习网站的接口都返回 JSON，从 JSON 里取值用 web_reg_save_param_json。它和 web_reg_find 一样是注册函数，写在请求前面：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.token"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"ParamName=token"</code></td>
+<td>取到的值存进名叫 token 的参数，后面用 <code>{token}</code> 引用</td>
+</tr>
+<tr>
+<td><code>"QueryString=$.data.token"</code></td>
+<td>用 <strong>JSONPath</strong>（在 JSON 里定位一个值的写法）指定取哪个值：<code>$</code> 是整个响应，<code>$.data.token</code> 是 data 下面的 token。列表用下标，<code>$.data.items[0].id</code> 是 items 第一个元素的 id，下标从 0 开始</td>
+</tr>
+<tr>
+<td><code>SEARCH_FILTERS</code></td>
+<td>一个分隔标记，后面写在哪里找</td>
+</tr>
+<tr>
+<td><code>"Scope=Body"</code></td>
+<td>只在响应体里找</td>
+</tr>
+<tr>
+<td><code>LAST</code></td>
+<td>参数到此结束</td>
+</tr>
+</tbody>
+</table>
+<p>要取的值找不到时，这一步报错 -35060（找不到所指定查询的匹配项），和检查点失败一样会让事务失败，所以它本身也起到了检查的作用。</p>
+<p>取到 token 以后，用第 14 章见过的 web_add_auto_header 让之后的每个请求都带上它。完整的 vuser_init.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 检查点和关联都是注册函数，要写在请求前面</span>
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.token"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">alice123</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 之后的每个请求都带上登录拿到的 token</span>
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span><span class="w"> </span><span class="s">"{token}"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>和录制的脚本相比，<code>web_add_auto_header("token", ...)</code> 的第二个参数从写死的一串字符变成了 <code>{token}</code>，关联就完成了。</p>
+<h3 id="1544-加上下单和支付">15.4.4 加上下单和支付<a class="headerlink" href="#1544-加上下单和支付" title="Permanent link">&para;</a></h3>
+<p>Action 里用同样的办法：从搜索结果取商品编号 pid，从下单的响应取订单号 orderNo，从支付的响应取业务码 payCode。完整的 Action.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=pid"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.items[0].id"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=%E9%94%AE%E7%9B%98&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"03_order"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=orderNo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.orderNo"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"order"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">items</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">productId</span><span class="se">\"</span><span class="s">:{pid},</span><span class="se">\"</span><span class="s">quantity</span><span class="se">\"</span><span class="s">:1}]}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"03_order"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=payCode"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.code"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders/{orderNo}/pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 支付失败时 HTTP 状态码仍是 200，要看业务码</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">),</span><span class="w"> </span><span class="s">"0"</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_error_message</span><span class="p">(</span><span class="s">"支付失败：订单 %s，业务码 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orderNo}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_FAIL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>几个要点：</p>
+<ul>
+<li><strong>商品编号也做了关联。</strong> 练习网站里机械键盘的编号固定是 3，写死也能跑。之所以从搜索结果里取，是因为 15.8 节会把搜索词换成随机的，每次搜到的商品不一样，下单的商品编号必须跟着变；</li>
+<li><strong>请求体里引用参数。</strong> <code>"Body={\"items\":[{\"productId\":{pid},\"quantity\":1}]}"</code> 里，JSON 自己的大括号原样发出去，只有 <code>{pid}</code> 会被换成参数的值，因为只有 pid 是参数名；</li>
+<li><strong>支付用第二种检查写法。</strong> 搜索、下单用 web_reg_find 检查 <code>"code":0</code>；支付取出业务码自己判断，失败时用 lr_error_message 写明订单号和业务码，再用 LR_FAIL 结束事务（15.3.5 节）；</li>
+<li><strong>思考时间都在事务之间。</strong> 每个事务后面停 1 秒：看搜索结果、确认订单、看支付结果。</li>
+</ul>
+<p>打开扩展日志的「参数替换」（运行时设置 → 常规 → 日志，详细级别选「扩展日志」，勾上「参数替换」，15.5.6 节有截图），回放，能看到每个参数什么时候存进去、又在哪里用掉（节选）：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(4): 通知: 正在保存参数"base = http://127.0.0.1:8000"。
+vuser_init.c(16): 通知: 参数替换:参数"base"="http://127.0.0.1:8000"
+vuser_init.c(16): 警告: 带有参数分隔符的字符串""username":"alice","password":"alice123""不是参数。
+vuser_init.c(16): 通知: 正在保存参数"token = 48fc919cf0745785e54e4e050e6604e1"。
+vuser_init.c(23): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0557 浪费时间: 0.0006)。
+vuser_init.c(26): 通知: 参数替换:参数"token"="48fc919cf0745785e54e4e050e6604e1"
+……
+Action.c(12): 通知: 正在保存参数"pid = 3"。
+Action.c(16): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0363 浪费时间: 0.0003)。
+Action.c(29): 通知: 参数替换:参数"pid"="3"
+Action.c(29): 通知: 正在保存参数"orderNo = SO20261024000008"。
+Action.c(36): 通知: 事务 "03_order" 以 "Pass" 状态结束 (持续时间: 0.0616 浪费时间: 0.0003)。
+Action.c(48): 通知: 参数替换:参数"orderNo"="SO20261024000008"
+Action.c(48): 通知: 正在保存参数"payCode = 0"。
+Action.c(54): 通知: 参数替换:参数"payCode"="0"
+Action.c(58): 通知: 事务 "04_pay" 以 "Pass" 状态结束 (持续时间: 0.0644 浪费时间: 0.0002)。
+</code></pre></div>
+<p>整个传递过程一目了然：登录存下 token，web_add_auto_header 用上它；搜索存下 pid=3，下单时替换进请求体；下单存下新订单号，支付时替换进地址；支付的业务码是 0，04_pay 记为 Pass。中间那条「带有参数分隔符的字符串……不是参数」的警告，说的是登录请求体里 JSON 的大括号被当成参数检查了一遍，发现不是参数就原样发送，可以不管。</p>
+<p>现在把练习网站停掉再启动，再回放一次，照样全部通过：token 每次都是新登录拿到的，网站重启也不影响了。看完把日志改回标准日志。</p>
+<h3 id="1545-支付失败时是什么样子">15.4.5 支付失败时是什么样子<a class="headerlink" href="#1545-支付失败时是什么样子" title="Permanent link">&para;</a></h3>
+<p>支付检查有没有用，造一次支付失败就知道。余额不足最容易造：练习网站有个开关 <code>SHOP_INIT_BALANCE</code>，设置每个账号的初始余额（单位元，默认 100000，本来是给长时间压测调大余额用的）。在练习网站的窗口里按 Ctrl+C 停掉它，然后：</p>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; $env:SHOP_INIT_BALANCE = "100"
+(.venv) &gt; python -m uvicorn shop.app:app --port 8000
+</code></pre></div>
+<p>每个账号只有 100 元，机械键盘 299 元，下单能成功，支付一定失败。回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(48): web_custom_request("pay") 已启动
+Action.c(48): web_custom_request("pay") 已成功，46 个正文字节，125 个标头字节
+Action.c(55): 错误: 支付失败：订单 SO20261024000001，业务码 3002
+Action.c(56): 通知: 事务 "04_pay" 以 "Fail" 状态结束 (持续时间: 0.0018 浪费时间: 0.0001)。
+Action.c(56): 通知: 事务 "04_pay" 具有 1 条错误消息。
+Action.c(56): 通知: 与事务 "04_pay" 关联的 1st 错误消息为"错误 0: 支付失败：订单 SO20261024000001，业务码 3002"
+</code></pre></div>
+<p>和第 14 章那次一样，支付这一步本身「已成功」，HTTP 层面没有任何错误；不同的是这次检查出了业务码 3002（余额不足，第 2 章 2.6 节），04_pay 事务记为失败。压测报告里，这样的失败会算进错误率。</p>
+<p>做完记得恢复：停掉练习网站，执行 <code>Remove-Item Env:SHOP_INIT_BALANCE</code>，再正常启动（教程首页「约定」一节说过，环境变量一直有效到窗口关闭）。</p>
+<h3 id="1546-不是-json-的响应左右边界">15.4.6 不是 JSON 的响应：左右边界<a class="headerlink" href="#1546-不是-json-的响应左右边界" title="Permanent link">&para;</a></h3>
+<p>不是所有响应都是 JSON：网页是 HTML，有的接口返回纯文本或 CSV。这时用 <strong>web_reg_save_param_ex</strong>，按<strong>左边界</strong>（LB，Left Boundary）和<strong>右边界</strong>（RB，Right Boundary）取值：在响应里找到左边界，再往后找到右边界，取两者之间的内容。</p>
+<p>练习网站的「导出我的订单」接口（第 6 章 6.2 节）返回的就是 CSV 文本。15.4.5 节最后重启过练习网站，订单都清空了（练习网站的数据只存在内存里），先用 15.4.4 节的脚本回放两次，alice 名下就有两张订单。这时导出，内容是这样的：</p>
+<div class="highlight"><pre><span></span><code>订单号,商品,金额(元),状态,下单时间
+SO20261024000011,机械键盘 ×1,299.0,已支付,2026-10-24 09:25:27
+SO20261024000010,机械键盘 ×1,299.0,已支付,2026-10-24 09:25:26
+</code></pre></div>
+<p>第一行是表头，下面每行一张订单，最新的在最前面，每行的第一列是订单号。每行以回车换行结尾，C 语言里写作 <code>\r\n</code>。所以左边界用 <code>\r\n</code>，右边界用逗号，取到的就是某一行的订单号。把 Action 临时改成下面这样试一试（试完改回 15.4.4 节的样子）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 导出的是 CSV 文本：第一行是表头，下面每行一张订单，最新的在最前面</span>
+<span class="w">    </span><span class="n">web_reg_save_param_ex</span><span class="p">(</span><span class="s">"ParamName=lastOrder"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"LB=</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"RB=,"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_ex</span><span class="p">(</span><span class="s">"ParamName=orders"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"LB=</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"RB=,"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Ordinal=All"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"export"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders/export"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"最新一张订单：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{lastOrder}"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"一共 %s 张，第 2 张是 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orders_count}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orders_2}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(18): web_url("export") 已启动
+Action.c(18): web_url("export") 已成功，195 个正文字节，187 个标头字节
+Action.c(22): 最新一张订单：SO20261024000011
+Action.c(23): 一共 2 张，第 2 张是 SO20261024000010
+</code></pre></div>
+<ul>
+<li>只写左右边界时，取的是<strong>第一个</strong>匹配：表头后面的换行到第一个逗号之间，就是最新那张订单；</li>
+<li><code>"Ordinal=All"</code> 取出<strong>全部</strong>匹配，分别存进 orders_1、orders_2……，个数存在 orders_count 里；</li>
+<li>左右边界要选「紧挨着目标值、又不会在别处先出现」的文字。这个例子里表头本身也有逗号，但表头前面没有换行，所以不会被误取。</li>
+</ul>
+<p>左右边界在 JSON 上也能用（比如左边界 <code>"token":"</code>、右边界 <code>"</code>），老版本的脚本里常见这种写法。响应是 JSON 时优先用 web_reg_save_param_json，按字段名取值，不受字段顺序和空格的影响。</p>
+<h3 id="1547-设计工作室自动找动态值">15.4.7 设计工作室：自动找动态值<a class="headerlink" href="#1547-设计工作室自动找动态值" title="Permanent link">&para;</a></h3>
+<p>VuGen 也能自动找动态值。菜单 设计 → 设计工作室（Design Studio，快捷键 Ctrl+U），工具栏上也有「设计工作室」按钮。在「关联」页签点「回放和扫描」（Replay and Scan），VuGen 会回放一遍，对比录制和回放的响应，把找到的动态值列出来，选中以后点「关联」，它会自动写好取值的函数。</p>
+<p>对第 14 章导入 HAR 生成的脚本实测，扫描结果是 0 个：</p>
+<p><img alt="设计工作室：未找到任何关联实例，0 个结果" src="images/15-design-studio.png" /></p>
+<p>提示说要检查录制选项里有没有启用扫描，可是在 录制 → 录制选项 → 关联 → 配置 里，规则扫描、录制扫描、回放扫描三项都是勾着的。所以本章全部用手工关联。手工关联也是基本功：自动扫描找不出来、或者找错了的时候，最后都要靠它。</p>
+<h2 id="155-参数化">15.5 参数化<a class="headerlink" href="#155-参数化" title="Permanent link">&para;</a></h2>
+<h3 id="1551-参数是什么">15.5.1 参数是什么<a class="headerlink" href="#1551-参数是什么" title="Permanent link">&para;</a></h3>
+<p><strong>参数</strong>就是脚本里用 <code>{名字}</code> 引用的值，回放时换成实际的内容。到现在已经见过两种来源：</p>
+<ul>
+<li>lr_save_string 在脚本里直接存一个值，比如 <code>{base}</code>；</li>
+<li>关联从响应里取出来的值，比如 <code>{token}</code>、<code>{orderNo}</code>。</li>
+</ul>
+<p><strong>参数化</strong>说的是第三种：把账号、搜索词这类测试数据放进文件，回放时一行行取出来用，让每个虚拟用户、每次迭代用不同的数据。第 3 章 3.6 节的数据驱动是同一个思路。</p>
+<p>参数在 设计 → 参数 → 参数列表（Parameter List）里管理。「参数类型」下拉框里有文件、随机数字、唯一编号、迭代编号、日期/时间、Vuser ID、表、XML 等十几种，最常用的是<strong>文件</strong>。</p>
+<h3 id="1552-账号参数">15.5.2 账号参数<a class="headerlink" href="#1552-账号参数" title="Permanent link">&para;</a></h3>
+<p>练习网站准备了 100 个压测用的账号 user001～user100，密码都是 test123（第 2 章 2.1 节的账号表）。先在 shop_order 文件夹里建一个 account.dat，第一行是列名，后面每行一个账号（中间省略）：</p>
+<div class="highlight"><pre><span></span><code>username,password
+user001,test123
+user002,test123
+……
+user100,test123
+</code></pre></div>
+<p>100 行在对话框里一行行加太慢，直接用 VS Code 写这个文件最省事。然后打开 设计 → 参数 → 参数列表：</p>
+<p><img alt="参数列表：新建了一个文件类型的参数" src="images/15-param-list.png" /></p>
+<ol>
+<li>点左下角的「新建」，左边的树里多出一个参数，名字改成 <code>username</code>；</li>
+<li>「参数类型」选「文件」；</li>
+<li>「文件路径」点「浏览」，选刚才的 account.dat。不想先建文件的话，也可以点「创建表」，再用「添加列」「添加行」在对话框里填；</li>
+<li>「选择列」选「按名称」，下拉框选 username；「文件格式」里的列分隔符是逗号，第一个数据行填 1（第 0 行是列名）；</li>
+<li>下面三个下拉框：「选择下一行」选<strong>唯一</strong>，「更新值的时间」选<strong>一次</strong>，「当超出值时」选<strong>中止 Vuser</strong>，原因见 15.5.4 节；</li>
+<li>再新建一个参数 <code>password</code>，同样选 account.dat，按名称选 password 列。「选择下一行」的下拉框里，除了顺序、随机、唯一，还有一项和 username 取同一行的选项，中文界面里显示的也是英文「Same line as username」，选它，账号和密码就总是取同一行。选了它以后，「更新值的时间」和「当超出值时」两个下拉框会变灰，跟着 username 走；</li>
+<li>点「关闭」，保存脚本。</li>
+</ol>
+<p>「同一行」实测管用：把每行的密码改成各不相同，username 不论选唯一还是随机，password 取到的都是同一行的那个。</p>
+<p>最后把 vuser_init 里登录的请求体改成引用这两个参数：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">// 账号和密码来自 account.dat，每个虚拟用户用自己的账号</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{username}</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{password}</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="1553-三个下拉框各是什么意思">15.5.3 三个下拉框各是什么意思<a class="headerlink" href="#1553-三个下拉框各是什么意思" title="Permanent link">&para;</a></h3>
+<p><strong>选择下一行（Select next row）</strong>，决定从文件里怎么取值：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>意思</th>
+<th>VuGen 里一个用户回放（实测）</th>
+<th>Controller 里多个用户（官方帮助）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺序（Sequential）</td>
+<td>按行往下取，取到最后一行再从头开始</td>
+<td>3 次迭代依次是 user001、user002、user003；文件只有 2 行时，第 3 次回到 user001</td>
+<td>每个虚拟用户各自从第一行开始，同一次迭代里大家取到的是<strong>同一个值</strong></td>
+</tr>
+<tr>
+<td>随机（Random）</td>
+<td>每次需要新值时随机取一行</td>
+<td>3 次迭代取到 user004、user005、user004，会重复</td>
+<td>每个用户各自随机。可以设随机种子，用同一个种子重跑时得到同样的随机顺序，方便复现问题</td>
+</tr>
+<tr>
+<td>唯一（Unique）</td>
+<td>每个虚拟用户分到属于自己的一段数据，在这一段里按顺序用</td>
+<td>和顺序看起来一样：user001、user002、user003</td>
+<td>每个用户一段，互不重复。官方的例子：文件有 9 行、跑 3 次迭代时，第 1 个用户用第 1～3 行，第 2 个用户用第 4～6 行，第 3 个用户用第 7～9 行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>更新值的时间（Update value on）</strong>，决定什么时候换下一个值：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>意思</th>
+<th>实测（选择下一行为顺序）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每次迭代（Each iteration）</td>
+<td>每次迭代换一个值，同一次迭代里引用多少次都是同一个值</td>
+<td>见上表</td>
+</tr>
+<tr>
+<td>每次出现（Each occurrence）</td>
+<td>脚本里每引用一次就换一个值</td>
+<td>一次迭代里引用两次，取到 user001、user002，下一次迭代是 user003、user004</td>
+</tr>
+<tr>
+<td>一次（Once）</td>
+<td>整个运行只取一次，之后所有迭代都用它</td>
+<td>3 次迭代都是 user001</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当超出值时（When out of values）</strong>，只对「唯一」起作用，决定数据用完了怎么办。用一个只有 2 行的文件，唯一、每次迭代，跑 3 次迭代实测：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>第 3 次迭代</th>
+<th>日志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中止 Vuser（Abort Vuser）</td>
+<td>虚拟用户停止</td>
+<td>错误: 参数"username": 表"account.dat"中没有该参数的其他唯一值[唯一范围是 1-2]。根据"当超出值时"策略，Vuser 被中止。</td>
+</tr>
+<tr>
+<td>以循环方式继续（Continue in a cyclic manner）</td>
+<td>回到 user001</td>
+<td>一条警告：……根据"当超出值时"策略，此参数以循环方式继续至范围的起点。</td>
+</tr>
+<tr>
+<td>从最后一个值继续（Continue with last value）</td>
+<td>继续用 user002</td>
+<td>一条警告：……根据"当超出值时"策略，参数从范围的最后一个值继续。</td>
+</tr>
+</tbody>
+</table>
+<p>选「顺序」时这个设置不起作用。官方帮助说，顺序取到最后一行就回到第一行，一直循环到测试结束；实测把「顺序」和「中止 Vuser」配在一起（直接改的参数文件，15.5.5 节会讲这个文件），同样 2 行、3 次迭代，第 3 次回到了 user001，虚拟用户没有停。</p>
+<p>最下面的「在 Controller 中分配 Vuser 值」管的是「唯一」时每个虚拟用户分几行。选「自动分配块大小」，官方帮助给的算法是总行数除以虚拟用户数，上表的例子是 9 行、3 个用户，正好每人 3 行；也可以指定每个用户分几个值。不管哪种分法，数据都要够所有用户跑完所有迭代，官方的例子是 20 个用户各跑 5 次迭代，文件里至少要有 100 行。</p>
+<p>从这几张表能看出一个关键区别：<strong>VuGen 里只有一个虚拟用户，「顺序」和「唯一」看起来没有区别，到了 Controller 才分出来。</strong> 想让每个虚拟用户用不同的数据，必须选「唯一」；选「顺序」的话，50 个用户在同一次迭代里会用同一个账号，正是 15.1 节要避免的情况。</p>
+<h3 id="1554-shop_order-为什么这样选">15.5.4 shop_order 为什么这样选<a class="headerlink" href="#1554-shop_order-为什么这样选" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>设置</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>唯一</td>
+<td>Controller 里每个虚拟用户一个账号，不会两个用户共用</td>
+</tr>
+<tr>
+<td></td>
+<td>一次</td>
+<td>登录只在 vuser_init 里做一次，一个虚拟用户从头到尾就是一个账号（选每次迭代的后果见 15.5.6 节）</td>
+</tr>
+<tr>
+<td></td>
+<td>中止 Vuser</td>
+<td>账号不够分时，宁可让多出来的虚拟用户停下，也不要两个用户共用账号。社区版最多 50 个虚拟用户，100 个账号用不完</td>
+</tr>
+<tr>
+<td>password</td>
+<td>和 username 同一行</td>
+<td>账号和密码始终配对</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1555-prm-和-dat-文件">15.5.5 .prm 和 .dat 文件<a class="headerlink" href="#1555-prm-和-dat-文件" title="Permanent link">&para;</a></h3>
+<p>参数列表里的设置，保存后写在脚本目录的 shop_order.prm 里，.usr 文件里的 <code>ParameterFile=shop_order.prm</code> 指向它。username 和 password 两段是这样的（键按字母排序）：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[parameter:password]</span>
+<span class="na">ColumnName</span><span class="o">=</span><span class="s">"password"</span>
+<span class="na">Delimiter</span><span class="o">=</span><span class="s">","</span>
+<span class="na">GenerateNewVal</span><span class="o">=</span><span class="s">"Once"</span>
+<span class="na">OriginalValue</span><span class="o">=</span><span class="s">""</span>
+<span class="na">OutOfRangePolicy</span><span class="o">=</span><span class="s">"ContinueWithLast"</span>
+<span class="na">ParamName</span><span class="o">=</span><span class="s">"password"</span>
+<span class="na">SelectNextRow</span><span class="o">=</span><span class="s">"Same line as username"</span>
+<span class="na">StartRow</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">Table</span><span class="o">=</span><span class="s">"account.dat"</span>
+<span class="na">TableLocation</span><span class="o">=</span><span class="s">"Local"</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">"Table"</span>
+<span class="na">auto_allocate_block_size</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">value_for_each_vuser</span><span class="o">=</span><span class="s">""</span>
+<span class="k">[parameter:username]</span>
+<span class="na">ColumnName</span><span class="o">=</span><span class="s">"username"</span>
+<span class="na">Delimiter</span><span class="o">=</span><span class="s">","</span>
+<span class="na">GenerateNewVal</span><span class="o">=</span><span class="s">"Once"</span>
+<span class="na">OriginalValue</span><span class="o">=</span><span class="s">""</span>
+<span class="na">OutOfRangePolicy</span><span class="o">=</span><span class="s">"AbortVuser"</span>
+<span class="na">ParamName</span><span class="o">=</span><span class="s">"username"</span>
+<span class="na">SelectNextRow</span><span class="o">=</span><span class="s">"Unique"</span>
+<span class="na">StartRow</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">Table</span><span class="o">=</span><span class="s">"account.dat"</span>
+<span class="na">TableLocation</span><span class="o">=</span><span class="s">"Local"</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">"Table"</span>
+<span class="na">auto_allocate_block_size</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">value_for_each_vuser</span><span class="o">=</span><span class="s">""</span>
+</code></pre></div>
+<p>对照着看：SelectNextRow 是选择下一行（Unique、Same line as username），GenerateNewVal 是更新值的时间（Once），OutOfRangePolicy 是当超出值时（AbortVuser），Table 是数据文件，ColumnName 是按名称选的列，StartRow 是第一个数据行。文件里还有一段 keyword，是 15.8.3 节加的搜索词参数。</p>
+<p>.dat 文件就是普通的文本文件，逗号分隔，第一行是列名。数据文件里有中文时要存成 GBK，15.8.3 节实测了存成 UTF-8 的后果。</p>
+<h3 id="1556-用多次迭代验证取值">15.5.6 用多次迭代验证取值<a class="headerlink" href="#1556-用多次迭代验证取值" title="Permanent link">&para;</a></h3>
+<p>参数取得对不对，用多次迭代加扩展日志看：</p>
+<ol>
+<li>运行时设置 → 常规 → 运行逻辑，迭代数改成 3；</li>
+<li>常规 → 日志，详细级别选「扩展日志」，勾上「参数替换」（Parameter substitution）：</li>
+</ol>
+<p><img alt="运行时设置的日志页：详细级别、扩展日志的三个选项" src="images/15-rts-log.png" /></p>
+<ol>
+<li>为了看清每次迭代的账号，在 Action 的开头临时加一行：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"这次迭代的账号：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{username}"</span><span class="p">));</span>
+</code></pre></div>
+<p>回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(17): 通知: 参数替换:参数"username"="user001"
+vuser_init.c(17): 通知: 参数 password = 1 [表 = password] 的下一行。
+vuser_init.c(17): 通知: 参数替换:参数"password"="test123"
+……
+正在开始迭代 1。
+Action.c(3): 通知: 参数替换:参数"username"="user001"
+Action.c(3): 这次迭代的账号：user001
+……
+正在开始迭代 2。
+Action.c(3): 通知: 参数替换:参数"username"="user001"
+Action.c(3): 这次迭代的账号：user001
+……
+正在开始迭代 3。
+Action.c(3): 通知: 参数替换:参数"username"="user001"
+Action.c(3): 这次迭代的账号：user001
+</code></pre></div>
+<p>登录时 username 换成了 user001，password 是同一行的 test123，3 次迭代用的都是 user001，和「一次」的设置吻合。</p>
+<p>做个对比，把 username 的「更新值的时间」改成「每次迭代」（password 的这个下拉框是灰的，它总是和 username 取同一行），再回放：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(17): 通知: 参数替换:参数"username"="user001"
+……
+Action.c(3): 通知: 参数替换:参数"username"="user001"
+Action.c(3): 这次迭代的账号：user001
+……
+正在开始迭代 2。
+通知: 参数 username = 2 [表 = username] 的下一行。
+通知: 正在获取参数"username"的新值:表 ="account.dat"列 ="0"行 ="2"。
+Action.c(3): 通知: 参数替换:参数"username"="user002"
+Action.c(3): 这次迭代的账号：user002
+……
+正在开始迭代 3。
+通知: 参数 username = 3 [表 = username] 的下一行。
+通知: 正在获取参数"username"的新值:表 ="account.dat"列 ="0"行 ="3"。
+Action.c(3): 通知: 参数替换:参数"username"="user003"
+Action.c(3): 这次迭代的账号：user003
+</code></pre></div>
+<p>日志显示第 2、3 次迭代换成了 user002、user003，可登录只在 vuser_init 里做过一次，用的是 user001，之后每个请求带的都是 user001 的 token。实测回放完查订单，新下的 3 张订单全在 user001 名下，user002、user003 一张都没有。脚本以为自己是 user002，实际下单的却是 user001，日志和数据对不上，这种问题排查起来非常费劲。所以登录放在 vuser_init 时，账号参数一定选「一次」。</p>
+<p>看完把设置改回「一次」，删掉临时加的那行，日志改回标准日志，迭代数留着 3，15.10 节还要用。</p>
+<h3 id="1557-其他几种参数类型">15.5.7 其他几种参数类型<a class="headerlink" href="#1557-其他几种参数类型" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>取到的值</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>随机数字</td>
+<td>指定范围里的一个随机整数</td>
+<td>每次下单的数量在 1～5 之间随机</td>
+</tr>
+<tr>
+<td>唯一编号</td>
+<td>每个虚拟用户一段不重复的数字。官方帮助的例子：起始值 1、块大小 100 时，第 1 个用户用 1～100，第 2 个用户用 101～200</td>
+<td>注册新用户时生成不重复的用户名、手机号后缀</td>
+</tr>
+<tr>
+<td>迭代编号</td>
+<td>当前是第几次迭代</td>
+<td>写进日志或订单备注，方便对数据</td>
+</tr>
+<tr>
+<td>Vuser ID</td>
+<td>Controller 分给虚拟用户的编号，在 VuGen 里回放时是 -1</td>
+<td>区分是哪个虚拟用户发的请求</td>
+</tr>
+</tbody>
+</table>
+<p>在参数列表里新建参数时，「参数类型」选对应的类型，再按对话框里的项目填范围和格式。实测三种类型各建一个参数：qty 是 1～5 的随机数字，seq 是三位数的唯一编号，iter 是迭代编号，迭代 3 次打印出来：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"迭代编号 %s，随机数量 %s，唯一编号 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{iter}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{qty}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{seq}"</span><span class="p">));</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(3): 迭代编号 1，随机数量 4，唯一编号 001
+Action.c(3): 迭代编号 2，随机数量 5，唯一编号 002
+Action.c(3): 迭代编号 3，随机数量 3，唯一编号 003
+</code></pre></div>
+<h2 id="156-思考时间与节奏">15.6 思考时间与节奏<a class="headerlink" href="#156-思考时间与节奏" title="Permanent link">&para;</a></h2>
+<h3 id="1561-lr_think_time">15.6.1 lr_think_time<a class="headerlink" href="#1561-lr_think_time" title="Permanent link">&para;</a></h3>
+<p><code>lr_think_time(秒数)</code> 让虚拟用户停一会儿，模拟真人看页面、想下一步的时间。shop_order 里写了三处，都是 1 秒：看搜索结果、确认订单、看支付结果。前面说过两条规矩：</p>
+<ul>
+<li>写在两个事务之间，不要写进事务里（15.2.4 节）；</li>
+<li>VuGen 回放默认忽略它。脚本放进 Controller 的场景以后，思考时间的默认设置是「按录制参数回放思考时间」，和 VuGen 里不一样，压测时按场景决定怎么用。</li>
+</ul>
+<p>第 13 章 13.2.6 节的公式「每秒请求数 ≈ 并发用户数 ÷（响应时间 + 思考时间）」说明，思考时间直接决定了同样多的虚拟用户能产生多大的压力。所以脚本里的思考时间要符合真实用户的习惯，别随手写 0 或者 10。</p>
+<h3 id="1562-运行时设置里的思考时间">15.6.2 运行时设置里的思考时间<a class="headerlink" href="#1562-运行时设置里的思考时间" title="Permanent link">&para;</a></h3>
+<p>运行时设置 → 常规 → 思考时间（Think Time）：</p>
+<p><img alt="运行时设置的思考时间页" src="images/15-rts-think.png" /></p>
+<p>用一个只有 <code>lr_think_time(2)</code> 的脚本迭代 3 次，各个选项实测的日志：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>日志里的那一行</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>忽略思考时间（Ignore think time）</td>
+<td>没有这一行</td>
+<td>VuGen 里的默认值，整个回放 0.9 秒就结束了</td>
+</tr>
+<tr>
+<td>按录制参数回放思考时间（Replay think time as recorded）</td>
+<td>lr_think_time: 2.00 秒。</td>
+<td>脚本里写几秒就停几秒，整个回放用了 7.2 秒</td>
+</tr>
+<tr>
+<td>将录制思考时间乘以 1.5</td>
+<td>lr_think_time: 3.00 秒 (录制思考时间为 2.00 秒)。</td>
+<td>按倍数放大或缩小，用来整体调节压力</td>
+</tr>
+<tr>
+<td>使用录制思考时间的随机百分比，最小值 50%、最大值 150%</td>
+<td>3 次分别停了 2.43、1.81、1.93 秒</td>
+<td>在 1～3 秒之间随机，更接近真人，压测时很常用</td>
+</tr>
+<tr>
+<td>将思考时间限制为 1 秒（配合按录制参数回放）</td>
+<td>lr_think_time: 1.00 秒 (录制思考时间为 2.00 秒)。</td>
+<td>给思考时间设个上限，防止录制时的长停顿拖慢压测</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1563-节奏">15.6.3 节奏<a class="headerlink" href="#1563-节奏" title="Permanent link">&para;</a></h3>
+<p><strong>节奏</strong>（Pacing）管的是两次迭代之间隔多久，在运行时设置 → 常规 → 节奏，「开始新迭代」有三个选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在上一个迭代结束后立即开始</td>
+<td>默认值，一次迭代跑完马上开始下一次</td>
+</tr>
+<tr>
+<td>上一个迭代结束后，且 [固定] 延迟 [60] 秒</td>
+<td>跑完一次，等一段时间再开始下一次</td>
+</tr>
+<tr>
+<td>于 [固定] 间隔，每隔 [60] 秒</td>
+<td>每隔固定的时间开始一次迭代，不管这次跑了多久（前提是一次迭代用的时间比间隔短）</td>
+</tr>
+</tbody>
+</table>
+<p>方括号里的「固定」是个下拉框，官方帮助说明也可以改成随机，让延迟或间隔在一个范围里取值。</p>
+<p>VuGen 回放时节奏是生效的。还用上面那个只有 <code>lr_think_time(2)</code> 的脚本（思考时间按默认忽略），把节奏设成每隔 5 秒开始一次迭代、迭代 2 次，实测第 1 次迭代结束后日志里多了一行：</p>
+<div class="highlight"><pre><span></span><code>正在结束迭代 1。
+为迭代节奏等待 4.9990 秒。
+正在开始迭代 2。
+</code></pre></div>
+<p>一次迭代只用了 1 毫秒左右，所以要等 4.999 秒才到 5 秒。思考时间和节奏的分工：思考时间是一次迭代<strong>内部</strong>步骤之间的停顿，节奏是迭代<strong>之间</strong>的间隔。用第三个选项能直接控制每个虚拟用户的速率：每隔 10 秒开始一次迭代，10 个虚拟用户每秒大约完成 1 次购物，不管服务器快慢，到达的速率都很稳定。</p>
+<h2 id="157-集合点">15.7 集合点<a class="headerlink" href="#157-集合点" title="Permanent link">&para;</a></h2>
+<p>第 13 章 13.2.1 节说过，严格并发（所有用户在同一时刻发请求）靠<strong>集合点</strong>（rendezvous）实现。脚本里写一句：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_rendezvous</span><span class="p">(</span><span class="s">"pay"</span><span class="p">);</span>
+</code></pre></div>
+<p>在 Controller 里运行时，每个虚拟用户执行到这一句就停下来等，等到达的用户够数了再一起放行，同时执行后面的步骤。它用来测「很多人同时支付同一张订单」「整点抢券」这类瞬间并发的场景。</p>
+<p>插入的菜单是 设计 → 在脚本中插入 → 集合，参数是集合点的名字；录制时也可以点录制工具栏上的「插入集合点」（第 14 章）。官方函数参考说明它只能写在 Action 这类操作里，不能写在 vuser_init、vuser_end 里。</p>
+<p><strong>集合点只在 Controller 里起作用。</strong> 在命令行回放（15.9.5 节）里实测：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"到集合点之前"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_rendezvous</span><span class="p">(</span><span class="s">"pay"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"过了集合点"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(3): 到集合点之前
+Action.c(4): 集合 pay
+Action.c(5): 过了集合点
+</code></pre></div>
+<p>日志里只打印了一行「集合 pay」，没有任何等待就过去了：只有一个虚拟用户，没有谁可以等。等到多少人才放行、最多等多久，在 Controller 的场景里设置。第 18 章做并发支付的实验时，会另写一个在支付前放集合点的脚本，并在 Controller 里配置它。</p>
+<p>shop_order 里不放集合点：它测的是持续压力下的吞吐量和响应时间，集合点会让所有用户在一处排队，把压力变成一阵一阵的，测出来的数字就不对了。</p>
+<h2 id="158-中文">15.8 中文<a class="headerlink" href="#158-中文" title="Permanent link">&para;</a></h2>
+<p>脚本里的中文会在四个地方出问题：源文件、地址、请求体、数据文件。原因都一样：VuGen 的脚本和数据文件按 <strong>GBK</strong>（简体中文 Windows 的系统编码）处理，而练习网站和大多数现代系统用的是 UTF-8。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：本节的例子在哪里试。</strong> 15.8.3 节给 shop_order 加搜索词参数，是正式的修改。其余几节的例子都是一整个 Action()，用来演示问题是什么样子，别在 shop_order 里试。想动手的话，照 15.1.3 节另建一个临时脚本 cn_test，vuser_init 写成 15.4.3 节的样子（用 alice 登录、取 token），例子的代码写进它的 Action，试完把这个脚本删掉就行。</p>
+</div>
+<h3 id="1581-源文件必须存成-gbk">15.8.1 源文件必须存成 GBK<a class="headerlink" href="#1581-源文件必须存成-gbk" title="Permanent link">&para;</a></h3>
+<p>C 语言源文件（.c）里有中文时，必须存成 GBK。存成 UTF-8（带不带 BOM 都一样）会出两种问题。</p>
+<p>一种是编译失败。Action.c 存成 UTF-8：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"搜到 %s 个"</span><span class="p">,</span><span class="w"> </span><span class="s">"x"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>回放时编译报错（编译错误写在输出文件夹的 logfile.log 里，见 15.9.5 节）：</p>
+<div class="highlight"><pre><span></span><code>Action.c:3:40: error: unterminated string or character constant
+</code></pre></div>
+<p>另一种更隐蔽：能编译、能运行，中文却变成了乱码。同样存成 UTF-8，把字符串换成「登录成功」，日志里打印出来是：</p>
+<div class="highlight"><pre><span></span><code>Action.c(3): 鐧诲綍鎴愬姛
+</code></pre></div>
+<p>是报错还是乱码，取决于这几个字的 UTF-8 编码碰巧是什么，原因是同一个。</p>
+<p>在 VuGen 里直接编辑脚本没有这个问题。用 VS Code 改脚本时要注意：VS Code 默认按 UTF-8 打开和保存文件。打开 VuGen 的脚本，先看右下角状态栏显示的编码：</p>
+<ul>
+<li>中文显示成乱码时，点状态栏上的编码，选「通过编码重新打开」（Reopen with Encoding），在编码列表里输入 gbk，选带 GBK 字样的那一项；</li>
+<li>保存前确认状态栏显示的是 GBK。不是的话点它，选「通过编码保存」（Save with Encoding），同样选 GBK。</li>
+</ul>
+<h3 id="1582-地址里的中文">15.8.2 地址里的中文<a class="headerlink" href="#1582-地址里的中文" title="Permanent link">&para;</a></h3>
+<p>第 14 章说过，搜索词直接写中文，服务器会返回 400。实测把「耳机」直接写进地址：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search_cn"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword=耳机&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(3): 错误 -26630: 对于"http://127.0.0.1:8000/api/products?keyword=耳机&amp;page=1&amp;size=10"，HTTP 状态代码=400 (Bad Request)
+</code></pre></div>
+<p>地址里的中文要先转成 UTF-8，再编码成 <code>%E8%80%B3</code> 这样的形式（第 2 章 2.3.1 节），这种写法叫<strong>百分号编码</strong>。在 LoadRunner 里要写三句：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"耳机"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"kw_utf8"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{kw_utf8}"</span><span class="p">),</span><span class="w"> </span><span class="s">"kw"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_convert_param</span><span class="p">(</span><span class="s">"kw"</span><span class="p">,</span><span class="w"> </span><span class="s">"SourceEncoding=PLAIN"</span><span class="p">,</span><span class="w"> </span><span class="s">"TargetEncoding=URL"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"转码后的关键词：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{kw}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=total"</span><span class="p">,</span><span class="w"> </span><span class="s">"QueryString=$.data.total"</span><span class="p">,</span><span class="w"> </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span><span class="w"> </span><span class="s">"Scope=Body"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search_cn"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword={kw}&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"搜到 %s 个商品"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{total}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(6): 转码后的关键词：%E8%80%B3%E6%9C%BA
+……
+Action.c(10): web_url("search_cn") 已成功，223 个正文字节，126 个标头字节
+Action.c(14): 搜到 2 个商品
+</code></pre></div>
+<p>「耳机」变成了 <code>%E8%80%B3%E6%9C%BA</code>，搜到 2 个商品。三句分别是：</p>
+<ol>
+<li><code>lr_convert_string_encoding("耳机", LR_ENC_SYSTEM_LOCALE, LR_ENC_UTF8, "kw_utf8")</code>：把字符串从系统编码（GBK）转成 UTF-8，结果存进参数 kw_utf8；</li>
+<li><code>lr_save_string(lr_eval_string("{kw_utf8}"), "kw")</code>：把结果再存一遍，存成参数 kw；</li>
+<li><code>web_convert_param("kw", "SourceEncoding=PLAIN", "TargetEncoding=URL", LAST)</code>：把参数 kw 做百分号编码，结果放回 kw。</li>
+</ol>
+<p>第 2 句看起来多余，其实不能省。lr_convert_string_encoding 转出来的参数，末尾多带了一个<strong>空字符</strong>（编码为 0 的字符）。去掉第 2 句，直接对 kw_utf8 做编码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"耳机"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"kw_utf8"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_convert_param</span><span class="p">(</span><span class="s">"kw_utf8"</span><span class="p">,</span><span class="w"> </span><span class="s">"SourceEncoding=PLAIN"</span><span class="p">,</span><span class="w"> </span><span class="s">"TargetEncoding=URL"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"少了中间那一步：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{kw_utf8}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=total"</span><span class="p">,</span><span class="w"> </span><span class="s">"QueryString=$.data.total"</span><span class="p">,</span><span class="w"> </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span><span class="w"> </span><span class="s">"Scope=Body"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search_cn"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword={kw_utf8}&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"搜到 %s 个商品"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{total}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(5): 少了中间那一步：%E8%80%B3%E6%9C%BA%00
+……
+Action.c(9): web_url("search_cn") 已成功，70 个正文字节，125 个标头字节
+Action.c(13): 搜到 0 个商品
+</code></pre></div>
+<p>末尾多了 <code>%00</code>，服务器按「耳机加一个空字符」去搜，一个都没搜到，而且 HTTP 200、业务码 0，什么错误都不报。lr_eval_string 取出来的字符串到空字符就结束了，再用 lr_save_string 存一遍，正好把它去掉。</p>
+<h3 id="1583-搜索词参数化">15.8.3 搜索词参数化<a class="headerlink" href="#1583-搜索词参数化" title="Permanent link">&para;</a></h3>
+<p>到这里可以把写死的「键盘」换成参数了。在 shop_order 文件夹里建 keyword.dat，<strong>存成 GBK</strong>（用 VS Code 写的话，按 15.8.1 节的办法选「通过编码保存」），内容是 5 个搜索词，每个都能搜到商品：</p>
+<div class="highlight"><pre><span></span><code>keyword
+耳机
+键盘
+鼠标
+数据线
+充电宝
+</code></pre></div>
+<p>没有选「限量版手办」，它只有 3 个库存，压测时几下就卖完了。在参数列表里新建参数 keyword：类型「文件」，文件选 keyword.dat，按名称选 keyword 列，「选择下一行」选<strong>随机</strong>，「更新值的时间」选<strong>每次迭代</strong>，每次购物随机搜一个词。</p>
+<p>Action 的开头加上转码的三句，搜索地址换成 <code>{kw}</code>（成品 Action.c 的第 1～21 行）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 关键词来自 keyword.dat，是中文：先转成 UTF-8，再做百分号编码，才能放进地址</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{keyword}"</span><span class="p">),</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"kw_utf8"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{kw_utf8}"</span><span class="p">),</span><span class="w"> </span><span class="s">"kw"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_convert_param</span><span class="p">(</span><span class="s">"kw"</span><span class="p">,</span><span class="w"> </span><span class="s">"SourceEncoding=PLAIN"</span><span class="p">,</span><span class="w"> </span><span class="s">"TargetEncoding=URL"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=pid"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.items[0].id"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword={kw}&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+</code></pre></div>
+<p>转码放在 02_search 事务的前面，它不是服务器的处理时间，不该算进事务。打开扩展日志的参数替换，看其中一次迭代里搜索词怎么一步步变成地址（节选）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(4): 通知: 参数替换:参数"keyword"="鼠标"
+Action.c(4): 通知: 正在保存参数"kw_utf8 = 榧犳爣\x00"。
+Action.c(5): 通知: 参数替换:参数"kw_utf8"="榧犳爣\x00"
+Action.c(5): 通知: 正在保存参数"kw = 榧犳爣"。
+Action.c(6): 通知: 正在保存参数"kw = %E9%BC%A0%E6%A0%87"。
+Action.c(17): 通知: 参数替换:参数"kw"="%E9%BC%A0%E6%A0%87"
+Action.c(17): 通知: 正在保存参数"pid = 4"。
+</code></pre></div>
+<p>第 2 行能看到 kw_utf8 末尾的 <code>\x00</code>，就是上一节说的空字符；lr_save_string 存一遍以后，kw 里就没有它了。「鼠标」的 UTF-8 编码在日志里显示成了「榧犳爣」，原因在 15.8.5 节。</p>
+<p>数据文件的编码也实测了：另做一个只有耳机、键盘、显示器三个词的 keyword.dat，分别存成三种编码回放：</p>
+<table>
+<thead>
+<tr>
+<th>存成</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GBK</td>
+<td>耳机搜到 2 个、键盘搜到 1 个、显示器搜到 2 个</td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td>关键词变成乱码，编码后是 %E9%91%B0%E8%99%AB%E6%BA%80 这样的错误内容，一个都搜不到，也不报错</td>
+</tr>
+<tr>
+<td>UTF-8 带 BOM</td>
+<td>报「错误: 参数"keyword": 表"keyword.dat"的列名"keyword"无效。」，参数取不到值，地址里发出去的是 {keyword} 这几个字</td>
+</tr>
+</tbody>
+</table>
+<p>官方帮助的参数类型一节建议非英语的数据文件存成 UTF-8；按本章的写法（源文件是 GBK，从系统编码转成 UTF-8），实测数据文件只能存 GBK。</p>
+<h3 id="1584-请求体里的中文">15.8.4 请求体里的中文<a class="headerlink" href="#1584-请求体里的中文" title="Permanent link">&para;</a></h3>
+<p>请求体（JSON）里的中文也要转成 UTF-8。用新增收货地址的接口（第 2 章 2.6 节）实测，收货人「张三」，地址「北京市海淀区中关村大街1号」。</p>
+<p>直接写中文，不转码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"add_address"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/addresses"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">receiver</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">张三</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">phone</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">13800000000</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">detail</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">北京市海淀区中关村大街1号</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>打开扩展日志的「服务器返回的数据」，回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(3):     HTTP/1.1 400 Bad Request\r\n
+……
+Action.c(3):     {"detail":"There was an error parsing the body"}
+Action.c(3): 错误 -26630: 对于"http://127.0.0.1:8000/api/addresses"，HTTP 状态代码=400 (Bad Request)
+</code></pre></div>
+<p>服务器收到的是 GBK 编码的字节，按 UTF-8 解析不了 JSON，返回 400。只转码、不去掉末尾的空字符：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"张三"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"receiver"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"北京市海淀区中关村大街1号"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"detail"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"add_address"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/addresses"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">receiver</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{receiver}</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">phone</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">13800000000</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">detail</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{detail}</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(6):     HTTP/1.1 422 Unprocessable Content\r\n
+……
+Action.c(6):     {"code":422,"msg":"……","data":[{"field":"15","reason":"JSON decode error"}]}
+Action.c(6): 错误 -35196: 对于"http://127.0.0.1:8000/api/addresses"，HTTP 状态代码=422 (Unprocessable Content)
+</code></pre></div>
+<p>空字符混进了 JSON，返回 422，原因是 JSON decode error（msg 的中文显示成了乱码，这里省掉了，原因见 15.8.5 节）。正确的写法，顺便把地址查回来核对：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 中文先转成 UTF-8；转出来的参数末尾多一个空字符，用 lr_save_string 再存一遍去掉它</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"张三"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"tmp"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{tmp}"</span><span class="p">),</span><span class="w"> </span><span class="s">"receiver"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="s">"北京市海淀区中关村大街1号"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"tmp"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{tmp}"</span><span class="p">),</span><span class="w"> </span><span class="s">"detail"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=addrId"</span><span class="p">,</span><span class="w"> </span><span class="s">"QueryString=$.data.id"</span><span class="p">,</span><span class="w"> </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span><span class="w"> </span><span class="s">"Scope=Body"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"add_address"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/addresses"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">receiver</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{receiver}</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">phone</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">13800000000</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">detail</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{detail}</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 查回来核对：检查点里的中文同样要用转好的参数</span>
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text={receiver}"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=back"</span><span class="p">,</span><span class="w"> </span><span class="s">"QueryString=$.data.receiver"</span><span class="p">,</span><span class="w"> </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span><span class="w"> </span><span class="s">"Scope=Body"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"get_address"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/addresses/{addrId}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 服务器返回的中文是 UTF-8，打印到日志之前先转回系统编码</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{back}"</span><span class="p">),</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="s">"back_gbk"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"地址 %s 的收货人：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{addrId}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{back_gbk}"</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Action.c(12): web_custom_request("add_address") 已成功，128 个正文字节，126 个标头字节
+……
+Action.c(23): 注册的 web_reg_find 对于"Text=寮犱笁"成功(计数=1)
+Action.c(23): web_url("get_address") 已成功，128 个正文字节，126 个标头字节
+Action.c(29): 地址 1 的收货人：张三
+</code></pre></div>
+<p>新增成功，查回来的收货人也对得上。再从外面用接口客户端 ShopApi 核对一次（ShopApi 是第 4 章 4.3 节写的，地址相关的方法是第 6 章加的）。在工程根目录新建一个临时文件 addr_check.py，看完就删：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""临时文件：查回 alice 的收货地址，核对中文有没有存对。看完就删。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="s2">"http://127.0.0.1:8000"</span><span class="p">)</span>
+<span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"alice123"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">list_addresses</span><span class="p">()))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python addr_check.py
+{'total': 1, 'items': [{'id': 1, 'receiver': '张三', 'phone': '13800000000', 'detail': '北京市海淀区中关村大街1号'}]}
+</code></pre></div>
+<p>收货人和地址都完整地存进去了。</p>
+<h3 id="1585-检查点和日志里的中文">15.8.5 检查点和日志里的中文<a class="headerlink" href="#1585-检查点和日志里的中文" title="Permanent link">&para;</a></h3>
+<p><strong>检查点里的中文同样要转码。</strong> 上面的例子里，查回地址时检查的是 <code>"Text={receiver}"</code>，用的是转好的 UTF-8 参数。把它换成直接写中文 <code>web_reg_find("Text=张三", LAST)</code>，查同一个地址，实测报错：</p>
+<div class="highlight"><pre><span></span><code>Action.c(23): 错误 -26366: 找不到 web_reg_find 的"Text=张三"
+</code></pre></div>
+<p>这条收货地址里明明有「张三」，可 GBK 的「张三」和响应里 UTF-8 的「张三」是两串不同的字节，所以找不到。</p>
+<p><strong>日志里的乱码。</strong> VuGen 按 GBK 显示日志，UTF-8 编码的中文都会显示成乱码：15.8.4 节检查点那一行的「寮犱笁」其实是转成 UTF-8 的「张三」，15.8.3 节的「榧犳爣」其实是「鼠标」，第 14 章支付响应里 msg 的乱码是服务器返回的 UTF-8 中文，内容本身都没有错。要在日志里看到正确的中文，就用 lr_convert_string_encoding 从 LR_ENC_UTF8 转回 LR_ENC_SYSTEM_LOCALE 再打印，就像 15.8.4 节最后那段代码的最后两句那样。</p>
+<h2 id="159-调试">15.9 调试<a class="headerlink" href="#159-调试" title="Permanent link">&para;</a></h2>
+<h3 id="1591-三个消息函数">15.9.1 三个消息函数<a class="headerlink" href="#1591-三个消息函数" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>发到哪里</th>
+<th>带不带行号</th>
+<th>和日志设置的关系（实测）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lr_output_message</td>
+<td>输出窗口和日志</td>
+<td>带</td>
+<td>关掉日志也会打印；选了「出错时记录」而这次迭代没出错时，不打印</td>
+</tr>
+<tr>
+<td>lr_log_message</td>
+<td>只写进虚拟用户的日志文件，不发到 Controller 的输出窗口；在 VuGen 里回放时，输出窗格的回放日志里也能看到它</td>
+<td>不带</td>
+<td>关掉日志不打印；选了「出错时记录」而没出错时也不打印</td>
+</tr>
+<tr>
+<td>lr_error_message</td>
+<td>输出窗口和日志，标成错误</td>
+<td>带</td>
+<td>关掉日志也会打印；可以让事务失败（15.3.5 节）</td>
+</tr>
+</tbody>
+</table>
+<p>用这三句实测：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"这是 lr_output_message"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_log_message</span><span class="p">(</span><span class="s">"这是 lr_log_message"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_error_message</span><span class="p">(</span><span class="s">"这是 lr_error_message"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>标准日志（默认设置）：</p>
+<div class="highlight"><pre><span></span><code>Action.c(3): 这是 lr_output_message
+这是 lr_log_message
+Action.c(5): 错误: 这是 lr_error_message
+</code></pre></div>
+<p>lr_log_message 那一行没有行号，lr_error_message 前面多了「错误:」。运行时设置 → 常规 → 日志（15.5.6 节的截图）里有两项会改变这个结果：</p>
+<ul>
+<li>去掉「启用日志记录」，只剩两行：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Action.c(3): 这是 lr_output_message
+Action.c(5): 错误: 这是 lr_error_message
+</code></pre></div>
+<ul>
+<li>「发送消息」选「出错时记录并将日志缓存限制为 1 KB」，日志先缓存起来，这次迭代出了错，才把缓存的内容一起写出来：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>开始自动日志消息堆栈 – 迭代 1。
+正在开始操作 Action。
+Action.c(3): 这是 lr_output_message
+这是 lr_log_message
+Action.c(5): 错误: 这是 lr_error_message
+结束自动日志消息堆栈。
+</code></pre></div>
+<p>同样的设置，脚本里去掉 lr_error_message 再回放，这次迭代没出错，日志里什么都没有，连 lr_output_message 那一行也没有。</p>
+<p>脚本放进 Controller 的场景以后，日志默认就是「出错时记录并将日志缓存限制为 1 KB」：几十个虚拟用户同时写日志，日志本身就是负担，平时不写，出了错又能看到出错前后的经过。官方帮助还提醒，在事务中间往输出窗口发消息会拉长执行时间，调试用的消息尽量用 lr_log_message。shop_order 只在支付失败时才调 lr_error_message，那时事务已经失败，多花一点时间无所谓。</p>
+<h3 id="1592-扩展日志">15.9.2 扩展日志<a class="headerlink" href="#1592-扩展日志" title="Permanent link">&para;</a></h3>
+<p>运行时设置 → 常规 → 日志，详细级别选「扩展日志」以后，下面三项可以单独勾选：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>多打印什么</th>
+<th>本章用在</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数替换</td>
+<td>每个参数什么时候存值、在哪里被替换成了什么</td>
+<td>15.4.4、15.5.6、15.8.3 节</td>
+</tr>
+<tr>
+<td>服务器返回的数据</td>
+<td>每个响应的响应头和响应体</td>
+<td>15.4.2、15.8.4 节</td>
+</tr>
+<tr>
+<td>高级跟踪</td>
+<td>更底层的函数调用细节</td>
+<td>一般用不上</td>
+</tr>
+</tbody>
+</table>
+<p>扩展日志很长，只在排查问题时打开，看完改回标准日志。官方帮助也提醒，扩展日志会让事务时间变长，只适合调试脚本时用，正式压测别开。</p>
+<h3 id="1593-断点和分步运行">15.9.3 断点和分步运行<a class="headerlink" href="#1593-断点和分步运行" title="Permanent link">&para;</a></h3>
+<p>光看日志定位不了问题时，可以让回放停在某一步：</p>
+<ul>
+<li><strong>断点</strong>：光标放在某一行，按 F9（回放 → 切换断点），再按一次取消。按 F5 回放，执行到断点那一行就暂停；</li>
+<li><strong>继续</strong>：暂停时按 F5（回放 → 继续调试），执行到下一个断点或者结束；</li>
+<li><strong>分步运行</strong>：按 F10（回放 → 分步运行），一次执行一步。</li>
+</ul>
+<p>暂停的时候，下方窗格的「运行时数据」页签里，按官方帮助的说法能看到当前是第几次迭代、正在执行哪个操作的哪一行，以及每个参数当前的值。排查「参数取到的值不对」这类问题时，在用到参数的那一步打个断点，比翻日志快。</p>
+<h3 id="1594-回放摘要">15.9.4 回放摘要<a class="headerlink" href="#1594-回放摘要" title="Permanent link">&para;</a></h3>
+<p>第 14 章用过 回放 → 回放摘要，它汇总最近一次回放：通过还是失败、有几个错误、用了多长时间。VuGen 把它存在脚本目录的 ReplaySummaryReport.xml 里。</p>
+<p>看摘要时记住两点：</p>
+<ul>
+<li>第 14 章那次「支付付的是旧订单」的回放，摘要显示通过、0 个错误。不检查业务结果，摘要也发现不了问题；</li>
+<li>官方帮助写明，事务失败不会让回放状态自动变成失败。所以加了检查点以后，还要看日志里事务是 Pass 还是 Fail。</li>
+</ul>
+<h3 id="1595-命令行回放">15.9.5 命令行回放<a class="headerlink" href="#1595-命令行回放" title="Permanent link">&para;</a></h3>
+<p>不打开 VuGen 也能回放脚本，用的是 LoadRunner 安装目录 bin 下的 <strong>mdrv.exe</strong>。VuGen 回放时调用的也是它：在 VuGen 里回放过的脚本，目录里会留下一个 mdrv_cmd.txt，里面记的就是传给 mdrv.exe 的参数。在工程根目录的 PowerShell 里执行：</p>
+<div class="highlight"><pre><span></span><code>&gt; $p = Start-Process "$env:LR_PATH\bin\mdrv.exe" -ArgumentList "-usr", "$PWD\lr\shop_order\shop_order.usr", "-out", "$env:TEMP\shop_order_out" -Wait -PassThru
+&gt; $p.ExitCode
+0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-usr</code></td>
+<td>脚本的 .usr 文件，写完整路径</td>
+</tr>
+<tr>
+<td><code>-out</code></td>
+<td>日志放到哪个文件夹，不存在会自动创建</td>
+</tr>
+<tr>
+<td><code>$env:LR_PATH</code></td>
+<td>LoadRunner 的安装目录，安装时加的环境变量（第 14 章）</td>
+</tr>
+<tr>
+<td><code>-Wait -PassThru</code></td>
+<td>等它跑完，并把进程交给 $p，好读出它的退出码</td>
+</tr>
+</tbody>
+</table>
+<p>这里用 Start-Process 加 -Wait，是因为 mdrv.exe 是一个窗口程序，在 PowerShell 里直接运行它，命令行不会等它跑完。</p>
+<p>回放日志在输出文件夹的 output.txt 里，是 GBK 编码，用 VS Code 打开时按 15.8.1 节选 GBK。编译错误（比如 15.8.1 节的 UTF-8 源文件）写在同一个文件夹的 logfile.log 里。</p>
+<p><strong>退出码</strong>是程序结束时交给命令行的一个数字，一般 0 表示成功。mdrv.exe 的退出码只反映了一部分情况，实测：</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>退出码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部通过</td>
+<td>0</td>
+</tr>
+<tr>
+<td>vuser_init 里出错（比如 15.3.2 节的登录失败）</td>
+<td>536870913</td>
+</tr>
+<tr>
+<td>编译失败（比如 UTF-8 源文件）</td>
+<td>-1431651397</td>
+</tr>
+<tr>
+<td>Action 里的步骤出错、事务失败</td>
+<td><strong>仍然是 0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>所以判断回放有没有问题，不能只看退出码，还要在 output.txt 里找「错误」和「"Fail"」。第 19 章讲持续集成时会看到，流水线就是靠退出码判断一步成功还是失败的；把命令行回放接进流水线时，记得补上这一步检查。</p>
+<div class="admonition warning">
+<p class="admonition-title">坑</p>
+<p><strong>路径要用反斜杠。</strong> -usr 和 -out 的路径写成 <code>D:/work/autotest-demo/lr/...</code> 这样的正斜杠时，实测 mdrv.exe 不报错、不退出，也不生成日志，一直挂在那里，只能到任务管理器里结束它。</p>
+</div>
+<h2 id="1510-成品脚本-shop_order-全貌">15.10 成品脚本 shop_order 全貌<a class="headerlink" href="#1510-成品脚本-shop_order-全貌" title="Permanent link">&para;</a></h2>
+<h3 id="15101-文件清单">15.10.1 文件清单<a class="headerlink" href="#15101-文件清单" title="Permanent link">&para;</a></h3>
+<p>参考代码的 <code>lr/shop_order/</code> 目录：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shop_order.usr</td>
+<td>脚本的入口。<code>ParameterFile=shop_order.prm</code> 指向参数文件；[Transactions] 一段记着脚本里的事务名，是 VuGen 保存脚本时写进去的，Controller 靠它列出脚本里有哪些事务</td>
+</tr>
+<tr>
+<td>vuser_init.c、Action.c、vuser_end.c</td>
+<td>三个操作的代码，GBK 编码</td>
+</tr>
+<tr>
+<td>globals.h、lrw_custom_body.h、custom_body_variables.txt</td>
+<td>VuGen 新建脚本时生成的头文件和辅助文件，没有改动</td>
+</tr>
+<tr>
+<td>default.cfg</td>
+<td>运行时设置。比新建时多了一行 <code>ResetContext=False</code>，就是 15.1.4 节关掉的「每次迭代模拟一个新用户」</td>
+</tr>
+<tr>
+<td>default.usp</td>
+<td>运行逻辑。参考代码里迭代数是 3，就是这里的 <code>RunLogicNumOfIterations="3"</code></td>
+</tr>
+<tr>
+<td>shop_order.prm</td>
+<td>三个参数的设置</td>
+</tr>
+<tr>
+<td>account.dat、keyword.dat</td>
+<td>账号和搜索词，GBK 编码</td>
+</tr>
+<tr>
+<td>Bookmarks.xml、Breakpoints.xml、UserTasks.xml、ScriptUploadMetadata.xml</td>
+<td>书签、断点这类编辑器的状态，以及脚本包含哪些文件的清单</td>
+</tr>
+</tbody>
+</table>
+<p>在 VuGen 里回放以后，脚本目录里还会多出 result1 文件夹、output.txt、logfile.log 这些回放产物，不用保留。</p>
+<h3 id="15102-三个操作">15.10.2 三个操作<a class="headerlink" href="#15102-三个操作" title="Permanent link">&para;</a></h3>
+<p>vuser_init.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 被测系统的地址：换环境只改这一行</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="s">"http://127.0.0.1:8000"</span><span class="p">,</span><span class="w"> </span><span class="s">"base"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 检查点和关联都是注册函数，要写在请求前面</span>
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=token"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.token"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 账号和密码来自 account.dat，每个虚拟用户用自己的账号</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/login"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">username</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{username}</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">password</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">{password}</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"01_login"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 之后的每个请求都带上登录拿到的 token</span>
+<span class="w">    </span><span class="n">web_add_auto_header</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span><span class="w"> </span><span class="s">"{token}"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Action.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Action</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 关键词来自 keyword.dat，是中文：先转成 UTF-8，再做百分号编码，才能放进地址</span>
+<span class="w">    </span><span class="n">lr_convert_string_encoding</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{keyword}"</span><span class="p">),</span><span class="w"> </span><span class="n">LR_ENC_SYSTEM_LOCALE</span><span class="p">,</span><span class="w"> </span><span class="n">LR_ENC_UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">"kw_utf8"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lr_save_string</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{kw_utf8}"</span><span class="p">),</span><span class="w"> </span><span class="s">"kw"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_convert_param</span><span class="p">(</span><span class="s">"kw"</span><span class="p">,</span><span class="w"> </span><span class="s">"SourceEncoding=PLAIN"</span><span class="p">,</span><span class="w"> </span><span class="s">"TargetEncoding=URL"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=pid"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.items[0].id"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_url</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/products?keyword={kw}&amp;page=1&amp;size=10"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"02_search"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"03_order"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_find</span><span class="p">(</span><span class="s">"Text=</span><span class="se">\"</span><span class="s">code</span><span class="se">\"</span><span class="s">:0"</span><span class="p">,</span><span class="w"> </span><span class="n">LAST</span><span class="p">);</span>
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=orderNo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.data.orderNo"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"order"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"EncType=application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Body={</span><span class="se">\"</span><span class="s">items</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">productId</span><span class="se">\"</span><span class="s">:{pid},</span><span class="se">\"</span><span class="s">quantity</span><span class="se">\"</span><span class="s">:1}]}"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"03_order"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">lr_start_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_reg_save_param_json</span><span class="p">(</span><span class="s">"ParamName=payCode"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"QueryString=$.code"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SEARCH_FILTERS</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Scope=Body"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/orders/{orderNo}/pay"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 支付失败时 HTTP 状态码仍是 200，要看业务码</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">),</span><span class="w"> </span><span class="s">"0"</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_error_message</span><span class="p">(</span><span class="s">"支付失败：订单 %s，业务码 %s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{orderNo}"</span><span class="p">),</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{payCode}"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_FAIL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lr_end_transaction</span><span class="p">(</span><span class="s">"04_pay"</span><span class="p">,</span><span class="w"> </span><span class="n">LR_AUTO</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">lr_think_time</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>前面几节没有动过 vuser_end。成品在这里加了一步退出登录（<code>POST /api/logout</code>，第 2 章 2.6 节的接口表），用完把 token 作废。你的脚本也照着加上：双击解决方案资源管理器里的 vuser_end，写成下面这样。</p>
+<p>vuser_end.c：</p>
+<div class="highlight"><pre><span></span><code><span class="n">vuser_end</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 收尾：退出登录，这个 token 随之作废</span>
+<span class="w">    </span><span class="n">web_custom_request</span><span class="p">(</span><span class="s">"logout"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"URL={base}/api/logout"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Method=POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAST</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>vuser_end 和 vuser_init 一样，每个虚拟用户只执行一次。退出登录没有手写事务，它的耗时只算在 15.2.5 节说的自动事务 vuser_end_Transaction 里。</p>
+<h3 id="15103-数据文件和参数">15.10.3 数据文件和参数<a class="headerlink" href="#15103-数据文件和参数" title="Permanent link">&para;</a></h3>
+<p>account.dat（中间省略）：</p>
+<div class="highlight"><pre><span></span><code>username,password
+user001,test123
+user002,test123
+……
+user100,test123
+</code></pre></div>
+<p>keyword.dat：</p>
+<div class="highlight"><pre><span></span><code>keyword
+耳机
+键盘
+鼠标
+数据线
+充电宝
+</code></pre></div>
+<p>shop_order.prm 里 username、password 两段见 15.5.5 节，keyword 一段是：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[parameter:keyword]</span>
+<span class="na">ColumnName</span><span class="o">=</span><span class="s">"keyword"</span>
+<span class="na">Delimiter</span><span class="o">=</span><span class="s">","</span>
+<span class="na">GenerateNewVal</span><span class="o">=</span><span class="s">"EachIteration"</span>
+<span class="na">OriginalValue</span><span class="o">=</span><span class="s">""</span>
+<span class="na">OutOfRangePolicy</span><span class="o">=</span><span class="s">"ContinueWithLast"</span>
+<span class="na">ParamName</span><span class="o">=</span><span class="s">"keyword"</span>
+<span class="na">SelectNextRow</span><span class="o">=</span><span class="s">"Random"</span>
+<span class="na">StartRow</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">Table</span><span class="o">=</span><span class="s">"keyword.dat"</span>
+<span class="na">TableLocation</span><span class="o">=</span><span class="s">"Local"</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">"Table"</span>
+<span class="na">auto_allocate_block_size</span><span class="o">=</span><span class="s">"1"</span>
+<span class="na">value_for_each_vuser</span><span class="o">=</span><span class="s">""</span>
+</code></pre></div>
+<p>三个参数的设置汇总：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>文件</th>
+<th>选择下一行</th>
+<th>更新值的时间</th>
+<th>当超出值时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>account.dat</td>
+<td>唯一</td>
+<td>一次</td>
+<td>中止 Vuser</td>
+</tr>
+<tr>
+<td>password</td>
+<td>account.dat</td>
+<td>和 username 同一行</td>
+<td>一次</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>keyword.dat</td>
+<td>随机</td>
+<td>每次迭代</td>
+<td>不适用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15104-回放-3-次迭代">15.10.4 回放 3 次迭代<a class="headerlink" href="#15104-回放-3-次迭代" title="Permanent link">&para;</a></h3>
+<p>为了好核对数字，回放前把练习网站重启一次，让 user001 的余额回到 100000 元、没有订单。迭代数是 3，按 F5 回放（节选）：</p>
+<div class="highlight"><pre><span></span><code>vuser_init.c(6): 通知: 事务 "01_login" 已启动。
+vuser_init.c(17): 注册的 web_reg_find 对于"Text="code":0"成功(计数=1)
+vuser_init.c(24): 通知: 事务 "01_login" 以 "Pass" 状态结束 (持续时间: 0.0437 浪费时间: 0.0005)。
+……
+正在开始迭代 1。
+Action.c(8): 通知: 事务 "02_search" 已启动。
+Action.c(17): web_url("search") 已启动
+Action.c(17): 未对 Content-Type"application/json"执行 HTML 解析 ("ParseHtmlContentType" 运行时设置为"TEXT")。URL="http://127.0.0.1:8000/api/products?keyword=%E5%85%85%E7%94%B5%E5%AE%9D&amp;page=1&amp;size=10"
+Action.c(17): 注册的 web_reg_find 对于"Text="code":0"成功(计数=1)
+Action.c(21): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0359 浪费时间: 0.0002)。
+Action.c(25): 通知: 事务 "03_order" 已启动。
+Action.c(41): 通知: 事务 "03_order" 以 "Pass" 状态结束 (持续时间: 0.0471 浪费时间: 0.0001)。
+Action.c(45): 通知: 事务 "04_pay" 已启动。
+Action.c(53): web_custom_request("pay") 已启动
+Action.c(53): 未对 Content-Type"application/json"执行 HTML 解析 ("ParseHtmlContentType" 运行时设置为"TEXT")。URL="http://127.0.0.1:8000/api/orders/SO20261024000001/pay"
+Action.c(53): web_custom_request("pay") 已成功，93 个正文字节，125 个标头字节
+Action.c(63): 通知: 事务 "04_pay" 以 "Pass" 状态结束 (持续时间: 0.0564 浪费时间: 0.0001)。
+正在结束迭代 1。
+正在开始迭代 2。
+……
+Action.c(21): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0346 浪费时间: 0.0001)。
+Action.c(41): 通知: 事务 "03_order" 以 "Pass" 状态结束 (持续时间: 0.0517 浪费时间: 0.0001)。
+Action.c(53): 未对 Content-Type"application/json"执行 HTML 解析 ("ParseHtmlContentType" 运行时设置为"TEXT")。URL="http://127.0.0.1:8000/api/orders/SO20261024000002/pay"
+Action.c(63): 通知: 事务 "04_pay" 以 "Pass" 状态结束 (持续时间: 0.0620 浪费时间: 0.0001)。
+正在结束迭代 2。
+正在开始迭代 3。
+……
+Action.c(21): 通知: 事务 "02_search" 以 "Pass" 状态结束 (持续时间: 0.0680 浪费时间: 0.0001)。
+Action.c(41): 通知: 事务 "03_order" 以 "Pass" 状态结束 (持续时间: 0.0665 浪费时间: 0.0001)。
+Action.c(53): 未对 Content-Type"application/json"执行 HTML 解析 ("ParseHtmlContentType" 运行时设置为"TEXT")。URL="http://127.0.0.1:8000/api/orders/SO20261024000003/pay"
+Action.c(63): 通知: 事务 "04_pay" 以 "Pass" 状态结束 (持续时间: 0.0633 浪费时间: 0.0001)。
+正在结束迭代 3。
+正在结束 Vuser...
+正在开始操作 vuser_end。
+vuser_end.c(4): web_custom_request("logout") 已启动
+vuser_end.c(4): web_custom_request("logout") 已成功，33 个正文字节，125 个标头字节
+正在结束操作 vuser_end。
+Vuser 已终止。
+</code></pre></div>
+<p>三次迭代里，搜索、下单、支付三个事务都是 Pass，三次支付的地址里是三张不同的新订单，最后 vuser_end 退出登录。</p>
+<h3 id="15105-用接口核对">15.10.5 用接口核对<a class="headerlink" href="#15105-用接口核对" title="Permanent link">&para;</a></h3>
+<p>回放成功不等于业务成功，第 14 章已经吃过这个亏，所以最后用接口核对一遍。在工程根目录新建临时文件 lr_check.py（看完就删），用第 4 章 4.3 节的接口客户端登录 user001，列出订单和余额：</p>
+<div class="highlight"><pre><span></span><code><span class="sd">"""临时文件：核对 LoadRunner 脚本回放后的订单和余额。看完就删。"""</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common.api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShopApi</span><span class="p">,</span> <span class="n">ok</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">ShopApi</span><span class="p">(</span><span class="s2">"http://127.0.0.1:8000"</span><span class="p">)</span>
+<span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">"user001"</span><span class="p">,</span> <span class="s2">"test123"</span><span class="p">))</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">list_orders</span><span class="p">())[</span><span class="s2">"items"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">"orderNo"</span><span class="p">],</span> <span class="n">o</span><span class="p">[</span><span class="s2">"statusText"</span><span class="p">],</span> <span class="n">o</span><span class="p">[</span><span class="s2">"items"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">o</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"订单合计："</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">"amount"</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"当前余额："</span><span class="p">,</span> <span class="n">ok</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">me</span><span class="p">())[</span><span class="s2">"balance"</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(.venv) &gt; python lr_check.py
+SO20261024000003 已支付 充电宝 129.0
+SO20261024000002 已支付 蓝牙耳机 199.0
+SO20261024000001 已支付 充电宝 129.0
+订单合计： 457.0
+当前余额： 99543.0
+</code></pre></div>
+<p>3 张订单都是「已支付」，商品是随机的搜索词搜到的第一个商品；订单合计 457 元，余额 100000 − 457 = 99543 元，一分不差。</p>
+<p>这就是后面几章要用的压测脚本。下一章把它放进 Controller 加压。</p>
+<h2 id="1511-常见的坑">15.11 常见的坑<a class="headerlink" href="#1511-常见的坑" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回放全部通过，订单却没有支付</td>
+<td>只检查了 HTTP 状态码。给每个关键请求加检查点，支付这类步骤取出业务码判断（15.3、15.4.4 节）</td>
+</tr>
+<tr>
+<td>网站重启后回放报 -26546 和 -26629（HTTP 401）</td>
+<td>token 是录制时写死的。用 web_reg_save_param_json 从登录的响应里取，再用 web_add_auto_header 带上（15.4.3 节）</td>
+</tr>
+<tr>
+<td>日志里有警告 -27077</td>
+<td>登录放在 vuser_init，又开着「每次迭代模拟一个新用户」。「登录一次、反复购物」的脚本把它关掉（15.1.4 节）</td>
+</tr>
+<tr>
+<td>回放报 -27259（检测到挂起的……web_reg_find 请求），Action 一步都没执行</td>
+<td>检查点写在了请求后面，直到 vuser_init 结束都没用上。web_reg_ 开头的注册函数一律写在要检查的请求前面</td>
+</tr>
+<tr>
+<td>检查点写了 SaveCount，密码错了也显示成功</td>
+<td>只写 SaveCount、不写 Fail 时，检查永远不会失败。加上 <code>"Fail=NotFound"</code>，或者自己判断次数</td>
+</tr>
+<tr>
+<td>lr_error_message 打印了错误，事务却是 Pass</td>
+<td>默认设置下它不影响事务状态。在代码里明确写 LR_FAIL，或者勾上「当调用 lr_error_message 时，将打开的事务置为失败」（15.3.5 节）</td>
+</tr>
+<tr>
+<td>事务时间比接口实际耗时多出整整 1 秒、2 秒</td>
+<td>lr_think_time 写进了事务里，日志里事务结束那一行会多出「思考时间」。挪到两个事务之间</td>
+</tr>
+<tr>
+<td>取值报 -35060（找不到所指定查询的匹配项）</td>
+<td>JSONPath 写错了，或者响应里确实没有这个值，比如搜索词一个商品都没搜到。打开扩展日志的「服务器返回的数据」，看看响应长什么样</td>
+</tr>
+<tr>
+<td>扩展日志里有「带有参数分隔符的字符串……不是参数」的警告</td>
+<td>JSON 的大括号被当成参数的大括号检查了一遍，不是参数就原样发送，可以不管</td>
+</tr>
+<tr>
+<td>账号参数选了「每次迭代」，日志里账号在变，订单却全在第一个账号名下</td>
+<td>登录只在 vuser_init 里做一次，后面的请求带的一直是第一个账号的 token。登录放在 vuser_init 时选「一次」（15.5.6 节）</td>
+</tr>
+<tr>
+<td>VuGen 里回放正常，到了 Controller 里多个用户用了同一个账号</td>
+<td>「选择下一行」选了「顺序」。每个用户要不同的数据，必须选「唯一」（15.5.3 节）</td>
+</tr>
+<tr>
+<td>虚拟用户被中止，日志写着「没有该参数的其他唯一值」</td>
+<td>选「唯一」时，数据行数至少要有虚拟用户数乘以每个用户要用的值的个数。补数据，或者改「当超出值时」</td>
+</tr>
+<tr>
+<td>编译报 unterminated string or character constant，或者日志里的中文变成乱码</td>
+<td>源文件存成了 UTF-8。改存 GBK（15.8.1 节）</td>
+</tr>
+<tr>
+<td>地址里写中文，服务器返回 400</td>
+<td>地址里的中文要转成 UTF-8 再做百分号编码（15.8.2 节）</td>
+</tr>
+<tr>
+<td>转码后地址末尾多了 %00，什么都搜不到，也不报错</td>
+<td>lr_convert_string_encoding 的结果末尾带着一个空字符。用 lr_save_string(lr_eval_string(...)) 再存一遍去掉它</td>
+</tr>
+<tr>
+<td>请求体里有中文，服务器返回 400 或 422</td>
+<td>请求体的中文同样要转成 UTF-8，并去掉末尾的空字符（15.8.4 节）</td>
+</tr>
+<tr>
+<td>中文搜索词全部搜不到，或者报「列名无效」</td>
+<td>数据文件存成了 UTF-8 或带 BOM 的 UTF-8。改存 GBK（15.8.3 节）</td>
+</tr>
+<tr>
+<td>检查点里写中文，响应里明明有却找不到</td>
+<td>检查的文字也要用转成 UTF-8 的参数（15.8.5 节）</td>
+</tr>
+<tr>
+<td>命令行回放的退出码是 0，日志里却有错误</td>
+<td>Action 里的错误不影响退出码。到 output.txt 里找「错误」和「"Fail"」（15.9.5 节）</td>
+</tr>
+<tr>
+<td>命令行回放一直不结束，也没有日志</td>
+<td>路径写成了正斜杠。-usr、-out 的路径用反斜杠</td>
+</tr>
+<tr>
+<td>命令行回放前改了 default.cfg 里的 NumOfIterations，迭代次数没变</td>
+<td>实测命令行回放的迭代次数看的是 default.usp 里的 RunLogicNumOfIterations。在 VuGen 的运行逻辑页里改迭代数，就不用关心它存在哪个文件里</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1512-练习">15.12 练习<a class="headerlink" href="#1512-练习" title="Permanent link">&para;</a></h2>
+<ol>
+<li>第 13 章 13.4 节的目标表里还有商品详情。把 shop_order 另存一份（文件 → 将脚本另存为），在搜索和下单之间加一个事务，调用 <code>GET {base}/api/products/{pid}</code>，检查业务码，事务名按顺序重新编号。回放 3 次迭代，看新事务的日志。</li>
+<li>用一个随机数字参数（1～3）做下单数量，替换请求体里的 <code>"quantity":1</code>。回放 3 次迭代后用接口核对：每张订单的金额是不是单价乘以数量。</li>
+<li>把 username 的「选择下一行」临时改成「顺序」，迭代 3 次回放，和「唯一」的日志对比。再用自己的话解释：为什么 VuGen 里看不出两者的区别，到了 Controller 里差别就出来了。</li>
+<li>支付以后调用订单导出接口，也给它加一个事务。用 web_reg_save_param_ex 取出最新一张订单的订单号，和 {orderNo} 比较，不一致时用 lr_error_message 报错，并让这个事务失败。</li>
+<li>用 15.9.5 节的命令在 PowerShell 里回放 shop_order，查看退出码和 output.txt；再把 account.dat 里 user001 的密码改错，重新回放，记下退出码和 output.txt 里的错误，最后改回来。</li>
+</ol>
+<h2 id="1513-自检清单">15.13 自检清单<a class="headerlink" href="#1513-自检清单" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出录制的脚本不能直接压测的三个原因，以及各自用什么办法解决；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 lr_start_transaction、lr_end_transaction 定义事务，知道 LR_AUTO、LR_PASS、LR_FAIL 的区别；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 lr_think_time 为什么要写在两个事务之间，能从日志里看出思考时间有没有算进事务；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 web_reg_find 为什么要写在请求前面，会用 Text、Fail、SaveCount，知道只写 SaveCount 的副作用；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说出检查业务码的两种写法和各自适合的场合；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 vuser_init 出错和 Action 出错时，虚拟用户的走向有什么不同；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用对比录制、看快照、看回放日志三种办法找出动态值；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用 web_reg_save_param_json 按 JSONPath 取值，会用左右边界从文本响应里取值；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说清「选择下一行」的顺序、随机、唯一在 VuGen 和 Controller 里的区别，知道账号参数为什么选「唯一」和「一次」；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道思考时间和节奏的分工，知道 VuGen 回放默认忽略思考时间；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道集合点只在 Controller 里起作用；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能处理源文件、地址、请求体、数据文件里的中文，知道转码后多出来的空字符是怎么回事；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 会用扩展日志、断点和命令行回放排查脚本，知道命令行回放的退出码说明不了全部问题。</li>
+</ul>
+<p>下一章：<a href="16-Controller%E5%9C%BA%E6%99%AF.html">第 16 章 Controller 场景</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 14 章 LoadRunner 安装与第一个脚本">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 14 章 LoadRunner 安装与第一个脚本
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 16 章 Controller 场景">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第 16 章 Controller 场景
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      教程编写于 2026 年 10 月，代码与压测数字均为实测
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/search-input.js"></script>
+      
+    
+  </body>
+</html>

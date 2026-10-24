@@ -845,6 +845,146 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-LoadRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 14 章 LoadRunner 安装与第一个脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-VuGen%E8%84%9A%E6%9C%AC%E5%A2%9E%E5%BC%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 15 章 VuGen 脚本增强
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-Controller%E5%9C%BA%E6%99%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 16 章 Controller 场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-Analysis%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%A5%E5%91%8A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 17 章 Analysis 分析与报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-%E6%80%A7%E8%83%BD%E5%AE%9E%E6%88%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 18 章 性能实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1469,7 +1609,7 @@
 </tr>
 <tr>
 <td>做完开关实验（第 6 章的 token 过期、越权，性能章的连接池、单会话），用例莫名失败、数字和书上差很多</td>
-<td>开关还开着。环境变量一直有效到窗口关闭，用 <code>Get-ChildItem Env:SHOP*</code>、<code>Get-ChildItem Env:STEP*</code> 看看还剩哪些，用 <code>Remove-Item Env:名字</code> 去掉（或者关掉窗口重开），再重启练习网站</td>
+<td>开关还开着。环境变量一直有效到窗口关闭，用 <code>Get-ChildItem Env:SHOP*</code> 看看还剩哪些，用 <code>Remove-Item Env:名字</code> 去掉（或者关掉窗口重开），再重启练习网站</td>
 </tr>
 <tr>
 <td>跑用例时全都连到了一个不存在的地址</td>
@@ -1605,40 +1745,68 @@
 </thead>
 <tbody>
 <tr>
-<td>网页界面打不开，提示 8089 端口被占用</td>
-<td>已经开着一个 Locust，关掉它，或者加 <code>--web-port 8090</code></td>
+<td>从已经开着的命令行窗口启动 VuGen，弹出「Critical error (cannot use ExceptionDialog)」</td>
+<td>窗口是装 LoadRunner 之前打开的，里面没有 LR_PATH 等环境变量。关掉重开，或者从开始菜单启动（第 14 章）</td>
 </tr>
 <tr>
-<td><code>--processes</code> 不能用</td>
-<td>这个参数不支持 Windows，改用 <code>--master</code> 加 <code>--worker</code>（第 8 章 8.6 节）</td>
+<td>装了中文语言包以后，VuGen 卡住不出主窗口</td>
+<td>语言包打开了使用数据统计功能，它加载组件失败。按第 14 章 14.3.2 节关掉它</td>
 </tr>
 <tr>
-<td><code>CPU usage above 90%! This may constrain your throughput...</code></td>
-<td>压测机的 CPU 不够了，测出来的数字不准，用多个工作进程</td>
+<td>回放报 -26546 和 -26629（HTTP 401）</td>
+<td>token 是录制时写死的，或者没有带上。用关联从登录的响应里取（第 15 章 15.4.3 节）</td>
 </tr>
 <tr>
-<td>统计表里同一个接口有几十行</td>
-<td>动态地址没用 <code>name=</code> 分组</td>
+<td>回放全部通过，订单却没有支付</td>
+<td>只看了 HTTP 状态码。给关键步骤加检查点（第 15 章 15.3 节）</td>
+</tr>
+<tr>
+<td>编译报 unterminated string or character constant，或者日志里的中文是乱码</td>
+<td>源文件存成了 UTF-8，改存 GBK（第 15 章 15.8.1 节）</td>
+</tr>
+<tr>
+<td>地址里写中文，服务器返回 400</td>
+<td>中文要先转成 UTF-8 再做百分号编码（第 15 章 15.8.2 节）</td>
+</tr>
+<tr>
+<td>命令行回放一直不结束，也没有日志</td>
+<td>-usr、-out 的路径写成了正斜杠，改用反斜杠（第 15 章 15.9.5 节）</td>
+</tr>
+<tr>
+<td>SLA 向导的可用事务里只有 Action_Transaction 这类自动事务</td>
+<td>.usr 里没有事务清单。在 VuGen 里保存一次脚本，再 组信息 → 刷新 → 脚本（第 16 章 16.7 节）</td>
+</tr>
+<tr>
+<td>场景跑出来的每秒请求数比估算的低很多</td>
+<td>场景里思考时间默认按录制参数回放，VuGen 回放时是忽略的（第 16 章 16.5 节）</td>
+</tr>
+<tr>
+<td>Controller 里 Action_Transaction 要 3 秒多，Analysis 里只有 0.16 秒</td>
+<td>Analysis 计算响应时间时扣掉了思考时间（第 17 章 17.2.2 节）</td>
+</tr>
+<tr>
+<td>命令行运行场景，退出码是 0，事务却失败了很多</td>
+<td>Wlrun.exe 的退出码不反映事务结果，用 lr_summary.py 加 --check 判断（第 16 章 16.12 节、第 17 章 17.10.3 节）</td>
+</tr>
+<tr>
+<td>命令行重跑同一个场景，上一次的结果没了</td>
+<td>-ResultName 指向已有的结果目录时会被直接覆盖，每次用不同的名字（第 16 章 16.12 节）</td>
+</tr>
+<tr>
+<td>HTML 报告保存时报「文件名无效」</td>
+<td>路径写成了正斜杠，改用反斜杠（第 17 章 17.9 节）</td>
 </tr>
 <tr>
 <td>大量 401</td>
-<td>所有虚拟用户共用一个账号被互相顶掉，用账号池</td>
+<td>多个虚拟用户用了同一个账号，被互相顶掉。账号参数选「唯一」（第 18 章 18.5 节）</td>
 </tr>
 <tr>
-<td>结束时打印 <code>ValueError: I/O operation on closed file</code></td>
-<td>Locust 2.47 写 CSV 的后台任务没来得及停，不影响结果和退出码</td>
-</tr>
-<tr>
-<td>CSV 里的请求总数比控制台少一点</td>
-<td>CSV 每隔一两秒写一次，最后一两秒没写进去，最终数字以控制台和 HTML 报告为准</td>
+<td>长时间压测后支付大量失败，报余额不足</td>
+<td>测试数据耗尽了。压测前按时长算够余额，练习网站用 <code>SHOP_INIT_BALANCE</code> 调大初始余额（第 18 章 18.1.2 节）</td>
 </tr>
 <tr>
 <td>压测结果每次差很多</td>
 <td>压测机和服务器在同一台电脑上抢资源、有别人同时在用环境、数据量不一样</td>
-</tr>
-<tr>
-<td>长时间压测后支付大量失败，报余额不足</td>
-<td>测试数据耗尽了。压测前按时长算够余额，练习网站用 <code>SHOP_INIT_BALANCE</code> 调大初始余额（第 8 章 8.7 节）</td>
 </tr>
 </tbody>
 </table>
@@ -1812,6 +1980,31 @@
 <td>回归测试</td>
 <td>regression test</td>
 <td>改动之后把已有功能再测一遍，确认没被改坏</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>scenario</td>
+<td>LoadRunner 里一次压测的完整设置：用哪些脚本、多少虚拟用户、怎么加压、跑多久</td>
+</tr>
+<tr>
+<td>运行时设置</td>
+<td>run-time settings</td>
+<td>脚本运行时的行为设置：迭代次数、节奏、思考时间、日志</td>
+</tr>
+<tr>
+<td>检查点</td>
+<td>checkpoint</td>
+<td>检查响应里有没有期望内容的语句，检查不通过时事务失败</td>
+</tr>
+<tr>
+<td>阶梯加压</td>
+<td>step load</td>
+<td>每隔一段时间加一批用户，一档一档地加大压力</td>
+</tr>
+<tr>
+<td>粒度</td>
+<td>granularity</td>
+<td>Analysis 图上每个点代表多长一段时间的平均值</td>
 </tr>
 <tr>
 <td>虚拟用户</td>
