@@ -2643,7 +2643,7 @@ CN=Micro Focus Group Limited, O=Micro Focus Group Limited, S=Berkshire, C=GB
 <h2 id="143-安装中文语言包">14.3 安装中文语言包<a class="headerlink" href="#143-安装中文语言包" title="Permanent link">&para;</a></h2>
 <h3 id="1431-安装步骤">14.3.1 安装步骤<a class="headerlink" href="#1431-安装步骤" title="Permanent link">&para;</a></h3>
 <ol>
-<li>双击 Micro_Focus_LoadRunner_2023_Community_Edition-Language_Packs.exe。它也是自解压包，解压窗口和主程序一样，默认位置也是 <code>C:\Temp\Micro Focus LoadRunner 2023 Community Edition</code>，改到和主程序同一个地方（比如 <code>E:\LR2023-setup</code>）就行。这个包只解压，不会自动开始安装。</li>
+<li>双击 Micro_Focus_LoadRunner_2023_Community_Edition-Language_Packs.exe。它也是自解压包，解压窗口和主程序一样，默认位置也是 <code>C:\Temp\Micro Focus LoadRunner 2023 Community Edition</code>，改到和主程序同一个地方（比如 <code>E:\LR2023-setup</code>）就行。解出来约 556 MB。这个包只解压，不会自动开始安装。</li>
 <li>打开解压目录下的 <code>DVD\Language-Packs\Chinese-Simplified\LoadRunner\</code>，<strong>右键 LR_CHS.exe，选「以管理员身份运行」</strong>，会出现名为 LoadRunner 2023 CHS 的安装程序，按提示装完。</li>
 <li>打开 VuGen，菜单变成「文件(F)、编辑(E)、查看(V)……」就装好了。VuGen 迟迟打不开的，看 14.3.2 节。</li>
 </ol>
@@ -3279,7 +3279,7 @@ Action.c(32): 资源"http://127.0.0.1:8000/common.js"已在缓存中，不会再
 <h3 id="1471-运行">14.7.1 运行<a class="headerlink" href="#1471-运行" title="Permanent link">&para;</a></h3>
 <p>菜单 回放 → 运行（Replay → Run，快捷键 F5）。VuGen 先编译脚本，检查有没有语法错误（也可以单独用 回放 → 编译，快捷键 Shift+F5），然后按 vuser_init → Action → vuser_end 的顺序执行一遍。Web - HTTP/HTML 脚本回放不需要浏览器，由 VuGen 直接发出请求。</p>
 <h3 id="1472-看回放日志">14.7.2 看回放日志<a class="headerlink" href="#1472-看回放日志" title="Permanent link">&para;</a></h3>
-<p>回放日志显示在下面的输出窗格里。开头几行（节选，行尾的 [MsgId: ……] 编号本章都省掉了）：</p>
+<p>回放日志显示在下面的输出窗格里。开头几行（节选，行尾的 [MsgId: ……] 编号本章都省掉了，地址里的端口统一写成 8000）：</p>
 <div class="highlight"><pre><span></span><code>虚拟用户脚本启动时间: 2026/10/23 15:25:36
 正在开始操作 vuser_init。
 LoadRunner 2023.0.0 (Windows 11) 的 Web Turbo 回放；内部版本 506 (3月 08 2023 13:11:40)
