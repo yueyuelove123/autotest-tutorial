@@ -1790,6 +1790,10 @@
 <li>会用参数化和数据文件，一份代码跑多条用例。</li>
 </ul>
 <p>开始之前，确认练习网站在另一个命令行窗口里运行着（第 2 章 2.1 节）。</p>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p><strong>提示：</strong> 从这一章开始，每段代码都会用到第 1 章 1.6 节的语法：函数（1.6.7）、导入（1.6.8）、断言（1.6.10）、装饰器（1.6.13）。读到看不懂的写法，先翻回去对照；运行报错，先按 1.6.14 节分清是哪一类错误。</p>
+</div>
 <hr />
 <h2 id="31-第一个接口请求">3.1 第一个接口请求<a class="headerlink" href="#31-第一个接口请求" title="Permanent link">&para;</a></h2>
 <p>新建 <code>scratch/first_request.py</code>：</p>
@@ -1943,6 +1947,16 @@ FAILED tests/api/test_login.py::test_login_wrong_password - AssertionE...
 <li><code>tests\api\test_login.py:20</code> 告诉你在哪个文件第几行。</li>
 </ul>
 <p>看完记得改回来。<strong>每写完一条新用例，都故意把期望值改错跑一次，确认它真的会失败。</strong> 一条永远不会失败的用例没有任何价值，这个习惯能帮你发现写错的断言。</p>
+<p><strong>FAILED 不一定是被测系统的问题。</strong> 再做一个对比：把第一条用例里的 <code>body["data"]["username"]</code> 故意写成 <code>body["data"]["user"]</code>，运行（节选）：</p>
+<div class="highlight"><pre><span></span><code>&gt;       assert body["data"]["user"] == "bob"
+               ^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'user'
+
+tests\api\test_login.py:11: KeyError
+=========================== short test summary info ===========================
+FAILED tests/api/test_login.py::test_login_success - KeyError: 'user'
+</code></pre></div>
+<p>同样是 FAILED，<code>E</code> 后面却是 <code>KeyError</code>：程序还没走到比较对错那一步，是测试代码自己取了一个不存在的键。用例里不管出了哪种错误，pytest 都记成 FAILED。所以看到 FAILED，先看 <code>E</code> 开头的那一行：是 <code>AssertionError</code>，才是实际结果和预期不一样；是别的错误，先查自己的代码和环境（第 1 章 1.6.14 节）。看完同样改回来。</p>
 <h3 id="324-常用的运行方式">3.2.4 常用的运行方式<a class="headerlink" href="#324-常用的运行方式" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

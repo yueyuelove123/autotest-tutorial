@@ -2231,8 +2231,8 @@
 <p>在第 16 章 demo16 的基础上改：</p>
 <ol>
 <li>在 Controller 里打开 demo16，文件 → 另存为 knee.lrs；</li>
-<li>编辑计划（第 16 章 16.4 节）：</li>
-</ol>
+<li>
+<p>编辑计划（第 16 章 16.4 节）：</p>
 <table>
 <thead>
 <tr>
@@ -2256,8 +2256,10 @@
 </tbody>
 </table>
 <p>计划图是五级台阶：每分钟加 10 个用户，第 4 分钟加满 50 个，再跑 1 分钟。每一级台阶就是一档压力；</p>
-<ol>
-<li>运行时设置 → 思考时间，选「将录制思考时间乘以」，填 0.1；</li>
+</li>
+<li>
+<p>运行时设置 → 思考时间，选「将录制思考时间乘以」，填 0.1；</p>
+</li>
 <li>结果设置：结果名称 knee_pool8；</li>
 <li>SLA 和 Windows 资源监控保留 demo16 的设置，保存。</li>
 </ol>
@@ -2591,16 +2593,16 @@ alice 当前余额：100000.0 元
 <ol>
 <li>在 VuGen 里打开 pay_race，集成 → 创建 Controller 场景，Vuser 数填 10（第 16 章 16.2.1 节）；</li>
 <li>编辑启动 Vuser：启动 10 个，选「同时」；</li>
-<li>编辑持续时间：选「完成前一直运行」，点「确定」时提示「计划程序操作将被移除」，点「是」，停止 Vuser 那一行被删掉。每个用户付完一次就结束，不需要停止操作：</li>
-</ol>
+<li>
+<p>编辑持续时间：选「完成前一直运行」，点「确定」时提示「计划程序操作将被移除」，点「是」，停止 Vuser 那一行被删掉。每个用户付完一次就结束，不需要停止操作：</p>
 <p><img alt="并发支付的计划：同时启动 10 个，完成前一直运行" src="images/18-race-plan.png" /></p>
-<ol>
-<li>点菜单 场景 → 集合，打开「集合信息」：左边是脚本里的集合点 pay，右边列着会到达这个集合点的 10 个虚拟用户：</li>
-</ol>
+</li>
+<li>
+<p>点菜单 场景 → 集合，打开「集合信息」：左边是脚本里的集合点 pay，右边列着会到达这个集合点的 10 个虚拟用户：</p>
 <p><img alt="集合信息：集合点 pay 和 10 个虚拟用户" src="images/18-race-rendezvous.png" /></p>
-<ol>
-<li>点「策略」看放行的条件：</li>
-</ol>
+</li>
+<li>
+<p>点「策略」看放行的条件：</p>
 <p><img alt="集合策略：默认是运行中的用户 100% 到达才放行，超时 30 秒" src="images/18-race-policy.png" /></p>
 <table>
 <thead>
@@ -2630,6 +2632,8 @@ alice 当前余额：100000.0 元
 </table>
 <p>保持默认：10 个用户都到齐了才一起放行；
 6. 结果 → 结果设置：结果名称 pay_race_nobug，目录 <code>D:\work\lr-results</code>；文件 → 另存为 <code>D:\work\autotest-demo\lr\scenarios\pay_race.lrs</code>。</p>
+</li>
+</ol>
 <h3 id="1844-默认模式只成功了一次">18.4.4 默认模式：只成功了一次<a class="headerlink" href="#1844-默认模式只成功了一次" title="Permanent link">&para;</a></h3>
 <p>练习网站不带开关重启，执行 make_order.py 下单，然后运行场景。场景几秒钟就跑完了。再用 make_order.py check 查订单和余额：</p>
 <div class="highlight"><pre><span></span><code>&gt; python lr\pay_race\make_order.py check

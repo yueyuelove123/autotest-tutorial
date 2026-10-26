@@ -3675,14 +3675,16 @@ user100,test123
 <p>参数取得对不对，用多次迭代加扩展日志看：</p>
 <ol>
 <li>运行时设置 → 常规 → 运行逻辑，迭代数改成 3；</li>
-<li>常规 → 日志，详细级别选「扩展日志」，勾上「参数替换」（Parameter substitution）：</li>
-</ol>
+<li>
+<p>常规 → 日志，详细级别选「扩展日志」，勾上「参数替换」（Parameter substitution）：</p>
 <p><img alt="运行时设置的日志页：详细级别、扩展日志的三个选项" src="images/15-rts-log.png" /></p>
-<ol>
-<li>为了看清每次迭代的账号，在 Action 的开头临时加一行：</li>
-</ol>
+</li>
+<li>
+<p>为了看清每次迭代的账号，在 Action 的开头临时加一行：</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">lr_output_message</span><span class="p">(</span><span class="s">"这次迭代的账号：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">lr_eval_string</span><span class="p">(</span><span class="s">"{username}"</span><span class="p">));</span>
 </code></pre></div>
+</li>
+</ol>
 <p>回放（节选）：</p>
 <div class="highlight"><pre><span></span><code>vuser_init.c(17): 通知: 参数替换:参数"username"="user001"
 vuser_init.c(17): 通知: 参数 password = 1 [表 = password] 的下一行。
@@ -4171,14 +4173,14 @@ Action.c(5): 错误: 这是 lr_error_message
 </code></pre></div>
 <p>lr_log_message 那一行没有行号，lr_error_message 前面多了「错误:」。运行时设置 → 常规 → 日志（15.5.6 节的截图）里有两项会改变这个结果：</p>
 <ul>
-<li>去掉「启用日志记录」，只剩两行：</li>
-</ul>
+<li>
+<p>去掉「启用日志记录」，只剩两行：</p>
 <div class="highlight"><pre><span></span><code>Action.c(3): 这是 lr_output_message
 Action.c(5): 错误: 这是 lr_error_message
 </code></pre></div>
-<ul>
-<li>「发送消息」选「出错时记录并将日志缓存限制为 1 KB」，日志先缓存起来，这次迭代出了错，才把缓存的内容一起写出来：</li>
-</ul>
+</li>
+<li>
+<p>「发送消息」选「出错时记录并将日志缓存限制为 1 KB」，日志先缓存起来，这次迭代出了错，才把缓存的内容一起写出来：</p>
 <div class="highlight"><pre><span></span><code>开始自动日志消息堆栈 – 迭代 1。
 正在开始操作 Action。
 Action.c(3): 这是 lr_output_message
@@ -4187,6 +4189,8 @@ Action.c(5): 错误: 这是 lr_error_message
 结束自动日志消息堆栈。
 </code></pre></div>
 <p>同样的设置，脚本里去掉 lr_error_message 再回放，这次迭代没出错，日志里什么都没有，连 lr_output_message 那一行也没有。</p>
+</li>
+</ul>
 <p>脚本放进 Controller 的场景以后，日志默认就是「出错时记录并将日志缓存限制为 1 KB」：几十个虚拟用户同时写日志，日志本身就是负担，平时不写，出了错又能看到出错前后的经过。官方帮助还提醒，在事务中间往输出窗口发消息会拉长执行时间，调试用的消息尽量用 lr_log_message。shop_order 只在支付失败时才调 lr_error_message，那时事务已经失败，多花一点时间无所谓。</p>
 <h3 id="1592-扩展日志">15.9.2 扩展日志<a class="headerlink" href="#1592-扩展日志" title="Permanent link">&para;</a></h3>
 <p>运行时设置 → 常规 → 日志，详细级别选「扩展日志」以后，下面三项可以单独勾选：</p>

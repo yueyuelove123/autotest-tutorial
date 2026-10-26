@@ -651,6 +651,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#1614-读懂报错" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.14 读懂报错
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1835,6 +1846,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#1614-读懂报错" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.14 读懂报错
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1895,17 +1917,19 @@
 <ul>
 <li>装好 Python 和 VS Code，会在命令行里运行命令；</li>
 <li>建好工程文件夹和虚拟环境，装好整套教程要用的工具；</li>
-<li>掌握本教程用得到的 Python 语法。已经会 Python 的同学可以跳过 1.6 节。</li>
+<li>掌握本教程用得到的 Python 语法，会读报错。已经会 Python 的同学可以跳过 1.6 节。</li>
 </ul>
 <hr />
 <h2 id="11-安装-python">1.1 安装 Python<a class="headerlink" href="#11-安装-python" title="Permanent link">&para;</a></h2>
 <ol>
 <li>打开 <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a>，找到 <strong>Python 3.13</strong> 的最新小版本（比如 3.13.7），下载 <strong>Windows installer (64-bit)</strong>。</li>
-<li>双击安装，<strong>第一个界面最下方一定要勾选 <code>Add python.exe to PATH</code></strong>，然后点 <code>Install Now</code>。</li>
-</ol>
+<li>
+<p>双击安装，<strong>第一个界面最下方一定要勾选 <code>Add python.exe to PATH</code></strong>，然后点 <code>Install Now</code>。</p>
 <p>这个勾决定了你能不能在命令行里直接输入 <code>python</code>。忘了勾的话，重新运行安装程序选 <code>Modify</code> 补上，或者卸载重装。</p>
-<ol>
-<li>装好后按 <code>Win</code> 键，输入 <code>PowerShell</code> 打开它，输入下面两条命令检查：</li>
+</li>
+<li>
+<p>装好后按 <code>Win</code> 键，输入 <code>PowerShell</code> 打开它，输入下面两条命令检查：</p>
+</li>
 </ol>
 <div class="highlight"><pre><span></span><code>&gt; python --version
 Python 3.13.7
@@ -1925,9 +1949,11 @@ pip 25.2 from C:\Users\你的用户名\AppData\Local\Programs\Python\Python313\L
 <p>写代码需要一个顺手的编辑器，推荐免费的 VS Code：</p>
 <ol>
 <li>到 <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> 下载安装，安装时把「添加到 PATH」「通过 Code 打开」几个选项都勾上。</li>
-<li>打开 VS Code，点左侧的扩展图标（四个方块），搜索安装：</li>
+<li>打开 VS Code，点左侧的扩展图标（四个方块），搜索安装：<ul>
 <li><strong>Python</strong>（微软出的，必装）；</li>
 <li><strong>Chinese (Simplified) Language Pack</strong>（中文界面，可选）。</li>
+</ul>
+</li>
 <li>用「文件 → 打开文件夹」打开你的工程文件夹；用菜单「终端 → 新建终端」（快捷键 <code>Ctrl+`</code>）在 VS Code 下方打开命令行，后面的命令都可以在这里输入。</li>
 </ol>
 <div class="admonition info">
@@ -2268,6 +2294,18 @@ n = 3
 False 70
 True 10.0
 </code></pre></div>
+<p>前面用过的字符串、列表其实也是对象，<code>"a,b,c".split(",")</code>、<code>names.append("台灯")</code> 就是在调用它们的方法。方法返回的结果如果还是对象，可以接着往下点，这叫<strong>链式调用</strong>。新建 <code>scratch/chain.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">"  Alice  "</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a,b,c"</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>Alice
+alice
+['A', 'B', 'C']
+</code></pre></div>
+<p>从左往右读：<code>text.strip()</code> 去掉两头的空格，得到一个新的字符串 <code>"Alice"</code>；接着在这个新字符串上调用 <code>.lower()</code>，转成小写。第 8 章会经常见到这种写法，比如 <code>page.get_by_role("button", name="登录").click()</code>：<code>get_by_role(...)</code> 返回代表登录按钮的对象，<code>.click()</code> 是这个对象的方法，合起来就是「找到登录按钮，点它」。</p>
 <h3 id="1610-异常和断言">1.6.10 异常和断言<a class="headerlink" href="#1610-异常和断言" title="Permanent link">&para;</a></h3>
 <p>程序出错时会抛出异常，不处理就会中断。<code>try/except</code> 可以把异常「捕获」下来：</p>
 <div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -2331,6 +2369,100 @@ True 10.0
     <span class="o">...</span>
 </code></pre></div>
 <p>这叫装饰器，作用是给函数「加点功能」或者「贴个标签」。现阶段不用会写，知道 <code>@pytest.fixture</code> 的意思是「把下面这个函数登记成 pytest 的夹具」就够了，后面用到时再细讲。</p>
+<h3 id="1614-读懂报错">1.6.14 读懂报错<a class="headerlink" href="#1614-读懂报错" title="Permanent link">&para;</a></h3>
+<p>程序出错时，Python 会打印一段以 <code>Traceback</code> 开头的报错。新建 <code>scratch/traceback_demo.py</code>，购物车里第二件商品故意少写了价格：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_price</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">item</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">amount</span> <span class="o">+=</span> <span class="n">get_price</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">*</span> <span class="n">item</span><span class="p">[</span><span class="s2">"quantity"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">amount</span>
+
+
+<span class="n">cart</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"中性笔"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"台灯"</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>          <span class="c1"># 这一行忘了写 price</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="n">cart</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&gt; python scratch\traceback_demo.py
+Traceback (most recent call last):
+  File "D:\work\autotest-demo\scratch\traceback_demo.py", line 16, in &lt;module&gt;
+    print(total(cart))
+          ~~~~~^^^^^^
+  File "D:\work\autotest-demo\scratch\traceback_demo.py", line 8, in total
+    amount += get_price(item) * item["quantity"]
+              ~~~~~~~~~^^^^^^
+  File "D:\work\autotest-demo\scratch\traceback_demo.py", line 2, in get_price
+    return item["price"]
+           ~~~~^^^^^^^^^
+KeyError: 'price'
+</code></pre></div>
+<p><strong>从最后一行往上读：</strong></p>
+<ul>
+<li><strong>最后一行</strong>是错误的类型和说明。<code>KeyError: 'price'</code> 的意思是字典里没有 price 这个键。大多数时候，看这一行就知道错在哪了；</li>
+<li><strong>往上每一组</strong>是一层函数调用：<code>File</code> 那一行写着哪个文件、第几行、在哪个函数里，下面一行是那一行代码，<code>~~~^^^</code> 标出具体是哪一段出的错。<code>&lt;module&gt;</code> 表示不在任何函数里，是文件最外层的代码；</li>
+<li><strong>最下面那一组是真正出错的地方</strong>：<code>get_price</code> 函数的第 2 行。再往上是谁调用了它：<code>total</code> 的第 8 行，<code>total</code> 又是第 16 行调用的。</li>
+</ul>
+<p>连起来就是：第 16 行算总价，循环到某件商品时取它的价格，这件商品没有 price。给台灯补上 price 就好了。</p>
+<p>报错常常很长，大部分是第三方库里面的调用。比如练习网站没启动的时候发登录请求（练习网站第 2 章才启动，现在运行正好就是这种情况），会打印出八十多行，分成好几段，段与段之间夹着一句「The above exception was the direct cause of the following exception」（上面这个错误直接导致了下面这个错误）。不用逐行看，先看最后一行，再在最后一段里找自己写的那个文件。新建 <code>scratch/no_site.py</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"http://127.0.0.1:8000/api/login"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"username"</span><span class="p">:</span> <span class="s2">"alice"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"alice123"</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+<p>练习网站没启动时运行（节选）：</p>
+<div class="highlight"><pre><span></span><code>&gt; python scratch\no_site.py
+Traceback (most recent call last):
+  File "D:\work\autotest-demo\.venv\Lib\site-packages\urllib3\connection.py", line 239, in _new_conn
+……（中间八十多行，都是 urllib3、requests 这些库里面的调用）
+  File "D:\work\autotest-demo\scratch\no_site.py", line 3, in &lt;module&gt;
+    resp = requests.post("http://127.0.0.1:8000/api/login", json={"username": "alice", "password": "alice123"}, timeout=10)
+……
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/login (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。"))
+</code></pre></div>
+<p>最后一行说连不上 127.0.0.1 的 8000 端口，「积极拒绝」是指那个端口上没有程序在等着接收请求，也就是练习网站没启动。路径里带 <code>site-packages</code> 或者 <code>Python313\Lib</code> 的，是 pip 装的库或者 Python 自带的代码，几乎不会是它们出了错，问题一般在自己写的那一层，或者在环境上。</p>
+<p><strong>先分清是哪一类错误</strong>，查错的方向完全不同：</p>
+<table>
+<thead>
+<tr>
+<th>最后一行（或者命令行的提示）</th>
+<th>属于哪一类</th>
+<th>先查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「python」「pytest」不是内部或外部命令；<code>ModuleNotFoundError</code></td>
+<td>环境</td>
+<td>虚拟环境激活了没有、包装了没有（1.4、1.5 节）</td>
+</tr>
+<tr>
+<td><code>requests.exceptions.ConnectionError</code>，后面带着「积极拒绝」</td>
+<td>环境</td>
+<td>练习网站启动了没有（第 2 章 2.1 节）</td>
+</tr>
+<tr>
+<td><code>SyntaxError</code>、<code>IndentationError</code></td>
+<td>语法</td>
+<td>Python 运行之前会先检查整个文件的写法，写法不对就直接报错，一行都不运行。看它指出的那一行和上一行：括号、引号没配对，用了中文标点，缩进没对齐</td>
+</tr>
+<tr>
+<td><code>NameError</code>、<code>KeyError</code>、<code>TypeError</code>、<code>AttributeError</code></td>
+<td>代码写错了</td>
+<td>名字拼错了、字典里没有这个键、值的类型不对、对象没有这个方法。把相关的值 <code>print</code> 出来看看</td>
+</tr>
+<tr>
+<td><code>AssertionError</code></td>
+<td>测试结果</td>
+<td>代码本身没问题，是实际结果和预期不一样：要么被测系统真有问题，要么预期写错了</td>
+</tr>
+</tbody>
+</table>
+<p>只有最后一类才是自动化测试要找的东西，前几类都是先要排除的。第 3 章开始用 pytest 运行用例，用例里不管出了哪一类错误都显示为 FAILED，到时候看 <code>E</code> 开头的那一行来分辨（第 3 章 3.2.3 节）。</p>
 <h2 id="17-常见的坑">1.7 常见的坑<a class="headerlink" href="#17-常见的坑" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2382,6 +2514,7 @@ True 10.0
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>pytest --version</code>、<code>locust --version</code>、<code>playwright --version</code> 都能输出版本号；</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 能说清楚字典的 <code>d["k"]</code> 和 <code>d.get("k")</code> 有什么区别；</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道 <code>assert</code> 条件不成立时会发生什么；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 看到报错知道从最后一行读起，能分清是环境、语法、代码写错，还是断言失败；</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 知道读写文件为什么要写 <code>encoding="utf-8"</code>。</li>
 </ul>
 <p>下一章：<a href="02-%E8%AE%A4%E8%AF%86%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E4%B8%8EHTTP%E5%9F%BA%E7%A1%80.html">第 2 章 认识练习网站与 HTTP 基础</a></p>

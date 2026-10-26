@@ -1777,11 +1777,13 @@ content-type: application/json
 <li>打开登录页，按 <code>F12</code>，切到 <strong>Network（网络）</strong> 面板；</li>
 <li>勾上 <strong>Preserve log（保留日志）</strong>，否则登录后页面一跳转，记录就被清掉了；</li>
 <li>点筛选栏的 <strong>Fetch/XHR</strong>，只看接口请求，过滤掉图片、样式这些；</li>
-<li>用 alice 登录，列表里会出现 <code>login</code>、<code>products</code>、<code>me</code> 几条请求。点 <code>login</code>：</li>
+<li>用 alice 登录，列表里会出现 <code>login</code>、<code>products</code>、<code>me</code> 几条请求。点 <code>login</code>：<ul>
 <li><strong>Headers（标头）</strong>：请求地址、请求方法、状态码、请求头和响应头；</li>
 <li><strong>Payload（载荷）</strong>：请求体，能看到提交的用户名和密码；</li>
 <li><strong>Response（响应）</strong>：服务器返回的内容；</li>
 <li><strong>Timing（时间）</strong>：这次请求花了多少时间。</li>
+</ul>
+</li>
 <li>点 <code>products</code> 那条，看请求头里有一个 <code>token</code>，值就是登录时拿到的那一串。</li>
 <li>切到 <strong>Application（应用）→ Cookies</strong>，能看到页面存下的 <code>token</code> 和 <code>username</code> 两个 cookie。</li>
 </ol>

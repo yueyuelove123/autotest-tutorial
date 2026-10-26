@@ -2665,8 +2665,8 @@ System.IO.FileLoadException: 未能加载文件或程序集"System.Data.SQLite, 
 <ol>
 <li>在任务管理器里结束卡住的 VuGen.exe；</li>
 <li>用管理员身份打开记事本（开始菜单搜「记事本」，右键选「以管理员身份运行」），用「文件 → 打开」打开 <code>C:\ProgramData\Micro Focus\LoadRunner\config.json</code>。ProgramData 是隐藏文件夹，在文件名框里直接输入完整路径回车最省事；</li>
-<li>文件原来的内容是：</li>
-</ol>
+<li>
+<p>文件原来的内容是：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"usageAnalytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
@@ -2680,8 +2680,10 @@ System.IO.FileLoadException: 未能加载文件或程序集"System.Data.SQLite, 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>保存，重新打开 VuGen。</li>
+</li>
+<li>
+<p>保存，重新打开 VuGen。</p>
+</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">坑</p>
@@ -3317,11 +3319,13 @@ Not recording headers
 <li>菜单 录制 → 录制选项（Recording Options，快捷键 Ctrl+F7）；</li>
 <li>左边的树选 HTTP 属性 → 高级（HTTP Properties → Advanced），点右边「录制方案」里的「标头(D)...」（Headers）按钮；</li>
 <li>「标头」对话框最上面的下拉框选「录制列表中的标头」（Record headers in list）。这时列表里默认勾着 Accept-Language，把它的勾去掉；</li>
-<li>点列表右上角的绿色加号，列表最下面多出一行，输入 <code>token</code> 回车，再勾上它。改好的样子：</li>
-</ol>
+<li>
+<p>点列表右上角的绿色加号，列表最下面多出一行，输入 <code>token</code> 回车，再勾上它。改好的样子：</p>
 <p><img alt="标头对话框：选录制列表中的标头，只勾 token" src="images/14-headers-token.png" /></p>
-<ol>
-<li>点「确定」关掉标头对话框，再点「确定」关掉录制选项；</li>
+</li>
+<li>
+<p>点「确定」关掉标头对话框，再点「确定」关掉录制选项；</p>
+</li>
 <li>菜单 录制 → 重新生成脚本（Regenerate Script，快捷键 Ctrl+Shift+R），弹出确认框：「重新生成脚本将覆盖在生成初始代码后进行的所有变更，如关联、参数化和手动编辑。录制的操作将被完全覆盖，但是手动创建的操作(包括已录制和随后重命名的项)将不会受到影响。单击『确定』覆盖脚本。」点「确定」。</li>
 </ol>
 <p><strong>重新生成脚本</strong>不用重新录：VuGen 拿 data 文件夹里录下的原始数据，按新的录制选项再生成一遍代码。生成完，代码生成日志的开头变成了：</p>
@@ -3520,11 +3524,13 @@ Action.c(44): web_url("me") 最高严重级别为"ERROR"，60 个正文字节，
 <li>新建一个脚本，比如叫 shop_har（14.4.2 节）；</li>
 <li>先打开 录制 → 录制选项，按 14.7.4 节把标头设成只录 token。新脚本的录制选项不一定沿用上一个脚本的设置，导入前确认一遍；</li>
 <li>菜单 录制 → 录制，「录制」选「捕获的流量文件分析」；</li>
-<li>「捕获的文件」点右边的 … 按钮，选刚才的 HAR 文件。文件类型是「捕获文件 (*.har, *.pcap, *.saz)」，抓包工具 Fiddler 的 .saz、Wireshark 的 .pcap 也能导入；其余保持默认：</li>
-</ol>
+<li>
+<p>「捕获的文件」点右边的 … 按钮，选刚才的 HAR 文件。文件类型是「捕获文件 (*.har, *.pcap, *.saz)」，抓包工具 Fiddler 的 .saz、Wireshark 的 .pcap 也能导入；其余保持默认：</p>
 <p><img alt="开始录制对话框：录制方式选捕获的流量文件分析" src="images/14-start-recording-har.png" /></p>
-<ol>
-<li>选好文件后「开始录制」按钮才能点，点它。VuGen 不打开浏览器，直接分析文件、生成脚本。</li>
+</li>
+<li>
+<p>选好文件后「开始录制」按钮才能点，点它。VuGen 不打开浏览器，直接分析文件、生成脚本。</p>
+</li>
 </ol>
 <p>实测 HAR 里只有练习网站的 21 个请求（其中 6 个是 css、js），生成的脚本 154 行、14 个步骤，就是 14.6 节的那个例子。</p>
 <h3 id="1493-三种方式怎么选">14.9.3 三种方式怎么选<a class="headerlink" href="#1493-三种方式怎么选" title="Permanent link">&para;</a></h3>

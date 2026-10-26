@@ -2797,12 +2797,14 @@ tests/api/test_scene_sign.py::test_stats_millisecond_timestamp PASSED           
 <p>三条用例分别验证：过期后能自动续期并且确实换了 token；5 个线程同时撞上过期都能成功；refreshToken 也失效时抛出 <code>SessionExpired</code>。</p>
 <p>这个文件有一个特殊之处：<strong>只能在开了 <code>SHOP_TOKEN_TTL</code> 的网站上跑</strong>。为了不让读的人猜，文件做了两件事：</p>
 <ul>
-<li><strong><code>pytestmark = pytest.mark.token_ttl</code></strong>：给整个文件的用例打上标记。标记要先在 <code>pytest.ini</code> 里登记（下一章 7.8 节细说），在 <code>markers</code> 下面加一行：</li>
-</ul>
+<li>
+<p><strong><code>pytestmark = pytest.mark.token_ttl</code></strong>：给整个文件的用例打上标记。标记要先在 <code>pytest.ini</code> 里登记（下一章 7.8 节细说），在 <code>markers</code> 下面加一行：</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="na">token_ttl</span><span class="o">:</span><span class="w"> </span><span class="s">要在 SHOP_TOKEN_TTL 开着的网站上跑的用例</span>
 </code></pre></div>
-<ul>
-<li><strong>探测夹具 <code>require_token_ttl</code></strong>：<code>autouse=True</code> 让它自动生效，开头先登录、等 2.5 秒看 token 会不会过期，网站没开开关就跳过整个文件，并写明原因。</li>
+</li>
+<li>
+<p><strong>探测夹具 <code>require_token_ttl</code></strong>：<code>autouse=True</code> 让它自动生效，开头先登录、等 2.5 秒看 token 会不会过期，网站没开开关就跳过整个文件，并写明原因。</p>
+</li>
 </ul>
 <p>在开着 <code>SHOP_TOKEN_TTL=2</code> 的网站上运行：</p>
 <div class="highlight"><pre><span></span><code>(.venv) &gt; pytest tests\api\test_scene_token_refresh.py -v
